@@ -1,0 +1,134 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/* images slider
+.images-slider
+  position: relative
+  margin-bottom: $bottom-space
+
+  +media('<tab-lg')
+    margin-bottom: $bottom-space--large
+
+.images-slider__list, .slick-dotted.images-slider__list
+  padding-bottom: $bottom-space
+  margin-bottom: 0
+  position: relative
+  z-index: 2
+
+.images-slider__item
+  float: none
+  display: inline-block
+  vertical-align: top
+  opacity: 0
+  white-space: normal
+  overflow: hidden
+  position: relative
+  background-color: transparent
+
+  .slick-initialized &
+    display: block
+    float: left
+    opacity: 1
+
+  .no-js &
+    display: block
+    width: 100%
+    opacity: 1
+    margin-bottom: $bottom-space
+
+  &::before
+    content: ''
+    display: block
+    +ratio(16, 9)
+
+    .no-js &
+      content: none
+
+  img
+    position: absolute
+    +position(0)
+    text-align: center
+    max-width: none
+    width: 100%
+    height: 100%
+    +object-fit(contain)
+
+    .no-js &[data-lazy]
+      display: none
+
+    .no-js &
+      position: relative
+      +position(auto)
+      width: auto
+      height: auto
+      +object-fit(fill)
+      margin-bottom: 1rem
+
+  .caption
+    display: none
+
+    .no-js &
+      display: block
+
+.images-slider
+
+  .slick-arrow
+    right: 0
+    left: auto
+    top: 100%
+    transform: translate(0, 0)
+
+  .slick-prev
+    right: 40px
+
+  // slider counter
+  .slider-counter
+    position: absolute
+    left: 0
+    top: 100%
+    color: $text-color-light
+
+    .slide-curr
+      color: $text-color
+
+  .slick-dots, .#{$user-content} & .slick-dots
+    position: absolute
+    bottom: $bottom-space + 1
+
+    li
+      +padding-horizontal(7px)
+
+      button
+        width: 6px
+        height: 6px
+        border-radius: 50%
+        background-color: white
+        opacity: 0.5
+        transition-property: opacity, transform
+        transition-duration: $animation-speed
+
+        &::before
+          content: none
+
+      &.slick-active button
+        opacity: 1
+
+      .no-touchevents &:hover button
+        opacity: 1
+        transform: scale(2)
+
+/* images slider end
+
+/* flashes
+.flashes
+  padding: 0 90px
+
+.flashes__item, .images-slider__item .caption
+  +font(1.4rem, 1.5)
+  color: $text-color-light
+
+  & > *:last-child
+    margin-bottom: 0
+
+/* flashes end

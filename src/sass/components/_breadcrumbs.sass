@@ -1,0 +1,66 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/* breadcrumbs
+.breadcrumbs
+  color: $text-color-light
+  margin-bottom: $bottom-space--large
+
+  +media('<desk-lg')
+    margin-bottom: $bottom-space--middle
+
+  &:last-child
+    margin-bottom: 0
+
+.breadcrumbs__list
+  &, .#{$user-content} &
+    padding: 0
+    margin: 0
+    list-style: none
+
+    li
+      padding: 0 6px 0 0
+      margin: 0
+
+      &::before, &:first-child::before
+        content: none
+
+  cursor: default
+  overflow: hidden
+  +font($font-size--small, $line-height--small)
+
+  .layout-article &
+    max-width: none
+
+  li
+    display: inline
+    position: relative
+
+    &::after
+      display: inline-block
+      vertical-align: baseline
+      content: '•'
+      border: none
+      color: $base-color
+      padding-left: 10px
+
+    &:last-child::after
+      content: none
+
+  a
+    padding-top: 0.5em
+    color: $text-color
+    text-decoration: none
+    cursor: pointer
+
+    span
+      border-bottom: 1px solid rgba(white, 0.3)
+
+    .no-touchevents &:hover
+      color: $base-color
+
+      span
+        border-color: rgba($base-color, 0.3)
+
+/* breadcrumbs end

@@ -1,0 +1,71 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/* user form
+.user-form
+  margin-bottom: $bottom-space
+
+  &:last-child
+    margin-bottom: 0
+
+  .form-title
+    display: block
+    +font-alt-bold
+    color: $title-color
+    text-align: center
+    margin-bottom: $bottom-space
+
+    // font size
+    &
+      +font-h2
+
+  form
+    display: block
+
+  .input-wrap
+    &:last-child
+      margin-bottom: 0
+
+  textarea
+    height: 130px
+    max-height: 130px
+    resize: none
+
+  .form-buttons
+    float: left
+    margin-right: 30px
+
+    +media('<mob-lg')
+      float: none
+      margin: 0
+
+    [class*="btn-"]
+      +media('<mob-lg')
+        display: block
+        width: 100%
+        margin-top: $bottom-space--small
+
+        &:first-child
+          margin-top: 0
+
+  .form-note
+    overflow: hidden
+    min-height: $btn-height
+    +clear-spacing
+    line-height: 25px
+
+    &::before
+      content: ''
+      display: inline-block
+      vertical-align: middle
+      min-height: inherit
+
+  .form-note__item
+    display: inline-block
+    vertical-align: middle
+    width: calc(100% - 6px)
+    +font($font-size--small, $line-height--small)
+    letter-spacing: $letter-spacing
+
+/* user form end
