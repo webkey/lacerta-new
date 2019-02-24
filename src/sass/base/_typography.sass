@@ -2,7 +2,7 @@
 @import ../utils/mixins
 @import ../../libs/include-media/dist/include-media
 
-h1, h2, h3, h4, h5, h6
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
   padding: 0
   +font-black
   color: $title-color
@@ -16,30 +16,41 @@ h1, h2, h3, h4, h5, h6
 
   a
     text-decoration: none
+    text-decoration-color: #8c92a4
     color: inherit
 
     .no-touchevents &:hover
       color: $base-color
       text-decoration: underline
 
-h1
+h1, .h1
   +font-h1
 
-h2
+h2, .h2
   +font-h2
 
-h3
+h3, .h3
   +font-h3
 
-h4
+h4, .h4
   +font($font-size-h4, $line-height-h4)
 
-h5
+h5, .h5
   +font($font-size-h5, $line-height-h5)
 
-h6
+h6, .h6
   +font($font-size-h6, $line-height-h6)
   text-transform: uppercase
+
+.#{$user-content}
+  @each $tags in h2, h3, h4, h5, '.h2', '.h3', '.h4', '.h5'
+    p + #{$tags},
+    ul + #{$tags},
+    ol + #{$tags},
+    hr + #{$tags},
+    table + #{$tags},
+    .table-auto + #{$tags}
+      margin-top: $bottom-space * 2
 
 p
   padding: 0
@@ -90,64 +101,178 @@ i, em
 i b, i strong, em b, em strong, b i, b em, strong i, strong em
   +font-bold-italic
 
+.#{$user-content}
+  // figure
+  figure
+    display: block
+    padding: 0
+    margin: 5rem 0 4rem
+
+    img
+      margin-bottom: 1.5rem
+
+  figcaption
+    display: block
+    padding: 0
+    margin: 0 0 $bottom-space
+    color: $text-color-light
+    font-size: 1.8rem
+    line-height: 2.2rem
+
+  // mark
+  & > mark
+    display: block
+    position: relative
+    margin: 5rem 0 4rem
+    padding: 3rem 4rem
+    color: #1a2c5c
+    font-size: 3rem
+    line-height: 1
+    text-align: center
+    background: none
+
+    &::before, &::after
+      $width: 25.4rem
+      content: ''
+      display: block
+      position: absolute
+      left: 50%
+      width: $width
+      margin-left: -#{round-float($width / 2, 1)}
+      border-top: 2px solid $highlight-color
+
+    &::before
+      top: 0
+
+    &::after
+      bottom: 0
+
+  // blockquote
+  blockquote
+    $img-size: 110px
+    $img-space: 24px
+    display: block
+    position: relative
+    margin: 5rem 0 4rem
+    padding: 0
+    +clear
+
+    img
+      width: $img-size
+      height: $img-size
+      border-radius: 55px
+      float: left
+      margin-right: $img-space
+
+    q
+      display: block
+      position: relative
+      margin: 0 0 2rem #{$img-size + $img-space}
+      padding: 0 165px 0 0
+      font-size: 1.8rem
+      line-height: 2.5rem
+      color: #1a2c5c
+
+      &::after
+        content: "”"
+        display: block
+        position: absolute
+        right: 0
+        top: -30px
+        font-size: 314px
+        line-height: 1
+        color: $highlight-color
+        pointer-events: none
+
+    cite
+      +font-normal
+      font-style: normal
+      font-size: 1.8rem
+      line-height: 2.5rem
+      color: $text-color-light
+
+  // list
+  ul, ol
+    margin: 0 0 $bottom-space
+    padding: 0
+    list-style: none
+
+    li
+      padding-left: $list-space
+      margin: 0 0 1.5rem
+      position: relative
+
+  ul
+    & > li
+      &::before
+        content: ''
+        display: block
+        float: left
+        margin: 0.4em 0 -0.5em -#{$list-space}
+        border: 0.5rem solid $highlight-color
+        border-radius: 0.5rem
+
+  ol
+    $list-space: 3.5rem
+    counter-reset: section
+
+    & > li
+      counter-increment: section
+      padding-left: $list-space
+
+      &::before
+        position: relative
+        top: -2px
+        display: inline-block
+        content: counter(section)
+        height: 2.1rem
+        width: 2.1rem
+        margin: -0.5rem #{$list-space - 2.1rem} -0.5rem -#{$list-space}
+        font-weight: 700
+        font-size: 1.3rem
+        line-height: 2.1rem
+        text-align: center
+        color: white
+        background-color: $highlight-color
+        border-radius: 50%
+
+  ul, ol
+    ul, ol
+      margin: round-float($bottom-space*0.5, 1) 0
+
+// выравнивание текстовых элементов на странице статьи
+// и их максимальная ширина
+.#{$user-content}
+  @if nth($page-layout-space, 2) != 0
+    +padding-horizontal(nth($page-layout-space, 2))
+
+  & > h1, & > .h1
+    max-width: $section-layout-width
+    +push-auto
+
+  & > p, & > ul, & > ol,
+  & > h2, & > h3, & > h4, & > h5, & > h6,
+  & > .h2, & > .h3, & > .h4, & > .h5, & > .h6,
+  & > hr, & > mark, & > blockquote, & > figure,
+  & > .layout-text
+    max-width: $text-layout-width
+    +push-auto
+
 .entry-text
-  +font-bold
-  font-size: 1.2em
+  font-size: 2.4rem
+  line-height: 2.9rem
+  color: #40455d
   margin-bottom: $bottom-space
+
+  .#{$user-content} &
+    max-width: $section-layout-width
+    +push-auto
 
   b, strong
     +font-bold
 
   i, em
     +font-bold-italic
-
-.entry-img
-  position: relative
-  overflow: hidden
-  +ratio(10, 6)
-  margin-bottom: $bottom-space
-
-  +media('<mob-md')
-    +ratio(16, 9)
-
-  img
-    position: absolute
-    left: 50%
-    top: 50%
-    max-width: 100%
-    max-height: none
-    min-width: 0
-    min-height: 0
-    text-align: left
-    width: calc(100% + 4px)
-    height: calc(100% + 4px)
-    transform: translate(-50%, -50%)
-    +object-fit(cover)
-
-//.no-objectfit &
-  width: auto
-  height: 100%
-
-.entry-img__title
-  position: absolute
-  +position(50%)
-  +padding-horizontal(0 !important)
-  margin: 0
-  transform: translate(-50%, -50%)
-  z-index: 10
-  +font($font-size-h1, $line-height-h1)
-  color: $bg-color
-  text-shadow: 0 5px 20px rgba(0, 0, 0, 0.2)
-  text-align: center
-
-  +media('<desk-md')
-    +font($font-size-h1--md, $line-height-h1--md)
-
-  +media('<mob-lg')
-    +font($font-size-h1--sm, $line-height-h1--sm)
-
-  +media('<mob-md')
-    +font(22px, 1)
 
 .mark
   color: $mark-color
@@ -178,75 +303,6 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 .hide-text
   +hide-text
 
-/*content img
-.layout-article
-  & > img, .imgc
-    text-align: center
-    display: block
-    margin: 0 auto $bottom-space
-    width: $flood-layout-width
-    max-width: 100%
-    clear: both
-
-  .imgl
-    text-align: left
-    float: left
-    margin: 0 $bottom-space $bottom-space 0
-
-  .imgr
-    text-align: right
-    float: right
-    margin: 0 0 $bottom-space $bottom-space
-
-  .imgl, .imgr
-    max-width: 40%
-
-    +media('<tab-sm')
-      float: none
-      display: block
-      margin-left: auto
-      margin-right: auto
-      max-width: 100%
-
-.imgc, .imgl, .imgr
-  figcaption
-    display: block
-    padding: $bottom-space 0 0
-    margin: 0
-    +font($font-size--small, $line-height--small)
-
-/*content img end
-
-/*columnize
-.columnize, .columnize--3, .columnize--4
-  column-count: 2
-  column-gap: 2em
-  margin-bottom: $bottom-space
-  font-size: 0.9em
-
-.columnize--3
-  column-count: 3
-  font-size: 0.85em
-
-.columnize--4
-  column-count: 4
-  font-size: 0.8em
-
-  +media('<desk-sm')
-    column-count: 3
-
-.columnize--3, .columnize--4
-
-  +media('<tab-lg')
-    column-count: 2
-
-.columnize, .columnize--3, .columnize--4
-
-  +media('<tab-sm')
-    column-count: 1
-
-/*columnize end
-
 /*columns
 $columns-gap: 2em
 .columns
@@ -272,75 +328,6 @@ $columns-gap: 2em
     margin-right: 0
 
 /*columns end
-
-.#{$user-content}
-  @each $tags in h2, h3, h4, h5
-    p + #{$tags},
-    ul + #{$tags},
-    ol + #{$tags},
-    hr + #{$tags},
-    table + #{$tags},
-    .table-auto + #{$tags}
-      margin-top: $bottom-space * 2
-
-/*list
-ul#{$no-custom-list},
-ol#{$no-custom-list}
-  margin: 0 0 $bottom-space
-  padding: 0
-  list-style: none
-
-  li
-    padding-left: $list-space
-    margin: 0 0 round($bottom-space*0.5)
-    position: relative
-
-ul#{$no-custom-list}
-  & > li
-    &::before
-      content: ''
-      display: block
-      float: left
-      +size(0)
-      margin: 0.4em 0 -0.5em -#{$list-space}
-      border: solid transparent
-        width: 5px 0 5px 9px
-        left-color: $base-color
-
-ol#{$no-custom-list}
-  counter-reset: section
-
-  & > li
-    counter-increment: section
-    height: 1%
-    overflow: hidden
-
-    &::before
-      position: relative
-      display: inline-block
-      text-align: left
-      +font-alt-bold
-      color: $base-color
-      content: counter(section)
-      padding: 0 4px 0 0
-      min-width: $list-space
-      margin-left: -#{$list-space}
-
-ul#{$no-custom-list},
-ol#{$no-custom-list}
-  ul,
-  ol
-    margin: round-float($bottom-space*0.5, 1) 0
-
-// Выравнивать по центру,
-// если список лежит непостредственно в контейнере текстовой страницы (статьи)
-.layout-article
-  ul#{$no-custom-list},
-  ol#{$no-custom-list}
-    margin-left: auto
-    margin-right: auto
-
-/*list end
 
 /*table
 table
@@ -408,99 +395,3 @@ table
     border-top-width: 0
 
 /*table end
-
-/*blockquote
-blockquote
-  display: block
-  margin: 0 0 $bottom-space
-  padding: 0
-  background-color: white
-
-  q
-    display: block
-    margin: 0
-    padding: 0 0 10px
-    +font-normal
-    +font(round-float($font-size*1.25, 1), $line-height)
-    color: $text-color
-    text-align: center
-
-    &::before, &::after
-      +pseudo($pos: relative)
-      +font(4rem, 1)
-      text-align: left
-
-    &::before
-      content: '«'
-      padding-left: 17%
-      padding-bottom: 10px
-
-    &::after
-      content: '»'
-      text-align: right
-      padding-right: 18.5%
-      padding-top: 8px
-
-  cite
-    text-align: right
-    display: block
-    margin-left: auto
-    +font($font-size, $line-height)
-    color: $text-color-light
-
-/*blockquote end
-
-/*user spacer
-.user-spacer
-  display: block
-  height: $bottom-space--large
-  +font(0, 0)
-  +clear
-
-  +media('<desk-lg')
-    height: $bottom-space--middle
-
-/*user spacer end
-
-/*datetime
-.datetime
-  display: block
-  font-style: normal
-  margin-bottom: $bottom-space
-
-/*datetime end
-
-/*view print
-.view-print
-  +display-inline-block-top
-  padding: 6px 12px
-  margin-bottom: $bottom-space
-  background: #f9f9f9
-  line-height: 1
-  color: black
-  text-decoration: none
-
-  +media('<desk-lg')
-    margin-bottom: $bottom-space--middle
-
-  +media('<tab-lg')
-    display: none
-
-  &:last-child
-    margin-bottom: 0
-
-  .no-touchevents &:hover
-    background-color: #eaeaea
-
-  svg
-    display: inline-block
-    vertical-align: middle
-    width: 20px
-    height: 20px
-    margin-right: 5px
-
-  span
-    display: inline-block
-    vertical-align: middle
-
-/*view print end

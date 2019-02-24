@@ -26,123 +26,17 @@ body
     background-color: $base-color
     color: white
 
-.max-wrap
-  max-width: $page-layout-width
-  +push-auto
-
-  &.layout
-    max-width: #{$page-layout-width + nth($page-layout-space, 2) * 2}
-
 .layout
   @if nth($page-layout-space, 2) != 0
     +padding-horizontal(nth($page-layout-space, 2))
 
-// выравнивание текстовых элементов на странице статьи (контент обернут в .layout-article)
-// и их максимальная ширина
-.layout-article
-  padding: $text-layout-space
-
-  +media('<tab-lg')
-    padding: $text-layout-space--md
-
-  +media('<tab-sm')
-    padding: $text-layout-space--sm
-
-  & > p, & > ul, & > ol, & > h1, & > h2, & > h3, & > h4, & > h5, & > h6, & > hr, & > blockquote, & > .layout-text, .imgc figcaption
-    max-width: $text-layout-width
-    +padding-horizontal(0)
-    +push-auto
-
-  .layout-flood
-    max-width: $flood-layout-width
-    +padding-horizontal(0)
-    +push-auto
-
-  // элеметы без отступов по бокам
-  // минусовые маржины по горизонтале имеют значение только внутри .layout-article
-  .layout-full-width, .layout-wide
-
-    +margin-horizontal(-#{nth($text-layout-space, 2)})
-
-    +media('<tab-lg')
-      +margin-horizontal(-#{nth($text-layout-space--md, 2)})
-
-    +media('<tab-sm')
-      +margin-horizontal(-#{nth($text-layout-space--sm, 2)})
-
-// максимальная ширина текстовых элементов на внутренней (текстовой) странице
-.max-wrap-text
-  //max-width: #{$text-layout-width + (nth($text-layout-space, 2))*2}
-  max-width: $text-layout-width
-
-//+media('<tab-lg')
-  max-width: #{$text-layout-width + (nth($text-layout-space--md, 2))*2}
-
-//+media('<tab-sm')
-  max-width: #{$text-layout-width + (nth($text-layout-space--sm, 2))*2}
-
-// выравнивание текстовых элементов на внутренней (текстовой) странице
-// и их максимальная ширина
-.layout-text
-  max-width: #{$text-layout-width + (nth($text-layout-space, 2))*2}
-  +padding-horizontal(nth($text-layout-space, 2))
+.max-wrap
+  max-width: $page-layout-width
   +push-auto
 
-  +media('<tab-lg')
-    max-width: #{$text-layout-width + (nth($text-layout-space--md, 2))*2}
-    +padding-horizontal(nth($text-layout-space--md, 2))
-
-  +media('<tab-sm')
-    max-width: #{$text-layout-width + (nth($text-layout-space--sm, 2))*2}
-    +padding-horizontal(nth($text-layout-space--sm, 2))
-
-// максимальная ширина альтернативных элементов на внутренней (текстовой) странице
-.max-wrap-flood
-  //max-width: #{$flood-layout-width + (nth($text-layout-space, 2))*2}
-  max-width: $flood-layout-width
-
-//+media('<tab-lg')
-  max-width: #{$flood-layout-width + (nth($text-layout-space--md, 2))*2}
-
-//+media('<tab-sm')
-  max-width: #{$flood-layout-width + (nth($text-layout-space--mob, 2))*2}
-
-// выравнивание альтернативных элементов на внутренней (текстовой) странице
-// и их максимальная ширина
-.layout-flood
-  max-width: #{$flood-layout-width + (nth($text-layout-space, 2))*2}
-  +padding-horizontal((nth($text-layout-space, 2)))
-  +push-auto
-
-  +media('<tab-lg')
-    max-width: #{$flood-layout-width + (nth($text-layout-space--md, 2))*2}
-    +padding-horizontal((nth($text-layout-space--md, 2)))
-
-  +media('<tab-sm')
-    max-width: #{$flood-layout-width + (nth($text-layout-space--sm, 2))*2}
-    +padding-horizontal((nth($text-layout-space--sm, 2)))
-
-  p, ul, ol, h1, h2, h3, h4, h5, h6, hr
-    max-width: none
-
-// элеметы с отступами по бокам
-.layout-wide
-  +padding-horizontal((nth($text-layout-space, 2)))
-
-  +media('<tab-lg')
-    +padding-horizontal((nth($text-layout-space--md, 2)))
-
-  +media('<tab-sm')
-    +padding-horizontal((nth($text-layout-space--sm, 2)))
-
-  p, ul, ol, h1, h2, h3, h4, h5, h6, hr
-    max-width: none
-
-// элеметы без отступов по бокам
-.layout-full-width
-
-  p, ul, ol, h1, h2, h3, h4, h5, h6, hr
-    max-width: none
+  @if nth($page-layout-space, 2) != 0
+    &.layout
+        max-width: #{$page-layout-width + nth($page-layout-space, 2) * 2}
 
 .wrapper
   display: flex
@@ -151,4 +45,5 @@ body
   align-items: stretch
   margin: 0 auto
   min-height: 100vh
+  max-width: $page-layout-width
   position: relative

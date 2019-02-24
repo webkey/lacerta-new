@@ -156,8 +156,9 @@ $bottom-space--small: round-float($font-size*$line-height*0.75, 1) !default
 // ==========================================================================
 
 // Color of brands
-$base-color: #1e202b !default
-$base-color-alt: #6228f2 !default
+$base-color: #6228f2 !default
+$base-color-alt: #3c31ab !default
+$base-color-dark: #242473 !default
 // ----------------------------------------------------
 $bg-color: #fff !default
 $bg-color-alt: #5740cb !default
@@ -187,15 +188,33 @@ $highlight-color--hover: #ab52ff !default
 $user-content: user-content !default
 
 
+// Z-indexes
+// ==========================================================================
+$z-high: 40 !default
+$z-middle: 30 !default
+$z-low: 20 !default
+$z-up: 5 !default
+
+
 // Layout
 // ==========================================================================
 
 // минимальная ширина сайта
 $page-layout-min: 32rem !default
 // отступы для всего сайта
-$page-layout-space: 1.8rem 2rem !default
+$page-layout-space: 2rem 5rem !default
 // максимальная ширина сайта
-$page-layout-width: 140rem !default
+$page-layout-width: 192rem !default
+// максимальная ширина секции
+$section-layout-width: 140rem !default
+=wide()
+  max-width: $section-layout-width
+  margin-left: auto
+  margin-right: auto
+
+  +media('<mob-lg')
+    max-width: none
+
 // минимальные отступы у текствого блока
 $text-layout-space: 5rem 6rem !default
 $text-layout-space--md: 2.5rem 3rem !default
@@ -211,6 +230,12 @@ $grid-space--sm: 1.8rem 3rem !default
 $grid-space--mob: 0.8rem 10rem !default
 // отступы в дефолтных списках
 $list-space: 3rem
+
+
+// Header
+// ==========================================================================
+$header-height: 11.2rem !default
+$header-height--sm: 8rem !default
 
 
 // Sidebar

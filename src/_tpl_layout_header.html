@@ -1,21 +1,29 @@
-<header class="header">
-  <div class="max-wrap layout">
-    <div class="header__holder">
+<header class="header layout">
+  <div class="header-holder">
+    <div class="header-frame">
       <!--logo-->
       <div class="logo">
         @@if(context.currentItem === "Главная"){<span>Lacerta</span>}
         @@if(context.currentItem !== "Главная"){<a href="index.html" title="Перейти на главную">Lacerta</a>}
         <img style="display: none;" src="img/logo.png" alt="Print version logotype">
       </div>
-      <!--/logo-->
-
+      <!--logo end-->
       <!--navigation-->
       <div class="nav-wrap">
         <nav class="nav">
-          @@include('_tpl_nav-constructor.html', { "currentItem": "@@currentItem", "bsKey": "nav" })
+          <ul class="nav__list">
+            <li><a href="#">Куда вкладывать деньги</a></li>
+            <li><a href="#">Покупка облигаций</a></li>
+            <li><a href="#">Новости</a></li>
+          </ul>
         </nav>
       </div>
-      <!--/navigation-->
+      <!--navigation end-->
     </div>
+    <!--shutter-menu-->
+    <div class="overlay shutter-menu-overlay shutter-menu-overlay-js">&nbsp;</div>
+    <div class="shutter-menu shutter-menu-js"><p>{{Здесь будет дополнительное меню}}</p></div>
+    <a href="#" class="shutter-menu-switcher shutter-menu-switcher-js"><i>|||</i><span>Меню</span></a>
+    <!--shutter-menu end-->
   </div>
 </header>
