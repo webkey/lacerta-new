@@ -194,6 +194,7 @@ $z-high: 40 !default
 $z-middle: 30 !default
 $z-low: 20 !default
 $z-up: 5 !default
+$z-max: 9999 !default
 
 
 // Layout
@@ -222,14 +223,10 @@ $text-layout-space--sm: 1.3rem 1.5rem !default
 $text-layout-space--mob: 0.8rem 10rem !default
 // максимальная ширина текстового блока
 $text-layout-width: 80rem !default
-// максимальная ширина текстового блока выходящего за пределы текста
-$flood-layout-width: 100rem !default
 // отступы внутри блочных элементов
 $grid-space: 2.8rem 3rem !default
 $grid-space--sm: 1.8rem 3rem !default
 $grid-space--mob: 0.8rem 10rem !default
-// отступы в дефолтных списках
-$list-space: 3rem
 
 
 // Header
@@ -328,7 +325,7 @@ $form-gap: 40px !default
 
 // Checkboxes
 // Radio Buttons
-$checkbox-color: #ff3aa3 !default
+$checkbox-color: $highlight-color !default
 
 // Select
 $select-space-v: 12px !default

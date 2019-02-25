@@ -6,6 +6,10 @@
 .user-form
   margin-bottom: $bottom-space
 
+  .#{$user-content} &
+    max-width: $text-layout-width
+    +push-auto
+
   &:last-child
     margin-bottom: 0
 

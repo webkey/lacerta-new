@@ -4,7 +4,7 @@
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
   padding: 0
-  +font-black
+  +font-bold
   color: $title-color
   margin: 0 0 $bottom-space
 
@@ -16,7 +16,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
 
   a
     text-decoration: none
-    text-decoration-color: #8c92a4
     color: inherit
 
     .no-touchevents &:hover
@@ -24,6 +23,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
       text-decoration: underline
 
 h1, .h1
+  +font-black
   +font-h1
 
 h2, .h2
@@ -68,7 +68,7 @@ a
   color: $link-color
   text-decoration: underline
   cursor: default
-  //outline: none
+  text-decoration-color: #a9b0c2
 
   &:link
     cursor: pointer
@@ -100,6 +100,35 @@ i, em
 
 i b, i strong, em b, em strong, b i, b em, strong i, strong em
   +font-bold-italic
+
+.mark
+  color: $mark-color
+  font-style: inherit
+  font-weight: inherit
+
+.text-color-alt
+  color: $base-color
+
+.align-center
+  text-align: center
+
+.align-left
+  text-align: left
+
+.align-right
+  text-align: right
+
+.float-left
+  float: left
+
+.float-right
+  float: right
+
+.nobr
+  white-space: nowrap
+
+.hide-text
+  +hide-text
 
 .#{$user-content}
   // figure
@@ -192,6 +221,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
       color: $text-color-light
 
   // list
+  $list-space: 3rem !default
   ul, ol
     margin: 0 0 $bottom-space
     padding: 0
@@ -222,15 +252,16 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 
       &::before
         position: relative
-        top: -2px
+        top: -0.1em
         display: inline-block
         content: counter(section)
         height: 2.1rem
         width: 2.1rem
         margin: -0.5rem #{$list-space - 2.1rem} -0.5rem -#{$list-space}
+        padding: 0.1rem 0 0
         font-weight: 700
         font-size: 1.3rem
-        line-height: 2.1rem
+        line-height: 2.0rem
         text-align: center
         color: white
         background-color: $highlight-color
@@ -240,33 +271,11 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
     ul, ol
       margin: round-float($bottom-space*0.5, 1) 0
 
-// выравнивание текстовых элементов на странице статьи
-// и их максимальная ширина
-.#{$user-content}
-  @if nth($page-layout-space, 2) != 0
-    +padding-horizontal(nth($page-layout-space, 2))
-
-  & > h1, & > .h1
-    max-width: $section-layout-width
-    +push-auto
-
-  & > p, & > ul, & > ol,
-  & > h2, & > h3, & > h4, & > h5, & > h6,
-  & > .h2, & > .h3, & > .h4, & > .h5, & > .h6,
-  & > hr, & > mark, & > blockquote, & > figure,
-  & > .layout-text
-    max-width: $text-layout-width
-    +push-auto
-
 .entry-text
   font-size: 2.4rem
   line-height: 2.9rem
   color: #40455d
   margin-bottom: $bottom-space
-
-  .#{$user-content} &
-    max-width: $section-layout-width
-    +push-auto
 
   b, strong
     +font-bold
@@ -274,36 +283,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
   i, em
     +font-bold-italic
 
-.mark
-  color: $mark-color
-  font-style: inherit
-  font-weight: inherit
-
-.text-color-alt
-  color: $base-color
-
-.align-center
-  text-align: center
-
-.align-left
-  text-align: left
-
-.align-right
-  text-align: right
-
-.float-left
-  float: left
-
-.float-right
-  float: right
-
-.nobr
-  white-space: nowrap
-
-.hide-text
-  +hide-text
-
-/*columns
+/* columns
 $columns-gap: 2em
 .columns
   +clear
@@ -327,9 +307,9 @@ $columns-gap: 2em
   &:nth-child(even)
     margin-right: 0
 
-/*columns end
+/* columns end
 
-/*table
+/* table
 table
   border-collapse: collapse
   border-spacing: 0
@@ -394,4 +374,33 @@ table
     border-color: $base-color
     border-top-width: 0
 
-/*table end
+/* table end
+
+/* reference link
+.ref
+  display: inline-block
+  padding: 5px 0 5px 45px
+  background: no-repeat 0 50% url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAhCAYAAABX5MJvAAAEJ0lEQVRYhb2YS2wbVRSGvxmP41cbO4kTKODQqiSkK9hAqQRIJGp5lEdSdYEQSChBsKAQqUVdVHTBAnVRdVGgiyYCxAYWCJLyaFFAqRBITdoukJBKiUlCkpZarR+xrTj22ONhMeNgO/NyRftvRp7577mfxvfOOecKPVcu0oAeBp7Rr/cDbUAQSAMJ4E/gPHBavzqS4ADCBwwCw0BXA8B/AceBj4FVK6NoE+gF4DLwUYMAAPcBH+rj+28GwgOcBMaBzgYnr1cnMKbH8xgZJIN7zfrkTxgNaHe5eTnQQa83SKfkRRIErisyU4Usn6/c4Hd5xQzmdbS32Q9kqh/Ur4km4AzQaxTleX8b74U6+Tmf5lQuwaVijpKqEpE87PS18GKgnVO5BEfSSxRV1QxmEngakM0gTurE67Q3EOZg8z0MJ+c4V8gYWbjT1cSJtq0slgrsT85higEjwBuVH9Vrot8MICJ5eDcYYV9y1hQAIKbIvBaP8mBTgD3+sDmCNs/aYq1A+NC2k6EGN9zBD6spzheyVoEBSJVLHE1f5c3mTQjW1uP6vGsQg1jsgj5viLFcwhagop/yKYKiRLfbZ2XrBIaqIYbNnB5BpN3lJlq0/N7USFZV5op5IpLhjqzW2xWI7Vh8iFR9eQl2L7dOggDmG2RNXcB2Edhl5ZJVlZgi0+X2OgbwCCJbJS9LSsGJfZcIPGLnmsyn2RuwXO01etLXwnWlyIyzv3CHCGyzc41mY/R5QzzuDdpGbHe5OdB8Nyey/zgBAOgR0dKxpWKKzOHlBY61bqHPGzL13St5+DTczVQhw7e5pFOIsISWK2z1XS5JUVU50rKZ3+QVvllNsFAqkCmXuMvlYacvxIC/jS9WbnAsfdXqa1mvjRJaMnEEslDK82N+mV5vkMe82hAFlYVSgelCllfjM2TLCkojCJCV0CoiSwivIHIoGGG3v5WxXJz9yXkuF3OkyqUa30OejXzZ0c3pXJL300vk1bITiLjQc+Xi92glmynAZ+FuCmqZg6m/iSmymRWATa4mjrZuQQCG4lEnIGdEYMrKcSgYQUFlKBG1BQC4psgMxmdQgcMhR/XQORGYMHu6ze3nOX8rB5LzVvXBOsmqyjvJeZ7ytfBAU8DOPiEC00DU6OkrGzr4OpfgmoM3UK+YIvPVSpyXAu1WtigwXUlghmn8UU8zE6uphgEqmswvs8NjueY/gP+y6CfAYr1DEgQuFXM3DfFHcRVJME18i2jtQE15149WFd8uDaAV1DXl3TgwepsARisA9RAA+4BfbjHAr8Bb1TfqIWTgWeDsLQI4C+wGagoNow4sg9YXjPzPACN63HXlulkbWEDrCwYw2DUNahHYo8czLLXsGuJxoAetIJ1tcPJZfVwPNrvOydFAterPJ8JoGTgDxNHOJy6gtZLT4Cyn/wvFxVqTKGf60AAAAABJRU5ErkJggg==')
+
+/* reference link end
+
+// выравнивание текстовых элементов на странице статьи
+// и их максимальная ширина
+/* layout typography elements
+.#{$user-content}
+  @if nth($page-layout-space, 2) != 0
+    +padding-horizontal(nth($page-layout-space, 2))
+
+  & > h1, & > .h1, .entry-text
+    max-width: $section-layout-width
+    +push-auto
+
+  & > p, & > ul, & > ol,
+  & > h2, & > h3, & > h4, & > h5, & > h6,
+  & > .h2, & > .h3, & > .h4, & > .h5, & > .h6,
+  & > hr, & > mark, & > blockquote, & > figure,
+  & > .layout-text
+    max-width: $text-layout-width
+    +push-auto
+
+/* layout typography elements end
