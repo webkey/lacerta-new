@@ -301,6 +301,120 @@ a.shutter-menu-switcher
   background-color: #6228f2
   z-index: 5
 
+/* social networks in footer
+.f-soc
+  overflow: hidden
+  margin-bottom: 2rem
+
+  +media('<mob-lg')
+    display: flex
+    justify-content: center
+
+  &:last-child
+    margin-bottom: 0
+
+.f-soc__group
+  float: left
+  margin-left: 2rem
+
+  +media('<desk-lg')
+    margin-left: 1.5rem
+
+  +media('<tab-lg')
+    margin-left: 1rem
+
+  &:first-child
+    margin-left: 0
+
+  & > strong
+    display: block
+    margin-bottom: 5px
+    font-size: 14px
+    line-height: 18px
+    color: $text-color
+    opacity: 0.4
+
+    +media('<tab-lg')
+      font-size: 12px
+
+    +media('<mob-lg')
+      text-align: center
+
+.f-soc__list
+  position: relative
+  display: inline-block
+  vertical-align: top
+  margin: 0 -15px -15px 0
+
+  +media('<tab-lg')
+    margin: 0 -10px -10px 0
+
+.f-soc__item
+  float: left
+  margin: 0 15px 15px 0
+
+  a
+    display: block
+    position: relative
+    font-size: 60px
+    +size(1em)
+
+    +media('<tab-lg')
+      font-size: 40px
+
+    &::before, &::after
+      content: ''
+      display: block
+      position: absolute
+      left: 0
+      top: 0
+      +size(100%)
+      background-image: url("../../img/soc-sprite.svg")
+      background-repeat: no-repeat
+      background-size: 12em auto // размер файла спрайта, т.е. в спрайте 12 иконок размещенных по диагонали, 1em - 1 иконка
+
+    &::after
+      opacity: 0
+
+    // hover
+    &:hover
+      &::before
+        opacity: 0
+
+      &::after
+        opacity: 1
+
+    $soc-list: 'facebook', 'telegram', 'viber'
+    $type-length: 4 // количество цветов одной иконки в спрайте, или через сколько единиц размещается иконка другогой социалки
+
+    @for $i from 1 through length($soc-list)
+      $pos: $type-length - $type-length * $i * 1em // на сколко единиц нужно сместить background
+
+      //@debug $pos
+
+      &.#{nth($soc-list, $i)}
+        &::before // иконка с цветом в нормальном состоянии (фон без смещения - в спрайте такие иконки идут первыми: 1, 5, 9 и т.д.)
+          $p: $pos
+          background-position: $p $p
+
+        &::after // икона с цветом при наведении (фон семстить на -1em - в спрайте такие иконки идут вторыми: 2, 6, 10 и т.д.)
+          $p: $pos - 1
+          background-position: $p $p
+
+        .user-form__msg__soc &
+          &::before // иконка с другим цветом в нормальном состоянии (фон семстить на -2em - в спрайте такие иконки идут вторыми: 3, 7, 11 и т.д.)
+            $p: $pos - 2
+            background-position: $p $p
+
+          &::after // иконка с другим цветом при наведении (фон семстить на -3em - в спрайте такие иконки идут вторыми: 4, 8, 12 и т.д.)
+            $p: $pos - 3
+            background-position: $p $p
+
+    span // Скрыть текст, но оставить видимым для озвучивающих программ
+      +hide-text
+
+/* social networks in footer end
+
 /* developer
 .developer
   line-height: 1
@@ -362,6 +476,102 @@ a.shutter-menu-switcher
   .no-touchevents &:hover
     background-color: $highlight-color--hover
 
+  &:active
+    margin-top: -#{round-float($size / 2, 1) - 0.1}
+    box-shadow: 0 1px 4px rgba(black, 0.11)
+
 /* lacerta app end
 
 /* === MAIN ===
+/* app offer
+.app-offer
+  position: relative
+  padding-top: 10rem
+  padding-bottom: 10rem
+  color: white
+  background-color:
+  background: $base-color url(../../img/bg-app-offer.jpg) no-repeat fixed
+  background-size: cover
+
+
+
+.app-offer-figure
+  display: flex
+  align-items: center
+  justify-content: flex-end
+  position: absolute
+  top: 0
+  right: 0
+  bottom: 0
+
+  img
+    max-height: 100%
+
+/* app offer end
+
+/* last-news
+.last-news
+  padding-top: 13rem
+  padding-bottom: 13rem
+  background-color: #f2f5ff
+
+.last-news-title
+  margin-bottom: 5rem
+
+$last-news-item-space: 0 3rem
+.last-news-list
+  display: flex
+  flex-wrap: wrap
+  margin: 0 -#{round-float(nth($last-news-item-space, 2) / 2, 1)} 6rem
+
+  &:last-child
+    margin-bottom: 0
+
+.last-news-item
+  position: relative
+  display: flex
+  flex-direction: column
+  justify-content: flex-end
+  $width: calc(33.33% - #{nth($last-news-item-space, 2)})
+  flex-basis: $width
+  min-height: 44.5rem
+  margin: 0 #{round-float(nth($last-news-item-space, 2) / 2, 1)}
+  padding: 3rem
+  text-decoration: none
+  color: white
+  background-color: $base-color
+  background-position: center
+  background-repeat: no-repeat
+  background-size: cover
+
+  &::before
+    content: ""
+    display: block
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    +linear-gradient(to top, rgba(black, 0.7) 0, rgba(black, 0) 100%)
+
+.last-news-item__title
+  position: relative
+  width: 100%
+  border-bottom: 2px solid rgba(white, 0.5)
+  padding-bottom: 2rem
+  margin-bottom: 2rem
+  font-size: 2.4rem
+  line-height: 2.8rem
+  color: inherit
+
+.last-news-item__text
+  position: relative
+  width: 100%
+  font-size: 1.8rem
+  line-height: 2.4rem
+
+.last-news-footer
+  position: relative
+  text-align: right
+
+/* last-news end

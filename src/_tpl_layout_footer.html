@@ -2,79 +2,99 @@
 
 <footer class="footer">
   <div class="max-wrap layout">
-    <div class="footer__holder">
-      <!--footer bottom-->
-      <div class="footer-bottom">
-        <div class="footer-bottom__holder">
-          <div class="footer-bottom__col">
-            <span class="copyright">&copy; <a href="index.html">Project</a> 2018</span>
-          </div>
-          <div class="footer-bottom__col">
-            <a href="tel:8 000 111-22-33">8 000 111-22-33</a> / <a href="mailto:email@project.com">email@project.com</a>
-          </div>
-          <div class="footer-bottom__col">
-
-          </div>
+    <!--contacts-->
+    <ul class="f-contacts">
+      <li>
+        Проспект Победителей,&nbsp;121
+        220062, Республика Беларусь, г.&nbsp;Минск
+      </li>
+      <li>
+        <div><a href="tel:+375172247479">+375 17 <strong>224-74-79</strong></a></div>
+        <div><a href="tel:+375333447479">+375 33 <strong>344-74-79</strong></a></div>
+      </li>
+      <li><a href="mailto:info@lacerta.by">info@lacerta.by</a></li>
+      <li><a href="#">Условия договора на комплексное брокерское обслуживание</a></li>
+    </ul>
+    <!--contacts end-->
+    <!--social share-->
+    <div class="f-soc">
+      <div class="f-soc__group">
+        <strong>Группа</strong>
+        <div class="f-soc__list">
+          @@loop('_tpl_social-items--f-soc.html', [
+          { "class": "facebook", "href": "https://www.facebook.com/", "title": "Facebook" }
+          ])
         </div>
       </div>
-      <!--footer bottom end-->
-    </div>
-  </div>
-  <div class="appeal-form single-drop__panel-js">
-    <form action="#" method="post" class="validation-form-js">
-      @@loop("_tpl_forms_field.html", [
-      {
-      "wrap": "true",
-      "type": "text",
-      "ph": "Введите имя",
-      "id": "f-form-name",
-      "label": "",
-      "valid": "true",
-      "required": "required"
-      },
-      {
-      "wrap": "small-field",
-      "type": "text",
-      "name": "phoneNumber",
-      "ph": "+375 00 111-22-33",
-      "classes": "has-phone-mask",
-      "id": "f-form-phone",
-      "label": "Телефон",
-      "valid": "true",
-      "required": "required"
-      },
-      {
-      "wrap": "true",
-      "type": "email",
-      "ph": "email@mail.com",
-      "id": "f-form-email",
-      "label": "Email",
-      "valid": "true",
-      "required": "required"
-      }
-      ])
-      @@include("_tpl_btn.html", {"type": "button!", "value": "Отправить"})
-      <div class="appeal-form__msg">
-        <strong class="appeal-form__msg__title">Спасибо!</strong>
-        <span class="appeal-form__msg__subtitle">Мы уже получили Ваше сообщение, наши специалисты подготавливают ответ.</span>
+      <div class="f-soc__group">
+        <strong>Чат-боты</strong>
+        <div class="f-soc__list">
+          @@loop('_tpl_social-items--f-soc.html', [
+          { "class": "telegram", "href": "https://telegram.org/", "title": "Telegram" },
+          { "class": "viber", "href": "https://www.viber.com/", "title": "Viber" }
+          ])
+        </div>
       </div>
-    </form>
+    </div>
+    <!--social share end-->
+    <!--appeal-form-->
+    <div class="appeal-form single-drop__panel-js">
+      <form action="#" method="post" class="validation-form-js">
+        @@loop("_tpl_forms_field.html", [
+        {
+        "wrap": "true",
+        "type": "text",
+        "ph": "Введите имя",
+        "id": "f-form-name",
+        "label": "",
+        "valid": "true",
+        "required": "required"
+        },
+        {
+        "wrap": "small-field",
+        "type": "text",
+        "name": "phoneNumber",
+        "ph": "+375 00 111-22-33",
+        "classes": "has-phone-mask",
+        "id": "f-form-phone",
+        "label": "Телефон",
+        "valid": "true",
+        "required": "required"
+        },
+        {
+        "wrap": "true",
+        "type": "email",
+        "ph": "email@mail.com",
+        "id": "f-form-email",
+        "label": "Email",
+        "valid": "true",
+        "required": "required"
+        }
+        ])
+        @@include("_tpl_btn.html", {"type": "button!", "value": "Отправить"})
+        <div class="appeal-form__msg">
+          <strong class="appeal-form__msg__title">Спасибо!</strong>
+          <span class="appeal-form__msg__subtitle">Мы уже получили Ваше сообщение, наши специалисты подготавливают ответ.</span>
+        </div>
+      </form>
+    </div>
+    <!--appeal-form end-->
+    <!--app-->
+    <div class="app">
+      <div class="app__label">Качайте наше приложение<br> бесплатно на:</div>
+      <div class="app__item"><a href="https://play.google.com/store/apps/details?id=by.lacerta" class="btn-app btn-app_google" target="_blank">Скачать в Google Play</a></div>
+      <div class="app__item"><a href="https://itunes.apple.com/us/app/lacerta-%D0%BF%D0%BE%D0%BA%D1%83%D0%BF%D0%BA%D0%B0-%D0%BE%D0%B1%D0%BB%D0%B8%D0%B3%D0%B0%D1%86%D0%B8%D0%B9/id1438857466" class="btn-app btn-app_apple" target="_blank">Скачать в Apple store</a></div>
+    </div>
+    <!--app end-->
+    <!--developer-->
+    <div class="developer">
+      <a href="http://pras.by/" target="_blank">@@include("./includes/svg/icon-prasby.svg")<span>Разработка сайта — компания PRAS</span> </a>
+    </div>
+    <div class="developer-mob">
+      <div>&copy; Разработка сайта — компания PRAS 2018-2019</div>
+      <a href="http://pras.by/">@@include("./includes/svg/icon-prasby.svg")</a>
+      <div>Распрацоўка сайта - <a href="http://pras.by/">кампанія PRAS</a></div>
+    </div>
+    <!--developer end-->
   </div>
-  <!--app-->
-  <div class="app">
-    <div class="app__label">Качайте наше приложение<br> бесплатно на:</div>
-    <div class="app__item"><a href="https://play.google.com/store/apps/details?id=by.lacerta" class="btn-app btn-app_google" target="_blank">Скачать в Google Play</a></div>
-    <div class="app__item"><a href="https://itunes.apple.com/us/app/lacerta-%D0%BF%D0%BE%D0%BA%D1%83%D0%BF%D0%BA%D0%B0-%D0%BE%D0%B1%D0%BB%D0%B8%D0%B3%D0%B0%D1%86%D0%B8%D0%B9/id1438857466" class="btn-app btn-app_apple" target="_blank">Скачать в Apple store</a></div>
-  </div>
-  <!--app end-->
-  <!--developer-->
-  <div class="developer">
-    <a href="http://pras.by/" target="_blank">@@include("./includes/svg/icon-prasby.svg")<span>Разработка сайта — компания PRAS</span> </a>
-  </div>
-  <div class="developer-mob">
-    <div>&copy; Разработка сайта — компания PRAS 2018-2019</div>
-    <a href="http://pras.by/">@@include("./includes/svg/icon-prasby.svg")</a>
-    <div>Распрацоўка сайта - <a href="http://pras.by/">кампанія PRAS</a></div>
-  </div>
-  <!--developer end-->
 </footer>

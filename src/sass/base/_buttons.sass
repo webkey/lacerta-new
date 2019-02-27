@@ -20,60 +20,107 @@
     z-index: 99
     opacity: 0
 
-/* btn-default
-[class*="btn-default"]
+/* btn-def
+.btn-def
   position: relative
-  +font-bold
-  text-transform: uppercase
-  color: $btn-text-color
-  padding: 14px 38px
-  border: 2px solid transparent
-  background: $btn-bg-color
-  box-shadow: none
+  padding: 1.7rem 3rem 1.6rem
   margin: 0
+  +font-normal
+  color: $btn-text-color
+  background: $btn-bg-color
+  border: none
+  box-shadow: 0 10px 10px rgba($btn-bg-color, 0.25)
+  user-select: none
+  -webkit-tap-highlight-color: transparent
+  // transition
+  $prop: background-color, color, box-shadow
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
+  @at-root
+    &,
+    input[type="submit"]#{&},
+    input[type="button"]#{&},
+    input[type="reset"]#{&}
+      border-radius: 2.7rem // Через @at-root, чтобы можно было перебить обнуленный border-radius в reset.sass
 
   &, & > span
-    +font(14px, 18px)
-    letter-spacing: 0.2em
+    +font(1.8rem, 2.2rem)
+    letter-spacing: 0.05em
+    text-transform: uppercase
 
   // hover
-  .no-touchevents &:hover
+  &:not(:disabled):not(.disabled):not([data-disabled]):hover
     background-color: $btn-bg-hover-color
+    box-shadow: 0 10px 10px rgba($btn-bg-hover-color, 0.25)
+
+  // active
+  &:not(:disabled):not(.disabled):not([data-disabled]):active
+    top: 2px
+    box-shadow: 0 8px 8px rgba($btn-bg-hover-color, 0.25)
 
   // disabled
   &:disabled, &.disabled, &[data-disabled]
     cursor: default
+    pointer-events: none !important
     background-color: $btn-disabled-color !important
+    box-shadow: 0 5px 5px rgba($btn-disabled-color, 0.25) !important
 
-    &::before, &::after
-      display: none
+/* btn-def end
 
-/* btn-default end
+/* btn-def-alt
+.btn-def-alt
+  position: relative
+  padding: 1.7rem 3rem 1.6rem
+  margin: 0
+  +font-normal
+  color: $btn-alt-text-color
+  border: none
+  background: $btn-alt-bg-color
+  box-shadow: 0 10px 10px rgba($btn-alt-bg-color, 0.25)
+  user-select: none
+  -webkit-tap-highlight-color: transparent
+  // transition
+  $prop: background-color, color, box-shadow
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
 
-/* btn-default-alt
-.btn-default-alt
-  color: $btn-bg-color
-  border: 2px solid $btn-bg-color
-  background: $btn-text-color
+  @at-root
+    &,
+    input[type="submit"]#{&},
+    input[type="button"]#{&},
+    input[type="reset"]#{&}
+      border-radius: 2.7rem // Через @at-root, чтобы можно было перебить обнуленный border-radius в reset.sass
 
-  .no-touchevents &:hover
-    background: $btn-bg-color
-    color: $btn-text-color
+  &, & > span
+    +font(1.8rem, 2.2rem)
+    letter-spacing: 0.05em
 
+  // hover
+  &:hover
+    background-color: $btn-bg-hover-color
+    box-shadow: 0 10px 10px rgba($btn-bg-hover-color, 0.25)
+
+  // active
+  &:active
+    top: 2px
+    box-shadow: 0 5px 5px rgba($btn-bg-hover-color, 0.25)
+
+  // disabled
   &:disabled, &.disabled, &[data-disabled]
     cursor: default
-    background-color: white !important
-    border-color: $btn-disabled-color !important
-    color: $btn-disabled-color !important
+    pointer-events: none !important
+    background-color: $btn-disabled-color !important
+    box-shadow: 0 10px 10px rgba($btn-disabled-color, 0.25) !important
 
     &::before, &::after
       display: none
 
-    & > i
-      &::before, &::after
-        border-color: $btn-disabled-color !important
-
-/* btn-default-alt end
+/* btn-def-alt end
 
 /* btn-with-icon
 .btn-with-icon

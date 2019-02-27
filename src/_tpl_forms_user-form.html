@@ -1,63 +1,63 @@
 <div class="user-form">
-  <div class="form-title max-wrap-text push-auto">@@title</div>
-  <form action="#!" method="post" class="max-wrap-text push-auto">
-    @@loop("_tpl_forms_field.html", [
-      {
-        "wrap": "true",
-        "type": "text",
-        "ph": "Enter Your Name",
-        "id": "uf-name",
-        "label": "Name:",
-        "required": "true",
-        "valid": "true",
-        "error": "Please enter your name, please"
-      }, {
-        "wrap": "true",
-        "type": "email",
-        "ph": "Enter Your Email",
-        "id": "uf-email",
-        "label": "Email:",
-        "required": "true",
-        "valid": "true",
-        "error": "Please enter a valid email address"
-      }, {
-        "wrap": "true",
-        "type": "textarea",
-        "ph": "Enter Message",
-        "id": "uf-message",
-        "label": "Message:",
-        "required": ""
-      }
-    ])
-    @@include("_tpl_forms_field.html", {
-      "wrap": "true",
-      "type": "file",
-      "id": "uf-file",
-      "label": "Load files:",
-      "multiple": "multiple"
-    })
-    <div class="input-wrap">
-      <div class="label-holder">
-        <label for="form-captcha">Security Check:<span class="form-mark">*</span></label>
-      </div>
-      <div class="input-holder">
-        <div class="captcha">
-          <img src="img/captcha.jpg" alt="captcha" />
-          <input type="text" id="form-captcha" required>
-          @@include('_tpl_forms_valid.html', {"error": "Enter text in this image", "success": "The verification was successful!"})
-          <div class="captcha-refresh"><a href="#"><span>Try another text</span></a></div>
-        </div>
-      </div>
-    </div>
-    <br>
-    <div class="input-wrap">
-      <div class="form-buttons">
-        <button class="btn-default">Send</button>
-        <input class="btn-default-alt" type="reset" value="Clear">
-      </div>
-      <div class="form-note">
-        <div class="form-note__item"><span class="form-mark">*</span> Поля обязательны для заполнения</div>
-      </div>
-    </div>
-  </form>
+	<div class="form-title">@@if(context.title){@@title}@@if(!context.title){Закажите звонок}</div>
+	@@if(!context.noteFalse){
+	<p class="user-form__note">
+		Чтобы уточнить детали продажи или приступить к оформлению, <strong>закажите звонок</strong> или свяжитесь с нами в социальнных сетях.
+	</p>
+	}
+	<form action="" method="post" class="validation-form-js">
+		<div class="form-row">
+			@@loop("_tpl_forms_field.html", [{
+					"wrap": "true",
+					"type": "text",
+					"name": "f-col-1",
+					"ph": "Введите Ваше имя...",
+					"id": "f-col-1",
+					"label": "Имя",
+					"labelClasses": "",
+					"valid": "true",
+					"required": "true"
+				}
+			])
+			@@loop("_tpl_forms_field.html", [{
+					"wrap": "true",
+					"type": "text",
+					"name": "phoneNumber",
+					"ph": "+375 29 656-98-25",
+					"classes": "has-phone-mask",
+					"id": "f-col-2",
+					"label": "Телефон",
+					"labelClasses": "",
+					"valid": "true",
+					"required": "true"
+				}
+			])
+			<div class="input-wrap form-buttons">
+				<label>&nbsp;</label>
+				@@include("_tpl_btn.html", {"type": "button!", "value": "Заказать звонок", "iconRight": "@@include('./includes/svg/icon-phone.svg')"})
+			</div>
+		</div>
+
+		<div class="user-form__msg">
+			<div class="user-form__msg__caption">
+				<strong class="user-form__msg__title">Звонок заказан!</strong>
+				<span class="user-form__msg__subtitle">Мы перезвоним Вам на следующий номер:</span>
+			</div>
+			<div class="user-form__msg__tel"><a href="tel:+375296892548">+375 29 689-25-48</a></div>
+			<div class="user-form__msg__soc">
+				<div class="social-networks align-center">
+					<div class="social-networks__list">
+						@@loop('_tpl_social-items.html', 'includes/json/social-items.json')
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	@@if(!context.socFalse){
+	<div class="social-networks align-center">
+		<div class="social-networks__list">
+			@@loop('_tpl_social-items.html', 'includes/json/social-items.json')
+		</div>
+	</div>
+	}
 </div>

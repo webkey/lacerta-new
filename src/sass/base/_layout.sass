@@ -38,6 +38,23 @@ body
     &.layout
         max-width: #{$page-layout-width + nth($page-layout-space, 2) * 2}
 
+.layout-text
+  max-width: $text-layout-width
+  +push-auto
+
+  @if nth($page-layout-space, 2) != 0
+    &.layout
+      max-width: #{$text-layout-width + nth($page-layout-space, 2) * 2}
+
+.layout-flood,
+.layout-section
+  max-width: $section-layout-width
+  +push-auto
+
+  @if nth($page-layout-space, 2) != 0
+    &.layout
+      max-width: #{$section-layout-width + nth($page-layout-space, 2) * 2}
+
 .wrapper
   display: flex
   flex-direction: column

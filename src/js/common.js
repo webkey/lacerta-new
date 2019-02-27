@@ -392,47 +392,31 @@ function slidersInit() {
   //sliders
 }
 
-/**
- * !Form validation
- * */
-function formValidation() {
-  $('.user-form form').validate({
-    errorClass: "error",
-    validClass: "success",
-    errorElement: false,
-    errorPlacement: function (error, element) {
-      return true;
-    },
-    highlight: function (element, errorClass, successClass) {
-      $(element)
-          .removeClass(successClass)
-          .addClass(errorClass)
-          .closest('form').find('label[for="' + $(element).attr('id') + '"]')
-          .removeClass(successClass)
-          .addClass(errorClass);
-    },
-    unhighlight: function (element, errorClass, successClass) {
-      $(element)
-          .removeClass(errorClass)
-          .addClass(successClass)
-          .closest('form').find('label[for="' + $(element).attr('id') + '"]')
-          .removeClass(errorClass)
-          .addClass(successClass);
-    }
+
+
+
+
+
+
+
+/** !Remove focus state */
+function focused() {
+  var focusElements = 'input, a, [tabindex], area, select, textarea, button, [contentEditable=true]';
+  $(focusElements).on('mousedown', function (e) {
+    $(this).removeClass('focus');
+  });
+  $(focusElements).on('mouseup blur', function (e) {
+    $(this).removeClass('focus');
+  });
+  $(focusElements).on('focus', function (e) {
+    $(this).addClass('focus');
+    // console.log("e focus: ", e);
   });
 }
 
 /**
  * =========== !ready document, load/resize window ===========
  */
-
-$(window).on('load', function () {
-  // add functions
-});
-
-$(window).on('debouncedresize', function () {
-  // $(document.body).trigger("sticky_kit:recalc");
-});
 
 $(document).ready(function () {
   placeholderInit();
@@ -444,5 +428,5 @@ $(document).ready(function () {
   slidersInit();
   objectFitImages(); // object-fit-images initial
 
-  formValidation();
+  // focused();
 });
