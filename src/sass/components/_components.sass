@@ -2,11 +2,105 @@
 @import ../utils/mixins
 @import ../../libs/include-media/dist/include-media
 
+/* === helper classes ==
+.mark
+  color: $mark-color
+  font-style: inherit
+  font-weight: inherit
+
+.text-color-alt
+  color: $base-color
+
+.align-center
+  text-align: center
+
+.align-left
+  text-align: left
+
+.align-right
+  text-align: right
+
+.float-left
+  float: left
+
+.float-right
+  float: right
+
+.nobr
+  white-space: nowrap
+
+.hide-text
+  +hide-text
+
+.hide
+  display: none !important
+
+.desktop-only
+  +media('<tab-lg')
+    display: none
+
+.devices-only
+  +media('>=tab-lg')
+    display: none
+
+.mobile-only
+  +media('>=mob-lg')
+    display: none
+
+/* btn-app
+.btn-app
+  display: inline-block
+  vertical-align: top
+  background-color: black
+  background-position: 2.8rem center
+  background-repeat: no-repeat
+  height: 6.2rem
+  padding: 1rem 4rem 1rem 8rem
+  font-size: 1.8rem
+  line-height: 2.2rem
+  text-align: left
+  text-decoration: none
+  color: white
+  border-radius: 3.1rem
+  user-select: none
+  -webkit-tap-highlight-color: transparent
+  // transition
+  $prop: background-color
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
+  &:hover
+    background-color: $highlight-color--hover
+
+.btn-app_google
+  background-image: url(../../img/app-a.png)
+  background-size: 34px 42px
+
+.btn-app_apple
+  background-image: url(../../img/app-ios.png)
+  background-position: 2.8rem 0.8rem
+  background-size: 32px 39px
+
+/* btn-app end
 
 /* === HEADER ===
 .header
+  position: fixed
+  left: 0
+  top: 0
+  width: 100%
+  min-width: $layout-min-width
   height: $header-height
   z-index: $z-high
+
+// Добавлять класс, если не нужно фиксить шапку
+.header_float
+  position: relative
+  left: auto
+  top: auto
 
 .header-holder
   position: relative
@@ -86,9 +180,10 @@
   a
     color: #000
     text-decoration: none
+    transition: color $animation-speed
 
     &:hover
-      text-decoration: underline
+      color: $highlight-color--hover
 
 /* navigation end
 
@@ -98,10 +193,10 @@ a.shutter-menu-switcher
   $btn-menu-lines-width: 35px
   $btn-menu-lines-height: 5px
   $btn-menu-lines-space: 8px
-  $btn-menu-lines-color: $base-color
-  $btn-menu-lines-color--mob: $base-color
-  $btn-menu-animation-speed: $animation-speed
-  $btn-menu-animation-delay: round-float($animation-speed*0.5, 2)
+  $btn-menu-lines-color: currentColor
+  $btn-menu-lines-color--mob: currentColor
+  $btn-menu-animation-speed: 0.3s
+  $btn-menu-animation-delay: round-float($btn-menu-animation-speed*0.5, 2)
 
   $user-options-cross-width: $btn-menu-lines-width
   $user-options-cross-height: $btn-menu-lines-height
@@ -114,7 +209,7 @@ a.shutter-menu-switcher
   right: 0
   top: 50%
   margin-top: -#{round-float($btn-menu-size / 2, 1)}
-  color: #000
+  color: $text-color
   text-decoration: none
   width: $btn-menu-size
   height: $btn-menu-size
@@ -123,7 +218,7 @@ a.shutter-menu-switcher
   will-change: $prop
   transition:
     property: $prop
-    duration: $animation-speed
+    duration: $btn-menu-animation-speed
     timing-function: ease-in-out
 
   // убрать подсветку при клике на тачскринах
@@ -141,7 +236,7 @@ a.shutter-menu-switcher
     +size($user-options-cross-width, $user-options-cross-height)
     background-color: $user-options-cross-color
     margin: -#{round($user-options-cross-height / 2)} 0 0 -#{round($user-options-cross-width / 2)}
-    border-radius: 3px
+    border-radius: 2px
     will-change: opacity, transform
     opacity: 0
     transition:
@@ -165,7 +260,7 @@ a.shutter-menu-switcher
     +size($btn-menu-lines-width, $btn-menu-lines-height)
     background-color: $btn-menu-lines-color
     margin: -#{round($user-options-cross-height / 2)} 0 0 -#{round($user-options-cross-width / 2)}
-    border-radius: 3px
+    border-radius: 2px
     transition:
       property: opacity
       duration: $btn-menu-animation-speed
@@ -179,7 +274,7 @@ a.shutter-menu-switcher
       height: $btn-menu-lines-height
       width: $btn-menu-lines-width + 6
       background-color: $btn-menu-lines-color
-      border-radius: 3px
+      border-radius: 2px
       transition:
         property: transform
         duration: $btn-menu-animation-speed
@@ -193,12 +288,57 @@ a.shutter-menu-switcher
     &::after
       top: #{$btn-menu-lines-height + $btn-menu-lines-space}
 
+  & > svg
+    $size: 8rem
+    display: block
+    position: absolute
+    left: 50%
+    top: 50%
+    width: $size
+    height: $size
+    margin-top: -#{round-float($size / 2, 1)}
+    margin-left: -#{round-float($size / 2, 1)}
+    transform: rotate(-90deg)
+    //transform: rotateY(0deg) rotateZ(-90deg)
+    stroke-dasharray: 220
+    stroke-dashoffset: 220
+    // transition
+    $prop: stroke-dashoffset
+    will-change: $prop
+    transition:
+        property: $prop
+        duration: $btn-menu-animation-speed
+        timing-function: cubic-bezier(0.65, 0.05, 0.36, 1)
+
+    circle
+      fill: none
+      stroke: currentColor
+      stroke-width: 5
+      stroke-miterlimit: 10
+
   // hover
   &:hover
-    color: $base-color
+    color: $highlight-color--hover
+
+    & > i
+      &::before, &::after
+        transition-delay: 0s
+
+      &::before
+        transform: translate(3px, 1px) translateZ(0)
+
+      &::after
+        transform: translate(3px, -1px) translateZ(0)
+
+    & > svg
+      stroke-dashoffset: 0
+      //transform: rotateY(180deg) rotateZ(-90deg)
 
   // opened
   &.shutter-menu_is-open
+
+    & > svg
+      stroke-dashoffset: 0
 
     &::before, &::after
       transition-delay: $btn-menu-animation-delay
@@ -218,10 +358,10 @@ a.shutter-menu-switcher
         transition-delay: 0s
 
       &::before
-        transform: translate(0, #{$btn-menu-lines-height + $btn-menu-lines-space}) translateZ(0)
+        transform: translate(3px, #{$btn-menu-lines-height + $btn-menu-lines-space}) translateZ(0)
 
       &::after
-        transform: translate(0, -#{$btn-menu-lines-height + $btn-menu-lines-space}) translateZ(0)
+        transform: translate(3px, -#{$btn-menu-lines-height + $btn-menu-lines-space}) translateZ(0)
 
 /* shutter menu switcher end
 
@@ -288,34 +428,101 @@ a.shutter-menu-switcher
   flex-shrink: 1
   flex-grow: 1
   position: relative
+  //padding-top: 17.6rem
+  padding-top: $header-height
   clear: both
   z-index: 4
 
-.content
-  padding-bottom: 16rem
+  //.header_float ~ &
+    padding-top: 6.5rem
 
 /* === FOOTER ===
 .footer
   position: relative
+  font-size: 1.8rem
+  line-height: 2.2rem
   color: white
   background-color: #6228f2
   z-index: 5
 
+  &::before
+    content: ""
+    position: absolute
+    bottom: 0
+    left: 0
+    width: 100%
+    +linear-gradient(to bottom, #5b2fc9 0%, #5352ce 100%)
+    height: 23.7rem
+    z-index: -1
+
+  *::selection
+    background-color: black
+
+.footer-holder
+  position: relative
+  min-height: 63.8rem
+  padding-top: 7rem
+  padding-bottom: 12.9rem
+  +clear
+
+/* footer contacts
+.f-contacts
+  float: right
+  clear: right
+  width: $footer-right-col-width
+  display: flex
+  flex-wrap: wrap
+  margin: 0 0 2rem
+  padding: 0 0 0 nth($footer-grid-space, 2)
+  font-size: 2.4rem
+  line-height: 3.2rem
+  list-style: none
+
+  li
+    margin: 0 4rem 2rem 0
+
+    &.adr, &.cond
+      display: none
+
+  a
+    color: white
+    text-decoration: none
+    box-shadow: inset 0 -1px 0 rgba(white, 0.5)
+    transition:
+      property: color, box-shadow
+      duration: $animation-speed
+
+    &[href^="tel:"]
+      box-shadow: none
+
+    &:hover
+      color: $highlight-color--hover
+      box-shadow: inset 0 -1px 0 rgba($highlight-color--hover, 0.5)
+
+      &[href^="tel:"]
+        box-shadow: none
+
+/* footer contacts end
+
 /* social networks in footer
 .f-soc
   overflow: hidden
-  margin-bottom: 2rem
+  display: flex
+  align-items: flex-start
+  justify-content: flex-start
+  position: absolute
+  left: 0
+  top: 43rem
+  cursor: default
 
   +media('<mob-lg')
-    display: flex
     justify-content: center
 
   &:last-child
     margin-bottom: 0
 
 .f-soc__group
-  float: left
-  margin-left: 2rem
+  margin-left: 4rem
 
   +media('<desk-lg')
     margin-left: 1.5rem
@@ -329,16 +536,11 @@ a.shutter-menu-switcher
   & > strong
     display: block
     margin-bottom: 5px
+    +font-light
     font-size: 14px
     line-height: 18px
-    color: $text-color
-    opacity: 0.4
-
-    +media('<tab-lg')
-      font-size: 12px
-
-    +media('<mob-lg')
-      text-align: center
+    font-weight: normal
+    color: white
 
 .f-soc__list
   position: relative
@@ -415,10 +617,137 @@ a.shutter-menu-switcher
 
 /* social networks in footer end
 
+/* appeal form
+.callback-form
+  float: right
+  clear: right
+  width: $footer-right-col-width
+  position: relative
+  margin-bottom: 5rem
+  padding: 0 0 0 nth($footer-grid-space, 2)
+
+  &:last-child
+    margin-bottom: 0
+
+  #{$inputs-list}
+    border-radius: 10px
+    background-color: white
+
+.callback-form__title
+  display: block
+  +font-bold
+  font-size: 2.4rem
+  line-height: 3.2rem
+  color: white
+  margin-bottom: 3rem
+
+.callback-form__fields
+  $space: 3rem 2rem
+  display: flex
+  flex-wrap: wrap
+  align-items: flex-start
+  margin: 0 -#{round-float(nth($space, 2) / 2, 1)} 1.5rem
+
+  .input-wrap
+    flex-grow: 1
+    flex-basis: 33.33%
+    width: 33.33%
+    padding: 0 #{round-float(nth($space, 2) / 2, 1)}
+
+// --> form footer <--
+.callback-form__footer
+  text-align: right
+
+// --> send message <--
+.callback-form__msg
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  position: absolute
+  left: 0
+  top: 0
+  width: 100%
+  height: 100%
+  padding: 3rem
+  font-size: 2.4rem
+  line-height: 3.2rem
+  color: white
+  text-align: center
+  background-color: $base-color
+  z-index: 2
+  opacity: 0
+  pointer-events: none
+  // transition
+  will-change: opacity
+  transition: opacity $animation-speed ease-in-out
+
+  .form-success &
+    opacity: 1
+    pointer-events: auto
+
+.callback-form__msg-title
+  display: block
+  margin-bottom: 3rem
+
+.callback-form__msg-title,
+.callback-form__msg-subtitle
+  max-width: calc(100% - 10rem)
+  margin-left: auto
+  margin-right: auto
+
+/* appeal form end
+
+/* footer conditions
+.f-conditions
+  position: absolute
+  top: 30rem
+  left: 0
+  max-width: 30rem
+  font-size: 1.8rem
+  line-height: 2.2rem
+
+  a
+    padding-top: 0.5em
+    text-decoration: none
+    color: white
+    box-shadow: inset 0 -1px 0 rgba(white, 0.5)
+    transition:
+      property: color, box-shadow
+      duration: $animation-speed
+
+    &:hover
+      color: $highlight-color--hover
+      box-shadow: inset 0 -1px 0 rgba($highlight-color--hover, 0.5)
+
+
+/* footer conditions end
+
+/* footer app
+.f-app
+  position: absolute
+  left: 0
+  top: 8.2rem
+  width: $footer-left-col-width
+  padding: 0 nth($footer-grid-space, 2) 0 0
+
+.f-app__label
+  display: none
+
+.f-app__item
+  display: block
+  margin-bottom: 4rem
+
+/* footer app end
+
 /* developer
 .developer
-  line-height: 1
+  position: absolute
+  right: 0
+  bottom: 13.5rem
   text-align: right
+  font-size: 14px
+  line-height: 15px
 
   a
     display: inline-block
@@ -428,22 +757,30 @@ a.shutter-menu-switcher
     // transition
     transition: color $animation-speed ease-in-out
 
-    svg
-      display: inline-block
-      vertical-align: top
-      +size(70px, 15px)
-      margin-right: 8px
+    &:hover
+      color: $highlight-color--hover
 
-      path
-        fill: currentColor
+.developer__logo
+  display: inline-block
+  vertical-align: top
 
-    & > span
-      display: inline-block
-      vertical-align: top
-      font-size: 14px
-      line-height: 15px
-      height: 15px
-      margin-top: -1px
+  svg
+    display: inline-block
+    vertical-align: top
+    +size(70px, 15px)
+    margin-right: 8px
+
+    path
+      fill: currentColor
+
+.developer__name
+  display: inline-block
+  vertical-align: top
+  height: 15px
+  margin-top: -1px
+
+.developer-mob
+  display: none
 
 /* developer end
 
@@ -483,19 +820,919 @@ a.shutter-menu-switcher
 /* lacerta app end
 
 /* === MAIN ===
+.#{$article-content}
+  padding-bottom: 16rem
+
+/* main-caption
+.main-caption
+  margin-bottom: 5rem
+  font-size: 2.4rem
+  line-height: 2.9rem
+
+.main-caption__holder
+  position: relative
+  padding: 9.5rem 0 13rem
+
+.main-caption__figure
+  position: absolute
+  right: 0
+  top: 0
+  background: url(../../img/main-caption-figure.png) no-repeat
+  width: 758px
+  z-index: -1
+
+  &::before
+    content: ""
+    display: block
+    +ratio(758, 569)
+
+.main-caption__title
+  margin-bottom: 5rem
+  width: 70rem
+  max-width: 100%
+
+  &:last-child
+    margin-bottom: 0
+
+.main-caption__entry
+  color: $text-color-alt
+  margin-bottom: 2rem
+  width: 70rem
+  max-width: 100%
+
+  b, strong
+    +font-bold
+
+  i, em
+    +font-bold-italic
+
+.main-caption__text
+  color: #1a1c26
+  width: 70rem
+  max-width: 100%
+
+/* main-caption end
+
+/* limitations
+.limitations
+  margin-bottom: 5rem
+
+  &:last-child
+    margin-bottom: 0
+
+.limitations__holder
+  +clear
+
+.limitations__list
+  margin: 0 -2rem
+  +clear
+
+.limitations__item
+  position: relative
+  width: 50%
+  padding: 12rem 2rem 12rem 36rem
+  cursor: default
+
+  &::before
+    content: ""
+    display: block
+    position: absolute
+    width: 6.1rem
+    height: 6.1rem
+    left: 36rem
+    top: 4rem
+    background-repeat: no-repeat
+    background-image: url(../../img/limitation-sign.png)
+    background-size: 100%
+    opacity: 0
+    // transition
+    $prop: opacity
+    will-change: $prop
+    transition:
+      property: $prop
+      duration: $animation-speed
+      timing-function: ease-in-out
+
+    @media #{$retina}
+      background-image: url(../../img/limitation-sign-2x.png)
+
+.limitations__item-figure
+  position: absolute
+  left: 0
+  top: 0
+  background-position: 0 0
+  background-repeat: no-repeat
+  background-size: 100%
+
+.limitations__item-title
+  +font-bold
+  font-size: 3.0rem
+  line-height: 1
+  margin-bottom: 2rem
+
+  &:last-child
+    margin-bottom: 0
+
+.limitations__item-entry
+  font-size: 1.8rem
+  line-height: 2.5rem
+  color: $text-color-alt
+  margin-bottom: 2rem
+
+  &:last-child
+    margin-bottom: 0
+
+// hover
+.limitations__item:hover
+  &::before
+    opacity: 1
+
+// --> bank <--
+.limitations__item_deposit
+  float: left
+  clear: both
+
+.limitations__item-figure_deposit
+  background-image: url(../../img/limitation-figure-01.png)
+  width: 290px
+  height: 259px
+
+// hover
+.limitations__item_deposit:hover
+  .limitations__item-figure_deposit
+    background-position: 0 -279px
+
+// --> lend <--
+.limitations__item_lend
+  float: left
+  clear: left
+
+.limitations__item-figure_lend
+  background-image: url(../../img/limitation-figure-02.png)
+  width: 301px
+  height: 328px
+
+// hover
+.limitations__item_lend:hover
+  .limitations__item-figure_lend
+    background-position: 0 -348px
+
+// --> property <--
+.limitations__item_property
+  float: right
+  clear: right
+  margin-top: -15rem
+
+.limitations__item-figure_property
+  background-image: url(../../img/limitation-figure-03.png)
+  width: 229px
+  height: 316px
+
+// hover
+.limitations__item_property:hover
+  .limitations__item-figure_property
+    background-position: 0 -336px
+
+/* limitations enc
+
+/* advantages
+.advantages
+  margin-bottom: 15rem
+  cursor: default
+  +clear
+
+  &:last-child
+    margin-bottom: 0
+
+.advantages__holder
+  position: relative
+  padding: 10rem 0 13rem 71.2rem
+
+  &::before
+    content: ""
+    display: block
+    position: absolute
+    width: 16.1rem
+    height: 16.1rem
+    left: 71.2rem
+    top: 1rem
+    background-repeat: no-repeat
+    background-image: url(../../img/advantage-sign.png)
+    background-size: 100%
+    opacity: 0
+    // transition
+    $prop: opacity
+    will-change: $prop
+    transition:
+      property: $prop
+      duration: $animation-speed
+      timing-function: ease-in-out
+
+    @media #{$retina}
+      background-image: url(../../img/advantage-sign-2x.png)
+
+.advantages__spacer-top
+  height: 20rem
+  max-height: 0
+  transition: max-height $animation-speed
+
+.advantages__spacer-bottom
+  height: 20rem
+  max-height: 2rem
+  transition: max-height $animation-speed
+
+.advantages__figure
+  position: absolute
+  left: 0
+  top: 0
+  background-image: url(../../img/advantage-figure.png)
+  background-position: 0 0
+  background-repeat: no-repeat
+  background-size: 100%
+  width: 565px
+  height: 562px
+
+.advantages__title
+  +font-black
+  font-size: 3.0rem
+  line-height: 3.2rem
+  margin-bottom: 2rem
+
+  &:last-child
+    margin-bottom: 0
+
+.advantages__entry
+  font-size: 2.4rem
+  line-height: 2.9rem
+  color: $text-color-alt
+  margin-bottom: 2rem
+
+  &:last-child
+    margin-bottom: 0
+
+.advantages__text
+  font-size: 2.4rem
+  line-height: 2.9rem
+  color: #000
+
+.advantages__footer
+  position: relative
+  height: 0
+  padding-top: 5rem
+  text-align: right
+  opacity: 0
+  // transition
+  $prop: opacity
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
+// hover
+.advantages:hover
+  .advantages__holder
+    &::before
+      opacity: 1
+
+  .advantages__spacer-top
+    max-height: 12.1rem
+
+  .advantages__spacer-bottom
+    max-height: 0
+
+  .advantages__footer
+    opacity: 1
+
+/* advantages end
+
+/* manual steps
+.manual-step
+  display: block
+
+.manual-step__caption
+  display: block
+  position: relative
+  padding: 3rem 4rem 3rem 16.5rem
+  background-color: rgba(white, 0.15)
+  border: 1px solid transparent
+  border-radius: 1rem
+  text-decoration: none
+  color: inherit
+  cursor: pointer
+  margin-bottom: 2rem
+
+  &:last-child
+    margin-bottom: 0
+
+.manual-step__number
+  $size: 8.3rem
+  display: block
+  position: absolute
+  left: 4.8rem
+  top: 50%
+  width: $size
+  height: $size
+  margin-top: -#{round-float($size / 2, 1)}
+  +font-bold
+  font-size: 3.6rem
+  line-height: $size
+  text-align: center
+  color: white
+  background-color: $highlight-color
+  border-radius: 50%
+
+.manual-step__title
+  +font-bold
+  font-size: 2.4rem
+  line-height: 3.0rem
+  margin-bottom: 2rem
+  color: white
+
+  &:last-child
+    margin-bottom: 0
+
+.manual-step__text
+  font-size: 1.8rem
+  line-height: 2.2rem
+  margin-bottom: 2rem
+  color: white
+
+  &:last-child
+    margin-bottom: 0
+
+.manual-step__figure
+  display: flex
+  align-items: center
+  justify-content: center
+
+/* manual steps end
+
+/* manual
+.manual
+  padding-top: 5rem
+  padding-bottom: 5rem
+  background: url(../../img/bg-manual.jpg) no-repeat center top fixed
+  background-size: cover
+
+.manual__holder
+  position: relative
+  +clear
+
+.manual__title
+  float: left
+  clear: left
+  width: 50%
+  font-size: 5.5rem
+  line-height: 1
+  color: white
+  margin-bottom: 5rem
+
+  &:last-child
+    margin-bottom: 0
+
+// --> manual steps <==
+.manual__steps
+  float: left
+  clear: left
+  width: 50%
+
+.manual-steps__item
+  $root-elem: &
+  margin-bottom: 2rem
+
+  &:last-child
+    margin-bottom: 0
+
+  @at-root
+    .manual-steps__item-caption
+      margin-bottom: 0
+      $prop: background-color, border-color
+      -webkit-tap-highlight-color: transparent
+      transition:
+        property: $prop
+        duration: $animation-speed
+        timing-function: ease-in-out
+
+      // hover
+      &:hover
+        border-color: #fff
+
+      // current
+      #{$root-elem}.current &
+        cursor: default
+        border-color: #fff
+        background-color: #fff
+
+    .manual-steps__item-title
+      transition: color $animation-speed
+
+      // current
+      #{$root-elem}.current &
+        color: $title-color
+
+    .manual-steps__item-text
+      transition: color $animation-speed
+
+      // current
+      #{$root-elem}.current &
+        color: $text-color-alt
+
+
+    .manual-steps__item-figure
+      position: absolute
+      right: 0
+      top: 0
+      bottom: 0
+      width: 43.8rem
+      max-width: 50%
+      opacity: 0
+      pointer-events: none
+      // transition
+      $prop: opacity
+      will-change: $prop
+      transition:
+        property: $prop
+        duration: $animation-speed
+
+      // current
+      #{$root-elem}.current &
+        opacity: 1
+        pointer-events: auto
+
+      img
+        max-width: 100%
+        max-height: 100%
+
+/* manual end
+
+/* bond
+$bond-space: 3rem 3rem 2.5rem
+.bond
+  display: block
+  position: relative
+  padding: $bond-space
+  text-decoration: none
+  color: inherit
+  background-color: #fff
+  //box-shadow: 0 1rem 4.6rem rgba(#7c90d4, 0.25)
+  box-shadow: 0 1rem 1.1rem rgba(#7c90d4, 0.25)
+  border-radius: 0.8rem
+
+.bond__figure
+  width: 15rem
+  height: 4.1rem
+  margin-bottom: 1rem
+
+  img
+    display: block
+    max-width: 100%
+    max-height: 100%
+
+.bond__title
+  $font-size: 1.6rem
+  $line-height: 2.0rem
+  $line-length: 2
+  display: block
+  position: relative
+  +font-normal
+  font-size: $font-size
+  line-height: $line-height
+  font-weight: normal
+  color: #0d0d0d
+  height: $line-height * $line-length
+  overflow: hidden
+  margin-bottom: 2rem
+
+  &::after
+    content: ""
+    display: block
+    position: absolute
+    bottom: 0
+    right: 0
+    width: 20%
+    min-width: 6rem
+    height: $line-height
+    +linear-gradient(to right, rgba(white, 0) 0%, white 100%)
+
+.bond__release
+  overflow: hidden
+  position: relative
+  margin-right: 12rem
+  font-size: 1.8rem
+  line-height: 2.4rem
+  color: #0d0d0d
+  text-overflow: ellipsis
+
+.bond__term
+  overflow: hidden
+  position: relative
+  margin-right: 12rem
+  font-size: 2.4rem
+  line-height: 2.8rem
+  color: #0d0d0d
+  text-overflow: ellipsis
+
+.bond__value
+  position: absolute
+  bottom: nth($bond-space, 3)
+  right: nth($bond-space, 2)
+  +font-bold
+  font-size: 2.4rem
+  line-height: 2.8rem
+  color: #0d0d0d
+
+.bond__rate
+  position: absolute
+  top: nth($bond-space, 1)
+  right: nth($bond-space, 2)
+  $height: 4.1rem
+  height: $height
+  min-width: 8.5rem
+  padding: 0 1.5rem
+  +font-bold
+  font-size: 2.4rem
+  line-height: $height
+  color: white
+  background-color: $highlight-color
+  border-radius: round-float($header-height / 2, 1)
+  transition: background-color $animation-speed
+
+  // hover
+  .bond:hover &
+    background-color: $highlight-color--hover
+
+/* bond end
+
+/* selection
+.selection
+  padding-top: 7rem
+  padding-bottom: 7rem
+
+.selection__title
+  font-size: 5.5rem
+  line-height: 1
+  color: #000
+  margin-bottom: 3rem
+
+  &:last-child
+    margin-bottom: 0
+
+.selection__bonds
+  padding: 0 1.1rem 8.4rem
+  margin: 0 -1.1rem 2.4rem
+
+  .js &:not(.is-loaded)
+    opacity: 0
+    pointer-events: none
+
+.selection__bonds-pagination
+  &, .swiper-container-horizontal > &
+    bottom: 2.6rem
+
+.selection__footer
+  text-align: right
+
+/* selection end
+
+/* benefit
+.benefit
+  display: flex
+  align-items: center
+
+.benefit__icon
+  $size: 13rem
+  margin: 0 3rem
+  flex-basis: $size
+  min-width: $size
+  width: $size
+  height: $size
+
+  img
+    display: block
+    max-height: 100%
+    max-width: 100%
+
+.benefit__content
+  flex-grow: 1
+
+.benefit__title
+  +font-black
+  font-size: 3.0rem
+  line-height: 3.6rem
+  color: #000
+  margin-bottom: 2rem
+
+  &:last-child
+    margin-bottom: 0
+
+.benefit__text
+  font-size: 1.8rem
+  line-height: 2.2rem
+  color: $text-color-alt
+  margin-bottom: 2rem
+
+  &:last-child
+    margin-bottom: 0
+
+/* benefit end
+
+/* benefits
+.benefits
+  padding-top: 7rem
+  padding-bottom: 7rem
+
+.benefits__holder
+  position: relative
+
+.benefits__title
+  font-size: 5.5rem
+  line-height: 1
+  color: #000
+  margin-bottom: 3rem
+
+  &:last-child
+    margin-bottom: 0
+
+.benefits__list
+  position: relative
+  display: flex
+  flex-wrap: wrap
+  align-items: flex-start
+
+.benefits__list-item
+  flex-grow: 1
+  flex-basis: 50%
+  padding: 0 20rem
+  margin: 11rem auto
+
+  &:nth-child(2n)
+    padding-right: 0
+
+  &:nth-child(2n - 1)
+    padding-left: 0
+    flex-direction: row-reverse
+    text-align: right
+
+.benefits__figure
+  position: absolute
+  left: 50%
+  top: 0
+  bottom: 0
+  transform: translate(-50%, 0)
+
+  img
+    max-width: 100%
+    max-height: 100%
+
+.benefits__figure_has-shadow
+  top: -5.5rem
+  bottom: -8.5rem
+
+/* benefits end
+
+/* opinion-quote
+.opinion-quote
+  padding: 3.9rem 6rem
+  background-color: white
+  border-radius: 10px
+  box-shadow: 0 1rem 4.6rem rgba(#7c90d4, 0.25)
+
+.opinion-quote__title
+  display: block
+  +font-black
+  font-size: 3.0rem
+  line-height: 3.6rem
+  margin-bottom: 2rem
+  min-height: 8rem
+
+$or__content-line-height: 2.9rem
+$or__content-line-length: 6
+.opinion-quote__content
+  position: relative
+  overflow: hidden
+  color: $text-color-alt
+  font-size: 2.4rem
+  line-height: $or__content-line-height
+  min-height: $or__content-line-height * $or__content-line-length
+
+  p
+    margin-bottom: 2.3rem
+
+    &:last-child
+      margin-bottom: 0
+
+/* opinion-quote end
+
+/* opinion-review
+$op-color: #622ee9
+.opinion-review
+  position: relative
+  padding: 3.9rem 6rem 3.9rem 12rem
+  background-color: $op-color
+  border-radius: 10px
+
+.opinion-review__corner
+  display: block
+  position: absolute
+  left: 88px
+  top: 100%
+  margin-top: -6px
+  background: url(../../img/review-corner.png) no-repeat
+  background-size: contain
+  width: 90px
+  height: 35px
+
+  @media #{$retina}
+    background-image: url(../../img/review-corner-2x.png)
+
+.opinion-review__author
+  display: flex
+  align-items: center
+  margin-bottom: 2rem
+  color: white
+  +clear
+
+$or__author-photo-size: 8rem
+$or__author-photo-space: 1.9rem
+.opinion-review__author-photo
+  overflow: hidden
+  flex-basis: $or__author-photo-size
+  min-width: $or__author-photo-size
+  height: $or__author-photo-size
+  margin-right: $or__author-photo-space
+  border-radius: 50%
+
+  img
+    display: block
+    width: 100%
+    height: 100%
+
+.opinion-review__author-info
+  flex-grow: 1
+  font-size: 1.8rem
+  line-height: 2.2rem
+
+.opinion-review__author-name
+  +font-bold
+  margin-bottom: 0.5rem
+
+  &:last-child
+    margin-bottom: 0
+
+.opinion-review__soc
+  display: inline-block
+  line-height: 2rem
+
+.opinion-review__soc-item
+  display: inline-block
+  vertical-align: top
+  width: 2rem
+  height: 2rem
+  margin-right: 1rem
+  text-indent: -9999px
+  overflow: hidden
+
+  &.facebook
+    background: url(../../img/icon-facebook-2x.png) no-repeat
+    background-size: 100%
+
+.opinion-review__author-about
+  position: relative
+  margin-bottom: 1rem
+  overflow: hidden
+  white-space: nowrap
+
+  &:last-child
+    margin-bottom: 0
+
+  &::after
+    content: ""
+    display: block
+    position: absolute
+    bottom: 0
+    right: 0
+    width: 20%
+    min-width: 5rem
+    height: 2.2rem
+    +linear-gradient(to right, rgba($op-color, 0) 0%, $op-color 100%)
+
+$or__content-line-height: 2.9rem
+$or__content-line-length: 6
+.opinion-review__content
+  position: relative
+  overflow: hidden
+  color: white
+  font-size: 2.4rem
+  line-height: $or__content-line-height
+  min-height: $or__content-line-height * $or__content-line-length
+
+  //&::after
+    content: ""
+    display: block
+    position: absolute
+    bottom: 0
+    right: 0
+    width: 20%
+    min-width: 6rem
+    height: $or__content-line-height
+    +linear-gradient(to right, rgba($op-color, 0) 0%, $op-color 100%)
+
+  p
+    margin-bottom: 2.3rem
+
+    &:last-child
+      margin-bottom: 0
+
+/* opinion-review end
+
+/* opinion
+.opinion
+  display: flex
+
+.opinion__quote
+  flex-grow: 1
+  flex-basis: 50%
+  position: relative
+  margin-top: 3.9rem
+  z-index: 1
+
+.opinion__review
+  flex-grow: 1
+  flex-basis: calc(50% + 6rem)
+  margin-left: -6rem
+  margin-bottom: 5.5rem
+
+/* opinion end
+
+/* opinions
+.opinions
+  padding-top: 7rem
+  padding-bottom: 7rem
+
+.opinions__title
+  font-size: 5.5rem
+  line-height: 1
+  color: #000
+  margin-bottom: 3rem
+
+  &:last-child
+    margin-bottom: 0
+
+.opinions__list
+  padding: 0 4.6rem 8.4rem
+  margin: 0 -4.6rem 2.4rem
+
+  .js &:not(.is-loaded)
+    opacity: 0
+    pointer-events: none
+
+/* opinions end
+
 /* app offer
 .app-offer
   position: relative
-  padding-top: 10rem
-  padding-bottom: 10rem
   color: white
   background-color:
-  background: $base-color url(../../img/bg-app-offer.jpg) no-repeat fixed
+  background: $base-color url(../../img/bg-app-offer.jpg) no-repeat center top fixed
   background-size: cover
 
+.app-offer__holder
+  position: relative
+  padding-top: 10rem
+  padding-bottom: 10rem
 
+.app-offer__title
+  width: 50%
+  font-size: 5.5rem
+  line-height: 1
+  color: white
+  margin-bottom: 3rem
 
-.app-offer-figure
+  &:last-child
+    margin-bottom: 0
+
+.app-offer__entry
+  width: 50%
+  font-size: 2.4rem
+  line-height: 2.9rem
+  color: white
+  margin-bottom: 4rem
+
+  &:last-child
+    margin-bottom: 0
+
+$app-offer-app-space: 3.6rem
+.app-offer__app
+  width: 50%
+  display: flex
+  flex-wrap: wrap
+  margin: 0 -#{round-float($app-offer-app-space / 2, 1)}
+
+.app-offer__app-item
+  margin: 0 #{round-float($app-offer-app-space / 2, 1)}
+
+.app-offer__figure
   display: flex
   align-items: center
   justify-content: flex-end
@@ -511,11 +1748,16 @@ a.shutter-menu-switcher
 
 /* last-news
 .last-news
-  padding-top: 13rem
-  padding-bottom: 13rem
   background-color: #f2f5ff
 
-.last-news-title
+.last-news__holder
+  padding-top: 13rem
+  padding-bottom: 13rem
+
+.last-news__title
+  font-size: 5.5rem
+  line-height: 1
+  color: #000
   margin-bottom: 5rem
 
 $last-news-item-space: 0 3rem
@@ -570,8 +1812,14 @@ $last-news-item-space: 0 3rem
   font-size: 1.8rem
   line-height: 2.4rem
 
-.last-news-footer
+.last-news__footer
   position: relative
   text-align: right
 
 /* last-news end
+
+/* page control
+.page-control
+  margin-bottom: 4rem
+
+/* page control end

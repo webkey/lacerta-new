@@ -8,7 +8,7 @@
 		display: block
 		width: 100%
 
-.#{$user-content}, .select, .#{$user-content} .select
+.#{$article-content}, .select, .#{$article-content} .select
 	select
 		+selectSelection
 		display: block
@@ -24,7 +24,7 @@
 			+selects-font
 
 .#{$small-field}
-	.#{$user-content} &, & .select, .#{$user-content} & .select
+	.#{$article-content} &, & .select, .#{$article-content} & .select
 		select
 			+selectSelection--small
 			+selects-font--small
@@ -33,23 +33,23 @@
 				+selectSelection--mob
 				+selects-font--mob
 
-.#{$user-content}, .select, .#{$user-content} .select
+.#{$article-content}, .select, .#{$article-content} .select
 	select
 		+media($form-media--mob)
 			+selectSelection--mob
 			+selects-font--mob
 
-.#{$user-content} select
+.#{$article-content} select
 	padding-right: 0
 
-.#{$user-content} select, .select
+.#{$article-content} select, .select
 	+forms-space
 
 	&:last-child
 		margin-bottom: 0
 
 .#{$small-field}
-	.#{$user-content} & select, & .select
+	.#{$article-content} & select, & .select
 		+forms-space--small
 
 .input-wrap
@@ -65,7 +65,7 @@
 		padding-right: 40px
 
 // States
-.#{$user-content} select, .select
+.#{$article-content} select, .select
 
 	&[disabled]
 		cursor: default

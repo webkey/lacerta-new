@@ -1,0 +1,1 @@
+{"version":3,"sources":["scss.scss"],"names":[],"mappings":"AAII;EACE,uBAAsB;CAKvB;;AAHC;EACE,sBAAqB;CACtB","file":"scss.css","sourcesContent":[".item {\r\n  $root-elem: &;\r\n\r\n  @at-root {\r\n    .item__inner {\r\n      background-color: #fff;\r\n\r\n      #{$root-elem}:hover & {\r\n        background-color: red;\r\n      }\r\n    }\r\n  }\r\n}"]}

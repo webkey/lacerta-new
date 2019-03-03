@@ -127,8 +127,9 @@ gulp.task('sassCompilation', ['normalize'], function () {
  */
 gulp.task('mergeCssLibs', function () {
   return gulp.src([
-    'src/css/temp/*.css' // Смотреть gulpfile-special.js
+    'src/css/temp/*.css'
     , 'src/libs/select2/dist/css/select2.min.css'
+    , 'src/libs/swiper/dist/css/swiper.min.css'
   ])
       .pipe(concatCss("src/css/libs.css", {
         rebaseUrls: false
@@ -157,8 +158,8 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () {
     'src/libs/jquery-smartresize/jquery.debouncedresize.js' // "умный" ресайз
     , 'src/libs/jquery-placeholder/jquery.placeholder.min.js' // поддержка плейсхолдера в старых браузерах
     // , 'src/libs/jquery-form/dist/jquery.form.min.js' // jquery form для работы с ajax
-    , 'src/libs/slick-carousel/slick/slick.min.js' // slick slider
     , 'src/libs/select2/dist/js/select2.full.min.js' // кастомный селект
+    , 'src/libs/swiper/dist/js/swiper.min.js' // swiper slider
     , 'src/libs/select2/dist/js/i18n/ru.js' // локализация для кастомного селекта
     , 'node_modules/object-fit-images/dist/ofi.min.js' // object-fit fix for a non-support browsers
     , 'src/libs/jquery-validation/dist/jquery.validate.min.js' // валидация форм

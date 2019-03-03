@@ -4,12 +4,22 @@
   "description": "Lacerta",
   "display": "standalone",
   "background_color": "#fff",
-  "theme_color": "#fff",
+  "theme_color": "#ff2e82",
   "icons": [
+    {
+      "src": "favicon.ico",
+      "type": "icon",
+      "sizes": "16x16"
+    },
     {
       "src": "apple-touch-icon.png",
       "type": "image/png",
       "sizes": "256x256"
+    },
+    {
+      "src": "share.jpg",
+      "type": "image/jpg",
+      "sizes": "1200x630"
     }
   ]
 }

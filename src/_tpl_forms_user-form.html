@@ -7,31 +7,34 @@
 	}
 	<form action="" method="post" class="validation-form-js">
 		<div class="form-row">
-			@@loop("_tpl_forms_field.html", [{
-					"wrap": "true",
-					"type": "text",
-					"name": "f-col-1",
-					"ph": "Введите Ваше имя...",
-					"id": "f-col-1",
-					"label": "Имя",
-					"labelClasses": "",
-					"valid": "true",
-					"required": "true"
-				}
-			])
-			@@loop("_tpl_forms_field.html", [{
-					"wrap": "true",
-					"type": "text",
-					"name": "phoneNumber",
-					"ph": "+375 29 656-98-25",
-					"classes": "has-phone-mask",
-					"id": "f-col-2",
-					"label": "Телефон",
-					"labelClasses": "",
-					"valid": "true",
-					"required": "true"
-				}
-			])
+			<div class="callback-form__fields">
+				<div class="input-wrap">
+					<div class="label-holder"><label for="callback-form-name"> <span class="form-mark">*</span></label></div>
+					<div class="input-holder">
+						<input id="callback-form-name" name="callback-form-name" placeholder="Введите имя" type="text" required="">
+						<div class="error-note">Error text</div>
+						<div class="success-note">Success text</div>
+					</div>
+				</div>
+				<!--===================================================-->
+				<div class="input-wrap">
+					<div class="label-holder"><label for="callback-form-phone">@@label <span class="form-mark">*</span></label></div>
+					<div class="input-holder">
+						<input class="has-phone-mask" id="callback-form-phone" name="callback-form-phone" placeholder="Телефон" type="text" required="" im-insert="true">
+						<div class="error-note">Error text</div>
+						<div class="success-note">Success text</div>
+					</div>
+				</div>
+				<!--===================================================-->
+				<div class="input-wrap">
+					<div class="label-holder"><label for="callback-form-email"> <span class="form-mark">*</span></label></div>
+					<div class="input-holder">
+						<input id="callback-form-email" name="callback-form-email" placeholder="email" type="email" required="">
+						<div class="error-note">Error text</div>
+						<div class="success-note">Success text</div>
+					</div>
+				</div>
+			</div>
 			<div class="input-wrap form-buttons">
 				<label>&nbsp;</label>
 				@@include("_tpl_btn.html", {"type": "button!", "value": "Заказать звонок", "iconRight": "@@include('./includes/svg/icon-phone.svg')"})

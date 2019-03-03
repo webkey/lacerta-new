@@ -17,7 +17,6 @@
     "tests"
   ],
   "dependencies": {
-    "slick-carousel": "^1.6.0",
     "jquery": "^3.1.1",
     "jquery-form": "^4.2.2",
     "jquery-placeholder": "^2.3.1",
@@ -26,7 +25,8 @@
     "jquery-validation": "^1.17.0",
     "matchHeight": "matchheight#^0.7.0",
     "normalize-scss": "normalize.scss#^7.0.1",
-    "select2": "^4.0.3"
+    "select2": "^4.0.3",
+    "swiper": "^4.4.6"
   },
   "devDependencies": {
     "mathsass": "^0.9.5",

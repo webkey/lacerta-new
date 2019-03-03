@@ -7,6 +7,7 @@
 
 // Medium query
 $breakpoints: ('desk-qhd': 2560px, 'desk-hd': 1920px, 'desk-lg': 1600px, 'desk-ml': 1440px, 'desk-md': 1366px, 'desk-sm': 1200px, 'tab-lg': 992px, 'tab-sm': 768px, 'mob-lg': 640px, 'mob-md': 480px, 'mob-sm': 320px)
+$retina: (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)
 
 // Fonts style
 // ==========================================================================
@@ -15,15 +16,11 @@ $font-black: 'proximanova-black', Helvetica, Arial, sans-serif !default
 $font-bold: 'proximanova-bold', Helvetica, Arial, sans-serif !default
 $font-bold-italic: 'proximanova-bold-italic', Helvetica, Arial, sans-serif !default
 $font-italic: 'proximanova-italic', Helvetica, Arial, sans-serif !default
+$font-light: 'proximanova-light', Helvetica, Arial, sans-serif !default
 $font-alt: Georgia, serif !default
 
 // Reset font-weight and font-style
 // Use for font-face
-=font-reset()
-  font:
-    weight: normal
-    style: normal
-
 // Main font
 =font-normal()
   font-family: $font-norm
@@ -44,6 +41,9 @@ $font-alt: Georgia, serif !default
 =font-italic()
   font-family: $font-italic
   font-style: italic
+
+=font-light()
+  font-family: $font-light
 
 // Alternative font
 =font-alt()
@@ -161,7 +161,7 @@ $animation-speed-mouseleave: 0.35s !default
 // ==========================================================================
 
 // Color of brands
-$base-color: #6228f2 !default
+$base-color: #622ee9 !default
 $base-color-alt: #3c31ab !default
 $base-color-dark: #242473 !default
 // ----------------------------------------------------
@@ -169,6 +169,7 @@ $bg-color: #fff !default
 $bg-color-alt: #5740cb !default
 // ----------------------------------------------------
 $text-color: #1e202b !default
+$text-color-alt: #40455d !default
 $text-color-light: #858697 !default
 $title-color: #000 !default
 // ----------------------------------------------------
@@ -177,7 +178,7 @@ $link-underline-color: #b7bdcc !default
 // ----------------------------------------------------
 $border-color: lightgray !default
 // ----------------------------------------------------
-$mark-color: tomato !default
+$mark-color: #f25984 !default
 // ----------------------------------------------------
 $highlight-color: #28e4cc !default
 $highlight-color--hover: #ab52ff !default
@@ -186,11 +187,11 @@ $highlight-color--hover: #ab52ff !default
 // Class of typography styles
 // ==========================================================================
 // @example Sass - Использование
-// .#{$user-content}
+// .#{$article-content}
 //
 // @example css - Вывод CSS
-// .user-content
-$user-content: user-content !default
+// .article-content
+$article-content: article-content !default
 
 
 // Z-indexes
@@ -205,15 +206,17 @@ $z-max: 9999 !default
 // Layout
 // ==========================================================================
 
-// минимальная ширина сайта
-$page-layout-min: 32rem !default
 // отступы для всего сайта
 $page-layout-space: 2rem 5rem !default
+// минимальная ширина сайта
+$layout-min-width: 32rem !default
 // максимальная ширина сайта
-$page-layout-width: 192rem !default
+$layout-max-width: 192rem !default
+// ---------------------------------------
 // максимальная ширина секции
 $section-layout-width: 140rem !default
-=wide()
+
+=section-layout()
   max-width: $section-layout-width
   margin-left: auto
   margin-right: auto
@@ -221,13 +224,14 @@ $section-layout-width: 140rem !default
   +media('<mob-lg')
     max-width: none
 
+// ---------------------------------------
 // минимальные отступы у текствого блока
 $text-layout-space: 5rem 6rem !default
-$text-layout-space--md: 2.5rem 3rem !default
-$text-layout-space--sm: 1.3rem 1.5rem !default
+$text-layout-space--tab: 2.5rem 3rem !default
 $text-layout-space--mob: 0.8rem 10rem !default
 // максимальная ширина текстового блока
 $text-layout-width: 80rem !default
+// ---------------------------------------
 // отступы внутри блочных элементов
 $grid-space: 2.8rem 3rem !default
 $grid-space--sm: 1.8rem 3rem !default
@@ -252,8 +256,9 @@ $aside-width: 16rem !default
 
 // Footer
 // ==========================================================================
-$footer-grid-space: 3rem 0 !default
-// v h
+$footer-left-col-width: 32.0rem
+$footer-right-col-width: 94.6rem
+$footer-grid-space: 2rem 2rem
 
 
 // Buttons
@@ -285,9 +290,9 @@ $form-placeholder-color: #40455d !default
 $form-bg-color: #eef2ff !default
 $form-border-color: $form-bg-color !default
 // validation
-$form-error-color: $mark-color !default
-$form-success-color: $highlight-color !default
-$form-has-value-color: greenyellow !default
+$form-error-color: #f25984 !default
+$form-success-color: #28e4cc !default
+$form-has-value-color: #2d2d87 !default
 // disabled
 $form-text-color--disabled: #6a6a6a !default
 $form-bg-color--disabled: #535386 !default
@@ -359,21 +364,21 @@ $form-label-vsb--mob: 0.6rem // vertical space bottom
   +inputs-font--mob
 
 // Layout of forms
-$form-border-width: 2px !default
+$form-border-width: 1px !default
 $form-input-space-vt: floor(($form-input-height - $form-line-height - $form-border-width * 2) / 2) !default // верхний паддинг округляем в нижнюю сторону
 $form-input-space-vb: ceil(($form-input-height - $form-line-height - $form-border-width * 2) / 2) !default // нижний паддинг округляем в верхнюю сторону
-$form-input-space-h: 28px !default
+$form-input-space-h: 30px !default
 $form-bottom-space: 2.5rem !default
 $form-gap: 4rem !default
 //--------------------------------
-$form-border-width--small: 2px !default
+$form-border-width--small: 1px !default
 $form-input-space-vt--small: floor(($form-input-height--small - $form-line-height--small - $form-border-width--small * 2) / 2) !default // верхний паддинг округляем в нижнюю сторону
 $form-input-space-vb--small: ceil(($form-input-height--small - $form-line-height--small - $form-border-width--small * 2) / 2) !default // нижний паддинг округляем в верхнюю сторону
 $form-input-space-h--small: 20px !default
 $form-bottom-space--small: 2.5rem !default
 $form-gap--small: 3rem !default
 //---------------------------------
-$form-border-width--mob: 2px !default
+$form-border-width--mob: 1px !default
 $form-input-space-vt--mob: floor(($form-input-height--mob - $form-line-height--mob - $form-border-width--mob * 2) / 2) !default // верхний паддинг округляем в нижнюю сторону
 $form-input-space-vb--mob: ceil(($form-input-height--mob - $form-line-height--mob - $form-border-width--mob * 2) / 2) !default // нижний паддинг округляем в верхнюю сторону
 $form-input-space-h--mob: 18px !default
@@ -477,12 +482,14 @@ $multiple-item-space: 3px !default
   //border-color: $form-success-color
 
 =form-error()
-  //color: $form-error-color
+  color: $form-error-color
   border-color: $form-error-color
 
 =form-has-value()
-  color: $form-has-value-color
+  background-color: $form-has-value-color
   border-color: $form-has-value-color
+  color: white
+  cursor: text
 
 =form-on-focus()
   //color: $form-border-focus-color

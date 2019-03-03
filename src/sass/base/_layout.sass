@@ -18,32 +18,46 @@ body
   +font-normal
   +font($font-size, $line-height)
   color: $text-color
-  min-width: $page-layout-min
-  background: $bg-color url(../../img/empty.png) no-repeat left top fixed
+  min-width: $layout-min-width
+  background-color: $bg-color
+
+  &.home-page
+    background-color: $bg-color
+    background-image: url(../../img/bg-index-section-01.jpg)
+    background-position: center top
+    background-repeat: no-repeat
 
   // выделение текста
   *::selection
     background-color: $base-color
     color: white
 
-.layout
+.bg-container-bottom
+  padding-top: 8rem
+  padding-bottom: 4.4rem
+  background-color: $bg-color
+  background-image: url(../../img/bg-index-section-02.jpg)
+  background-position: center bottom
+  background-repeat: no-repeat
+
+.layout-spaces
   @if nth($page-layout-space, 2) != 0
     +padding-horizontal(nth($page-layout-space, 2))
 
-.max-wrap
-  max-width: $page-layout-width
+.layout-max
+  max-width: $layout-max-width
   +push-auto
 
   @if nth($page-layout-space, 2) != 0
-    &.layout
-        max-width: #{$page-layout-width + nth($page-layout-space, 2) * 2}
+    &.layout-spaces
+        max-width: #{$layout-max-width + nth($page-layout-space, 2) * 2}
 
 .layout-text
   max-width: $text-layout-width
   +push-auto
 
   @if nth($page-layout-space, 2) != 0
-    &.layout
+    &.layout-spaces
       max-width: #{$text-layout-width + nth($page-layout-space, 2) * 2}
 
 .layout-flood,
@@ -52,7 +66,7 @@ body
   +push-auto
 
   @if nth($page-layout-space, 2) != 0
-    &.layout
+    &.layout-spaces
       max-width: #{$section-layout-width + nth($page-layout-space, 2) * 2}
 
 .wrapper
@@ -62,5 +76,13 @@ body
   align-items: stretch
   margin: 0 auto
   min-height: 100vh
-  max-width: $page-layout-width
   position: relative
+
+.bg-page
+  position: absolute
+  top: 0
+  right: 0
+  width: 100%
+  height: 741px
+  z-index: -1
+  background: url(../../img/bg-page.png) no-repeat right top

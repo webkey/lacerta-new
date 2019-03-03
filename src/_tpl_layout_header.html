@@ -1,4 +1,4 @@
-<header class="header layout">
+<header class="header layout-spaces@@if(context.headerFloat){ header_float}">
   <div class="header-holder">
     <div class="header-frame">
       <!--logo-->
@@ -23,7 +23,12 @@
     <!--shutter-menu-->
     <div class="overlay shutter-menu-overlay shutter-menu-overlay-js">&nbsp;</div>
     <div class="shutter-menu shutter-menu-js"><p>{{Здесь будет дополнительное меню}}</p></div>
-    <a href="#" class="shutter-menu-switcher shutter-menu-switcher-js"><i>|||</i><span>Меню</span></a>
+    <a href="#" class="shutter-menu-switcher shutter-menu-switcher-js">
+      <i>|||</i><span>Меню</span>
+      <svg viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="40" cy="40" r="35" fill="none"></circle>
+      </svg>
+    </a>
     <!--shutter-menu end-->
   </div>
 </header>

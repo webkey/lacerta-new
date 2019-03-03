@@ -24,6 +24,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
 h1, .h1
   +font-black
   +font-h1
+  margin-bottom: 6rem
 
 h2, .h2
   +font-black
@@ -46,16 +47,6 @@ h6, .h6
   +font($font-size-h6, $line-height-h6)
   text-transform: uppercase
 
-.#{$user-content}
-  @each $tags in h2, h3, h4, h5, '.h2', '.h3', '.h4', '.h5'
-    p + #{$tags},
-    ul + #{$tags},
-    ol + #{$tags},
-    hr + #{$tags},
-    table + #{$tags},
-    .table-auto + #{$tags}
-      margin-top: $bottom-space * 2
-
 p
   padding: 0
   margin: 0 0 $bottom-space
@@ -73,17 +64,16 @@ a
   text-decoration: underline
   cursor: default
   text-decoration-color: #a9b0c2
+  transition: color $animation-speed
 
   &:link
     cursor: pointer
 
-  .no-touchevents &:hover
-    text-decoration: none
+  //&:visited
+    color: #6859ff
 
-  &[href^="tel"], .no-touchevents &[href^="tel"]:hover
-    text-decoration: none !important
-    color: inherit
-    cursor: default
+  &:hover
+    text-decoration: none
 
   &[href^="javascript:"]
     cursor: default
@@ -109,36 +99,130 @@ i, em
 i b, i strong, em b, em strong, b i, b em, strong i, strong em
   +font-bold-italic
 
-.mark
-  color: $mark-color
-  font-style: inherit
-  font-weight: inherit
+.entry-text
+  font-size: 2.4rem
+  line-height: 2.9rem
+  color: $text-color-alt
+  margin-bottom: 13.5rem
 
-.text-color-alt
-  color: $base-color
+  b, strong
+    +font-bold
 
-.align-center
-  text-align: center
+  i, em
+    +font-bold-italic
 
-.align-left
-  text-align: left
+/* columns
+$columns-gap: 2em
+.columns
+  +clear
 
-.align-right
-  text-align: right
-
-.float-left
+.column
   float: left
+  width: calc(50% - #{round($columns-gap/2)})
+  margin: 0 round($columns-gap/2)
 
-.float-right
-  float: right
+  +media('<mob-lg')
+    float: none
+    width: auto
+    margin: 0 0 5rem
 
-.nobr
-  white-space: nowrap
+    &:last-child
+      margin-bottom: 0
 
-.hide-text
-  +hide-text
+  &:nth-child(odd)
+    margin-left: 0
 
-.#{$user-content}
+  &:nth-child(even)
+    margin-right: 0
+
+/* columns end
+
+/* table
+table
+  border-collapse: collapse
+  border-spacing: 0
+  width: auto
+  margin-bottom: $bottom-space
+
+  td, th
+    +font($font-size, $line-height)
+    color: inherit
+    padding: 8px 15px
+    border-color: $text-color
+
+.table-auto
+  position: relative
+  overflow: auto
+  max-width: 100%
+  -webkit-overflow-scrolling: touch
+  margin-bottom: $bottom-space
+
+  table
+    margin-bottom: 0
+    width: auto
+    min-width: 100%
+
+.tbl
+  border: none
+
+  td, th
+    color: $text-color
+    background-color: $bg-color
+    border: 0 solid $base-color
+    +font(1.4rem, 1.5)
+
+    &:first-child, &:first-child
+      border-left-width: 1px
+
+    &:last-child, &:last-child
+      border-right-width: 1px
+
+  tr:last-child
+    td
+      border-bottom-width: 0
+
+  td
+    border-top-width: 1px
+
+  tbody tr:first-child td
+    border-top-width: 0
+
+  tbody tr:nth-child(even) td
+    background: $base-color
+    color: $bg-color
+
+  th, thead td
+    +font-bold
+    font-size: 1.6rem
+    text-align: left
+
+  th, thead td, tfoot td
+    background: $base-color
+    color: $bg-color
+    border-color: $base-color
+    border-top-width: 0
+
+/* table end
+
+/* reference link
+.ref
+  display: inline-block
+  padding: 5px 0 5px 45px
+  background: no-repeat 0 50% url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAhCAYAAABX5MJvAAAEJ0lEQVRYhb2YS2wbVRSGvxmP41cbO4kTKODQqiSkK9hAqQRIJGp5lEdSdYEQSChBsKAQqUVdVHTBAnVRdVGgiyYCxAYWCJLyaFFAqRBITdoukJBKiUlCkpZarR+xrTj22ONhMeNgO/NyRftvRp7577mfxvfOOecKPVcu0oAeBp7Rr/cDbUAQSAMJ4E/gPHBavzqS4ADCBwwCw0BXA8B/AceBj4FVK6NoE+gF4DLwUYMAAPcBH+rj+28GwgOcBMaBzgYnr1cnMKbH8xgZJIN7zfrkTxgNaHe5eTnQQa83SKfkRRIErisyU4Usn6/c4Hd5xQzmdbS32Q9kqh/Ur4km4AzQaxTleX8b74U6+Tmf5lQuwaVijpKqEpE87PS18GKgnVO5BEfSSxRV1QxmEngakM0gTurE67Q3EOZg8z0MJ+c4V8gYWbjT1cSJtq0slgrsT85higEjwBuVH9Vrot8MICJ5eDcYYV9y1hQAIKbIvBaP8mBTgD3+sDmCNs/aYq1A+NC2k6EGN9zBD6spzheyVoEBSJVLHE1f5c3mTQjW1uP6vGsQg1jsgj5viLFcwhagop/yKYKiRLfbZ2XrBIaqIYbNnB5BpN3lJlq0/N7USFZV5op5IpLhjqzW2xWI7Vh8iFR9eQl2L7dOggDmG2RNXcB2Edhl5ZJVlZgi0+X2OgbwCCJbJS9LSsGJfZcIPGLnmsyn2RuwXO01etLXwnWlyIyzv3CHCGyzc41mY/R5QzzuDdpGbHe5OdB8Nyey/zgBAOgR0dKxpWKKzOHlBY61bqHPGzL13St5+DTczVQhw7e5pFOIsISWK2z1XS5JUVU50rKZ3+QVvllNsFAqkCmXuMvlYacvxIC/jS9WbnAsfdXqa1mvjRJaMnEEslDK82N+mV5vkMe82hAFlYVSgelCllfjM2TLCkojCJCV0CoiSwivIHIoGGG3v5WxXJz9yXkuF3OkyqUa30OejXzZ0c3pXJL300vk1bITiLjQc+Xi92glmynAZ+FuCmqZg6m/iSmymRWATa4mjrZuQQCG4lEnIGdEYMrKcSgYQUFlKBG1BQC4psgMxmdQgcMhR/XQORGYMHu6ze3nOX8rB5LzVvXBOsmqyjvJeZ7ytfBAU8DOPiEC00DU6OkrGzr4OpfgmoM3UK+YIvPVSpyXAu1WtigwXUlghmn8UU8zE6uphgEqmswvs8NjueY/gP+y6CfAYr1DEgQuFXM3DfFHcRVJME18i2jtQE15149WFd8uDaAV1DXl3TgwepsARisA9RAA+4BfbjHAr8Bb1TfqIWTgWeDsLQI4C+wGagoNow4sg9YXjPzPACN63HXlulkbWEDrCwYw2DUNahHYo8czLLXsGuJxoAetIJ1tcPJZfVwPNrvOydFAterPJ8JoGTgDxNHOJy6gtZLT4Cyn/wvFxVqTKGf60AAAAABJRU5ErkJggg==')
+
+/* reference link end
+
+/* article elements
+.#{$article-content}
+  @each $tags in h2, h3, h4, h5, '.h2', '.h3', '.h4', '.h5'
+    p + #{$tags},
+    ul + #{$tags},
+    ol + #{$tags},
+    hr + #{$tags},
+    table + #{$tags},
+    .table-auto + #{$tags}
+      margin-top: $bottom-space * 2
+
   // figure
   figure
     display: block
@@ -279,123 +363,8 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
     ul, ol
       margin: round-float($bottom-space*0.5, 1) 0
 
-.entry-text
-  font-size: 2.4rem
-  line-height: 2.9rem
-  color: #40455d
-  margin-bottom: $bottom-space
-
-  b, strong
-    +font-bold
-
-  i, em
-    +font-bold-italic
-
-/* columns
-$columns-gap: 2em
-.columns
-  +clear
-
-.column
-  float: left
-  width: calc(50% - #{round($columns-gap/2)})
-  margin: 0 round($columns-gap/2)
-
-  +media('<mob-lg')
-    float: none
-    width: auto
-    margin: 0 0 5rem
-
-    &:last-child
-      margin-bottom: 0
-
-  &:nth-child(odd)
-    margin-left: 0
-
-  &:nth-child(even)
-    margin-right: 0
-
-/* columns end
-
-/* table
-table
-  border-collapse: collapse
-  border-spacing: 0
-  width: auto
-  margin-bottom: $bottom-space
-
-  td, th
-    +font($font-size, $line-height)
-    color: inherit
-    padding: 8px 15px
-    border-color: $text-color
-
-.table-auto
-  position: relative
-  overflow: auto
-  max-width: 100%
-  -webkit-overflow-scrolling: touch
-  margin-bottom: $bottom-space
-
-  table
-    margin-bottom: 0
-    width: auto
-    min-width: 100%
-
-.tbl
-  border: none
-
-  td, th
-    color: $text-color
-    background-color: $bg-color
-    border: 0 solid $base-color
-    +font(1.4rem, 1.5)
-
-    &:first-child, &:first-child
-      border-left-width: 1px
-
-    &:last-child, &:last-child
-      border-right-width: 1px
-
-  tr:last-child
-    td
-      border-bottom-width: 0
-
-  td
-    border-top-width: 1px
-
-  tbody tr:first-child td
-    border-top-width: 0
-
-  tbody tr:nth-child(even) td
-    background: $base-color
-    color: $bg-color
-
-  th, thead td
-    +font-bold
-    font-size: 1.6rem
-    text-align: left
-
-  th, thead td, tfoot td
-    background: $base-color
-    color: $bg-color
-    border-color: $base-color
-    border-top-width: 0
-
-/* table end
-
-/* reference link
-.ref
-  display: inline-block
-  padding: 5px 0 5px 45px
-  background: no-repeat 0 50% url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAhCAYAAABX5MJvAAAEJ0lEQVRYhb2YS2wbVRSGvxmP41cbO4kTKODQqiSkK9hAqQRIJGp5lEdSdYEQSChBsKAQqUVdVHTBAnVRdVGgiyYCxAYWCJLyaFFAqRBITdoukJBKiUlCkpZarR+xrTj22ONhMeNgO/NyRftvRp7577mfxvfOOecKPVcu0oAeBp7Rr/cDbUAQSAMJ4E/gPHBavzqS4ADCBwwCw0BXA8B/AceBj4FVK6NoE+gF4DLwUYMAAPcBH+rj+28GwgOcBMaBzgYnr1cnMKbH8xgZJIN7zfrkTxgNaHe5eTnQQa83SKfkRRIErisyU4Usn6/c4Hd5xQzmdbS32Q9kqh/Ur4km4AzQaxTleX8b74U6+Tmf5lQuwaVijpKqEpE87PS18GKgnVO5BEfSSxRV1QxmEngakM0gTurE67Q3EOZg8z0MJ+c4V8gYWbjT1cSJtq0slgrsT85higEjwBuVH9Vrot8MICJ5eDcYYV9y1hQAIKbIvBaP8mBTgD3+sDmCNs/aYq1A+NC2k6EGN9zBD6spzheyVoEBSJVLHE1f5c3mTQjW1uP6vGsQg1jsgj5viLFcwhagop/yKYKiRLfbZ2XrBIaqIYbNnB5BpN3lJlq0/N7USFZV5op5IpLhjqzW2xWI7Vh8iFR9eQl2L7dOggDmG2RNXcB2Edhl5ZJVlZgi0+X2OgbwCCJbJS9LSsGJfZcIPGLnmsyn2RuwXO01etLXwnWlyIyzv3CHCGyzc41mY/R5QzzuDdpGbHe5OdB8Nyey/zgBAOgR0dKxpWKKzOHlBY61bqHPGzL13St5+DTczVQhw7e5pFOIsISWK2z1XS5JUVU50rKZ3+QVvllNsFAqkCmXuMvlYacvxIC/jS9WbnAsfdXqa1mvjRJaMnEEslDK82N+mV5vkMe82hAFlYVSgelCllfjM2TLCkojCJCV0CoiSwivIHIoGGG3v5WxXJz9yXkuF3OkyqUa30OejXzZ0c3pXJL300vk1bITiLjQc+Xi92glmynAZ+FuCmqZg6m/iSmymRWATa4mjrZuQQCG4lEnIGdEYMrKcSgYQUFlKBG1BQC4psgMxmdQgcMhR/XQORGYMHu6ze3nOX8rB5LzVvXBOsmqyjvJeZ7ytfBAU8DOPiEC00DU6OkrGzr4OpfgmoM3UK+YIvPVSpyXAu1WtigwXUlghmn8UU8zE6uphgEqmswvs8NjueY/gP+y6CfAYr1DEgQuFXM3DfFHcRVJME18i2jtQE15149WFd8uDaAV1DXl3TgwepsARisA9RAA+4BfbjHAr8Bb1TfqIWTgWeDsLQI4C+wGagoNow4sg9YXjPzPACN63HXlulkbWEDrCwYw2DUNahHYo8czLLXsGuJxoAetIJ1tcPJZfVwPNrvOydFAterPJ8JoGTgDxNHOJy6gtZLT4Cyn/wvFxVqTKGf60AAAAABJRU5ErkJggg==')
-
-/* reference link end
-
-// выравнивание текстовых элементов на странице статьи
-// и их максимальная ширина
-/* layout typography elements
-.#{$user-content}
+  // Выравнивание текстовых элементов на странице статьи
+  // и их максимальная ширина
   @if nth($page-layout-space, 2) != 0
     +padding-horizontal(nth($page-layout-space, 2))
 
@@ -457,5 +426,4 @@ table
         max-width: none
         margin-left: auto
 
-
-/* layout typography elements end
+/* article elements end

@@ -389,10 +389,103 @@ function toggleShutters() {
  * !Initial sliders on the project
  * */
 function slidersInit() {
-  //sliders
+  /** Tape slider */
+  var $tapeSlider = $('.tape-slider-js');
+  if ($tapeSlider.length) {
+    $tapeSlider.each(function () {
+      var $thisSlider = $(this),
+          $thisPag = $('.swiper-pagination', $thisSlider),
+          promoSliderJs;
+
+      promoSliderJs = new Swiper($thisSlider, {
+        init: false,
+
+        // Optional parameters
+        loop: true,
+        spaceBetween: 22,
+        slidesPerView: 3,
+
+        // Parallax
+        // parallax: true,
+
+        // Pagination
+        pagination: {
+          el: $thisPag,
+          type: 'bullets',
+          clickable: true
+        },
+
+        // Breakpoints
+        breakpoints: {
+          768: {
+            // some props
+          }
+        }
+      });
+
+      promoSliderJs.on('init', function() {
+        $(promoSliderJs.el).closest($thisSlider).addClass('is-loaded');
+      });
+
+      promoSliderJs.init();
+    });
+  }
+
+  /** Reviews slider */
+  var $opinionsSlider = $('.opinions-slider-js');
+  if ($opinionsSlider.length) {
+    $opinionsSlider.each(function () {
+      var $thisSlider = $(this),
+          $thisPag = $('.swiper-pagination', $thisSlider),
+          promoSliderJs;
+
+      promoSliderJs = new Swiper($thisSlider, {
+        init: false,
+
+        // Optional parameters
+        loop: true,
+        spaceBetween: 90,
+
+        // Pagination
+        pagination: {
+          el: $thisPag,
+          type: 'bullets',
+          clickable: true
+        }
+      });
+
+      promoSliderJs.on('init', function() {
+        $(promoSliderJs.el).closest($thisSlider).addClass('is-loaded');
+      });
+
+      promoSliderJs.init();
+    });
+  }
 }
 
+/**
+ * !Manual steps select
+ */
+function manualStepsSelect() {
+  var $stepsThumb = $('.manual-step-js'),
+      $stepsItem = $('.manual-step__item-js'),
+      activeClass = 'current';
 
+  $stepsThumb.on('click', function (event) {
+    var $thisStepsThumb = $(this);
+
+    if($thisStepsThumb.hasClass(activeClass)) {
+      return false;
+    }
+
+    var $thisStepsItem = $thisStepsThumb.closest($stepsItem);
+
+    $stepsThumb.add($stepsItem).removeClass(activeClass);
+    $thisStepsThumb.add($thisStepsItem).addClass(activeClass);
+
+    event.preventDefault();
+  })
+}
 
 
 
@@ -427,6 +520,7 @@ $(document).ready(function () {
   toggleShutters();
   slidersInit();
   objectFitImages(); // object-fit-images initial
+  manualStepsSelect();
 
   // focused();
 });
