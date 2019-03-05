@@ -64,7 +64,7 @@ gulp.task('htmlCompilation', function () {
  */
 gulp.task('html:buildAllPages', ['htmlCompilation'], function () {
   var pref = "all-pages";
-  return gulp.src(['!src/__*.html', '!src/_tpl_*.html', '!src/_temp_*.html', './src/*.html'])
+  return gulp.src(['!src/forms.html', '!src/__*.html', '!src/_tpl_*.html', '!src/_temp_*.html', './src/*.html'])
       .pipe(index({
         // written out before index contents
         'prepend-to-output': () => `<head> <title>All pages</title><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0"><link rel="shortcut icon" href="favicon.ico"></head><body>`,
@@ -130,6 +130,7 @@ gulp.task('mergeCssLibs', function () {
     'src/css/temp/*.css'
     , 'src/libs/select2/dist/css/select2.min.css'
     , 'src/libs/swiper/dist/css/swiper.min.css'
+    , 'src/libs/ion.rangeSlider/css/ion.rangeSlider.min.css'
   ])
       .pipe(concatCss("src/css/libs.css", {
         rebaseUrls: false
@@ -164,6 +165,7 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () {
     , 'node_modules/object-fit-images/dist/ofi.min.js' // object-fit fix for a non-support browsers
     , 'src/libs/jquery-validation/dist/jquery.validate.min.js' // валидация форм
     , 'src/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js' // маска для форм
+    , 'src/libs/ion.rangeSlider/js/ion.rangeSlider.min.js' // ползунок
   ])
       .pipe(concat('libs.js'))
       .pipe(gulp.dest('src/js'))
@@ -290,7 +292,7 @@ gulp.task('buildDist', ['cleanDist', 'html:buildAllPages', 'copyImgToDist', 'sas
   gulp.src('src/assets/**/*')
       .pipe(gulp.dest(path.dist + '/assets'));
 
-  gulp.src(['!src/__*.html', '!src/_tpl_*.html', '!src/_temp_*.html', 'src/*.html'])
+  gulp.src(['!src/forms.html', '!src/__*.html', '!src/_tpl_*.html', '!src/_temp_*.html', 'src/*.html'])
       .pipe(revts()) // Добавить версии подключаемых файлов. В html добавить ключ ?rev=@@hash в место добавления версии
       .pipe(gulp.dest(path.dist));
 

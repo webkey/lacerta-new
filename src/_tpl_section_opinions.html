@@ -1,0 +1,40 @@
+<section class="opinions layout-spaces">
+  <div class="opinions__holder layout-section">
+    <h2 class="opinions__title">Преимущества, понятные с первого раза</h2>
+    <div class="opinions__list opinions-slider-js swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          @@include("_tpl_opinion.html", {
+          "quoteTitle": "Прибыль обязательна!",
+          "quoteText": "<p>Особенность этого документа в том, что выплачивание прибыли является обязательным условием при покупке облигации.</p><p>Это вам не “Я отдам - чесслово!”. Все строго.</p>",
+          "reviewPhoto": "img/review-photo.jpg",
+          "reviewName": "Николай Бондарчук",
+          "reviewAbout": "Директор в ООО «Планета»",
+          "reviewText": "<p>Отличное приложение для инвестиций. Удобный интерфейс и навигация. Удобный и понятный алгоритм покупки облигаций корпоративных эмитетов.<br> Разработчики молодцы.</p>"
+          })
+        </div>
+        <div class="swiper-slide">
+          @@include("_tpl_opinion.html", {
+          "quoteTitle": "7,5% годовых в валюте и без подоходного",
+          "quoteText": "<p>Сколотить небольшой капитал можно лишь двумя более или менее обоснованными способами: работать (много) либо инвестировать (чтобы работали другие).</p>",
+          "reviewPhoto": "img/img-quote.jpg",
+          "reviewName": "Бетт Гиббонс",
+          "reviewAbout": "Британская певица, автор песен и солистка группы Portishead",
+          "reviewText": "Мои приятели из Lacerta.by теперь развивают услугу иначе. Они называют себя «первым мобильным небанком страны»"
+          })
+        </div>
+        <div class="swiper-slide">
+          @@include("_tpl_opinion.html", {
+          "quoteTitle": "И еще вариант − проинвестировать в крупную компанию",
+          "quoteText": "<p>По сути - отдолжить свои деньги под интересный процент (например 15%) на опредлеенный срок компании, а не человеку.</p>",
+          "reviewPhoto": "img/temp/img_320_01.jpg",
+          "reviewName": "Василий Васильев",
+          "reviewAbout": "Владелец владений",
+          "reviewText": "<p>Звучит неплохо? У таких инвестиций есть название - это облигации.</p>"
+          })
+        </div>
+      </div>
+      <div class="swiper-pagination opinions__list-pagination"></div>
+    </div>
+  </div>
+</section>

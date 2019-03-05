@@ -1,0 +1,34 @@
+<section class="manual layout-spaces">
+  <div class="manual__holder layout-section">
+    <h2 class="manual__title">Как купить облигации? Это очень просто</h2>
+    <div class="manual__steps">
+      <article class="manual-step manual-steps__item manual-step__item-js current">
+        @@include("_tpl_manual-steps__item.html", {
+        "number": "1",
+        "title": "Приезжаете в офис",
+        "text": "Сначала надо приехать к нам в офис для заключения договора на покупку облигаций.",
+        "imgSrc": "img/manual-img-01.png",
+        "current": "true"
+        })
+      </article>
+      <article class="manual-step manual-steps__item manual-step__item-js">
+        @@include("_tpl_manual-steps__item.html", {
+        "number": "2",
+        "title": "Качаете приложение",
+        "text": "После заключения договора, вы качаете приложение LACERTA, и выбираете интересующую вас компанию из списка.",
+        "imgSrc": "img/temp/img_1280_01.jpg",
+        "current": ""
+        })
+      </article>
+      <article class="manual-step manual-steps__item manual-step__item-js">
+        @@include("_tpl_manual-steps__item.html", {
+        "number": "3",
+        "title": "Подтверждение покупки",
+        "text": "Выбрав, в кого вы хотите инвестировать, решаете сколько денег вы готовы дать взаймы, после чего заполняете персональные данные, и подтверждаете покупку. ",
+        "imgSrc": "img/temp/img_1280_02.jpg",
+        "current": ""
+        })
+      </article>
+    </div>
+  </div>
+</section>

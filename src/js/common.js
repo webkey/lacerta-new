@@ -461,6 +461,61 @@ function slidersInit() {
       promoSliderJs.init();
     });
   }
+
+  /**Yield slider*/
+  var $yieldGroup = $('.yield-group-js');
+  if($yieldGroup.length){
+    $yieldGroup.each(function () {
+      var $curSlider = $(this),
+          $cards = $curSlider.find('.yield-cards-slider-js'),
+          $cardsPagination = $curSlider.find('.swiper-pagination'),
+          $thumbs = $curSlider.find('.yield-thumbs-slider-js'),
+          cardsSlider;
+
+      cardsSlider = new Swiper ($cards, {
+        init: false,
+        effect: 'fade',
+        // disabled swiping
+        followFinger: false,
+        simulateTouch: false,
+        fadeEffect: {
+          crossFade: true
+        },
+        spaceBetween: 20,
+        preloadImages: false,
+        pagination: {
+          el: $cardsPagination,
+          type: 'bullets',
+          clickable: true
+        },
+        thumbs: {
+          swiper: {
+            el: $thumbs,
+            direction: 'vertical',
+            slidesPerView: 'auto',
+            spaceBetween: 22,
+            // freeMode: true,
+            slideToClickedSlide: true,
+            watchSlidesVisibility: true,
+            watchSlidesProgress: true,
+            followFinger: false,
+            // disabled swiping
+            // simulateTouch: false,
+            // navigation: {
+            //   nextEl: $next,
+            //   prevEl: $prev,
+            // }
+          },
+        }
+      });
+
+      cardsSlider.on('init', function() {
+        $curSlider.addClass('is-loaded');
+      });
+
+      cardsSlider.init();
+    });
+  }
 }
 
 /**
@@ -487,10 +542,44 @@ function manualStepsSelect() {
   })
 }
 
+/**
+ * !Range sliders initial
+ */
+function rangeSlidersInit() {
 
+  var slidersArr = [];
 
+  $.each($('.bond-range-slider'), function (i, el) {
+    var $curSlider = $(this);
 
+    $curSlider.ionRangeSlider({
+      skin: 'custom',
+      hide_min_max: true,
+      step: 100,
+      force_edges: false,
+      onStart: function (data) {
+        setValue(data, $curSlider)
+      },
+      onChange: function (data) {
+        setValue(data, $curSlider);
+      },
+      onUpdate: function (data) {
+        setValue(data, $curSlider);
+      }
+    });
 
+    slidersArr[i] = $curSlider.data('ionRangeSlider');
+  });
+
+  // todo это только пример работы калькулятора. Данные расчеты неверные
+  function setValue(data, $slider) {
+
+    var val = 12 * data.from * 0.12,
+        $curSliderTotal = $slider.closest('.bond-calc').find('.bond-calc-total-js');
+
+    $curSliderTotal.html(val);
+  }
+}
 
 /** !Remove focus state */
 function focused() {
@@ -521,6 +610,7 @@ $(document).ready(function () {
   slidersInit();
   objectFitImages(); // object-fit-images initial
   manualStepsSelect();
+  rangeSlidersInit();
 
   // focused();
 });

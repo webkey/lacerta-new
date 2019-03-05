@@ -26,7 +26,8 @@
     "matchHeight": "matchheight#^0.7.0",
     "normalize-scss": "normalize.scss#^7.0.1",
     "select2": "^4.0.3",
-    "swiper": "^4.4.6"
+    "swiper": "^4.4.6",
+    "ion.rangeSlider": "ionrangeslider#^2.3.0"
   },
   "devDependencies": {
     "mathsass": "^0.9.5",

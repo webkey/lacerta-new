@@ -12,9 +12,32 @@
       <div class="nav-wrap">
         <nav class="nav">
           <ul class="nav__list">
-            <li><a href="#">Куда вкладывать деньги</a></li>
-            <li><a href="#">Покупка облигаций</a></li>
-            <li><a href="#">Новости</a></li>
+            @@if(context.currentItem != 'Куда вкладывать деньги'){
+            <li>
+              <a href="#">Куда вкладывать деньги</a>
+            </li>
+            } @@if(context.currentItem == 'Куда вкладывать деньги'){
+            <li class="current">
+              <span>Куда вкладывать деньги</span>
+            </li>}
+
+            @@if(context.currentItem != 'Покупка облигаций'){
+            <li>
+              <a href="#">Покупка облигаций</a>
+            </li>
+            } @@if(context.currentItem == 'Покупка облигаций'){
+            <li class="current">
+              <span>Покупка облигаций</span>
+            </li>}
+
+            @@if(context.currentItem != 'Новости'){
+            <li>
+              <a href="#">Новости</a>
+            </li>
+            } @@if(context.currentItem == 'Новости'){
+            <li class="current">
+              <span>Новости</span>
+            </li>}
           </ul>
         </nav>
       </div>

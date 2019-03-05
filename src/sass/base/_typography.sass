@@ -47,6 +47,28 @@ h6, .h6
   +font($font-size-h6, $line-height-h6)
   text-transform: uppercase
 
+.entry-text
+  font-size: 2.4rem
+  line-height: 2.9rem
+  color: $text-color-alt
+  margin-bottom: 3rem
+
+  &:last-child
+    margin-bottom: 0
+
+  b, strong
+    +font-bold
+
+  i, em
+    +font-bold-italic
+
+.heading
+  margin-bottom: 13.5rem
+
+  h1, .h1, h2, .h2, .entry-text
+    width: 70rem
+    max-width: 100%
+
 p
   padding: 0
   margin: 0 0 $bottom-space
@@ -98,18 +120,6 @@ i, em
 
 i b, i strong, em b, em strong, b i, b em, strong i, strong em
   +font-bold-italic
-
-.entry-text
-  font-size: 2.4rem
-  line-height: 2.9rem
-  color: $text-color-alt
-  margin-bottom: 13.5rem
-
-  b, strong
-    +font-bold
-
-  i, em
-    +font-bold-italic
 
 /* columns
 $columns-gap: 2em

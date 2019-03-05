@@ -1,7 +1,7 @@
-@@include('_tpl_layout_head.html', {"title": "Текстовая страница", "pageClass": "", "bg": "true" })
+@@include('_tpl_layout_head.html', {"title": "Страница статьи", "pageClass": "", "bg": "true" })
 
 <!--HEADER-->
-@@include('_tpl_layout_header.html', {"currentItem": "Главная", "headerFloat": "true" })
+@@include('_tpl_layout_header.html', {"currentItem": "Страница статьи", "headerFloat": "true" })
 <!--HEADER end-->
 
 <!--MAIN-->
@@ -9,10 +9,14 @@
   <div class="page-control layout-section layout-spaces">
     @@include("_tpl_btn.html", {"value": "Вернуться на главную"})
   </div>
+  <div class="heading layout-spaces">
+    <div class="layout-section">
+      <h1>7,5% годовых в валюте и без подоходного</h1>
+      <div class="entry-text">Сеть гипермаркетов Prostore осуществляет свою деятельность с 2006 года. В Минске сегодня действует 5 объектов.</div>
+    </div>
+  </div>
   <!--CONTENT-->
   <section class="content article-content">
-    <h1>7,5% годовых в валюте и<br> без подоходного</h1>
-    <div class="entry-text">Сеть гипермаркетов Prostore осуществляет<br> свою деятельность с 2006 года. В Минске сегодня действует 5 объектов.</div>
     <p>Сколотить небольшой капитал можно лишь двумя более или менее обоснованными способами: работать (много) либо инвестировать (чтобы работали другие). Разумеется, работа и инвестиции — это тоже не гарантия, но ведь никто не обещал, что будет легко. Белорусы вот придумали «мобильный небанк«: приложение для смартфонов, через которое можно покупать ценные бумаги белорусских же предприятий из реального сектора экономики и зарабатывать на их долговых обязательствах. Это партнерский текст, объясняющий, как устроена система. Все довольно просто.</p>
     <p>Уверен, многие слышали про такой инвестиционный инструмент как корпоративные и</p>
     <mark>Сколотить небольшой капитал можно лишь двумя обоснованными способами</mark>
@@ -52,10 +56,10 @@
   </section>
   <!--CONTENT end-->
   <!--app offer-->
-  @@include("_tpl_app-offer.html")
+  @@include("_tpl_section_app-offer.html")
   <!--app offer end-->
   <!--last-news-->
-  @@include("_tpl_last-news.html")
+  @@include("_tpl_section_last-news.html")
   <!--last-news end-->
 </div>
 <!--MAIN end-->

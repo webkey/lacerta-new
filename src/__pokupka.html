@@ -1,0 +1,164 @@
+@@include('_tpl_layout_head.html', {"title": "Покупка облигаций", "pageClass": "has-alt-bg", "bg": "true" })
+
+<!--HEADER-->
+@@include('_tpl_layout_header.html', {"currentItem": "Покупка облигаций", "headerFloat": "true" })
+<!--HEADER end-->
+
+<!--MAIN-->
+<div class="main">
+  <div class="page-control layout-section layout-spaces">
+    @@include("_tpl_btn.html", {"value": "Вернуться на главную", "href": "index.html"})
+  </div>
+  <div class="heading layout-spaces">
+    <div class="layout-section">
+      <h1>Покупка облигаций</h1>
+      <div class="entry-text">Или почему покупка облигаций - это один из самых выгодных способов инвестировать свои средства</div>
+    </div>
+  </div>
+
+  <!--profits-->
+  <section class="profits layout-spaces">
+    <div class="profits__holder layout-section">
+      <h2 class="profits__title hide-text">Выгоды при покупке облигаций</h2>
+      <div class="profits__list">
+        <div class="profit profits__list-item">
+          @@include("_tpl_profit.html", {
+          "title": "Без поручителей",
+          "text": "Для оформления всех необходимых документов нам не нужен никто, кроме вас"
+          })
+        </div>
+        <div class="profit profits__list-item">
+          @@include("_tpl_profit.html", {
+          "title": "Хороший процент",
+          "text": "Процентная ставка значительно выше, чем вклады в банках"
+          })
+        </div>
+        <div class="profit profits__list-item">
+          @@include("_tpl_profit.html", {
+          "title": "Без бюрократии",
+          "text": "Один раз посещаете офис Lacerta, и дальше делаете все вложения сами"
+          })
+        </div>
+        <div class="profit profits__list-item">
+          @@include("_tpl_profit.html", {
+          "title": "Проверенные компании",
+          "text": "Белорусские и европейские компании на выбор. Все тщательно проверены нами."
+          })
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--profits end-->
+
+  <!--yield-->
+  <div class="yield layout-spaces">
+    <div class="yield__holder layout-section">
+      <h2 class="yield__title">Посчитайте доходность своего вклада прямо&nbsp;сейчас</h2>
+      <div class="yield-box yield__box yield-group-js">
+        <div class="yield-box__aside">
+          <div class="yield-thumbs swiper-container yield-thumbs-slider-js">
+            <div class="swiper-wrapper">
+              <div class="bond yield-thumbs__item swiper-slide">
+                @@include("_tpl_bond.html", {
+                "title": "ООО &quot;Активлизинг&quot;",
+                "release": "6",
+                "term": "1 год",
+                "value": "50 USD",
+                "rate": "6,5%",
+                "imgSrc": "img/img-bond-01.jpg"
+                })
+              </div>
+              <div class="bond yield-thumbs__item swiper-slide">
+                @@include("_tpl_bond.html", {
+                "title": "СЗАО &quot;ПРОСТОРМАРКЕТ&quot;",
+                "release": "6",
+                "term": "944 дня",
+                "value": "100 BYN",
+                "rate": "12%",
+                "imgSrc": "img/img-bond-03.jpg"
+                })
+              </div>
+              <div class="bond yield-thumbs__item swiper-slide">
+                @@include("_tpl_bond.html", {
+                "title": "СООО &quot;Белвингрупп&quot;",
+                "release": "6",
+                "term": "1 год",
+                "value": "200 USD",
+                "rate": "3,5%",
+                "imgSrc": "img/img-bond-02.jpg"
+                })
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="yield-box__main">
+          <div class="yield-cards swiper-container yield-cards-slider-js">
+            <div class="swiper-wrapper">
+              <div class="bond-calc yield-cards__item swiper-slide">
+                @@include("_tpl_bond-calc.html", {
+                "title": "ООО &quot;Активлизинг&quot;",
+                "imgSrc": "img/img-bond-01.jpg",
+                "rangeSlider": { "id": "bondAktivlizing", "from": "400", "min": "100", "max": "1500" },
+                "term": "<strong>1</strong> год",
+                "value": "50",
+                "unit": "USD",
+                "rate": "6,5%"
+                })
+              </div>
+              <div class="bond-calc yield-cards__item swiper-slide">
+                @@include("_tpl_bond-calc.html", {
+                "title": "СЗАО &quot;ПРОСТОРМАРКЕТ&quot;",
+                "imgSrc": "img/img-bond-03-lg.jpg",
+                "rangeSlider": { "id": "bondProstormarket", "from": "500", "min": "100", "max": "2000" },
+                "term": "<strong>944</strong> дня",
+                "value": "100",
+                "unit": "BYN",
+                "rate": "12%"
+                })
+              </div>
+              <div class="bond-calc yield-cards__item swiper-slide">
+                @@include("_tpl_bond-calc.html", {
+                "title": "СООО &quot;Белвингрупп&quot;",
+                "imgSrc": "img/img-bond-02.jpg",
+                "rangeSlider": { "id": "bondBelvingrupp", "from": "200", "min": "100", "max": "5000" },
+                "term": "<strong>5</strong> лет",
+                "value": "100",
+                "unit": "EUR",
+                "rate": "4.5%"
+                })
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </div>
+      <div class="yield__footer">
+        @@include("_tpl_btn.html", {"value": "Это интересно"})
+      </div>
+    </div>
+  </div>
+  <!--yield end-->
+
+  <!--manual-->
+  @@include("_tpl_section_manual.html")
+  <!--manual end-->
+
+  <!--opinions-->
+  @@include("_tpl_section_opinions.html")
+  <!--opinions end-->
+
+  <!--app offer-->
+  @@include("_tpl_section_app-offer.html")
+  <!--app offer end-->
+
+  <!--last-news-->
+  @@include("_tpl_section_last-news.html")
+  <!--last-news end-->
+</div>
+<!--MAIN end-->
+
+<!--FOOTER-->
+@@include('_tpl_layout_footer.html')
+<!--FOOTER end-->
+
+@@include('_tpl_layout_foot.html')

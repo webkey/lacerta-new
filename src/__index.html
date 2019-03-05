@@ -23,7 +23,7 @@
   <!--limitations-->
   <section class="limitations layout-section layout-spaces">
     <div class="limitations__holder">
-      <h2 class="hide-text">Ошибки</h2>
+      <h2 class="hide-text">Плохие варианты</h2>
       <div class="limitations__list">
         <article class="limitations__item limitations__item_deposit">
           <div class="limitations__item-figure limitations__item-figure_deposit">&nbsp;</div>
@@ -48,6 +48,7 @@
   <!--advantages-->
   <section class="advantages layout-spaces">
     <div class="advantages__holder layout-section">
+      <div class="advantages__sign"></div>
       <div class="advantages__spacer-top"></div>
       <h2 class="advantages__title">И еще вариант&nbsp;− проинвестировать в крупную компанию</h2>
       <div class="advantages__entry">По сути - отдолжить свои деньги под интересный процент <strong>(например 15%)</strong> на опредлеенный срок компании, а не человеку. При этом вы получаете официальный документ - компания не исчезнет, и вы получите деньги в любом случае.</div>
@@ -62,40 +63,7 @@
   <!--advantages end-->
 
   <!--manual-->
-  <section class="manual layout-spaces">
-    <div class="manual__holder layout-section">
-      <h2 class="manual__title">Как купить облигации? Это очень просто</h2>
-      <div class="manual__steps">
-        <article class="manual-step manual-steps__item manual-step__item-js current">
-          @@include("_tpl_manual-steps__item.html", {
-          "number": "1",
-          "title": "Приезжаете в офис",
-          "text": "Сначала надо приехать к нам в офис для заключения договора на покупку облигаций.",
-          "imgSrc": "img/manual-img-01.png",
-          "current": "true"
-          })
-        </article>
-        <article class="manual-step manual-steps__item manual-step__item-js">
-          @@include("_tpl_manual-steps__item.html", {
-          "number": "2",
-          "title": "Качаете приложение",
-          "text": "После заключения договора, вы качаете приложение LACERTA, и выбираете интересующую вас компанию из списка.",
-          "imgSrc": "img/temp/img_1280_01.jpg",
-          "current": ""
-          })
-        </article>
-        <article class="manual-step manual-steps__item manual-step__item-js">
-          @@include("_tpl_manual-steps__item.html", {
-          "number": "3",
-          "title": "Подтверждение покупки",
-          "text": "Выбрав, в кого вы хотите инвестировать, решаете сколько денег вы готовы дать взаймы, после чего заполняете персональные данные, и подтверждаете покупку. ",
-          "imgSrc": "img/temp/img_1280_02.jpg",
-          "current": ""
-          })
-        </article>
-      </div>
-    </div>
-  </section>
+  @@include("_tpl_section_manual.html")
   <!--manual end-->
 
   <div class="bg-container-bottom">
@@ -105,7 +73,7 @@
         <h2 class="selection__title">Все компании надежные − прошли тщательный отбор у наших специалистов </h2>
         <div class="selection__bonds tape-slider-js swiper-container">
           <div class="swiper-wrapper">
-            <div class="swiper-slide">
+            <a href="#" class="swiper-slide bond">
               @@include("_tpl_bond.html", {
               "title": "ООО &quot;Активлизинг&quot;",
               "release": "6",
@@ -114,28 +82,28 @@
               "rate": "6,5%",
               "imgSrc": "img/img-bond-01.jpg"
               })
-            </div>
-            <div class="swiper-slide">
+            </a>
+            <a href="#" class="swiper-slide bond">
               @@include("_tpl_bond.html", {
-              "title": "ООО &quot;Активлизинг&quot;",
+              "title": "СООО &quot;Белвингрупп&quot;",
               "release": "6",
               "term": "1 год",
               "value": "100 USD",
-              "rate": "6,5%",
-              "imgSrc": "img/img-bond-01.jpg"
+              "rate": "15%",
+              "imgSrc": "img/img-bond-02.jpg"
               })
-            </div>
-            <div class="swiper-slide">
+            </a>
+            <a href="#" class="swiper-slide bond">
               @@include("_tpl_bond.html", {
-              "title": "ООО &quot;Активлизинг&quot;",
+              "title": "СЗАО &quot;ПРОСТОРМАРКЕТ&quot;",
               "release": "6",
-              "term": "1 год",
+              "term": "3 год",
               "value": "100 USD",
-              "rate": "6,5%",
-              "imgSrc": "img/img-bond-01.jpg"
+              "rate": "7%",
+              "imgSrc": "img/img-bond-03.jpg"
               })
-            </div>
-            <div class="swiper-slide">
+            </a>
+            <a href="#" class="swiper-slide bond">
               @@include("_tpl_bond.html", {
               "title": "ООО &quot;Активлизинг&quot;",
               "release": "3",
@@ -144,8 +112,8 @@
               "rate": "3,5%",
               "imgSrc": "img/temp/img_640_01.jpg"
               })
-            </div>
-            <div class="swiper-slide">
+            </a>
+            <a href="#" class="swiper-slide bond">
               @@include("_tpl_bond.html", {
               "title": "ООО &quot;Активлизинг&quot;",
               "release": "4",
@@ -154,12 +122,12 @@
               "rate": "9,0%",
               "imgSrc": "img/temp/img_640_02.jpg"
               })
-            </div>
+            </a>
           </div>
           <div class="swiper-pagination selection__bonds-pagination"></div>
         </div>
         <div class="selection__footer">
-          @@include("_tpl_btn.html", {"value": "Подобрать компанию для себя", "classes": "btn-def"})
+          @@include("_tpl_btn.html", {"value": "Подобрать компанию для себя"})
         </div>
       </div>
     </section>
@@ -205,55 +173,16 @@
     <!--benefits end-->
 
     <!--opinions-->
-    <section class="opinions layout-spaces">
-      <div class="opinions__holder layout-section">
-        <h2 class="opinions__title">Преимущества, понятные с первого раза</h2>
-        <div class="opinions__list opinions-slider-js swiper-container">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              @@include("_tpl_opinion.html", {
-              "quoteTitle": "Прибыль обязательна!",
-              "quoteText": "<p>Особенность этого документа в том, что выплачивание прибыли является обязательным условием при покупке облигации.</p><p>Это вам не “Я отдам - чесслово!”. Все строго.</p>",
-              "reviewPhoto": "img/review-photo.jpg",
-              "reviewName": "Николай Бондарчук",
-              "reviewAbout": "Директор в ООО «Планета»",
-              "reviewText": "<p>Отличное приложение для инвестиций. Удобный интерфейс и навигация. Удобный и понятный алгоритм покупки облигаций корпоративных эмитетов.<br> Разработчики молодцы.</p>"
-              })
-            </div>
-            <div class="swiper-slide">
-              @@include("_tpl_opinion.html", {
-              "quoteTitle": "7,5% годовых в валюте и без подоходного",
-              "quoteText": "<p>Сколотить небольшой капитал можно лишь двумя более или менее обоснованными способами: работать (много) либо инвестировать (чтобы работали другие).</p>",
-              "reviewPhoto": "img/img-quote.jpg",
-              "reviewName": "Бетт Гиббонс",
-              "reviewAbout": "Британская певица, автор песен и солистка группы Portishead",
-              "reviewText": "Мои приятели из Lacerta.by теперь развивают услугу иначе. Они называют себя «первым мобильным небанком страны»"
-              })
-            </div>
-            <div class="swiper-slide">
-              @@include("_tpl_opinion.html", {
-              "quoteTitle": "И еще вариант − проинвестировать в крупную компанию",
-              "quoteText": "<p>По сути - отдолжить свои деньги под интересный процент (например 15%) на опредлеенный срок компании, а не человеку.</p>",
-              "reviewPhoto": "img/temp/img_320_01.jpg",
-              "reviewName": "Василий Васильев",
-              "reviewAbout": "Владелец владений",
-              "reviewText": "<p>Звучит неплохо? У таких инвестиций есть название - это облигации.</p>"
-              })
-            </div>
-          </div>
-          <div class="swiper-pagination opinions__bonds-pagination"></div>
-        </div>
-      </div>
-    </section>
+    @@include("_tpl_section_opinions.html")
     <!--opinions end-->
   </div>
 
   <!--app offer-->
-  @@include("_tpl_app-offer.html")
+  @@include("_tpl_section_app-offer.html")
   <!--app offer end-->
 
   <!--last-news-->
-  @@include("_tpl_last-news.html")
+  @@include("_tpl_section_last-news.html")
   <!--last-news end-->
 </div>
 <!--MAIN end-->

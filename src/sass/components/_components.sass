@@ -2,6 +2,13 @@
 @import ../utils/mixins
 @import ../../libs/include-media/dist/include-media
 
+/* page control
+.page-control
+  margin-bottom: 4rem
+  padding-top: 6.5rem
+
+/* page control end
+
 /* === helper classes ==
 .mark
   color: $mark-color
@@ -170,6 +177,7 @@
   line-height: 2.4rem
   text-transform: uppercase
   letter-spacing: 0.01em
+  cursor: default
   +clear
 
   li
@@ -184,6 +192,16 @@
 
     &:hover
       color: $highlight-color--hover
+
+  // current
+  li.current
+    color: $text-color-light
+    pointer-events: none
+
+    a, & > span
+      text-decoration: none
+      color: inherit
+      cursor: default
 
 /* navigation end
 
@@ -433,8 +451,9 @@ a.shutter-menu-switcher
   clear: both
   z-index: 4
 
-  //.header_float ~ &
-    padding-top: 6.5rem
+  .header_float ~ &
+    //padding-top: 6.5rem
+    padding-top: 0
 
 /* === FOOTER ===
 .footer
@@ -1008,28 +1027,27 @@ a.shutter-menu-switcher
   position: relative
   padding: 10rem 0 13rem 71.2rem
 
-  &::before
-    content: ""
-    display: block
-    position: absolute
-    width: 16.1rem
-    height: 16.1rem
-    left: 71.2rem
-    top: 1rem
-    background-repeat: no-repeat
-    background-image: url(../../img/advantage-sign.png)
-    background-size: 100%
-    opacity: 0
-    // transition
-    $prop: opacity
-    will-change: $prop
-    transition:
-      property: $prop
-      duration: $animation-speed
-      timing-function: ease-in-out
+.advantages__sign
+  display: block
+  position: absolute
+  width: 16.1rem
+  height: 16.1rem
+  left: 71.2rem
+  top: 1rem
+  background-repeat: no-repeat
+  background-image: url(../../img/advantage-sign.png)
+  background-size: 100%
+  opacity: 0
+  // transition
+  $prop: opacity
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
 
-    @media #{$retina}
-      background-image: url(../../img/advantage-sign-2x.png)
+  @media #{$retina}
+    background-image: url(../../img/advantage-sign-2x.png)
 
 .advantages__spacer-top
   height: 20rem
@@ -1196,6 +1214,10 @@ a.shutter-menu-switcher
   float: left
   clear: left
   width: 50%
+  margin-bottom: 6rem
+
+  &:last-child
+    margin-bottom: 0
 
 .manual-steps__item
   $root-elem: &
@@ -1267,17 +1289,18 @@ a.shutter-menu-switcher
 /* manual end
 
 /* bond
-$bond-space: 3rem 3rem 2.5rem
+$bond-space: 3.2rem 3rem 2.8rem
 .bond
   display: block
   position: relative
   padding: $bond-space
   text-decoration: none
   color: inherit
-  background-color: #fff
-  //box-shadow: 0 1rem 4.6rem rgba(#7c90d4, 0.25)
-  box-shadow: 0 1rem 1.1rem rgba(#7c90d4, 0.25)
+  cursor: pointer
+  background-color: white
   border-radius: 0.8rem
+  //box-shadow: 0 1rem 4.6rem rgba(#7c90d4, 0.25)
+  box-shadow: 0 1rem 2.5rem rgba($box-shadow-color, 0.25)
 
 .bond__figure
   width: 15rem
@@ -1346,23 +1369,119 @@ $bond-space: 3rem 3rem 2.5rem
   position: absolute
   top: nth($bond-space, 1)
   right: nth($bond-space, 2)
-  $height: 4.1rem
-  height: $height
-  min-width: 8.5rem
+  $size: 4.1rem 8.5rem
+  height: nth($size, 1)
+  min-width: nth($size, 2)
   padding: 0 1.5rem
   +font-bold
   font-size: 2.4rem
-  line-height: $height
+  line-height: nth($size, 1)
   color: white
   background-color: $highlight-color
-  border-radius: round-float($header-height / 2, 1)
+  border-radius: round-float(nth($size, 1) / 2, 1)
   transition: background-color $animation-speed
 
   // hover
-  .bond:hover &
+  .bond:not(.swiper-slide-thumb-active):hover & // todo переделать
     background-color: $highlight-color--hover
 
 /* bond end
+
+/* bond calc
+$bond-calc-space: 5rem 6rem
+.bond-calc
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  position: relative
+  overflow: hidden
+  height: 71.3rem
+  padding: $bond-calc-space
+  background-color: white
+  border-radius: 0.8rem
+  box-shadow: 0 1rem 2.5rem rgba($box-shadow-color, 0.25)
+
+.bond-calc__figure
+  margin-bottom: 1rem
+  height: 6.2rem
+
+  img
+    display: block
+    max-height: 100%
+
+.bond-calc__title
+  $font-size: 2.2rem
+  $line-height: 3.0rem
+  $line-length: 2
+  position: relative
+  +font-bold
+  font-size: $font-size
+  line-height: $line-height
+  font-weight: normal
+  color: #000
+  height: $line-height * $line-length
+  overflow: hidden
+  margin-bottom: 2rem
+
+  &::after
+    content: ""
+    display: block
+    position: absolute
+    bottom: 0
+    right: 0
+    width: 20%
+    min-width: 6rem
+    height: $line-height
+    +linear-gradient(to right, rgba(white, 0) 0%, white 100%)
+
+.bond-calc__count,
+.bond-calc__total,
+.bond-calc__revenue
+  overflow: hidden
+  position: relative
+  margin-right: 12rem
+  font-size: 2.4rem
+  line-height: 2.9rem
+  color: #000
+  text-overflow: ellipsis
+
+.bond-calc__total
+  margin-bottom: 2.9rem
+
+.bond-calc__rate
+  display: flex
+  align-items: center
+  justify-content: center
+  position: absolute
+  top: nth($bond-calc-space, 1)
+  right: nth($bond-calc-space, 2)
+  $size: 6.2rem 24.8rem
+  height: nth($size, 1)
+  min-width: 24.8rem
+  padding: 0 2rem
+  line-height: nth($size, 1)
+  color: white
+  background-color: $highlight-color
+  border-radius: round-float(nth($size, 1) / 2, 1)
+  //transition: background-color $animation-speed
+
+  // hover
+  //.bond-calc:hover &
+    background-color: $highlight-color--hover
+
+.bond-calc__rate-val
+  padding-right: 1.8rem
+  +font-bold
+  font-size: 5.5rem
+
+.bond-calc__rate-nominal
+  font-size: 1.8rem
+  line-height: 2.2rem
+
+  & > strong
+    display: block
+
+/* bond calc end
 
 /* selection
 .selection
@@ -1379,16 +1498,20 @@ $bond-space: 3rem 3rem 2.5rem
     margin-bottom: 0
 
 .selection__bonds
-  padding: 0 1.1rem 8.4rem
-  margin: 0 -1.1rem 2.4rem
+  padding: 0 1.1rem 4.8rem
+  margin: 0 -1.1rem 6rem
+
+  &:last-child
+    margin-bottom: 0
 
   .js &:not(.is-loaded)
     opacity: 0
     pointer-events: none
+    overflow: hidden
 
 .selection__bonds-pagination
   &, .swiper-container-horizontal > &
-    bottom: 2.6rem
+    bottom: 0
 
 .selection__footer
   text-align: right
@@ -1459,6 +1582,10 @@ $bond-space: 3rem 3rem 2.5rem
   display: flex
   flex-wrap: wrap
   align-items: flex-start
+  margin-bottom: 6rem
+
+  &:last-child
+    margin-bottom: 0
 
 .benefits__list-item
   flex-grow: 1
@@ -1680,12 +1807,19 @@ $or__content-line-length: 6
     margin-bottom: 0
 
 .opinions__list
-  padding: 0 4.6rem 8.4rem
-  margin: 0 -4.6rem 2.4rem
+  padding: 0 1.1rem 4.8rem
+  margin: 0 -1.1rem 6rem
+
+  &:last-child
+    margin-bottom: 0
 
   .js &:not(.is-loaded)
     opacity: 0
     pointer-events: none
+
+.opinions__list-pagination
+  &, .swiper-container-horizontal > &
+    bottom: 0
 
 /* opinions end
 
@@ -1818,8 +1952,243 @@ $last-news-item-space: 0 3rem
 
 /* last-news end
 
-/* page control
-.page-control
-  margin-bottom: 4rem
+/* profit
+.profit
+  position: relative
+  display: flex
+  flex-direction: column
+  justify-content: center
+  min-height: 21.1rem
+  padding: 2rem 4.6rem 2rem 20.8rem
+  background-color: #5b29cd
+  border-radius: 1rem
+  box-shadow: inset 0 1rem 4.6rem  rgba($box-shadow-color, 0.25)
 
-/* page control end
+.profit__icon
+  $size: 13.1rem
+  width: $size
+  height: $size
+  position: absolute
+  top: 50%
+  left: 4.6rem
+  margin-top: -#{round-float($size / 2, 1)}
+  background-image: url(../../img/profit-sign.png)
+  background-repeat: no-repeat
+  background-position:  center
+  background-size: contain
+
+  @media #{$retina}
+    background-image: url(../../img/advantage-sign-2x.png)
+
+.profit__title
+  +font-black
+  font-size: 3.0rem
+  line-height: 1
+  color: white
+  margin-bottom: 2rem
+
+  &:last-child
+    margin-bottom: 0
+
+.profit__text
+  font-size: 1.8rem
+  line-height: 2.5rem
+  color: white
+  margin-bottom: 2rem
+
+  &:last-child
+    margin-bottom: 0
+
+/* profit end
+
+/* profits
+.profits
+  padding-bottom: 7rem
+
+.profits__holder
+  position: relative
+
+.profits__list
+  position: relative
+  display: flex
+  flex-wrap: wrap
+  align-items: flex-start
+  justify-content: flex-start
+  margin: 0 -1.5rem -3rem
+
+.profits__list-item
+  $width: calc(50% - 3rem)
+  flex-grow: 1
+  flex-basis: $width
+  margin: 0 1.5rem 3rem
+  background-repeat: no-repeat
+
+  &:nth-child(1)
+    background-image: url(../../img/bg-profit-01-desk.png)
+
+  &:nth-child(2)
+    background-image: url(../../img/bg-profit-02-desk.png)
+
+  &:nth-child(3)
+    background-image: url(../../img/bg-profit-03-desk.png)
+
+  &:nth-child(4)
+    background-image: url(../../img/bg-profit-04-desk.png)
+
+/* profits end
+
+/* custom range slider
+.irs--custom
+  height: 116px
+
+.irs--custom.irs-with-grid
+  height: 131px
+
+.irs--custom .irs-line
+  top: 89px
+  height: 15px
+  background-color: #eaefff
+  border-radius: 15px
+
+.irs--custom .irs-bar
+  top: 89px
+  height: 15px
+  background-color: $highlight-color
+
+.irs--custom .irs-bar--single
+  border-radius: 12px 0 0 12px
+
+.irs--custom .irs-shadow
+  height: 1px
+  bottom: 16px
+  background-color: rgba(66, 139, 202, 0.5)
+
+.irs--custom .irs-handle
+  top: 71px
+  width: 19px
+  height: 45px
+  background-color: #fff
+  box-shadow: 0 2px 9px rgba(black, 0.24)
+  border-radius: 4px
+
+.irs--custom .irs-handle.state_hover,
+.irs--custom .irs-handle:hover
+  background-color: #fff
+
+.irs--custom .irs-min,
+.irs--custom .irs-max
+  top: 0
+  padding: 1px 5px
+  color: white
+  text-shadow: none
+  background-color: #9f9f9f
+  border-radius: 3px
+
+.irs--custom .irs-from,
+.irs--custom .irs-to,
+.irs--custom .irs-single
+  color: white
+  text-shadow: none
+  min-width: 131px
+  padding: 10px
+  font-size: 18px
+  line-height: 26px
+  text-align: center
+  border-radius: 46px
+  +linear-gradient(to right, rgba(#4917af, 1) 0%, rgba(#6a35fa, 1) 100%)
+
+  &::after
+    content: ""
+    display: block
+    position: absolute
+    top: 100%
+    left: 50%
+    margin: 0 -7px
+    +triangle(bottom, #5a2dcd, 7px, 1.57)
+
+.irs--custom .irs-grid-pol
+  background-color: $text-color
+
+.irs--custom .irs-grid-text
+  color: $text-color
+
+/* custom range slider end
+
+/* yield
+.yield
+  padding-top: 7rem
+  padding-bottom: 7rem
+
+.yield__holder
+  position: relative
+
+.yield__title
+  font-size: 5.5rem
+  line-height: 1
+  color: #000
+  margin-bottom: 3rem
+
+  &:last-child
+    margin-bottom: 0
+
+.yield-box
+  display: flex
+  margin-bottom: 6rem
+
+  &:last-child
+    margin-bottom: 0
+
+  .js &:not(.is-loaded)
+    opacity: 0
+    pointer-events: none
+    overflow: hidden
+
+.yield-box__aside
+  $width: 45.2rem
+  flex-basis: $width
+  flex-shrink: 0
+  margin-right: 6.1rem
+
+.yield-thumbs
+  $height: 71.3rem
+  $padding-bottom: 2.2rem
+  $padding-top: 1rem
+  position: relative
+  height: $height + $padding-top + $padding-bottom
+  padding: #{$padding-top} 1.1rem #{$padding-bottom}
+  margin: -#{$padding-top} -1.1rem -#{$padding-bottom}
+
+.yield-thumbs__item
+  opacity: 0.6
+  height: 22.3rem
+  // transition
+  $prop: opacity
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
+  &.swiper-slide-thumb-active
+    opacity: 1
+
+.yield-box__main
+  flex-grow: 1
+  $width: calc(100% - 45.2rem - 6.1rem)
+  flex-basis: $width
+  max-width: $width
+  height: 71.3rem
+
+.yield-cards
+  $padding-bottom: 2.2rem
+  $padding-top: 1rem
+  position: relative
+  padding: #{$padding-top} 1.1rem #{$padding-bottom}
+  margin: -#{$padding-top} -1.1rem -#{$padding-bottom}
+
+  .swiper-pagination
+    display: none
+
+.yield__footer
+  text-align: right
+/* yield end
