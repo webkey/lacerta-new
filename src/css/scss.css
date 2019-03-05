@@ -1,9 +1,0 @@
-.item__inner {
-  background-color: #fff;
-}
-
-.item:hover .item__inner {
-  background-color: red;
-}
-
-/*# sourceMappingURL=scss.css.map */

@@ -1,0 +1,100 @@
+@@include('_tpl_layout_head.html', {"title": "Новости приложения", "pageClass": "", "bg": "true" })
+
+<!--HEADER-->
+@@include('_tpl_layout_header.html', {"currentItem": "Новости", "headerFloat": "true" })
+<!--HEADER end-->
+
+<!--MAIN-->
+<div class="main">
+  <div class="page-control layout-section layout-spaces">
+    @@include("_tpl_btn.html", {"value": "Вернуться на главную", "href": "index.html"})
+  </div>
+  <div class="heading layout-spaces">
+    <div class="layout-section">
+      <h1>Новости приложения</h1>
+      <div class="entry-text">Все новости о нашем приложении Lacerta Online</div>
+    </div>
+  </div>
+
+  <!--news-->
+  <section class="news layout-spaces">
+    <div class="news__holder layout-section">
+      <h2 class="news__title hide-text">Новости</h2>
+      <div class="news__list">
+        <div class="news__list-item type-v align-l">
+          <div class="news-elem">
+            @@include("_tpl_news-elem.html", {
+            "imgSrc": "img/img-news-01.jpg",
+            "title": "Одна строчка в заголовке",
+            "text": "Значимость этих проблем настолько очевидна, что сложившаяся структура организации способствует подготовки и реализации существенных финансовых и административных условий. Таким образом постоянное информационно-пропагандистское обеспечение нашей деятельности требуют от нас анализа."
+            })
+          </div>
+        </div>
+        <div class="news__list-item type-l align-r">
+          <div class="news-elem">
+            @@include("_tpl_news-elem.html", {
+            "imgSrc": "img/img-news-02.jpg",
+            "title": "Первая строчка новости<br> Вторая строчка новости",
+            "text": "Значимость этих проблем настолько очевидна, что сложившаяся структура организации способствует подготовки и реализации существенных финансовых и административных условий. Таким образом постоянное информационно-пропагандистское обеспечение нашей деятельности требуют от нас анализа."
+            })
+          </div>
+        </div>
+        <div class="news__list-item type-r align-r">
+          <div class="news-elem">
+            @@include("_tpl_news-elem.html", {
+            "imgSrc": "img/img-news-03.jpg",
+            "title": "Одна строчка в заголовке",
+            "text": "Значимость этих проблем настолько очевидна, что сложившаяся структура организации способствует подготовки и реализации существенных финансовых и административных условий. Таким образом постоянное информационно-пропагандистское обеспечение нашей деятельности требуют от нас анализа."
+            })
+          </div>
+        </div>
+        <div class="news__list-item type-l align-l">
+          <div class="news-elem">
+            @@include("_tpl_news-elem.html", {
+            "imgSrc": "img/img-news-01.jpg",
+            "title": "Одна строчка в заголовке",
+            "text": "Значимость этих проблем настолько очевидна, что сложившаяся структура организации способствует подготовки и реализации существенных финансовых и административных условий. Таким образом постоянное информационно-пропагандистское обеспечение нашей деятельности требуют от нас анализа."
+            })
+          </div>
+        </div>
+        <div class="news__list-item type-v align-r">
+          <div class="news-elem">
+            @@include("_tpl_news-elem.html", {
+            "imgSrc": "img/img-news-02.jpg",
+            "title": "Первая строчка новости<br> Вторая строчка новости",
+            "text": "Значимость этих проблем настолько очевидна, что сложившаяся структура организации способствует подготовки и реализации существенных финансовых и административных условий. Таким образом постоянное информационно-пропагандистское обеспечение нашей деятельности требуют от нас анализа."
+            })
+          </div>
+        </div>
+        <div class="news__list-item type-r align-l">
+          <div class="news-elem">
+            @@include("_tpl_news-elem.html", {
+            "imgSrc": "img/img-news-03.jpg",
+            "title": "Одна строчка в заголовке",
+            "text": "Значимость этих проблем настолько очевидна, что сложившаяся структура организации способствует подготовки и реализации существенных финансовых и административных условий. Таким образом постоянное информационно-пропагандистское обеспечение нашей деятельности требуют от нас анализа."
+            })
+          </div>
+        </div>
+      </div>
+      <div class="news__footer">
+        @@include("_tpl_btn.html", {"value": "Загрузить еще новости"})
+      </div>
+    </div>
+  </section>
+  <!--news end-->
+  
+  <!--app offer-->
+  @@include("_tpl_section_app-offer.html")
+  <!--app offer end-->
+
+  <!--last-news-->
+  @@include("_tpl_section_last-news.html")
+  <!--last-news end-->
+</div>
+<!--MAIN end-->
+
+<!--FOOTER-->
+@@include('_tpl_layout_footer.html')
+<!--FOOTER end-->
+
+@@include('_tpl_layout_foot.html')

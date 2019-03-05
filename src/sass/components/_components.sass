@@ -2,13 +2,6 @@
 @import ../utils/mixins
 @import ../../libs/include-media/dist/include-media
 
-/* page control
-.page-control
-  margin-bottom: 4rem
-  padding-top: 6.5rem
-
-/* page control end
-
 /* === helper classes ==
 .mark
   color: $mark-color
@@ -1109,9 +1102,8 @@ a.shutter-menu-switcher
 
 // hover
 .advantages:hover
-  .advantages__holder
-    &::before
-      opacity: 1
+  .advantages__sign
+    opacity: 1
 
   .advantages__spacer-top
     max-height: 12.1rem
@@ -2192,3 +2184,122 @@ $last-news-item-space: 0 3rem
 .yield__footer
   text-align: right
 /* yield end
+
+/* news preview element
+$news-elem-space-outer: 3rem 6.6rem
+$news-elem-space-inner: 1.8rem 3rem
+$news-elem-img-space-h: 3.6rem
+$news-elem-img-space-v: 3rem
+.news-elem
+  background-color: white
+  +clear
+
+.news-elem__figure
+  width: 33.3rem
+  background-repeat: no-repeat
+  background-position: center
+  background-color: $border-color
+  background-size: cover
+
+  &::before
+    content: ""
+    display: block
+    +ratio(1, 1)
+    
+.news-elem__content
+  overflow: hidden
+
+.news-elem__title
+  position: relative
+  +font-bold
+  font-size: 2.4rem
+  line-height: 2.9rem
+  color: $title-color
+  margin-bottom: 1.5rem
+  padding-bottom: 1.5rem
+
+  &::before
+    content: ""
+    display: block
+    position: absolute
+    left: 0
+    bottom: 0
+    width: 24rem
+    max-width: 80%
+    border-top: 3px solid $border-color
+
+.news-elem__title
+  font-size: 1.8rem
+  line-height: 2.1rem
+  color: $text-color-alt
+
+// type vertical
+.type-v
+  .news-elem
+    padding: 0
+    box-shadow: none
+
+  .news-elem__figure
+    margin-bottom: $news-elem-img-space-v
+    width: 100%
+
+    &:last-child
+      margin-bottom: 0
+
+// type left
+.type-l
+  .news-elem
+    box-shadow: inset 0 0 0 1px $border-color
+
+  .news-elem__figure
+    float: left
+
+  .news-elem__content
+    padding: nth($news-elem-space-inner, 1) nth($news-elem-space-inner, 2) nth($news-elem-space-inner, 1) $news-elem-img-space-h
+
+// type right
+.type-r
+  .news-elem
+    box-shadow: inset 0 0 0 1px $border-color
+
+  .news-elem__figure
+    float: right
+
+  .news-elem__content
+    padding: nth($news-elem-space-inner, 1) $news-elem-img-space-h nth($news-elem-space-inner, 1) nth($news-elem-space-inner, 2)
+
+/* news preview element end
+
+/* news
+.news
+  margin-bottom: 6rem
+
+// news list
+.news__list
+  margin: 0 -#{round-float(nth($news-elem-space-outer, 2) / 2, 1)} 3rem
+  +clear
+
+.news__list-item
+  padding: 0 #{round-float(nth($news-elem-space-outer, 2) / 2, 1)} nth($news-elem-space-outer, 1)
+
+  // align left
+  &.align-l
+    float: left
+    clear: left
+
+  // align right
+  &.align-r
+    float: right
+    clear: right
+
+  &.type-v
+    width: 32.6%
+
+  &.type-l, &.type-r
+    width: 67.4%
+
+// news footer
+.news__footer
+  text-align: right
+
+/* news end

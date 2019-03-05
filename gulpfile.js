@@ -35,7 +35,7 @@ var gulp = require('gulp')
  * @type {{dist: string}}
  */
 var path = {
-  'dist': 'dist'
+  'dist': 'new'
 };
 
 /**
