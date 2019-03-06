@@ -2185,11 +2185,13 @@ $last-news-item-space: 0 3rem
   text-align: right
 /* yield end
 
-/* news preview element
+// news variables
 $news-elem-space-outer: 3rem 6.6rem
 $news-elem-space-inner: 1.8rem 3rem
 $news-elem-img-space-h: 3.6rem
 $news-elem-img-space-v: 3rem
+
+/* news preview element
 .news-elem
   background-color: white
   +clear
@@ -2255,7 +2257,7 @@ $news-elem-img-space-v: 3rem
     float: left
 
   .news-elem__content
-    padding: nth($news-elem-space-inner, 1) nth($news-elem-space-inner, 2) nth($news-elem-space-inner, 1) $news-elem-img-space-h
+    padding: #{nth($news-elem-space-inner, 1)} nth($news-elem-space-inner, 2) nth($news-elem-space-inner, 1) $news-elem-img-space-h
 
 // type right
 .type-r
@@ -2303,3 +2305,32 @@ $news-elem-img-space-v: 3rem
   text-align: right
 
 /* news end
+
+
+/* companies
+$companies-elem-space-outer: 2.2rem 2.2rem
+.companies
+  padding: 8.2rem 0 7.4rem
+  background-color: $bg-color-light
+  border: 5px solid white
+
+// companies content
+.companies__content
+  margin-bottom: 8.2rem
+
+// companies list
+.companies__list
+  display: flex
+  flex-wrap: wrap
+  margin: 0 -#{round-float(nth($companies-elem-space-outer, 2) / 2, 1)} -#{nth($companies-elem-space-outer, 1)}
+  +clear
+
+.companies__list-item
+  flex-basis: 33.33%
+  padding: 0 #{round-float(nth($companies-elem-space-outer, 2) / 2, 1)} nth($companies-elem-space-outer, 1)
+
+// companies footer
+.companies__footer
+  text-align: right
+
+/* companies end

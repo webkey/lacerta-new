@@ -6151,6 +6151,42 @@ a.shutter-menu-switcher.shutter-menu_is-open > i::after {
 }
 
 /* news end */
+/* companies */
+.companies {
+  padding: 8.2rem 0 7.4rem;
+  background-color: #eef2ff;
+  border: 5px solid white;
+}
+
+.companies__content {
+  margin-bottom: 8.2rem;
+}
+
+.companies__list {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0 -1.1rem -2.2rem;
+}
+
+.companies__list::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.companies__list-item {
+  -ms-flex-preferred-size: 33.33%;
+      flex-basis: 33.33%;
+  padding: 0 1.1rem 2.2rem;
+}
+
+.companies__footer {
+  text-align: right;
+}
+
+/* companies end */
 /*======================================================*/
 /* PRINT VERSION */
 /*======================================================*/
