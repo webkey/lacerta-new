@@ -6,15 +6,10 @@
 
 <!--MAIN-->
 <div class="main">
-  <div class="page-control layout-section layout-spaces">
-    @@include("_tpl_btn.html", {"value": "Вернуться на главную"})
-  </div>
-  <div class="heading layout-spaces">
-    <div class="layout-section">
-      <h1>Все компании</h1>
-      <div class="entry-text">Белорусские и европейские компании для ваших инвестиций. Воспользуйтесь фильтром для подбора подходящей компании.</div>
-    </div>
-  </div>
+  @@include("_tpl_caption-of-page.html", {
+  "heading": "Все компании",
+  "entry": "Белорусские и европейские компании для ваших инвестиций. Воспользуйтесь фильтром для подбора подходящей компании."
+  })
 
   <!--companies-->
   <section class="companies layout-spaces">

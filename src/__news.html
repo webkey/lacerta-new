@@ -6,15 +6,10 @@
 
 <!--MAIN-->
 <div class="main">
-  <div class="page-control layout-section layout-spaces">
-    @@include("_tpl_btn.html", {"value": "Вернуться на главную", "href": "index.html"})
-  </div>
-  <div class="heading layout-spaces">
-    <div class="layout-section">
-      <h1>Новости приложения</h1>
-      <div class="entry-text">Все новости о нашем приложении Lacerta Online</div>
-    </div>
-  </div>
+  @@include("_tpl_caption-of-page.html", {
+  "heading": "Новости приложения",
+  "entry": "Все новости о нашем приложении Lacerta Online"
+  })
 
   <!--news-->
   <section class="news layout-spaces">

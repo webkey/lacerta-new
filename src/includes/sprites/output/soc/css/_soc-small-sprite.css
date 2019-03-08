@@ -1,0 +1,155 @@
+.soc-icon {
+    font-size: 20px;
+}
+
+.soc-icon:before {
+    content:' ';
+    vertical-align:middle;
+    display: inline-block;
+    background-image: url("../soc-small-sprite.svg");
+    background-repeat: no-repeat;
+    background-size: 18em 18em;
+}
+
+.no-svg .soc-icon:before {
+    background-image: url("../soc-small-sprite.png");
+}
+
+
+
+  .soc-icon.behance:before {
+      background-position: 0em 0em;
+      width: 1.2em;
+      height: 1.2em;
+  }
+
+
+
+
+  .soc-icon.facebook:before {
+      background-position: -1.2em -1.2em;
+      width: 1.2em;
+      height: 1.2em;
+  }
+
+
+
+
+  .soc-icon.gmail:before {
+      background-position: -2.4em -2.4em;
+      width: 1.2em;
+      height: 1.2em;
+  }
+
+
+
+
+  .soc-icon.google-plus:before {
+      background-position: -3.6em -3.6em;
+      width: 1.2em;
+      height: 1.2em;
+  }
+
+
+
+
+  .soc-icon.instagram:before {
+      background-position: -4.8em -4.8em;
+      width: 1.2em;
+      height: 1.2em;
+  }
+
+
+
+
+  .soc-icon.linkedin:before {
+      background-position: -6em -6em;
+      width: 1.2em;
+      height: 1.2em;
+  }
+
+
+
+
+  .soc-icon.pinterest:before {
+      background-position: -7.2em -7.2em;
+      width: 1.2em;
+      height: 1.2em;
+  }
+
+
+
+
+  .soc-icon.rss:before {
+      background-position: -8.4em -8.4em;
+      width: 1.2em;
+      height: 1.2em;
+  }
+
+
+
+
+  .soc-icon.skype:before {
+      background-position: -9.6em -9.6em;
+      width: 1.2em;
+      height: 1.2em;
+  }
+
+
+
+
+  .soc-icon.tumblr:before {
+      background-position: -10.8em -10.8em;
+      width: 1.2em;
+      height: 1.2em;
+  }
+
+
+
+
+  .soc-icon.twitter:before {
+      background-position: -12em -12em;
+      width: 1.2em;
+      height: 1.2em;
+  }
+
+
+
+
+  .soc-icon.vimeo:before {
+      background-position: -13.2em -13.2em;
+      width: 1.2em;
+      height: 1.2em;
+  }
+
+
+
+
+  .soc-icon.vk:before {
+      background-position: -14.4em -14.4em;
+      width: 1.2em;
+      height: 1.2em;
+  }
+
+
+
+
+  .soc-icon.whatsapp:before {
+      background-position: -15.6em -15.6em;
+      width: 1.2em;
+      height: 1.2em;
+  }
+
+
+
+
+  .soc-icon.youtube:before {
+      background-position: -16.8em -16.8em;
+      width: 1.2em;
+      height: 1.2em;
+  }
+
+
+
+
+

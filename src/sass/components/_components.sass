@@ -86,6 +86,17 @@
 
 /* btn-app end
 
+/* social share
+.soc-share
+  position: sticky
+  top: 10px
+  z-index: 5
+
+  margin-top: calc(-13.5rem - 2.9rem)
+  padding-bottom: 13.5rem
+
+/* social share end
+
 /* === HEADER ===
 .header
   position: fixed
@@ -670,6 +681,13 @@ a.shutter-menu-switcher
 .callback-form__footer
   text-align: right
 
+  [class*="btn-"]
+    box-shadow: 0 10px 10px rgba(81, 0, 33, 0.25)
+
+    &:hover
+      box-shadow: 0 5px 5px rgba($btn-bg-hover-color, 0.25)
+
+
 // --> send message <--
 .callback-form__msg
   display: flex
@@ -905,7 +923,7 @@ a.shutter-menu-switcher
   padding: 12rem 2rem 12rem 36rem
   cursor: default
 
-  &::before
+  //&::before
     content: ""
     display: block
     position: absolute
@@ -955,7 +973,7 @@ a.shutter-menu-switcher
     margin-bottom: 0
 
 // hover
-.limitations__item:hover
+//.limitations__item:hover
   &::before
     opacity: 1
 
@@ -965,12 +983,16 @@ a.shutter-menu-switcher
   clear: both
 
 .limitations__item-figure_deposit
-  background-image: url(../../img/limitation-figure-01.png)
+  //background-image: url(../../img/limitation-figure-01.png)
+  //height: 259px
   width: 290px
-  height: 259px
+
+  img
+    display: block
+    max-width: 100%
 
 // hover
-.limitations__item_deposit:hover
+//.limitations__item_deposit:hover
   .limitations__item-figure_deposit
     background-position: 0 -279px
 
@@ -980,12 +1002,16 @@ a.shutter-menu-switcher
   clear: left
 
 .limitations__item-figure_lend
-  background-image: url(../../img/limitation-figure-02.png)
+  //background-image: url(../../img/limitation-figure-02.png)
+  //height: 328px
   width: 301px
-  height: 328px
+
+  img
+    display: block
+    max-width: 100%
 
 // hover
-.limitations__item_lend:hover
+//.limitations__item_lend:hover
   .limitations__item-figure_lend
     background-position: 0 -348px
 
@@ -996,16 +1022,20 @@ a.shutter-menu-switcher
   margin-top: -15rem
 
 .limitations__item-figure_property
-  background-image: url(../../img/limitation-figure-03.png)
+  //background-image: url(../../img/limitation-figure-03.png)
+  //height: 316px
   width: 229px
-  height: 316px
+
+  img
+    display: block
+    max-width: 100%
 
 // hover
-.limitations__item_property:hover
+//.limitations__item_property:hover
   .limitations__item-figure_property
     background-position: 0 -336px
 
-/* limitations enc
+/* limitations end
 
 /* advantages
 .advantages
@@ -1020,7 +1050,7 @@ a.shutter-menu-switcher
   position: relative
   padding: 10rem 0 13rem 71.2rem
 
-.advantages__sign
+//.advantages__sign
   display: block
   position: absolute
   width: 16.1rem
@@ -1042,12 +1072,12 @@ a.shutter-menu-switcher
   @media #{$retina}
     background-image: url(../../img/advantage-sign-2x.png)
 
-.advantages__spacer-top
+//.advantages__spacer-top
   height: 20rem
   max-height: 0
   transition: max-height $animation-speed
 
-.advantages__spacer-bottom
+//.advantages__spacer-bottom
   height: 20rem
   max-height: 2rem
   transition: max-height $animation-speed
@@ -1056,12 +1086,16 @@ a.shutter-menu-switcher
   position: absolute
   left: 0
   top: 0
-  background-image: url(../../img/advantage-figure.png)
-  background-position: 0 0
-  background-repeat: no-repeat
-  background-size: 100%
+  //background-image: url(../../img/advantage-figure.png)
+  //background-position: 0 0
+  //background-repeat: no-repeat
+  //background-size: 100%
+  //height: 562px
   width: 565px
-  height: 562px
+
+  img
+    display: block
+    max-width: 100%
 
 .advantages__title
   +font-black
@@ -1091,17 +1125,17 @@ a.shutter-menu-switcher
   height: 0
   padding-top: 5rem
   text-align: right
-  opacity: 0
+  //opacity: 0
   // transition
-  $prop: opacity
-  will-change: $prop
-  transition:
+  //$prop: opacity
+  //will-change: $prop
+  //transition:
     property: $prop
     duration: $animation-speed
     timing-function: ease-in-out
 
 // hover
-.advantages:hover
+//.advantages:hover
   .advantages__sign
     opacity: 1
 
@@ -1708,13 +1742,73 @@ $or__author-photo-space: 1.9rem
   vertical-align: top
   width: 2rem
   height: 2rem
-  margin-right: 1rem
-  text-indent: -9999px
-  overflow: hidden
+  margin: 0 0.2rem 0 0
+  font-size: 2rem
+  border-radius: 50%
+  background-size: 100%
+  background-repeat: no-repeat
+  background-position: 0 0
 
-  &.facebook
-    background: url(../../img/icon-facebook-2x.png) no-repeat
-    background-size: 100%
+  &::before
+    content: ''
+    vertical-align: top
+    display: inline-block
+    width: 1em
+    height: 1em
+    background-image: url("../../img/soc-small-sprite.svg")
+    background-repeat: no-repeat
+    background-size: 15em 15em
+
+  &.behance:before
+    background-position: 0 0
+  
+  &.facebook:before
+    background-position: -1em -1em
+  
+  &.gmail:before
+    background-position: -2em -2em
+  
+  &.google-plus:before
+    background-position: -3em -3em
+  
+  &.instagram:before
+    background-position: -4em -4em
+  
+  &.linkedin:before
+    background-position: -5em -5em
+  
+  &.pinterest:before
+    background-position: -6em -6em
+  
+  &.rss:before
+    background-position: -7em -7em
+  
+  &.skype:before
+    background-position: -8em -8em
+  
+  &.tumblr:before
+    background-position: -9em -9em
+  
+  &.twitter:before
+    background-position: -10em -10em
+  
+  &.vimeo:before
+    background-position: -11em -11em
+  
+  &.vk:before
+    background-position: -12em -12em
+  
+  &.whatsapp:before
+    background-position: -13em -13em
+  
+  &.youtube:before
+    background-position: -14em -14em
+
+  & > span
+    +hide-text
+
+  &:hover
+    box-shadow: 0 0 0 2px rgba(white, 0.25)
 
 .opinion-review__author-about
   position: relative
@@ -1872,38 +1966,12 @@ $app-offer-app-space: 3.6rem
 
 /* app offer end
 
-/* last-news
-.last-news
-  background-color: #f2f5ff
-
-.last-news__holder
-  padding-top: 13rem
-  padding-bottom: 13rem
-
-.last-news__title
-  font-size: 5.5rem
-  line-height: 1
-  color: #000
-  margin-bottom: 5rem
-
-$last-news-item-space: 0 3rem
-.last-news-list
-  display: flex
-  flex-wrap: wrap
-  margin: 0 -#{round-float(nth($last-news-item-space, 2) / 2, 1)} 6rem
-
-  &:last-child
-    margin-bottom: 0
-
-.last-news-item
+/* last news element
+.last-news-elem
   position: relative
   display: flex
   flex-direction: column
   justify-content: flex-end
-  $width: calc(33.33% - #{nth($last-news-item-space, 2)})
-  flex-basis: $width
-  min-height: 44.5rem
-  margin: 0 #{round-float(nth($last-news-item-space, 2) / 2, 1)}
   padding: 3rem
   text-decoration: none
   color: white
@@ -1922,7 +1990,7 @@ $last-news-item-space: 0 3rem
     height: 100%
     +linear-gradient(to top, rgba(black, 0.7) 0, rgba(black, 0) 100%)
 
-.last-news-item__title
+.last-news-elem__title
   position: relative
   width: 100%
   border-bottom: 2px solid rgba(white, 0.5)
@@ -1931,12 +1999,49 @@ $last-news-item-space: 0 3rem
   font-size: 2.4rem
   line-height: 2.8rem
   color: inherit
+  transition: color $animation-speed
 
-.last-news-item__text
+.last-news-elem__text
   position: relative
   width: 100%
   font-size: 1.8rem
   line-height: 2.4rem
+
+/* last news element end
+
+/* last-news
+.last-news
+  background-color: $bg-color
+
+.last-news__holder
+  padding-top: 13rem
+  padding-bottom: 13rem
+
+.last-news__title
+  font-size: 5.5rem
+  line-height: 1
+  color: #000
+  margin-bottom: 5rem
+
+$last-news-item-space: 0 3rem
+.last-news__list
+  display: flex
+  flex-wrap: wrap
+  margin: 0 -#{round-float(nth($last-news-item-space, 2) / 2, 1)} 6rem
+
+  &:last-child
+    margin-bottom: 0
+
+.last-news__list-item
+  $width: calc(33.33% - #{nth($last-news-item-space, 2)})
+  margin: 0 #{round-float(nth($last-news-item-space, 2) / 2, 1)}
+  flex-basis: $width
+  min-height: 44.5rem
+  
+// hover
+.last-news-elem:hover
+  .last-news-elem__title
+    color: $highlight-color--hover
 
 .last-news__footer
   position: relative

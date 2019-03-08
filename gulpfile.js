@@ -28,6 +28,7 @@ var gulp = require('gulp')
     , revts = require('gulp-rev-timestamp')
     , beautify = require('gulp-beautify')
     , index = require('gulp-index') // Для создания списка страниц https://www.npmjs.com/package/gulp-index
+    , svgSprite = require("gulp-svg-sprites")
 ;
 
 /**
@@ -37,6 +38,36 @@ var gulp = require('gulp')
 var path = {
   'dist': 'new'
 };
+
+/**
+ * @description Создание svg-спрайтов
+ */
+// create svg sprites
+let svgSocOutputPath = 'src/includes/sprites/output/soc';
+
+gulp.task('cleanSocSprites', function () {
+  return del.sync([svgSocOutputPath]);
+});
+
+gulp.task('tempSocSprites', ['cleanSocSprites'], function () {
+  return gulp.src('src/includes/sprites/source/soc/*.svg')
+      .pipe(svgSprite({
+        layout: 'diagonal',
+        padding: 0,
+        baseSize: 20,
+        common: 'soc-icon',
+        svg: {
+          sprite: "soc-small-sprite.svg",
+        },
+        cssFile: "css/_soc-small-sprite.css"
+      }))
+      .pipe(gulp.dest(svgSocOutputPath));
+});
+
+gulp.task('createSocSprite', ['tempSocSprites'], function () {
+  return gulp.src([svgSocOutputPath + '/soc-sprite.svg'])
+      .pipe(gulp.dest('src/img'));
+});
 
 /**
  * @description Таск формирует ДОМ страниц

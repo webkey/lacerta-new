@@ -74,18 +74,18 @@
 
 /* btn-def end
 
-/* btn-def-alt
-.btn-def-alt
+/* btn-alt
+.btn-alt
   position: relative
   padding: 1.7rem 3rem 1.6rem
   margin: 0
   +font-normal
-  color: $btn-text-color
-  background: $btn-bg-color
-  +linear-gradient(to bottom, $btn-bg-color 0, $btn-bg-color 50%, $btn-bg-hover-color 50%, $btn-bg-hover-color 100%)
+  color: $btn-alt-text-color
+  background: $btn-alt-bg-color
+  +linear-gradient(to bottom, $btn-alt-bg-color 0, $btn-alt-bg-color 50%, $btn-bg-hover-color 50%, $btn-bg-hover-color 100%)
   background-size: 100% 200%
   border: none
-  box-shadow: 0 10px 10px rgba(81, 0, 33, 0.25)
+  box-shadow: 0 10px 10px 0 rgba(64, 69, 93, 0.25)
   user-select: none
   -webkit-tap-highlight-color: transparent
   // transition
@@ -105,16 +105,18 @@
   &, & > span
     +font(1.8rem, 2.2rem)
     letter-spacing: 0.05em
+    text-transform: uppercase
 
   // hover
   &:hover
     //background-color: $btn-bg-hover-color
     background-position: 0 100%
-    //box-shadow: 0 10px 10px rgba($btn-bg-hover-color, 0.25)
+    box-shadow: 0 10px 10px rgba($btn-bg-hover-color, 0.25)
 
   // active
   &:active
     top: 2px
+    transition: box-shadow 0s
     box-shadow: 0 5px 5px rgba($btn-bg-hover-color, 0.25)
 
   // disabled
@@ -127,7 +129,7 @@
     &::before, &::after
       display: none
 
-/* btn-def-alt end
+/* btn-alt end
 
 /* btn-with-icon
 .btn-with-icon
