@@ -468,19 +468,39 @@ function slidersInit() {
     $yieldGroup.each(function () {
       var $curSlider = $(this),
           $cards = $curSlider.find('.yield-cards-slider-js'),
-          $cardsPagination = $curSlider.find('.swiper-pagination'),
           $thumbs = $curSlider.find('.yield-thumbs-slider-js'),
-          cardsSlider;
+          $cardsPagination = $curSlider.find('.swiper-pagination'),
+          cardsSlider, thumbsSlider;
+
+      // thumbsSlider = new Swiper ($thumbs, {
+      //   loop: true,
+      //   centeredSlides: true,
+      //   direction: 'vertical',
+      //   slidesPerView: 'auto',
+      //   spaceBetween: 22,
+      //   on: {
+      //     click: function (e, el) {
+      //       console.log("e: ", e);
+      //       // console.log("el: ", el);
+      //       // console.log("this.clickedIndex: ", this.clickedIndex);
+      //       // console.log("$(this).index(): ", $(this));
+      //       // console.log("this: ", this);
+      //       // this.slideTo(this.clickedIndex);
+      //       // this.slideToLoop(this.clickedIndex);
+      //     }
+      //   }
+      // });
 
       cardsSlider = new Swiper ($cards, {
         init: false,
         effect: 'fade',
-        // disabled swiping
-        followFinger: false,
-        simulateTouch: false,
         fadeEffect: {
           crossFade: true
         },
+        loop: true,
+        // disabled swiping
+        followFinger: false,
+        simulateTouch: false,
         spaceBetween: 20,
         preloadImages: false,
         pagination: {
@@ -488,23 +508,22 @@ function slidersInit() {
           type: 'bullets',
           clickable: true
         },
+        // thumbs: {
+        //   swiper: thumbsSlider
+        // }
         thumbs: {
           swiper: {
             el: $thumbs,
+            loop: true,
+            centeredSlides: true,
             direction: 'vertical',
             slidesPerView: 'auto',
             spaceBetween: 22,
-            // freeMode: true,
-            slideToClickedSlide: true,
-            watchSlidesVisibility: true,
-            watchSlidesProgress: true,
-            followFinger: false,
-            // disabled swiping
-            // simulateTouch: false,
-            // navigation: {
-            //   nextEl: $next,
-            //   prevEl: $prev,
-            // }
+            on: {
+              click: function (e, el) {
+                this.slideTo(this.clickedIndex);
+              }
+            }
           },
         }
       });

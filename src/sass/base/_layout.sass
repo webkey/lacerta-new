@@ -24,10 +24,8 @@ body
   background-repeat: no-repeat
 
   &.home-page
+    background-color: white
     background-image: url(../../img/bg-index-section-01.jpg)
-
-  &.has-alt-bg
-    background-image: url(../../img/bg-page.jpg)
 
   // выделение текста
   *::selection
@@ -41,6 +39,9 @@ body
   background-image: url(../../img/bg-index-section-02.jpg)
   background-position: center bottom
   background-repeat: no-repeat
+
+  section
+    background-image: none
 
 .layout-spaces
   @if nth($page-layout-space, 2) != 0
