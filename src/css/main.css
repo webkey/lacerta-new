@@ -2589,8 +2589,8 @@ label.error {
   position: absolute;
   right: 0;
   top: 0;
-  width: 100%;
-  height: 56px;
+  width: 56px;
+  height: 100%;
   background: none;
   z-index: 2;
   pointer-events: none;
@@ -4893,7 +4893,8 @@ a.shutter-menu-switcher.shutter-menu_is-open > i::after {
   cursor: pointer;
   background-color: white;
   border-radius: 0.8rem;
-  box-shadow: 0 1rem 2.5rem rgba(124, 144, 212, 0.25);
+  box-shadow: 0 1rem 4.6rem rgba(124, 144, 212, 0.25);
+  transition: box-shadow 0.2s;
 }
 
 .bond__figure {
@@ -5012,8 +5013,8 @@ a.shutter-menu-switcher.shutter-menu_is-open > i::after {
 }
 
 .selection__bonds {
-  padding: 0 1.1rem 4.8rem;
-  margin: 0 -1.1rem 6rem;
+  padding: 0 2.2rem 4.8rem;
+  margin: 0 -2.2rem 6rem;
 }
 
 .selection__bonds:last-child {
@@ -5024,6 +5025,10 @@ a.shutter-menu-switcher.shutter-menu_is-open > i::after {
   opacity: 0;
   pointer-events: none;
   overflow: hidden;
+}
+
+.selection__bonds .bond:not(.swiper-slide-visible) {
+  box-shadow: none;
 }
 
 .selection__bonds-pagination, .swiper-container-horizontal > .selection__bonds-pagination {
@@ -5511,6 +5516,8 @@ a.shutter-menu-switcher.shutter-menu_is-open > i::after {
 
 .app-offer__title {
   width: 50%;
+  font-family: "proximanova-bold", Helvetica, Arial, sans-serif;
+  font-weight: normal;
   font-size: 5.5rem;
   line-height: 1;
   color: white;
@@ -5867,15 +5874,14 @@ a.shutter-menu-switcher.shutter-menu_is-open > i::after {
 /* custom range slider end */
 /* bond calc */
 .bond-calc {
+  position: relative;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
       flex-direction: column;
   -ms-flex-pack: justify;
       justify-content: space-between;
-  position: relative;
   overflow: hidden;
-  height: 50rem;
   padding: 5rem 6rem;
   background-color: white;
   border-radius: 0.8rem;
@@ -5939,7 +5945,54 @@ a.shutter-menu-switcher.shutter-menu_is-open > i::after {
   margin-bottom: 2.9rem;
 }
 
+.bond-calc__link {
+  text-align: right;
+  position: absolute;
+  right: 6rem;
+  bottom: 5rem;
+  z-index: 5;
+}
+
 /* bond calc end */
+/* company info */
+.company-info {
+  padding: 5rem 6rem;
+  font-size: 1.8rem;
+  line-height: 2.2rem;
+  color: #40455d;
+}
+
+.company-info p {
+  margin-bottom: 2.2rem;
+}
+
+.company-info p:last-child {
+  margin-bottom: 0;
+}
+
+.company-info__figure {
+  margin-bottom: 5rem;
+}
+
+.company-info__figure:last-child {
+  margin-bottom: 0;
+}
+
+.company-info__title {
+  font-family: "proximanova-bold", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-size: 2.2rem;
+  line-height: 3.0rem;
+  color: #000;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+}
+
+.company-info__title:last-child {
+  margin-bottom: 0;
+}
+
+/* company info end */
 /* yield */
 .yield {
   padding-top: 7rem;
@@ -5951,6 +6004,8 @@ a.shutter-menu-switcher.shutter-menu_is-open > i::after {
 }
 
 .yield__title {
+  font-family: "proximanova-bold", Helvetica, Arial, sans-serif;
+  font-weight: normal;
   font-size: 5.5rem;
   line-height: 1;
   color: #000;
@@ -5965,11 +6020,6 @@ a.shutter-menu-switcher.shutter-menu_is-open > i::after {
   display: -ms-flexbox;
   display: flex;
   height: 71.4rem;
-  margin-bottom: 6rem;
-}
-
-.yield-box:last-child {
-  margin-bottom: 0;
 }
 
 .js .yield-box:not(.is-loaded) {
@@ -6066,14 +6116,6 @@ a.shutter-menu-switcher.shutter-menu_is-open > i::after {
 
 .yield-cards__item {
   height: 100%;
-}
-
-.yield__footer {
-  text-align: right;
-  position: absolute;
-  right: 6rem;
-  bottom: 8.9rem;
-  z-index: 5;
 }
 
 /* yield end */
@@ -6217,10 +6259,19 @@ a.shutter-menu-switcher.shutter-menu_is-open > i::after {
 
 /* news end */
 /* companies */
+.section_companies {
+  position: relative;
+}
+
+.companies-filters {
+  background-color: white;
+  padding-bottom: 8.2rem;
+}
+
 .companies {
   padding: 8.2rem 0 7.4rem;
-  background-color: #eef2ff;
-  border: 5px solid white;
+  background-color: #eaefff;
+  border-top: 1px solid #622ee9;
 }
 
 .companies__content {
@@ -6252,6 +6303,126 @@ a.shutter-menu-switcher.shutter-menu_is-open > i::after {
 }
 
 /* companies end */
+/* company */
+.company {
+  padding-bottom: 7rem;
+}
+
+.company-box {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: white;
+  box-shadow: 0 1rem 4.6rem rgba(124, 144, 212, 0.25);
+}
+
+.company-box::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 44.7rem;
+  border-right: 1px solid #cfd2df;
+  pointer-events: none;
+}
+
+.company-box__aside {
+  -ms-flex-preferred-size: 44.7rem;
+      flex-basis: 44.7rem;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  padding-right: 6.1rem;
+}
+
+.company-box__main {
+  -ms-flex-positive: 1;
+      flex-grow: 1;
+  -ms-flex-preferred-size: calc(100% - 44.7rem);
+      flex-basis: calc(100% - 44.7rem);
+  max-width: calc(100% - 44.7rem);
+  min-height: 64.5rem;
+}
+
+/* company end */
+/* download */
+.section_download {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.download-layout {
+  max-width: 67rem;
+  margin: 0 auto;
+}
+
+.download__title {
+  font-family: "proximanova-bold", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-size: 5.5rem;
+  line-height: 1;
+  color: #000;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.download__title:last-child {
+  margin-bottom: 0;
+}
+
+.download__text {
+  font-size: 1.8rem;
+  line-height: 2.2rem;
+  margin-bottom: 4.5rem;
+  text-align: center;
+}
+
+.download__text:last-child {
+  margin-bottom: 0;
+}
+
+.download__text p {
+  margin-bottom: 2.2rem;
+}
+
+.download__text p:last-child {
+  margin-bottom: 0;
+}
+
+.download__text-entry {
+  color: #40455d;
+}
+
+.download__text-highlight {
+  color: #28e4cc;
+}
+
+.download__app {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: start;
+      align-items: flex-start;
+  margin: 0 -2rem 4rem;
+  text-align: center;
+}
+
+.download__app:last-child {
+  margin-bottom: 0;
+}
+
+.download__app-item {
+  margin: 0 2rem 2rem;
+}
+
+.download__note {
+  font-size: 1.9rem;
+  line-height: 2.4rem;
+  color: rgba(30, 32, 43, 0.8);
+}
+
+/* download end */
 /*======================================================*/
 /* PRINT VERSION */
 /*======================================================*/

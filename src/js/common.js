@@ -27,12 +27,25 @@ function placeholderInit() {
 }
 
 /**
- * !Show print page by click on the button
- * */
-function printShow() {
-  $('.view-print').on('click', function (e) {
-    e.preventDefault();
-    window.print();
+ * !Detect scroll page
+ */
+function detectScroll() {
+  // external js:
+  // 1) resizeByWidth (resize only width);
+
+  var $page = $('html'),
+      // $fixedElement = $('.main-nav'),
+      // var minScrollTop = $fixedElement.offset().top,
+      minScrollTop = 10,
+      currentScrollTop = $(window).scrollTop();
+
+  $page.toggleClass('page-scrolled', (currentScrollTop > minScrollTop));
+
+  $(window).on('load resizeByWidth scroll', function () {
+
+    // minScrollTop = $fixedElement.offset().top;
+    currentScrollTop = $(window).scrollTop();
+    $page.toggleClass('page-scrolled', (currentScrollTop > minScrollTop));
   })
 }
 
@@ -123,7 +136,8 @@ function customSelect(select) {
       language: "ru",
       width: '100%',
       containerCssClass: 'cselect-head',
-      dropdownCssClass: 'cselect-drop'
+      dropdownCssClass: 'cselect-drop',
+      minimumResultsForSearch: Infinity
       // , placeholder: placeholder
     });
   })
@@ -405,6 +419,8 @@ function slidersInit() {
         spaceBetween: 22,
         slidesPerView: 3,
 
+        watchSlidesVisibility: true,
+
         // Parallax
         // parallax: true,
 
@@ -470,26 +486,7 @@ function slidersInit() {
           $cards = $curSlider.find('.yield-cards-slider-js'),
           $thumbs = $curSlider.find('.yield-thumbs-slider-js'),
           $cardsPagination = $curSlider.find('.swiper-pagination'),
-          cardsSlider, thumbsSlider;
-
-      // thumbsSlider = new Swiper ($thumbs, {
-      //   loop: true,
-      //   centeredSlides: true,
-      //   direction: 'vertical',
-      //   slidesPerView: 'auto',
-      //   spaceBetween: 22,
-      //   on: {
-      //     click: function (e, el) {
-      //       console.log("e: ", e);
-      //       // console.log("el: ", el);
-      //       // console.log("this.clickedIndex: ", this.clickedIndex);
-      //       // console.log("$(this).index(): ", $(this));
-      //       // console.log("this: ", this);
-      //       // this.slideTo(this.clickedIndex);
-      //       // this.slideToLoop(this.clickedIndex);
-      //     }
-      //   }
-      // });
+          cardsSlider;
 
       cardsSlider = new Swiper ($cards, {
         init: false,
@@ -508,9 +505,6 @@ function slidersInit() {
           type: 'bullets',
           clickable: true
         },
-        // thumbs: {
-        //   swiper: thumbsSlider
-        // }
         thumbs: {
           swiper: {
             el: $thumbs,
@@ -521,7 +515,16 @@ function slidersInit() {
             spaceBetween: 22,
             on: {
               click: function (e, el) {
-                this.slideTo(this.clickedIndex);
+
+                var activeIndex = this.activeIndex,
+                    clickedIndex = this.clickedIndex;
+
+                if (clickedIndex > activeIndex) {
+                  this.slideNext();
+                }
+                if (clickedIndex < activeIndex) {
+                  this.slidePrev();
+                }
               }
             }
           },
@@ -621,7 +624,7 @@ function focused() {
 
 $(document).ready(function () {
   placeholderInit();
-  printShow();
+  detectScroll();
   inputFocusClass();
   inputHasValueClass();
   customSelect($('select.cselect'));

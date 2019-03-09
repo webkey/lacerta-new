@@ -1330,7 +1330,8 @@ $bond-space: 3.2rem 3rem 2.8rem
   background-color: white
   border-radius: 0.8rem
   //box-shadow: 0 1rem 4.6rem rgba(#7c90d4, 0.25)
-  box-shadow: 0 1rem 2.5rem rgba($box-shadow-color, 0.25)
+  box-shadow: 0 1rem 4.6rem rgba($box-shadow-color, 0.25)
+  transition: box-shadow $animation-speed
 
 .bond__figure
   display: flex
@@ -1436,8 +1437,8 @@ $bond-space: 3.2rem 3rem 2.8rem
     margin-bottom: 0
 
 .selection__bonds
-  padding: 0 1.1rem 4.8rem
-  margin: 0 -1.1rem 6rem
+  padding: 0 2.2rem 4.8rem
+  margin: 0 -2.2rem 6rem
 
   &:last-child
     margin-bottom: 0
@@ -1446,6 +1447,9 @@ $bond-space: 3.2rem 3rem 2.8rem
     opacity: 0
     pointer-events: none
     overflow: hidden
+
+  .bond:not(.swiper-slide-visible)
+    box-shadow: none
 
 .selection__bonds-pagination
   &, .swiper-container-horizontal > &
@@ -1840,6 +1844,7 @@ $or__content-line-length: 6
 
 .app-offer__title
   width: 50%
+  +font-bold
   font-size: 5.5rem
   line-height: 1
   color: white
@@ -2130,16 +2135,14 @@ $last-news-item-space: 0 3rem
 /* bond calc
 $bond-calc-space: 5rem 6rem
 .bond-calc
+  position: relative
   display: flex
   flex-direction: column
   justify-content: space-between
-  position: relative
   overflow: hidden
-  height: 50rem
   padding: $bond-calc-space
   background-color: white
   border-radius: 0.8rem
-  //box-shadow: 0 1rem 2.5rem rgba($box-shadow-color, 0.25)
 
 .bond-calc__caption
   display: flex
@@ -2181,7 +2184,46 @@ $bond-calc-space: 5rem 6rem
 .bond-calc__total
   margin-bottom: 2.9rem
 
+.bond-calc__link
+  text-align: right
+  position: absolute
+  right: nth($bond-calc-space, 2)
+  bottom: nth($bond-calc-space, 1)
+  z-index: 5
+
 /* bond calc end
+
+/* company info
+.company-info
+  padding: $bond-calc-space
+  font-size: 1.8rem
+  line-height: 2.2rem
+  color: $text-color-alt
+
+  p
+    margin-bottom: 2.2rem
+
+    &:last-child
+      margin-bottom: 0
+
+.company-info__figure
+  margin-bottom: 5rem
+
+  &:last-child
+    margin-bottom: 0
+
+.company-info__title
+  +font-bold
+  font-size: 2.2rem
+  line-height: 3.0rem
+  color: $title-color
+  text-transform: uppercase
+  margin-bottom: 2.5rem
+
+  &:last-child
+    margin-bottom: 0
+
+/* company info end
 
 /* yield
 .yield
@@ -2192,6 +2234,7 @@ $bond-calc-space: 5rem 6rem
   position: relative
 
 .yield__title
+  +font-bold
   font-size: 5.5rem
   line-height: 1
   color: #000
@@ -2205,10 +2248,6 @@ $yield-box-spaces: 3.9rem 0
 .yield-box
   display: flex
   height: $yield-box-height
-  margin-bottom: 6rem
-
-  &:last-child
-    margin-bottom: 0
 
   .js &:not(.is-loaded)
     opacity: 0
@@ -2284,8 +2323,6 @@ $yield-thumbs-elem-height: 22.3rem
   height: 100%
   padding: nth($yield-box-spaces, 1) 0
 
-//height: 71.3rem
-
 .yield-cards
   height: 100%
   position: relative
@@ -2299,13 +2336,6 @@ $yield-thumbs-elem-height: 22.3rem
 
 .yield-cards__item
   height: 100%
-
-.yield__footer
-  text-align: right
-  position: absolute
-  right: nth($bond-calc-space, 2)
-  bottom: nth($bond-calc-space, 1) + nth($yield-box-spaces, 1)
-  z-index: 5
 
 /* yield end
 
@@ -2430,13 +2460,19 @@ $news-elem-img-space-v: 3rem
 
 /* news end
 
-
 /* companies
 $companies-elem-space-outer: 2.2rem 2.2rem
+.section_companies
+  position: relative
+
+.companies-filters
+  background-color: white
+  padding-bottom: 8.2rem
+
 .companies
   padding: 8.2rem 0 7.4rem
-  background-color: $bg-color-light
-  border: 5px solid white
+  background-color: $bg-color
+  border-top: 1px solid $base-color
 
 // companies content
 .companies__content
@@ -2458,3 +2494,101 @@ $companies-elem-space-outer: 2.2rem 2.2rem
   text-align: right
 
 /* companies end
+
+/* company
+.company
+  padding-bottom: 7rem
+
+$company-box-aside-width: 44.7rem
+.company-box
+  position: relative
+  display: flex
+  background-color: white
+  box-shadow: 0 1rem 4.6rem rgba($box-shadow-color, 0.25)
+
+  &::after
+    content: ""
+    display: block
+    position: absolute
+    top: 0
+    bottom: 0
+    left: $company-box-aside-width
+    border-right: 1px solid #cfd2df
+    pointer-events: none
+
+.company-box__aside
+  flex-basis: $company-box-aside-width
+  flex-shrink: 0
+  padding-right: 6.1rem
+
+.company-box__main
+  flex-grow: 1
+  $width: calc(100% - #{$company-box-aside-width})
+  flex-basis: $width
+  max-width: $width
+  min-height: 64.5rem
+
+/* company end
+
+/* download
+.section_download
+  padding-top: 7rem
+  padding-bottom: 7rem
+
+$download-layout: 67rem
+.download-layout
+  max-width: $download-layout
+  margin: 0 auto
+
+.download__title
+  +font-bold
+  font-size: 5.5rem
+  line-height: 1
+  color: #000
+  text-align: center
+  margin-bottom: 3rem
+
+  &:last-child
+    margin-bottom: 0
+
+.download__text
+  font-size: 1.8rem
+  line-height: 2.2rem
+  margin-bottom: 4.5rem
+  text-align: center
+
+  &:last-child
+    margin-bottom: 0
+
+  p
+    margin-bottom: 2.2rem
+
+    &:last-child
+      margin-bottom: 0
+
+.download__text-entry
+  color: $text-color-alt
+
+.download__text-highlight
+  color: $highlight-color
+
+$download-app-spaces: 4rem
+.download__app
+  display: flex
+  justify-content: center
+  align-items: flex-start
+  margin: 0 -#{round-float($download-app-spaces / 2, 1)} 4rem
+  text-align: center
+
+  &:last-child
+    margin-bottom: 0
+
+.download__app-item
+  margin: 0 #{round-float($download-app-spaces / 2, 1)} 2rem
+
+.download__note
+  font-size: 1.9rem
+  line-height: 2.4rem
+  color: rgba(#1e202b, 0.8)
+
+/* download end

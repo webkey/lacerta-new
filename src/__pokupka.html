@@ -49,7 +49,7 @@
   <div class="yield layout-spaces">
     <div class="yield__holder layout-section">
       <h2 class="yield__title">Посчитайте доходность своего вклада прямо&nbsp;сейчас</h2>
-      <div class="yield-box yield__box yield-group-js">
+      <div class="yield-box yield-group-js">
         <div class="yield-box__aside">
           <div class="yield-thumbs swiper-container yield-thumbs-slider-js">
             <div class="swiper-wrapper">
@@ -127,7 +127,8 @@
                 "term": "<strong>944</strong> дня",
                 "value": "100",
                 "unit": "BYN",
-                "rate": "12%"
+                "rate": "12%",
+                "link": {"href": "company.html", "value": "Это интересно"}
                 })
               </div>
               <div class="bond-calc yield-cards__item swiper-slide">
@@ -138,7 +139,8 @@
                 "term": "<strong>1</strong> год",
                 "value": "50",
                 "unit": "USD",
-                "rate": "6,5%"
+                "rate": "6,5%",
+                "link": {"href": "company.html", "value": "Это интересно"}
                 })
               </div>
               <div class="bond-calc yield-cards__item swiper-slide">
@@ -149,7 +151,8 @@
                 "term": "<strong>5</strong> лет",
                 "value": "100",
                 "unit": "EUR",
-                "rate": "4.5%"
+                "rate": "4.5%",
+                "link": {"href": "company.html", "value": "Это интересно"}
                 })
               </div>
               <div class="bond-calc yield-cards__item swiper-slide">
@@ -160,7 +163,8 @@
                 "term": "<strong>1</strong> год",
                 "value": "50",
                 "unit": "USD",
-                "rate": "6,5%"
+                "rate": "6,5%",
+                "link": {"href": "company.html", "value": "Это интересно"}
                 })
               </div>
               <div class="bond-calc yield-cards__item swiper-slide">
@@ -171,7 +175,8 @@
                 "term": "<strong>944</strong> дня",
                 "value": "100",
                 "unit": "BYN",
-                "rate": "12%"
+                "rate": "12%",
+                "link": {"href": "company.html", "value": "Это интересно"}
                 })
               </div>
               <div class="bond-calc yield-cards__item swiper-slide">
@@ -182,16 +187,14 @@
                 "term": "<strong>5</strong> лет",
                 "value": "100",
                 "unit": "EUR",
-                "rate": "4.5%"
+                "rate": "4.5%",
+                "link": {"href": "company.html", "value": "Это интересно"}
                 })
               </div>
             </div>
             <div class="swiper-pagination"></div>
           </div>
         </div>
-      </div>
-      <div class="yield__footer">
-        @@include("_tpl_btn.html", {"value": "Это интересно"})
       </div>
     </div>
   </div>
@@ -216,7 +219,7 @@
 <!--MAIN end-->
 
 <!--FOOTER-->
-@@include('_tpl_layout_footer.html')
+@@include('_tpl_layout_footer.html', {"app": "true"})
 <!--FOOTER end-->
 
 @@include('_tpl_layout_foot.html')

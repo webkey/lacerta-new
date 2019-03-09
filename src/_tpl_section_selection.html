@@ -1,0 +1,63 @@
+<section class="selection layout-spaces">
+  <div class="selection__holder layout-section">
+    <h2 class="selection__title">Все компании надежные − прошли тщательный отбор у наших специалистов </h2>
+    <div class="selection__bonds tape-slider-js swiper-container">
+      <div class="swiper-wrapper">
+        <a href="companies.html" class="swiper-slide bond">
+          @@include("_tpl_bond.html", {
+          "title": "ООО &quot;Активлизинг&quot;",
+          "release": "6",
+          "term": "1 год",
+          "value": "100 USD",
+          "rate": "6,5%",
+          "imgSrc": "img/img-bond-01.png"
+          })
+        </a>
+        <a href="companies.html" class="swiper-slide bond">
+          @@include("_tpl_bond.html", {
+          "title": "СООО &quot;Белвингрупп&quot;",
+          "release": "6",
+          "term": "1 год",
+          "value": "100 USD",
+          "rate": "15%",
+          "imgSrc": "img/img-bond-02.png"
+          })
+        </a>
+        <a href="companies.html" class="swiper-slide bond">
+          @@include("_tpl_bond.html", {
+          "title": "СЗАО &quot;ПРОСТОРМАРКЕТ&quot;",
+          "release": "6",
+          "term": "3 год",
+          "value": "100 USD",
+          "rate": "7%",
+          "imgSrc": "img/img-bond-03.png"
+          })
+        </a>
+        <a href="companies.html" class="swiper-slide bond">
+          @@include("_tpl_bond.html", {
+          "title": "ООО &quot;Активлизинг&quot;",
+          "release": "3",
+          "term": "1 год",
+          "value": "200 USD",
+          "rate": "3,5%",
+          "imgSrc": "img/temp/img_640_01.jpg"
+          })
+        </a>
+        <a href="companies.html" class="swiper-slide bond">
+          @@include("_tpl_bond.html", {
+          "title": "ООО &quot;Активлизинг&quot;",
+          "release": "4",
+          "term": "1 год",
+          "value": "150 USD",
+          "rate": "9,0%",
+          "imgSrc": "img/temp/img_640_02.jpg"
+          })
+        </a>
+      </div>
+      <div class="swiper-pagination selection__bonds-pagination"></div>
+    </div>
+    <div class="selection__footer">
+      @@include("_tpl_btn.html", {"href": "companies.html", "value": "@@button.value"})
+    </div>
+  </div>
+</section>

@@ -73,69 +73,7 @@
 
   <div class="bg-container-bottom">
     <!--selection-->
-    <section class="selection layout-spaces">
-      <div class="selection__holder layout-section">
-        <h2 class="selection__title">Все компании надежные − прошли тщательный отбор у наших специалистов </h2>
-        <div class="selection__bonds tape-slider-js swiper-container">
-          <div class="swiper-wrapper">
-            <a href="#" class="swiper-slide bond">
-              @@include("_tpl_bond.html", {
-              "title": "ООО &quot;Активлизинг&quot;",
-              "release": "6",
-              "term": "1 год",
-              "value": "100 USD",
-              "rate": "6,5%",
-              "imgSrc": "img/img-bond-01.jpg"
-              })
-            </a>
-            <a href="#" class="swiper-slide bond">
-              @@include("_tpl_bond.html", {
-              "title": "СООО &quot;Белвингрупп&quot;",
-              "release": "6",
-              "term": "1 год",
-              "value": "100 USD",
-              "rate": "15%",
-              "imgSrc": "img/img-bond-02.jpg"
-              })
-            </a>
-            <a href="#" class="swiper-slide bond">
-              @@include("_tpl_bond.html", {
-              "title": "СЗАО &quot;ПРОСТОРМАРКЕТ&quot;",
-              "release": "6",
-              "term": "3 год",
-              "value": "100 USD",
-              "rate": "7%",
-              "imgSrc": "img/img-bond-03.jpg"
-              })
-            </a>
-            <a href="#" class="swiper-slide bond">
-              @@include("_tpl_bond.html", {
-              "title": "ООО &quot;Активлизинг&quot;",
-              "release": "3",
-              "term": "1 год",
-              "value": "200 USD",
-              "rate": "3,5%",
-              "imgSrc": "img/temp/img_640_01.jpg"
-              })
-            </a>
-            <a href="#" class="swiper-slide bond">
-              @@include("_tpl_bond.html", {
-              "title": "ООО &quot;Активлизинг&quot;",
-              "release": "4",
-              "term": "1 год",
-              "value": "150 USD",
-              "rate": "9,0%",
-              "imgSrc": "img/temp/img_640_02.jpg"
-              })
-            </a>
-          </div>
-          <div class="swiper-pagination selection__bonds-pagination"></div>
-        </div>
-        <div class="selection__footer">
-          @@include("_tpl_btn.html", {"value": "Подобрать компанию для себя"})
-        </div>
-      </div>
-    </section>
+    @@include("_tpl_section_selection.html", {"button": {"value": "Подобрать компанию для себя"}})
     <!--selection end-->
 
     <!--benefits-->
@@ -193,7 +131,7 @@
 <!--MAIN end-->
 
 <!--FOOTER-->
-@@include('_tpl_layout_footer.html')
+@@include('_tpl_layout_footer.html', {"app": "true"})
 <!--FOOTER end-->
 
 @@include('_tpl_layout_foot.html')

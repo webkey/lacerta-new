@@ -54,8 +54,8 @@
           <div class="nav-wrap">
             <nav class="nav">
               <ul class="nav__list">
-                <li>
-                  <a href="#">Куда вкладывать деньги</a>
+                <li class="current">
+                  <span>Куда вкладывать деньги</span>
                 </li>
                 <li>
                   <a href="pokupka.html">Покупка облигаций</a>
@@ -95,118 +95,192 @@
         </div>
       </div>
       <!--companies-->
-      <section class="companies layout-spaces">
-        <div class="companies__holder layout-section">
-          <h2 class="companies__title hide-text">Список компаний</h2>
-          <div class="companies__content">
-            <div class="companies__list">
-              <div class="companies__list-item">
-                <a href="#" class="bond">
-                  <div class="bond__figure">
-                    <img src="img/img-bond-01.jpg" alt="image description" />
-                  </div>
-                  <div class="bond__title">ООО &quot;Активлизинг&quot;</div>
-                  <div class="bond__release">номер выпуска: <strong>6</strong></div>
-                  <div class="bond__term">срок: <strong>1 год</strong></div>
-                  <span class="bond__value">100 USD</span>
-                  <div class="bond__rate">6,5%</div>
-                </a>
+      <section class="section_companies">
+        <div class="companies-filters layout-spaces">
+          <div class="companies-filters__holder layout-section">
+            <div class="form-row">
+              <div class="input-wrap">
+                <div class="label-holder">
+                  <label for="filter1">Селект - значение не выбрано:</label>
+                </div>
+                <div class="input-holder">
+                  <select class="cselect field-js" data-placeholder="- Выбрать -" name="select-name" id="filter1">
+                
+<!--Important! First option should have value ""-->
+<option value="">-Choose one of the options-</option>
+<option value="1">Option 1</option>
+<option value="2">Option 2</option>
+<option value="3">Option 3 we have to add a lot of text for testing to make sure the correctness of cutting this text</option>
+<option value="4">Option 4</option>
+<option value="5">Option 5</option>
+<option value="6">Option 6</option>
+<option value="7">Option 7</option>
+<option value="8">Option 8</option>
+              </select>
+                  <div class="error-note">Error text</div>
+                  <div class="success-note">Success text</div>
+                </div>
               </div>
-              <div class="companies__list-item">
-                <a href="#" class="bond">
-                  <div class="bond__figure">
-                    <img src="img/img-bond-01.jpg" alt="image description" />
-                  </div>
-                  <div class="bond__title">ООО &quot;Активлизинг&quot;</div>
-                  <div class="bond__release">номер выпуска: <strong>6</strong></div>
-                  <div class="bond__term">срок: <strong>1 год</strong></div>
-                  <span class="bond__value">100 USD</span>
-                  <div class="bond__rate">6,5%</div>
-                </a>
+              <div class="input-wrap">
+                <div class="label-holder">
+                  <label for="filter2">Селект - значение не выбрано:</label>
+                </div>
+                <div class="input-holder">
+                  <select class="cselect field-js" data-placeholder="- Выбрать -" name="select-name" id="filter2">
+                
+<!--Important! First option should have value ""-->
+<option value="">-Choose one of the options-</option>
+<option value="1">Option 1</option>
+<option value="2">Option 2</option>
+<option value="3">Option 3 we have to add a lot of text for testing to make sure the correctness of cutting this text</option>
+<option value="4">Option 4</option>
+<option value="5">Option 5</option>
+<option value="6">Option 6</option>
+<option value="7">Option 7</option>
+<option value="8">Option 8</option>
+              </select>
+                  <div class="error-note">Error text</div>
+                  <div class="success-note">Success text</div>
+                </div>
               </div>
-              <div class="companies__list-item">
-                <a href="#" class="bond">
-                  <div class="bond__figure">
-                    <img src="img/img-bond-01.jpg" alt="image description" />
-                  </div>
-                  <div class="bond__title">ООО &quot;Активлизинг&quot;</div>
-                  <div class="bond__release">номер выпуска: <strong>6</strong></div>
-                  <div class="bond__term">срок: <strong>1 год</strong></div>
-                  <span class="bond__value">100 USD</span>
-                  <div class="bond__rate">6,5%</div>
-                </a>
+              <div class="input-wrap">
+                <div class="label-holder">
+                  <label for="filter3">Селект - значение не выбрано:</label>
+                </div>
+                <div class="input-holder">
+                  <select class="cselect field-js" data-placeholder="- Выбрать -" name="select-name" id="filter3">
+                
+<!--Important! First option should have value ""-->
+<option value="">-Choose one of the options-</option>
+<option value="1">Option 1</option>
+<option value="2">Option 2</option>
+<option value="3">Option 3 we have to add a lot of text for testing to make sure the correctness of cutting this text</option>
+<option value="4">Option 4</option>
+<option value="5">Option 5</option>
+<option value="6">Option 6</option>
+<option value="7">Option 7</option>
+<option value="8">Option 8</option>
+              </select>
+                  <div class="error-note">Error text</div>
+                  <div class="success-note">Success text</div>
+                </div>
               </div>
-              <div class="companies__list-item">
-                <a href="#" class="bond">
-                  <div class="bond__figure">
-                    <img src="img/img-bond-01.jpg" alt="image description" />
-                  </div>
-                  <div class="bond__title">ООО &quot;Активлизинг&quot;</div>
-                  <div class="bond__release">номер выпуска: <strong>6</strong></div>
-                  <div class="bond__term">срок: <strong>1 год</strong></div>
-                  <span class="bond__value">100 USD</span>
-                  <div class="bond__rate">6,5%</div>
-                </a>
-              </div>
-              <div class="companies__list-item">
-                <a href="#" class="bond">
-                  <div class="bond__figure">
-                    <img src="img/img-bond-01.jpg" alt="image description" />
-                  </div>
-                  <div class="bond__title">ООО &quot;Активлизинг&quot;</div>
-                  <div class="bond__release">номер выпуска: <strong>6</strong></div>
-                  <div class="bond__term">срок: <strong>1 год</strong></div>
-                  <span class="bond__value">100 USD</span>
-                  <div class="bond__rate">6,5%</div>
-                </a>
-              </div>
-              <div class="companies__list-item">
-                <a href="#" class="bond">
-                  <div class="bond__figure">
-                    <img src="img/img-bond-01.jpg" alt="image description" />
-                  </div>
-                  <div class="bond__title">ООО &quot;Активлизинг&quot;</div>
-                  <div class="bond__release">номер выпуска: <strong>6</strong></div>
-                  <div class="bond__term">срок: <strong>1 год</strong></div>
-                  <span class="bond__value">100 USD</span>
-                  <div class="bond__rate">6,5%</div>
-                </a>
-              </div>
-              <div class="companies__list-item">
-                <a href="#" class="bond">
-                  <div class="bond__figure">
-                    <img src="img/img-bond-01.jpg" alt="image description" />
-                  </div>
-                  <div class="bond__title">ООО &quot;Активлизинг&quot;</div>
-                  <div class="bond__release">номер выпуска: <strong>6</strong></div>
-                  <div class="bond__term">срок: <strong>1 год</strong></div>
-                  <span class="bond__value">100 USD</span>
-                  <div class="bond__rate">6,5%</div>
-                </a>
-              </div>
-              <div class="companies__list-item">
-                <a href="#" class="bond">
-                  <div class="bond__figure">
-                    <img src="img/img-bond-01.jpg" alt="image description" />
-                  </div>
-                  <div class="bond__title">ООО &quot;Активлизинг&quot;</div>
-                  <div class="bond__release">номер выпуска: <strong>6</strong></div>
-                  <div class="bond__term">срок: <strong>1 год</strong></div>
-                  <span class="bond__value">100 USD</span>
-                  <div class="bond__rate">6,5%</div>
-                </a>
-              </div>
-              <div class="companies__list-item">
-                <a href="#" class="bond">
-                  <div class="bond__figure">
-                    <img src="img/img-bond-01.jpg" alt="image description" />
-                  </div>
-                  <div class="bond__title">ООО &quot;Активлизинг&quot;</div>
-                  <div class="bond__release">номер выпуска: <strong>6</strong></div>
-                  <div class="bond__term">срок: <strong>1 год</strong></div>
-                  <span class="bond__value">100 USD</span>
-                  <div class="bond__rate">6,5%</div>
-                </a>
+            </div>
+          </div>
+        </div>
+        <div class="companies layout-spaces">
+          <div class="companies__holder layout-section">
+            <h2 class="companies__title hide-text">Список компаний</h2>
+            <div class="companies__content">
+              <div class="companies__list">
+                <div class="companies__list-item">
+                  <a href="company.html" class="bond">
+                    <div class="bond__figure">
+                      <img src="img/img-bond-01.png" alt="image description" />
+                    </div>
+                    <div class="bond__title">ООО &quot;Активлизинг&quot;</div>
+                    <div class="bond__release">номер выпуска: <strong>6</strong></div>
+                    <div class="bond__term">срок: <strong>1 год</strong></div>
+                    <span class="bond__value">100 USD</span>
+                    <div class="bond__rate">6,5%</div>
+                  </a>
+                </div>
+                <div class="companies__list-item">
+                  <a href="companies.html" class="bond">
+                    <div class="bond__figure">
+                      <img src="img/img-bond-02.png" alt="image description" />
+                    </div>
+                    <div class="bond__title">СООО &quot;Белвингрупп&quot;</div>
+                    <div class="bond__release">номер выпуска: <strong>6</strong></div>
+                    <div class="bond__term">срок: <strong>1 год</strong></div>
+                    <span class="bond__value">100 USD</span>
+                    <div class="bond__rate">15%</div>
+                  </a>
+                </div>
+                <div class="companies__list-item">
+                  <a href="companies.html" class="bond">
+                    <div class="bond__figure">
+                      <img src="img/img-bond-03.png" alt="image description" />
+                    </div>
+                    <div class="bond__title">СЗАО &quot;ПРОСТОРМАРКЕТ&quot;</div>
+                    <div class="bond__release">номер выпуска: <strong>6</strong></div>
+                    <div class="bond__term">срок: <strong>3 год</strong></div>
+                    <span class="bond__value">100 USD</span>
+                    <div class="bond__rate">7%</div>
+                  </a>
+                </div>
+                <div class="companies__list-item">
+                  <a href="companies.html" class="bond">
+                    <div class="bond__figure">
+                      <img src="img/img-bond-01.png" alt="image description" />
+                    </div>
+                    <div class="bond__title">ООО &quot;Активлизинг&quot;</div>
+                    <div class="bond__release">номер выпуска: <strong>6</strong></div>
+                    <div class="bond__term">срок: <strong>1 год</strong></div>
+                    <span class="bond__value">100 USD</span>
+                    <div class="bond__rate">6,5%</div>
+                  </a>
+                </div>
+                <div class="companies__list-item">
+                  <a href="companies.html" class="bond">
+                    <div class="bond__figure">
+                      <img src="img/img-bond-02.png" alt="image description" />
+                    </div>
+                    <div class="bond__title">СООО &quot;Белвингрупп&quot;</div>
+                    <div class="bond__release">номер выпуска: <strong>6</strong></div>
+                    <div class="bond__term">срок: <strong>1 год</strong></div>
+                    <span class="bond__value">100 USD</span>
+                    <div class="bond__rate">15%</div>
+                  </a>
+                </div>
+                <div class="companies__list-item">
+                  <a href="companies.html" class="bond">
+                    <div class="bond__figure">
+                      <img src="img/img-bond-03.png" alt="image description" />
+                    </div>
+                    <div class="bond__title">СЗАО &quot;ПРОСТОРМАРКЕТ&quot;</div>
+                    <div class="bond__release">номер выпуска: <strong>6</strong></div>
+                    <div class="bond__term">срок: <strong>3 год</strong></div>
+                    <span class="bond__value">100 USD</span>
+                    <div class="bond__rate">7%</div>
+                  </a>
+                </div>
+                <div class="companies__list-item">
+                  <a href="companies.html" class="bond">
+                    <div class="bond__figure">
+                      <img src="img/img-bond-01.png" alt="image description" />
+                    </div>
+                    <div class="bond__title">ООО &quot;Активлизинг&quot;</div>
+                    <div class="bond__release">номер выпуска: <strong>6</strong></div>
+                    <div class="bond__term">срок: <strong>1 год</strong></div>
+                    <span class="bond__value">100 USD</span>
+                    <div class="bond__rate">6,5%</div>
+                  </a>
+                </div>
+                <div class="companies__list-item">
+                  <a href="companies.html" class="bond">
+                    <div class="bond__figure">
+                      <img src="img/img-bond-02.png" alt="image description" />
+                    </div>
+                    <div class="bond__title">СООО &quot;Белвингрупп&quot;</div>
+                    <div class="bond__release">номер выпуска: <strong>6</strong></div>
+                    <div class="bond__term">срок: <strong>1 год</strong></div>
+                    <span class="bond__value">100 USD</span>
+                    <div class="bond__rate">15%</div>
+                  </a>
+                </div>
+                <div class="companies__list-item">
+                  <a href="companies.html" class="bond">
+                    <div class="bond__figure">
+                      <img src="img/img-bond-03.png" alt="image description" />
+                    </div>
+                    <div class="bond__title">СЗАО &quot;ПРОСТОРМАРКЕТ&quot;</div>
+                    <div class="bond__release">номер выпуска: <strong>6</strong></div>
+                    <div class="bond__term">срок: <strong>3 год</strong></div>
+                    <span class="bond__value">100 USD</span>
+                    <div class="bond__rate">7%</div>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -234,7 +308,7 @@
     </div>
     <!--MAIN end-->
     <!--FOOTER-->
-    <a href="https://lacerta.app/" target="_blank" class="icon-app">Lacerta App</a>
+    <a href="download.html" class="icon-app">Lacerta App</a>
     <footer class="footer">
       <div class="layout-section layout-spaces">
         <div class="footer-holder">
