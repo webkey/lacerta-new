@@ -36,7 +36,7 @@ function detectScroll() {
   var $page = $('html'),
       // $fixedElement = $('.main-nav'),
       // var minScrollTop = $fixedElement.offset().top,
-      minScrollTop = 10,
+      minScrollTop = 50,
       currentScrollTop = $(window).scrollTop();
 
   $page.toggleClass('page-scrolled', (currentScrollTop > minScrollTop));
@@ -379,22 +379,23 @@ function customSelect(select) {
  * !Toggle shutters panel, like a search panel, a catalog shutter etc.
  */
 function toggleShutters() {
-  // Toggle additional menu
-  var $shutterMenuSwitcher = $('.shutter-menu-switcher-js'), shutterMenuSwitcherJs;
-  if ($shutterMenuSwitcher.length) {
-    shutterMenuSwitcherJs = $shutterMenuSwitcher.switchClass({
-      switchClassTo: $('.shutter-menu-js, .shutter-menu-overlay-js')
+  // Toggle shutter navigation
+  var $shutterNavSwitcher = $('.shutter-nav-switcher-js'), shutterNavSwitcherJs;
+  if ($shutterNavSwitcher.length) {
+    shutterNavSwitcherJs = $shutterNavSwitcher.switchClass({
+      switchClassTo: $('.shutter-nav-js')
+      , remover: $('.shutter-nav-close-js')
       , modifiers: {
-        activeClass: 'shutter-menu_is-open'
+        activeClass: 'shutter-nav_is-open'
       }
-      , cssScrollFixed: false
+      , cssScrollFixed: true
       , removeOutsideClick: true
     });
   }
 
   // При добавлении классов одним экземпляром плагина,
   // вызывать метод удаления классов другими
-  shutterMenuSwitcherJs.on('switchClass.beforeAdded', function () {
+  shutterNavSwitcherJs.on('switchClass.beforeAdded', function () {
     // otherShutter.switchClass('remove');
   });
 }
@@ -603,19 +604,18 @@ function rangeSlidersInit() {
   }
 }
 
-/** !Remove focus state */
-function focused() {
-  var focusElements = 'input, a, [tabindex], area, select, textarea, button, [contentEditable=true]';
-  $(focusElements).on('mousedown', function (e) {
-    $(this).removeClass('focus');
-  });
-  $(focusElements).on('mouseup blur', function (e) {
-    $(this).removeClass('focus');
-  });
-  $(focusElements).on('focus', function (e) {
-    $(this).addClass('focus');
-    // console.log("e focus: ", e);
-  });
+/**
+ * !Equal height of blocks by maximum height of them
+ */
+function equalHeight() {
+  // equal height of elements
+  var $equalHeight = $('.equal-height-js');
+
+  if($equalHeight.length) {
+    $equalHeight.children().matchHeight({
+      byRow: true, property: 'height', target: null, remove: false
+    });
+  }
 }
 
 /**
@@ -633,6 +633,5 @@ $(document).ready(function () {
   objectFitImages(); // object-fit-images initial
   manualStepsSelect();
   rangeSlidersInit();
-
-  // focused();
+  equalHeight();
 });

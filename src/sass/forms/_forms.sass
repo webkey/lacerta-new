@@ -51,30 +51,16 @@
       +font($form-label-font-size--mob, $form-label-line-height--mob)
       margin-bottom: $form-label-vsb--mob
 
+label
+  &.input-holder
+    display: block
+    margin-bottom: 0
+
 label, .label
   +display-inline-block-top
-  user-select: none
-  -webkit-tap-highlight-color: transparent !important
-  opacity: 0.7
 
   .label-holder &
     margin-bottom: 0
-
-label
-  padding-left: $form-input-space-h
-  @if $form-border-width
-    margin-left: $form-border-width
-
-  .#{$small-field} &
-    padding-left: $form-input-space-h--small
-    @if $form-border-width--small
-      margin-left: $form-border-width--small
-
-  .#{$small-field} &, &
-    +media($form-media--mob)
-      padding-left: $form-input-space-h--mob
-      @if $form-border-width--mob
-        margin-left: $form-border-width--mob
 
 .form-mark
   +display-inline-block-top
@@ -272,10 +258,6 @@ input, textarea
 
   &.error:not([disabled])
     +form-error
-
-//form error placeholder
-//+placeholder
-    color: $form-error-color
 
 /* inputs states end
 

@@ -17,6 +17,8 @@ $font-bold: 'proximanova-bold', Helvetica, Arial, sans-serif !default
 $font-bold-italic: 'proximanova-bold-italic', Helvetica, Arial, sans-serif !default
 $font-italic: 'proximanova-italic', Helvetica, Arial, sans-serif !default
 $font-light: 'proximanova-light', Helvetica, Arial, sans-serif !default
+$font-semi-bold: 'proximanova-semi-bold', Helvetica, Arial, sans-serif !default
+$font-thin: 'proximanova-thin', Helvetica, Arial, sans-serif !default
 $font-alt: Georgia, serif !default
 
 // Reset font-weight and font-style
@@ -44,6 +46,15 @@ $font-alt: Georgia, serif !default
 
 =font-light()
   font-family: $font-light
+  font-weight: normal
+
+=font-semi-bold()
+  font-family: $font-semi-bold
+  font-weight: normal
+
+=font-thin()
+  font-family: $font-thin
+  font-weight: normal
 
 // Alternative font
 =font-alt()
@@ -491,9 +502,6 @@ $multiple-item-space: 3px !default
   border-color: $form-error-color
 
 =form-has-value()
-  background-color: $form-has-value-color
-  border-color: $form-has-value-color
-  color: white
   cursor: text
 
 =form-on-focus()

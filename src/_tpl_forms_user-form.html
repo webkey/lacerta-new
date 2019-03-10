@@ -47,20 +47,9 @@
 				<span class="user-form__msg__subtitle">Мы перезвоним Вам на следующий номер:</span>
 			</div>
 			<div class="user-form__msg__tel"><a href="tel:+375296892548">+375 29 689-25-48</a></div>
-			<div class="user-form__msg__soc">
-				<div class="social-networks align-center">
-					<div class="social-networks__list">
-						@@loop('_tpl_social-items.html', 'includes/json/social-items.json')
-					</div>
-				</div>
-			</div>
+			<!--chats-->
+			@@include("_tpl_chats.html", {"classes": "user-form__chats"})
+			<!--chats end-->
 		</div>
 	</form>
-	@@if(!context.socFalse){
-	<div class="social-networks align-center">
-		<div class="social-networks__list">
-			@@loop('_tpl_social-items.html', 'includes/json/social-items.json')
-		</div>
-	</div>
-	}
 </div>

@@ -197,6 +197,7 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () {
     , 'src/libs/jquery-validation/dist/jquery.validate.min.js' // валидация форм
     , 'src/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js' // маска для форм
     , 'src/libs/ion.rangeSlider/js/ion.rangeSlider.min.js' // ползунок
+    , 'src/libs/matchHeight/dist/jquery.matchHeight-min.js' // скрипт для выравнивания элементов по максимальному
   ])
       .pipe(concat('libs.js'))
       .pipe(gulp.dest('src/js'))

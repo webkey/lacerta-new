@@ -111,6 +111,27 @@
   height: $header-height
   z-index: $z-high
 
+  &::before
+    content: ""
+    display: block
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    background-color: white
+    opacity: 0
+    // transition
+    $prop: opacity
+    will-change: $prop
+    transition:
+      property: $prop
+      duration: $animation-speed
+      timing-function: ease-in-out
+
+    .page-scrolled &
+      opacity: 1
+
 // Добавлять класс, если не нужно фиксить шапку
 .header_float
   position: relative
@@ -213,38 +234,76 @@
 
 /* navigation end
 
-/* shutter menu switcher
-a.shutter-menu-switcher
-  $btn-menu-size: 60px
-  $btn-menu-lines-width: 35px
-  $btn-menu-lines-height: 5px
-  $btn-menu-lines-space: 8px
-  $btn-menu-lines-color: currentColor
-  $btn-menu-lines-color--mob: currentColor
-  $btn-menu-animation-speed: 0.3s
-  $btn-menu-animation-delay: round-float($btn-menu-animation-speed*0.5, 2)
+/* alternative navigation
+.alt-nav
+  position: relative
 
-  $user-options-cross-width: $btn-menu-lines-width
-  $user-options-cross-height: $btn-menu-lines-height
-  $user-options-cross-color: $btn-menu-lines-color
-  $user-options-cross-color--mob: $btn-menu-lines-color--mob
+.alt-nav__list
+  list-style: none
+  padding: 0
+  margin: 0
+  +font-bold
+  font-size: 5.5rem
+  line-height: 6.6rem
+  letter-spacing: 0.01em
+  cursor: default
 
+  li
+    margin-bottom: 4.1rem
+    overflow: hidden
+
+  a
+    color: #000
+    text-decoration: none
+    transition: color $animation-speed
+    padding-top: 0.5em
+
+    &:hover
+      color: $highlight-color--hover
+
+  // current
+  li.current
+    color: $text-color-light
+    pointer-events: none
+
+    a, & > span
+      text-decoration: none
+      color: inherit
+      cursor: default
+
+/* alternative navigation end
+
+/* === SHUTTER NAVIGATION ===
+$switcher-nav-delay: 0.10s
+$switcher-nav-dur: 0.2s
+$toggle-nav-delay: $switcher-nav-delay + $switcher-nav-dur
+$toggle-nav-dur: 0.2s
+$toggle-nav-curtains-dur: 0.5s
+$toggle-nav-item-dur: 0.4s
+// =====================
+
+/* shutter navigation switcher
+a.shutter-nav-switcher
+  $btn-nav-size: 60px
+  $btn-nav-lines-width: 35px
+  $btn-nav-lines-height: 5px
+  $btn-nav-lines-color: currentColor
   // =====================
 
   position: absolute
   right: 0
   top: 50%
-  margin-top: -#{round-float($btn-menu-size / 2, 1)}
+  margin-top: -#{round-float($btn-nav-size / 2, 1)}
   color: $text-color
   text-decoration: none
-  width: $btn-menu-size
-  height: $btn-menu-size
+  width: $btn-nav-size
+  height: $btn-nav-size
   // transition
-  $prop: color, background-color
+  $prop: color
   will-change: $prop
   transition:
     property: $prop
-    duration: $btn-menu-animation-speed
+    duration: $switcher-nav-dur
     timing-function: ease-in-out
 
   // убрать подсветку при клике на тачскринах
@@ -252,202 +311,370 @@ a.shutter-menu-switcher
     user-select: none
     -webkit-tap-highlight-color: transparent
 
-  // крест
-  &::before, &::after
-    content: ""
+  // верх, середина, низ
+  &::before, &::after, & > i
     display: block
     position: absolute
-    top: 50%
     left: 50%
-    +size($user-options-cross-width, $user-options-cross-height)
-    background-color: $user-options-cross-color
-    margin: -#{round($user-options-cross-height / 2)} 0 0 -#{round($user-options-cross-width / 2)}
+    height: $btn-nav-lines-height
+    background-color: $btn-nav-lines-color
     border-radius: 2px
-    will-change: opacity, transform
-    opacity: 0
+    // transition
+    $prop: transform, opacity
+    will-change: $prop
     transition:
-      property: transform, opacity
-      duration: $btn-menu-animation-speed
-      delay: 0s
-      timing-function: cubic-bezier(0.65, 0.05, 0.36, 1)
+      property: $prop
+      duration: $switcher-nav-dur
+      timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95)
+
+  // верх, низ
+  &::before, &::after
+    content: ""
+    width: $btn-nav-lines-width + 6
+    margin: 10px 0 11px -#{round($btn-nav-lines-width / 2) + 6}
+
+  // верх
+  &::before
+    bottom: 50%
+    transition-delay: 0s
+
+  // середина
+  & > i
+    font-size: 0
+    line-height: 0
+    top: 50%
+    width: $btn-nav-lines-width
+    margin: -#{round($btn-nav-lines-height / 2)} 0 0 -#{round($btn-nav-lines-width / 2)}
+    transition-delay: round-float($switcher-nav-delay / 2, 2)
+
+  // низ
+  &::after
+    top: 50%
+    transition-delay: $switcher-nav-delay
 
   // текст
   & > span
     +hide-text
 
-  // бутерброд
-  & > i
-    font-size: 0
-    line-height: 0
-    letter-spacing: -4px
-    position: absolute
-    left: 50%
-    top: 50%
-    +size($btn-menu-lines-width, $btn-menu-lines-height)
-    background-color: $btn-menu-lines-color
-    margin: -#{round($user-options-cross-height / 2)} 0 0 -#{round($user-options-cross-width / 2)}
-    border-radius: 2px
-    transition:
-      property: opacity
-      duration: $btn-menu-animation-speed
-      delay: $btn-menu-animation-delay
-
-    &::before, &::after
-      content: ''
-      display: block
-      position: absolute
-      right: 0
-      height: $btn-menu-lines-height
-      width: $btn-menu-lines-width + 6
-      background-color: $btn-menu-lines-color
-      border-radius: 2px
-      transition:
-        property: transform
-        duration: $btn-menu-animation-speed
-        delay: $btn-menu-animation-delay
-
-    //first line menu
-    &::before
-      top: -#{$btn-menu-lines-height + $btn-menu-lines-space}
-
-    //third line menu
-    &::after
-      top: #{$btn-menu-lines-height + $btn-menu-lines-space}
-
-  & > svg
-    $size: 8rem
-    display: block
-    position: absolute
-    left: 50%
-    top: 50%
-    width: $size
-    height: $size
-    margin-top: -#{round-float($size / 2, 1)}
-    margin-left: -#{round-float($size / 2, 1)}
-    transform: rotate(-90deg)
-    //transform: rotateY(0deg) rotateZ(-90deg)
-    stroke-dasharray: 220
-    stroke-dashoffset: 220
-    // transition
-    $prop: stroke-dashoffset
-    will-change: $prop
-    transition:
-        property: $prop
-        duration: $btn-menu-animation-speed
-        timing-function: cubic-bezier(0.65, 0.05, 0.36, 1)
-
-    circle
-      fill: none
-      stroke: currentColor
-      stroke-width: 5
-      stroke-miterlimit: 10
-
   // hover
   &:hover
     color: $highlight-color--hover
 
-    & > i
-      &::before, &::after
-        transition-delay: 0s
-
-      &::before
-        transform: translate(3px, 1px) translateZ(0)
-
-      &::after
-        transform: translate(3px, -1px) translateZ(0)
-
-    & > svg
-      stroke-dashoffset: 0
-      //transform: rotateY(180deg) rotateZ(-90deg)
-
   // opened
-  &.shutter-menu_is-open
-
-    & > svg
-      stroke-dashoffset: 0
-
-    &::before, &::after
-      transition-delay: $btn-menu-animation-delay
-      opacity: 1
-
-    &::before
-      transform: rotate(45deg) translateZ(0)
-
-    &::after
-      transform: rotate(-45deg) translateZ(0)
-
-    & > i
+  &.shutter-nav_is-open
+    &::before, &::after, & > i
+      transform: translate(80px, 0) translateZ(0)
       opacity: 0
-      transition-delay: 0s
 
-      &::before, &::after
-        transition-delay: 0s
+/* shutter navigation switcher end
 
-      &::before
-        transform: translate(3px, #{$btn-menu-lines-height + $btn-menu-lines-space}) translateZ(0)
+/* shutter navigation close
+.shutter-nav-close
+  position: absolute
+  width: 3.1rem
+  height: 3.1rem
+  top: 4rem
+  right: nth($page-layout-space, 2)
+  font-size: 0
+  line-height: 0
+  opacity: 0
+  $rotate: -20deg
+  transform: rotate($rotate)
+  transform: rotate($rotate) translateZ(0)
+  // transition
+  $prop: transform, opacity
+  will-change: $prop
+  transition:
+    property: $prop
+    // Кнопку закрытия скрывать с задержкой (сразу после закрытия меню), без анимацией
+    duration: 0s
+    delay: $toggle-nav-dur
+    timing-function: ease-in-out
 
-      &::after
-        transform: translate(3px, -#{$btn-menu-lines-height + $btn-menu-lines-space}) translateZ(0)
+  &::before, &::after
+    $nav-close-cross-size: 0.5rem 4.1rem
+    content: ""
+    display: block
+    position: absolute
+    left: 50%
+    top: 50%
+    height: nth($nav-close-cross-size, 1)
+    width: nth($nav-close-cross-size, 2)
+    margin: -#{round-float(nth($nav-close-cross-size, 1) / 2, 1)} 0 0 -#{round-float(nth($nav-close-cross-size, 2) / 2, 1)}
+    border-radius: nth($nav-close-cross-size, 1)
+    background-color: white
+    // transition
+    $prop: background-color
+    will-change: $prop
+    transition:
+      property: $prop
+      duration: $animation-speed
+      timing-function: ease-in-out
 
-/* shutter menu switcher end
+  &::before
+    transform: rotate(45deg)
 
-/* shutter menu
-.shutter-menu
+  &::after
+    transform: rotate(-45deg)
+
+  &:hover
+    &::before, &::after
+      background-color: $highlight-color--hover
+
+  .shutter-nav_is-open &
+    opacity: 1
+    $rotate: 0deg
+    transform: rotate($rotate)
+    transform: rotate($rotate) translateZ(0)
+    transition:
+      // Кнопку закрытия показывать с задержкой и анимацией
+      duration: $toggle-nav-item-dur
+      delay: $toggle-nav-delay + $toggle-nav-curtains-dur - 0.05s
+
+/* shutter navigation close end
+
+/* shutter navigation
+.shutter-nav
   position: fixed
   right: 0
   top: 0
-  width: 320px
-  height: 100%
-  background-color: white
   display: flex
-  justify-content: center
   align-items: center
+  justify-content: center
+  width: 100%
+  height: 100%
   opacity: 0
   visibility: hidden
   pointer-events: none
-  $translateX: 20%
-  transform: translate($translateX, 0)
-  transform: translateX($translateX)
-  // transition
-  $prop: opacity, visibility, transform
-  will-change: $prop
+  z-index: 9999
+  // Общий блок меню скрывать без задержки, с анимацией
   transition:
-    property: $prop
-    duration: $animation-speed
-    timing-function: ease-in-out
+    property: opacity, visibility
+    duration: $toggle-nav-dur
 
-  &.shutter-menu_is-open
+  &::before, &::after
+    content: ""
+    display: block
+    position: absolute
+    top: 0
+    left: 0
+    width: 50%
+    height: 100%
+    z-index: -1
+    // transition
+    $prop: opacity, visibility, transform
+    will-change: $prop
+    transition:
+      property: $prop
+      // Шторки меню скрывать с задержкой (сразу после закрытия меню), без анимацией
+      duration: 0s
+      delay: $toggle-nav-dur
+      timing-function: cubic-bezier(0.4, 0.6, 0.2, 1)
+
+  &::before
+    background-color: white
+    $translate: 0, 100%
+    transform: translate($translate)
+    transform: translate3d($translate, 0)
+
+  &::after
+    background-color: $base-color
+    left: 50%
+    $translate: 0, -100%
+    transform: translate($translate)
+    transform: translate3d($translate, 0)
+
+  &.shutter-nav_is-open
     opacity: 1
     visibility: visible
     pointer-events: auto
-    $translateX: 0
-    transform: translate($translateX, 0)
-    transform: translateX($translateX)
+    // Общий блок меню показывать без задержки и анимации
+    transition:
+      duration: 0s
+      delay: 0s
 
-/* shutter menu end
+    &::before, &::after
+      $translate: 0, 0
+      transform: translate($translate)
+      transform: translate3d($translate, 0)
+      // Шторки меню показывать с задержкой и анимацией
+      transition:
+        duration: $toggle-nav-curtains-dur
+        delay: $toggle-nav-delay
 
-/* overlay
-.overlay
-  position: fixed
-  left: 0
-  top: 0
+.shutter-nav__layout
+  display: flex
+  align-items: flex-start
   width: 100%
-  height: 100%
-  background-color: rgba(black, 0.35)
-  box-sizing: border-box
+
+.shutter-nav__content,
+.shutter-nav__footer
+  flex-grow: 1
+  flex-basis: 50%
+  max-width: 50%
+  padding: 3rem 9rem
   opacity: 0
-  visibility: hidden
-  $prop: opacity, visibility
-  will-change: $prop
+  will-change: transform, opacity
   transition:
-    property: $prop
-    duration: $animation-speed
+    property: transform, opacity
+    // Внутренние элементы скрывать с задержкой (сразу после закрытия меню), без анимацией
+    duration: 0s
+    delay: $toggle-nav-dur
+    timing-function: ease-out
 
-  &.shutter-menu_is-open
+  .shutter-nav_is-open &
     opacity: 1
-    visibility: visible
+    $translate: 0, 0
+    transform: translate($translate)
+    transform: translate3d($translate, 0)
+    transition:
+      // Внутренние элементы показывать с задержкой и анимацией
+      duration: $toggle-nav-item-dur
+      delay: $toggle-nav-delay + $toggle-nav-curtains-dur - 0.05s
 
-/* overlay end
+// Левая часть
+.shutter-nav__content
+  padding-left: 0
+  $translate: 0, 4rem
+  transform: translate($translate)
+  transform: translate3d($translate, 0)
+
+// Правая часть
+.shutter-nav__footer
+  padding-right: 0
+  color: white
+  $translate: 0, -4rem
+  transform: translate($translate)
+  transform: translate3d($translate, 0)
+
+// title
+.shutter-nav__title
+  +font-bold
+  font-size: 5.5rem
+  line-height: 6.6rem
+  letter-spacing: 0.01em
+  margin-bottom: 6rem
+
+  &:last-child
+    margin-bottom: 0
+
+// alternative navigation
+.shutter-nav__alt-nav
+  margin: 0 0 15.8rem
+
+  &:last-child
+    margin-bottom: 0
+
+// app
+.shutter-nav__app
+  margin-bottom: 2.5rem
+
+.shutter-nav__app-item
+  margin-bottom: 3.0rem
+
+  &:last-child
+    margin-bottom: 0
+
+// conditions
+.shutter-nav__conditions
+  overflow: hidden
+  width: 30rem
+  max-width: 100%
+  font-size: 1.8rem
+  line-height: 2.2rem
+
+  a
+    color: #000
+    padding-top: 0.5em
+    text-decoration: none
+    box-shadow: inset 0 -1px 0 #8f8f8f
+    transition:
+      property: color, box-shadow
+      duration: $animation-speed
+
+    &:hover
+      box-shadow: inset 0 -1px 0 $highlight-color--hover
+      color: $highlight-color--hover
+
+// contacts
+.shutter-nav__contacts
+  display: flex
+  flex-wrap: wrap
+  margin: 0 0 10rem
+  padding: 0
+  font-size: 2.4rem
+  line-height: 3.2rem
+  list-style: none
+
+  &:last-child
+    margin-bottom: 0
+
+  li
+    margin: 0 3rem 1.5rem 0
+
+  a
+    $box-shadow: inset 0 -1px 0
+    color: inherit
+    text-decoration: none
+    box-shadow: #{$box-shadow} rgba(white, 0.5)
+    transition:
+      property: color, box-shadow
+      duration: $animation-speed
+
+    &[href^="tel:"]
+      box-shadow: none
+
+    &:hover
+      color: $highlight-color--hover
+      box-shadow: #{$box-shadow} rgba($highlight-color--hover, 0.5)
+
+      &[href^="tel:"]
+        box-shadow: none
+
+    & > strong
+      +font-semi-bold
+      font-size: 3.0rem
+
+// callback-form
+.n-callback-form
+  margin-bottom: 4rem
+
+  &:last-child
+    margin-bottom: 0
+
+  [class*="btn-"]
+    box-shadow: 0 10px 10px rgba(81, 0, 33, 0.25)
+
+    &:hover
+      box-shadow: 0 5px 5px rgba($btn-bg-hover-color, 0.25)
+
+.n-callback-form__title
+  display: block
+  +font-semi-bold
+  font-size: 2.4rem
+  line-height: 3.0rem
+  margin-bottom: 2rem
+
+$n-callback-form-item-space: 2rem 2rem
+.n-callback-form__fields
+  display: flex
+  flex-wrap: wrap
+  margin: 0 -#{round-float(nth($n-callback-form-item-space, 2) / 2, 1)}
+
+  .input-wrap
+    flex-grow: 1
+    flex-basis: 50%
+    max-width: 50%
+    text-align: right
+    margin: 0
+    padding: 0 #{round-float(nth($n-callback-form-item-space, 2) / 2, 1)} nth($n-callback-form-item-space, 1)
+
+  #{$inputs-list}
+    border-radius: 10px
+    background-color: white
+    border-right-color: white
+
+/* shutter navigation end
 
 /* === CONTENT ===
 .main
@@ -531,15 +758,18 @@ a.shutter-menu-switcher
 
 /* footer contacts end
 
-/* social networks in footer
-.f-soc
+/* chats
+.footer__chats
+  position: absolute
+  left: 0
+  top: 43rem
+  color: white
+
+.chats
   overflow: hidden
   display: flex
   align-items: flex-start
   justify-content: flex-start
-  position: absolute
-  left: 0
-  top: 43rem
   cursor: default
 
   +media('<mob-lg')
@@ -548,7 +778,7 @@ a.shutter-menu-switcher
   &:last-child
     margin-bottom: 0
 
-.f-soc__group
+.chats__group
   margin-left: 4rem
 
   +media('<desk-lg')
@@ -563,13 +793,12 @@ a.shutter-menu-switcher
   & > strong
     display: block
     margin-bottom: 5px
-    +font-light
+    +font-thin
     font-size: 14px
     line-height: 18px
     font-weight: normal
-    color: white
 
-.f-soc__list
+.chats__list
   position: relative
   display: inline-block
   vertical-align: top
@@ -578,7 +807,7 @@ a.shutter-menu-switcher
   +media('<tab-lg')
     margin: 0 -10px -10px 0
 
-.f-soc__item
+.chats__item
   float: left
   margin: 0 15px 15px 0
 
@@ -587,6 +816,7 @@ a.shutter-menu-switcher
     position: relative
     font-size: 60px
     +size(1em)
+    color: inherit
 
     +media('<tab-lg')
       font-size: 40px
@@ -642,16 +872,18 @@ a.shutter-menu-switcher
     span // Скрыть текст, но оставить видимым для озвучивающих программ
       +hide-text
 
-/* social networks in footer end
+/* chats end
 
 /* appeal form
-.callback-form
+.footer__callback-form
   float: right
   clear: right
   width: $footer-right-col-width
-  position: relative
   margin-bottom: 5rem
   padding: 0 0 0 nth($footer-grid-space, 2)
+
+.callback-form
+  position: relative
 
   &:last-child
     margin-bottom: 0
@@ -690,7 +922,6 @@ a.shutter-menu-switcher
 
     &:hover
       box-shadow: 0 5px 5px rgba($btn-bg-hover-color, 0.25)
-
 
 // --> send message <--
 .callback-form__msg
@@ -909,6 +1140,7 @@ a.shutter-menu-switcher
 
 /* limitations
 .limitations
+  overflow: hidden
   margin-bottom: 5rem
 
   &:last-child
@@ -1532,6 +1764,7 @@ $bond-space: 3.2rem 3rem 2.8rem
 .benefits__list-item
   flex-grow: 1
   flex-basis: 50%
+  max-width: 50%
   padding: 0 20rem
   margin: 11rem auto
 

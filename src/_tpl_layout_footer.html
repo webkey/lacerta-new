@@ -19,29 +19,11 @@
         <li class="cond"><a href="#">Условия договора на комплексное брокерское обслуживание</a></li>
       </ul>
       <!--contacts end-->
-      <!--social-->
-      <div class="f-soc">
-        <div class="f-soc__group">
-          <strong>Группа</strong>
-          <div class="f-soc__list">
-            @@loop('_tpl_social-items--f-soc.html', [
-            { "class": "facebook", "href": "https://www.facebook.com/", "title": "Facebook" }
-            ])
-          </div>
-        </div>
-        <div class="f-soc__group">
-          <strong>Чат-боты</strong>
-          <div class="f-soc__list">
-            @@loop('_tpl_social-items--f-soc.html', [
-            { "class": "telegram", "href": "https://telegram.org/", "title": "Telegram" },
-            { "class": "viber", "href": "https://www.viber.com/", "title": "Viber" }
-            ])
-          </div>
-        </div>
-      </div>
-      <!--social end-->
+      <!--chats-->
+      @@include("_tpl_chats.html", {"classes": "footer__chats"})
+      <!--chats end-->
       <!--callback form-->
-      <div class="callback-form">
+      <div class="callback-form footer__callback-form">
         <form action="#" method="post" class="validation-form-js">
           <strong class="callback-form__title">Заказать обратный звонок:</strong>
           <div class="callback-form__fields">

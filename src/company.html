@@ -68,20 +68,131 @@
           </div>
           <!--navigation end-->
         </div>
-        <!--shutter-menu-->
-        <div class="overlay shutter-menu-overlay shutter-menu-overlay-js">&nbsp;</div>
-        <div class="shutter-menu shutter-menu-js">
-          <p>{{Здесь будет дополнительное меню}}</p>
-        </div>
-        <a href="#" class="shutter-menu-switcher shutter-menu-switcher-js">
-      <i>|||</i><span>Меню</span>
-      <svg viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="40" cy="40" r="35" fill="none"></circle>
-      </svg>
+        <!--shutter navigation switcher-->
+        <a href="#" class="shutter-nav-switcher shutter-nav-switcher-js">
+      <i>&mdash;</i><span>Меню</span>
     </a>
-        <!--shutter-menu end-->
+        <!--shutter navigation switcher end-->
       </div>
     </header>
+    <!--shutter navigation-->
+    <div class="shutter-nav shutter-nav-js stop-remove-class">
+      <div class="shutter-nav__layout layout-section">
+        <div class="shutter-nav__content">
+          <!--alternative navigation-->
+          <div class="alt-nav shutter-nav__alt-nav">
+            <ul class="alt-nav__list">
+              <li>
+                <a href="companies.html">Куда вкладывать деньги</a>
+              </li>
+              <li>
+                <a href="pokupka.html">Покупка облигаций</a>
+              </li>
+              <li>
+                <a href="news.html">Новости</a>
+              </li>
+            </ul>
+          </div>
+          <!--alternative navigation end-->
+          <!--app-->
+          <div class="shutter-nav__app">
+            <div class="shutter-nav__app-item"><a href="https://play.google.com/store/apps/details?id=by.lacerta" class="btn-app btn-app_google" target="_blank">Скачать в<br> Google Play</a></div>
+            <div class="shutter-nav__app-item"><a href="https://itunes.apple.com/us/app/lacerta-%D0%BF%D0%BE%D0%BA%D1%83%D0%BF%D0%BA%D0%B0-%D0%BE%D0%B1%D0%BB%D0%B8%D0%B3%D0%B0%D1%86%D0%B8%D0%B9/id1438857466" class="btn-app btn-app_apple" target="_blank">Скачать в<br> Apple store</a></div>
+          </div>
+          <!--app end-->
+          <!--conditions-->
+          <div class="shutter-nav__conditions"><a href="#">Условия договора на комплексное брокерское обслуживание</a></div>
+          <!--conditions end-->
+        </div>
+        <div class="shutter-nav__footer">
+          <div class="shutter-nav__title">Контакты</div>
+          <!--contacts-->
+          <ul class="shutter-nav__contacts">
+            <li class="phone">
+              <a href="tel:+375172247479">+375 17 <strong>224-74-79</strong></a>
+            </li>
+            <li class="phone">
+              <a href="tel:+375333447479">+375 33 <strong>344-74-79</strong></a>
+            </li>
+            <li class="email"><a href="mailto:info@lacerta.by">info@lacerta.by</a></li>
+          </ul>
+          <!--contacts end-->
+          <!--callback form-->
+          <div class="n-callback-form">
+            <form action="#" method="post" class="validation-form-js">
+              <strong class="n-callback-form__title">Заказать обратный звонок:</strong>
+              <div class="n-callback-form__fields">
+                <div class="input-wrap">
+                  <label class="input-holder">
+                <input class="field-js" id="callback-form-name" name="callback-form-name" placeholder="Введите имя" required="" type="text">
+                <span class="error-note">Error text</span>
+                <span class="success-note">Success text</span>
+              </label>
+                </div>
+                <!--===================================================-->
+                <div class="input-wrap">
+                  <label class="input-holder">
+                <input class="has-phone-mask field-js" id="callback-form-phone" im-insert="true" name="callback-form-phone" placeholder="Телефон" required="" type="text">
+                <span class="error-note">Error text</span>
+                <span class="success-note">Success text</span>
+              </label>
+                </div>
+                <!--===================================================-->
+                <div class="input-wrap">
+                  <label class="input-holder">
+                <input class="field-js" id="callback-form-email" name="callback-form-email" placeholder="email" required="" type="email">
+                <span class="error-note">Error text</span>
+                <span class="success-note">Success text</span>
+              </label>
+                </div>
+                <!--===================================================-->
+                <div class="input-wrap">
+                  <div class="input-holder">
+                    <button class="btn-def">Отправить</button>
+                  </div>
+                </div>
+              </div>
+              <div class="callback-form__msg">
+                <strong class="callback-form__msg-title">Спасибо!</strong>
+                <span class="callback-form__msg-subtitle">{{Текст}}</span>
+              </div>
+            </form>
+          </div>
+          <!--callback form end-->
+          <!--chats-->
+          <div class="chats shutter-nav__chats">
+            <div class="chats__group">
+              <strong>Группа</strong>
+              <div class="chats__list">
+                <div class="chats__item">
+                  <a href="https://www.facebook.com/" class="facebook" target="_blank">
+					<span>Facebook</span>
+				</a>
+                </div>
+              </div>
+            </div>
+            <div class="chats__group">
+              <strong>Чат-боты</strong>
+              <div class="chats__list">
+                <div class="chats__item">
+                  <a href="https://telegram.org/" class="telegram" target="_blank">
+					<span>Telegram</span>
+				</a>
+                </div>
+                <div class="chats__item">
+                  <a href="https://www.viber.com/" class="viber" target="_blank">
+					<span>Viber</span>
+				</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--chats end-->
+        </div>
+      </div>
+      <a href="#" class="shutter-nav-close shutter-nav-close-js">X</a>
+    </div>
+    <!--shutter-navigation end-->
     <!--HEADER end-->
     <!--MAIN-->
     <div class="main">
@@ -248,37 +359,37 @@
             <li class="cond"><a href="#">Условия договора на комплексное брокерское обслуживание</a></li>
           </ul>
           <!--contacts end-->
-          <!--social-->
-          <div class="f-soc">
-            <div class="f-soc__group">
+          <!--chats-->
+          <div class="chats footer__chats">
+            <div class="chats__group">
               <strong>Группа</strong>
-              <div class="f-soc__list">
-                <div class="f-soc__item">
+              <div class="chats__list">
+                <div class="chats__item">
                   <a href="https://www.facebook.com/" class="facebook" target="_blank">
-		<span>Facebook</span>
-	</a>
+					<span>Facebook</span>
+				</a>
                 </div>
               </div>
             </div>
-            <div class="f-soc__group">
+            <div class="chats__group">
               <strong>Чат-боты</strong>
-              <div class="f-soc__list">
-                <div class="f-soc__item">
+              <div class="chats__list">
+                <div class="chats__item">
                   <a href="https://telegram.org/" class="telegram" target="_blank">
-		<span>Telegram</span>
-	</a>
+					<span>Telegram</span>
+				</a>
                 </div>
-                <div class="f-soc__item">
+                <div class="chats__item">
                   <a href="https://www.viber.com/" class="viber" target="_blank">
-		<span>Viber</span>
-	</a>
+					<span>Viber</span>
+				</a>
                 </div>
               </div>
             </div>
           </div>
-          <!--social end-->
+          <!--chats end-->
           <!--callback form-->
-          <div class="callback-form">
+          <div class="callback-form footer__callback-form">
             <form action="#" method="post" class="validation-form-js">
               <strong class="callback-form__title">Заказать обратный звонок:</strong>
               <div class="callback-form__fields">
