@@ -5493,12 +5493,9 @@ a.shutter-nav-switcher.shutter-nav_is-open::before, a.shutter-nav-switcher.shutt
 }
 
 .companies {
-  padding: 8.2rem 0 7.4rem;
+  padding-top: 8.2rem;
+  padding-bottom: 15.6rem;
   background-color: #eaefff;
-}
-
-.companies__content {
-  margin-bottom: 8.2rem;
 }
 
 .companies__list {
