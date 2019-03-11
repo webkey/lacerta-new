@@ -52,10 +52,9 @@
   display: inline-block
   vertical-align: top
   background-color: black
-  background-position: 2.8rem center
   background-repeat: no-repeat
   height: 6.2rem
-  padding: 1rem 4rem 1rem 8rem
+  padding: 1rem 5rem 1rem 8rem
   font-size: 1.8rem
   line-height: 2.2rem
   text-align: left
@@ -77,14 +76,22 @@
 
 .btn-app_google
   background-image: url(../../img/app-a.png)
-  background-size: 34px 42px
+  background-position: 2.8rem center
+  background-size: 29px auto
 
 .btn-app_apple
   background-image: url(../../img/app-ios.png)
-  background-position: 2.8rem 0.8rem
-  background-size: 32px 39px
+  background-position: 28px center
+  background-size: 24px auto
 
 /* btn-app end
+
+/* show elements on scroll
+html:not(.no-js)
+  .show-figure-js
+    visibility: hidden
+
+/* show elements on scroll end
 
 /* social share
 .soc-share-box
@@ -100,6 +107,115 @@
   pointer-events: auto
 
 /* social share end
+
+/* chats
+.chats
+  overflow: hidden
+  display: flex
+  align-items: flex-start
+  justify-content: flex-start
+  cursor: default
+
+  +media('<mob-lg')
+    justify-content: center
+
+  &:last-child
+    margin-bottom: 0
+
+.chats__group
+  margin-left: 4rem
+
+  +media('<desk-lg')
+    margin-left: 1.5rem
+
+  +media('<tab-lg')
+    margin-left: 1rem
+
+  &:first-child
+    margin-left: 0
+
+  & > strong
+    display: block
+    margin-bottom: 0.7rem
+    +font-thin
+    font-size: 1.4rem
+    line-height: 1.8rem
+
+.chats__list
+  position: relative
+  display: inline-block
+  vertical-align: top
+  margin: 0 -15px -15px 0
+
+  +media('<tab-lg')
+    margin: 0 -10px -10px 0
+
+.chats__item
+  float: left
+  margin: 0 15px 15px 0
+
+  a
+    display: block
+    position: relative
+    font-size: 60px
+    +size(1em)
+    color: inherit
+
+    +media('<tab-lg')
+      font-size: 40px
+
+    &::before, &::after
+      content: ''
+      display: block
+      position: absolute
+      left: 0
+      top: 0
+      +size(100%)
+      background-image: url("../../img/soc-sprite.svg")
+      background-repeat: no-repeat
+      background-size: 12em auto // размер файла спрайта, т.е. в спрайте 12 иконок размещенных по диагонали, 1em - 1 иконка
+
+    &::after
+      opacity: 0
+
+    // hover
+    &:hover
+      &::before
+        opacity: 0
+
+      &::after
+        opacity: 1
+
+    $soc-list: 'facebook', 'telegram', 'viber'
+    $type-length: 4 // количество цветов одной иконки в спрайте, или через сколько единиц размещается иконка другогой социалки
+
+    @for $i from 1 through length($soc-list)
+      $pos: $type-length - $type-length * $i * 1em // на сколко единиц нужно сместить background
+
+      //@debug $pos
+
+      &.#{nth($soc-list, $i)}
+        &::before // иконка с цветом в нормальном состоянии (фон без смещения - в спрайте такие иконки идут первыми: 1, 5, 9 и т.д.)
+          $p: $pos
+          background-position: $p $p
+
+        &::after // икона с цветом при наведении (фон семстить на -1em - в спрайте такие иконки идут вторыми: 2, 6, 10 и т.д.)
+          $p: $pos - 1
+          background-position: $p $p
+
+        .user-form__msg__soc &
+          &::before // иконка с другим цветом в нормальном состоянии (фон семстить на -2em - в спрайте такие иконки идут вторыми: 3, 7, 11 и т.д.)
+            $p: $pos - 2
+            background-position: $p $p
+
+          &::after // иконка с другим цветом при наведении (фон семстить на -3em - в спрайте такие иконки идут вторыми: 4, 8, 12 и т.д.)
+            $p: $pos - 3
+            background-position: $p $p
+
+    span // Скрыть текст, но оставить видимым для озвучивающих программ
+      +hide-text
+
+/* chats end
 
 /* === HEADER ===
 .header
@@ -138,12 +254,8 @@
   left: auto
   top: auto
 
-.header-holder
-  position: relative
-  height: 100%
-  +clear
-
 .header-frame
+  position: relative
   display: flex
   align-items: center
   justify-content: space-between
@@ -158,9 +270,8 @@
   background-repeat: no-repeat
   background-size: contain
   width: 187px
+  margin-bottom: 1.9rem
   color: #cccddb
-  text-indent: -9999px
-  overflow: hidden
 
   @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)
     background-image: url(../../img/logo-2x.png)
@@ -182,17 +293,19 @@
 
   a, & > span
     display: block
+    overflow: hidden
     position: absolute
     left: 0
     top: 0
     width: 100%
     height: 100%
+    text-indent: -9999px
 
 /* logo end
 
 /* navigation
 .nav-wrap
-  margin-right: 110px
+  margin: 0.1rem 10rem 0 0
 
 .nav
   position: relative
@@ -212,7 +325,7 @@
   li
     position: relative
     float: left
-    margin-left: 56px
+    margin-left: 5.7rem
 
   a
     color: #000
@@ -291,10 +404,10 @@ a.shutter-nav-switcher
   // =====================
 
   position: absolute
-  right: 0
+  right: nth($page-layout-space, 2)
   top: 50%
-  margin-top: -#{round-float($btn-nav-size / 2, 1)}
-  color: $text-color
+  margin: -#{round-float($btn-nav-size / 2, 1) + 1} -1.2rem 0
+  color: #000
   text-decoration: none
   width: $btn-nav-size
   height: $btn-nav-size
@@ -318,7 +431,7 @@ a.shutter-nav-switcher
     left: 50%
     height: $btn-nav-lines-height
     background-color: $btn-nav-lines-color
-    border-radius: 2px
+    border-radius: $btn-nav-lines-height
     // transition
     $prop: transform, opacity
     will-change: $prop
@@ -330,8 +443,8 @@ a.shutter-nav-switcher
   // верх, низ
   &::before, &::after
     content: ""
-    width: $btn-nav-lines-width + 6
-    margin: 10px 0 11px -#{round($btn-nav-lines-width / 2) + 6}
+    width: $btn-nav-lines-width + 5
+    margin: 10px 0 11px -#{round($btn-nav-lines-width / 2) + 5}
 
   // верх
   &::before
@@ -373,8 +486,8 @@ a.shutter-nav-switcher
   position: absolute
   width: 3.1rem
   height: 3.1rem
-  top: 4rem
-  right: nth($page-layout-space, 2)
+  top: 3.9rem
+  right: nth($page-layout-space, 2) + 0.2
   font-size: 0
   line-height: 0
   opacity: 0
@@ -549,18 +662,18 @@ a.shutter-nav-switcher
 
 // title
 .shutter-nav__title
-  +font-bold
+  +font-extra-bold
   font-size: 5.5rem
   line-height: 6.6rem
   letter-spacing: 0.01em
-  margin-bottom: 6rem
+  margin-bottom: 5.5rem
 
   &:last-child
     margin-bottom: 0
 
 // alternative navigation
 .shutter-nav__alt-nav
-  margin: 0 0 15.8rem
+  margin: 0 0 15.5rem
 
   &:last-child
     margin-bottom: 0
@@ -600,7 +713,7 @@ a.shutter-nav-switcher
 .shutter-nav__contacts
   display: flex
   flex-wrap: wrap
-  margin: 0 0 10rem
+  margin: 0 0 13.5rem
   padding: 0
   font-size: 2.4rem
   line-height: 3.2rem
@@ -610,7 +723,7 @@ a.shutter-nav-switcher
     margin-bottom: 0
 
   li
-    margin: 0 3rem 1.5rem 0
+    margin: 0 3rem 1.1rem 0
 
   a
     $box-shadow: inset 0 -1px 0
@@ -637,7 +750,7 @@ a.shutter-nav-switcher
 
 // callback-form
 .n-callback-form
-  margin-bottom: 4rem
+  margin-bottom: 7.1rem
 
   &:last-child
     margin-bottom: 0
@@ -653,7 +766,7 @@ a.shutter-nav-switcher
   +font-semi-bold
   font-size: 2.4rem
   line-height: 3.0rem
-  margin-bottom: 2rem
+  margin-bottom: 3.1rem
 
 $n-callback-form-item-space: 2rem 2rem
 .n-callback-form__fields
@@ -669,10 +782,16 @@ $n-callback-form-item-space: 2rem 2rem
     margin: 0
     padding: 0 #{round-float(nth($n-callback-form-item-space, 2) / 2, 1)} nth($n-callback-form-item-space, 1)
 
-  #{$inputs-list}
+  .input-def
     border-radius: 10px
     background-color: white
     border-right-color: white
+
+// chats
+.shutter-nav__chats
+  .chats__group
+    & > strong
+      margin-bottom: 1.5rem
 
 /* shutter navigation end
 
@@ -706,7 +825,7 @@ $n-callback-form-item-space: 2rem 2rem
     left: 0
     width: 100%
     +linear-gradient(to bottom, #5b2fc9 0%, #5352ce 100%)
-    height: 23.7rem
+    height: 19rem
     z-index: -1
 
   *::selection
@@ -714,26 +833,26 @@ $n-callback-form-item-space: 2rem 2rem
 
 .footer-holder
   position: relative
-  min-height: 63.8rem
-  padding-top: 7rem
+  min-height: 59.2rem
+  padding-top: 7.7rem
   padding-bottom: 12.9rem
   +clear
 
 /* footer contacts
-.f-contacts
+.footer__contacts
   float: right
   clear: right
   width: $footer-right-col-width
   display: flex
   flex-wrap: wrap
-  margin: 0 0 2rem
+  margin: 0 0 1.6rem
   padding: 0 0 0 nth($footer-grid-space, 2)
   font-size: 2.4rem
   line-height: 3.2rem
   list-style: none
 
   li
-    margin: 0 4rem 2rem 0
+    margin: 0 4.1rem 2rem 0
 
     &.adr, &.cond
       display: none
@@ -749,6 +868,10 @@ $n-callback-form-item-space: 2rem 2rem
     &[href^="tel:"]
       box-shadow: none
 
+    & > strong
+      +font-semi-bold
+      font-size: 3.0rem
+
     &:hover
       color: $highlight-color--hover
       box-shadow: inset 0 -1px 0 rgba($highlight-color--hover, 0.5)
@@ -761,116 +884,9 @@ $n-callback-form-item-space: 2rem 2rem
 /* chats
 .footer__chats
   position: absolute
-  left: 0
-  top: 43rem
+  left: 0.2rem
+  top: 42.4rem
   color: white
-
-.chats
-  overflow: hidden
-  display: flex
-  align-items: flex-start
-  justify-content: flex-start
-  cursor: default
-
-  +media('<mob-lg')
-    justify-content: center
-
-  &:last-child
-    margin-bottom: 0
-
-.chats__group
-  margin-left: 4rem
-
-  +media('<desk-lg')
-    margin-left: 1.5rem
-
-  +media('<tab-lg')
-    margin-left: 1rem
-
-  &:first-child
-    margin-left: 0
-
-  & > strong
-    display: block
-    margin-bottom: 5px
-    +font-thin
-    font-size: 14px
-    line-height: 18px
-    font-weight: normal
-
-.chats__list
-  position: relative
-  display: inline-block
-  vertical-align: top
-  margin: 0 -15px -15px 0
-
-  +media('<tab-lg')
-    margin: 0 -10px -10px 0
-
-.chats__item
-  float: left
-  margin: 0 15px 15px 0
-
-  a
-    display: block
-    position: relative
-    font-size: 60px
-    +size(1em)
-    color: inherit
-
-    +media('<tab-lg')
-      font-size: 40px
-
-    &::before, &::after
-      content: ''
-      display: block
-      position: absolute
-      left: 0
-      top: 0
-      +size(100%)
-      background-image: url("../../img/soc-sprite.svg")
-      background-repeat: no-repeat
-      background-size: 12em auto // размер файла спрайта, т.е. в спрайте 12 иконок размещенных по диагонали, 1em - 1 иконка
-
-    &::after
-      opacity: 0
-
-    // hover
-    &:hover
-      &::before
-        opacity: 0
-
-      &::after
-        opacity: 1
-
-    $soc-list: 'facebook', 'telegram', 'viber'
-    $type-length: 4 // количество цветов одной иконки в спрайте, или через сколько единиц размещается иконка другогой социалки
-
-    @for $i from 1 through length($soc-list)
-      $pos: $type-length - $type-length * $i * 1em // на сколко единиц нужно сместить background
-
-      //@debug $pos
-
-      &.#{nth($soc-list, $i)}
-        &::before // иконка с цветом в нормальном состоянии (фон без смещения - в спрайте такие иконки идут первыми: 1, 5, 9 и т.д.)
-          $p: $pos
-          background-position: $p $p
-
-        &::after // икона с цветом при наведении (фон семстить на -1em - в спрайте такие иконки идут вторыми: 2, 6, 10 и т.д.)
-          $p: $pos - 1
-          background-position: $p $p
-
-        .user-form__msg__soc &
-          &::before // иконка с другим цветом в нормальном состоянии (фон семстить на -2em - в спрайте такие иконки идут вторыми: 3, 7, 11 и т.д.)
-            $p: $pos - 2
-            background-position: $p $p
-
-          &::after // иконка с другим цветом при наведении (фон семстить на -3em - в спрайте такие иконки идут вторыми: 4, 8, 12 и т.д.)
-            $p: $pos - 3
-            background-position: $p $p
-
-    span // Скрыть текст, но оставить видимым для озвучивающих программ
-      +hide-text
 
 /* chats end
 
@@ -888,30 +904,33 @@ $n-callback-form-item-space: 2rem 2rem
   &:last-child
     margin-bottom: 0
 
-  #{$inputs-list}
+  .input-def
     border-radius: 10px
     background-color: white
 
 .callback-form__title
+  +font-semi-bold
   display: block
-  +font-bold
   font-size: 2.4rem
   line-height: 3.2rem
   color: white
-  margin-bottom: 3rem
+  margin-bottom: 3.1rem
 
 .callback-form__fields
-  $space: 3rem 2rem
+  $space-item: 3rem 2rem
   display: flex
   flex-wrap: wrap
   align-items: flex-start
-  margin: 0 -#{round-float(nth($space, 2) / 2, 1)} 1.5rem
+  margin: 0 -#{round-float(nth($space-item, 2) / 2, 1)} 2rem
 
   .input-wrap
+    $space: #{round-float(nth($space-item, 2) / 2, 1)}
+    $width: calc(33.33% - #{nth($space-item, 2)})
     flex-grow: 1
-    flex-basis: 33.33%
-    width: 33.33%
-    padding: 0 #{round-float(nth($space, 2) / 2, 1)}
+    flex-basis: 100%
+    max-width: $width
+    margin-left: $space
+    margin-right: $space
 
 // --> form footer <--
 .callback-form__footer
@@ -966,7 +985,7 @@ $n-callback-form-item-space: 2rem 2rem
 /* footer conditions
 .f-conditions
   position: absolute
-  top: 30rem
+  top: 29.9rem
   left: 0
   max-width: 30rem
   font-size: 1.8rem
@@ -975,7 +994,7 @@ $n-callback-form-item-space: 2rem 2rem
   a
     padding-top: 0.5em
     text-decoration: none
-    color: white
+    color: inherit
     box-shadow: inset 0 -1px 0 rgba(white, 0.5)
     transition:
       property: color, box-shadow
@@ -989,17 +1008,17 @@ $n-callback-form-item-space: 2rem 2rem
 /* footer conditions end
 
 /* footer app
-.f-app
+.footer__app
   position: absolute
   left: 0
   top: 8.2rem
   width: $footer-left-col-width
   padding: 0 nth($footer-grid-space, 2) 0 0
 
-.f-app__label
+.footer__app-label
   display: none
 
-.f-app__item
+.footer__app-item
   display: block
   margin-bottom: 4rem
 
@@ -1008,8 +1027,8 @@ $n-callback-form-item-space: 2rem 2rem
 /* developer
 .developer
   position: absolute
-  right: 0
-  bottom: 13.5rem
+  right: 0.1rem
+  bottom: 9.1rem
   text-align: right
   font-size: 14px
   line-height: 15px
@@ -1028,12 +1047,12 @@ $n-callback-form-item-space: 2rem 2rem
 .developer__logo
   display: inline-block
   vertical-align: top
+  margin-right: 0.5rem
 
   svg
     display: inline-block
     vertical-align: top
-    +size(70px, 15px)
-    margin-right: 8px
+    +size(7.4rem, 1.6rem)
 
     path
       fill: currentColor
@@ -1051,68 +1070,86 @@ $n-callback-form-item-space: 2rem 2rem
 
 /* lacerta app
 .icon-app
-  $size: 8rem
+  $size: 6rem
+  overflow: hidden
   position: fixed
-  right: 3.9rem
+  right: nth($page-layout-space, 2)
   top: 50%
-  box-shadow: 0 3px 8px rgba(black, 0.11)
   width: $size
   height: $size
   margin-top: -#{round-float($size / 2, 1)}
   color: white
   text-indent: -9999px
-  overflow: hidden
-  background-color: $highlight-color
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAApCAYAAAArpDnNAAABl0lEQVRYhe2YvUocYRRAz4qQysK10XewsvENBM1OLNTSRhYMEn+qPIEEHyRp0ihivVU6fQorC7VwJWA0eyy8o8PqxJl1domwFz5m9s695zAwcL9vUYmVqC217dujHaxGyk8luxXA82I3FTUicaNuqXWf3rLXNR6sm2AnxCuqblcg6F5fg92qqVfAGDABXFJt1IEL4LqmGslaxZI0BBjpE/xZDEUDE00BK8Bsv0UzwE9gq9+inmMoer+iaWCuB95c9BYS1YEWcAgslJDMR08rGK+KLoE94AOwDyQFJAlwED17vDRuMiO3e2jtqJ2YkouR+xi1PzJ1i1HTiZ5uziM8T4S6mZEtvSBayki+5DAKiVA3AvRH/ZYRLUeuEzV5/YVFqJ8DeBe1v9TbyK2/0ltKhNrMyO7ivlmgr7QIdU39G6K1gj2q9rI5WeVhw/G9YL0Aw13Q/y8a/cezI2CyJO8MaJQVnQK/S4rO8x4Mv7o3idpx/2wqVhAp83oEOIkfq30QNeN6jA+ncR3AGRYHdCpP1yer/58hSfn3dhrE7TldDjMAAAAASUVORK5CYII=')
-  background-repeat: no-repeat
-  background-position: center
+  //background-color: $highlight-color
+  +linear-gradient(to bottom, $highlight-color 0, $highlight-color 50%, $btn-bg-hover-color 50%, $btn-bg-hover-color 100%)
+  background-size: 100% 200%
+  box-shadow: 0 3px 8px rgba(black, 0.11)
   border-radius: 50%
   z-index: $z-middle
   // transition
-  $prop: background-color
-  will-change: $prop
+  $prop: background-position, color, box-shadow
   transition:
     property: $prop
-    duration: $animation-speed
+    duration: 0.35s
+    timing-function: cubic-bezier(0.4, 0, 0.2, 1)
+
+  &::after
+    content: ""
+    display: block
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAApCAYAAAArpDnNAAABl0lEQVRYhe2YvUocYRRAz4qQysK10XewsvENBM1OLNTSRhYMEn+qPIEEHyRp0ihivVU6fQorC7VwJWA0eyy8o8PqxJl1domwFz5m9s695zAwcL9vUYmVqC217dujHaxGyk8luxXA82I3FTUicaNuqXWf3rLXNR6sm2AnxCuqblcg6F5fg92qqVfAGDABXFJt1IEL4LqmGslaxZI0BBjpE/xZDEUDE00BK8Bsv0UzwE9gq9+inmMoer+iaWCuB95c9BYS1YEWcAgslJDMR08rGK+KLoE94AOwDyQFJAlwED17vDRuMiO3e2jtqJ2YkouR+xi1PzJ1i1HTiZ5uziM8T4S6mZEtvSBayki+5DAKiVA3AvRH/ZYRLUeuEzV5/YVFqJ8DeBe1v9TbyK2/0ltKhNrMyO7ivlmgr7QIdU39G6K1gj2q9rI5WeVhw/G9YL0Aw13Q/y8a/cezI2CyJO8MaJQVnQK/S4rO8x4Mv7o3idpx/2wqVhAp83oEOIkfq30QNeN6jA+ncR3AGRYHdCpP1yer/58hSfn3dhrE7TldDjMAAAAASUVORK5CYII=')
+    background-repeat: no-repeat
+    background-position: center
 
   .no-touchevents &:hover
-    background-color: $highlight-color--hover
+    //background-color: $highlight-color--hover
+    background-position: 0 100%
+    box-shadow: 0 3px 8px rgba($btn-bg-hover-color, 0.25)
 
   &:active
     margin-top: -#{round-float($size / 2, 1) - 0.1}
-    box-shadow: 0 1px 4px rgba(black, 0.11)
+    box-shadow: 0 1px 4px rgba($btn-bg-hover-color, 0.25)
 
 /* lacerta app end
 
 /* === MAIN ===
-.#{$article-content}
-  padding-bottom: 16rem
+.bg-container-bottom
+  background-color: white
+  background-image: url(../../img/bg-index-section-02.jpg)
+  background-position: center bottom
+  background-repeat: no-repeat
+  padding: 7.2rem 0 8.9rem
+
+  section
+    background-image: none
 
 /* main-caption
 .main-caption
-  margin-bottom: 5rem
   font-size: 2.4rem
   line-height: 2.9rem
 
 .main-caption__holder
   position: relative
-  padding: 9.5rem 0 13rem
+  padding: 10.6rem 0
 
 .main-caption__figure
   position: absolute
-  right: 0
-  top: 0
-  background: url(../../img/main-caption-figure.png) no-repeat
+  right: -3.2rem
+  top: 0.6rem
+  //background: url(../../img/main-caption-figure.png) no-repeat
   width: 758px
   z-index: -1
 
-  &::before
-    content: ""
+  img
     display: block
-    +ratio(758, 569)
+    max-width: 100%
 
 .main-caption__title
-  margin-bottom: 5rem
+  margin-bottom: 6rem
   width: 70rem
   max-width: 100%
 
@@ -1121,7 +1158,7 @@ $n-callback-form-item-space: 2rem 2rem
 
 .main-caption__entry
   color: $text-color-alt
-  margin-bottom: 2rem
+  margin-bottom: 1.8rem
   width: 70rem
   max-width: 100%
 
@@ -1141,13 +1178,9 @@ $n-callback-form-item-space: 2rem 2rem
 /* limitations
 .limitations
   overflow: hidden
-  margin-bottom: 5rem
-
-  &:last-child
-    margin-bottom: 0
 
 .limitations__holder
-  +clear
+  padding: 4.3rem 0
 
 .limitations__list
   margin: 0 -2rem
@@ -1156,7 +1189,7 @@ $n-callback-form-item-space: 2rem 2rem
 .limitations__item
   position: relative
   width: 50%
-  padding: 12rem 2rem 12rem 36rem
+  padding: 12.9rem 1rem 8.4rem 37.3rem
   cursor: default
 
   //&::before
@@ -1184,17 +1217,22 @@ $n-callback-form-item-space: 2rem 2rem
 
 .limitations__item-figure
   position: absolute
-  left: 0
+  left: 2rem
   top: 0
-  background-position: 0 0
-  background-repeat: no-repeat
-  background-size: 100%
+  display: flex
+  align-items: center
+  justify-content: center
+
+  img
+    display: block
+    max-width: 100%
+    max-height: 100%
 
 .limitations__item-title
   +font-bold
   font-size: 3.0rem
   line-height: 1
-  margin-bottom: 2rem
+  margin-bottom: 2.1rem
 
   &:last-child
     margin-bottom: 0
@@ -1217,15 +1255,12 @@ $n-callback-form-item-space: 2rem 2rem
 .limitations__item_deposit
   float: left
   clear: both
+  padding: 12.9rem 1rem 8.4rem 37.3rem
 
 .limitations__item-figure_deposit
   //background-image: url(../../img/limitation-figure-01.png)
   //height: 259px
   width: 290px
-
-  img
-    display: block
-    max-width: 100%
 
 // hover
 //.limitations__item_deposit:hover
@@ -1236,15 +1271,13 @@ $n-callback-form-item-space: 2rem 2rem
 .limitations__item_lend
   float: left
   clear: left
+  padding: 14.6rem 1rem 8rem 37.3rem
 
 .limitations__item-figure_lend
   //background-image: url(../../img/limitation-figure-02.png)
   //height: 328px
   width: 301px
-
-  img
-    display: block
-    max-width: 100%
+  left: 1.9rem
 
 // hover
 //.limitations__item_lend:hover
@@ -1255,16 +1288,14 @@ $n-callback-form-item-space: 2rem 2rem
 .limitations__item_property
   float: right
   clear: right
-  margin-top: -15rem
+  margin-top: -15.1rem
+  padding: 12.8rem 0 8rem 36.4rem
 
 .limitations__item-figure_property
   //background-image: url(../../img/limitation-figure-03.png)
   //height: 316px
   width: 229px
-
-  img
-    display: block
-    max-width: 100%
+  left: 6.8rem
 
 // hover
 //.limitations__item_property:hover
@@ -1275,16 +1306,11 @@ $n-callback-form-item-space: 2rem 2rem
 
 /* advantages
 .advantages
-  margin-bottom: 15rem
   cursor: default
-  +clear
-
-  &:last-child
-    margin-bottom: 0
 
 .advantages__holder
   position: relative
-  padding: 10rem 0 13rem 71.2rem
+  padding: 10.7rem 1rem 16.2rem 70.8rem
 
 //.advantages__sign
   display: block
@@ -1320,7 +1346,7 @@ $n-callback-form-item-space: 2rem 2rem
 
 .advantages__figure
   position: absolute
-  left: 0
+  left: -0.1rem
   top: 0
   //background-image: url(../../img/advantage-figure.png)
   //background-position: 0 0
@@ -1334,10 +1360,10 @@ $n-callback-form-item-space: 2rem 2rem
     max-width: 100%
 
 .advantages__title
-  +font-black
+  +font-extra-bold
   font-size: 3.0rem
   line-height: 3.2rem
-  margin-bottom: 2rem
+  margin-bottom: 4.3rem
 
   &:last-child
     margin-bottom: 0
@@ -1346,7 +1372,7 @@ $n-callback-form-item-space: 2rem 2rem
   font-size: 2.4rem
   line-height: 2.9rem
   color: $text-color-alt
-  margin-bottom: 2rem
+  margin-bottom: 1.7rem
 
   &:last-child
     margin-bottom: 0
@@ -1355,12 +1381,17 @@ $n-callback-form-item-space: 2rem 2rem
   font-size: 2.4rem
   line-height: 2.9rem
   color: #000
+  margin-bottom: 1.7rem
+
+  &:last-child
+    margin-bottom: 0
 
 .advantages__footer
   position: relative
-  height: 0
-  padding-top: 5rem
   text-align: right
+  padding-top: 3.6rem
+  margin-right: -0.9rem
+  //height: 0
   //opacity: 0
   // transition
   //$prop: opacity
@@ -1386,83 +1417,23 @@ $n-callback-form-item-space: 2rem 2rem
 
 /* advantages end
 
-/* manual steps
-.manual-step
-  display: block
-
-.manual-step__caption
-  display: block
-  position: relative
-  padding: 3rem 4rem 3rem 16.5rem
-  background-color: rgba(white, 0.15)
-  border: 1px solid transparent
-  border-radius: 1rem
-  text-decoration: none
-  color: inherit
-  cursor: pointer
-  margin-bottom: 2rem
-
-  &:last-child
-    margin-bottom: 0
-
-.manual-step__number
-  $size: 8.3rem
-  display: block
-  position: absolute
-  left: 4.8rem
-  top: 50%
-  width: $size
-  height: $size
-  margin-top: -#{round-float($size / 2, 1)}
-  +font-bold
-  font-size: 3.6rem
-  line-height: $size
-  text-align: center
-  color: white
-  background-color: $highlight-color
-  border-radius: 50%
-
-.manual-step__title
-  +font-bold
-  font-size: 2.4rem
-  line-height: 3.0rem
-  margin-bottom: 2rem
-  color: white
-
-  &:last-child
-    margin-bottom: 0
-
-.manual-step__text
-  font-size: 1.8rem
-  line-height: 2.2rem
-  margin-bottom: 2rem
-  color: white
-
-  &:last-child
-    margin-bottom: 0
-
-.manual-step__figure
-  display: flex
-  align-items: center
-  justify-content: center
-
-/* manual steps end
-
 /* manual
 .manual
-  padding-top: 5rem
-  padding-bottom: 5rem
+  padding-top: 10.2rem
+  padding-bottom: 8.8rem
   background: url(../../img/bg-manual.jpg) no-repeat center top fixed
   background-size: cover
 
 .manual__holder
   position: relative
+  padding: 1rem 0 3.4rem
   +clear
 
 .manual__title
   float: left
   clear: left
   width: 50%
+  +font-extra-bold
   font-size: 5.5rem
   line-height: 1
   color: white
@@ -1480,23 +1451,39 @@ $n-callback-form-item-space: 2rem 2rem
 
   &:last-child
     margin-bottom: 0
-
-.manual-steps__item
+    
+.manual__step
   $root-elem: &
+  display: block
   margin-bottom: 2rem
 
   &:last-child
     margin-bottom: 0
 
   @at-root
-    .manual-steps__item-caption
-      margin-bottom: 0
-      $prop: background-color, border-color
+    .manual__step-caption
+      display: flex
+      flex-direction: column
+      align-items: stretch
+      justify-content: center
+      position: relative
+      min-height: 17rem
+      padding: 1.7rem 4rem 2rem 16.2rem
+      text-decoration: none
+      color: inherit
+      cursor: pointer
+      background-color: rgba(white, 0.15)
+      border: 1px solid transparent
+      border-radius: 1rem
       -webkit-tap-highlight-color: transparent
+      $prop: background-color, border-color
       transition:
         property: $prop
         duration: $animation-speed
         timing-function: ease-in-out
+
+      &:last-child
+        margin-bottom: 0
 
       // hover
       &:hover
@@ -1508,24 +1495,60 @@ $n-callback-form-item-space: 2rem 2rem
         border-color: #fff
         background-color: #fff
 
-    .manual-steps__item-title
+    .manual__step-title
+      min-width: 100%
+      +font-bold
+      font-size: 2.4rem
+      line-height: 3.0rem
+      margin-bottom: 2.1rem
+      color: white
       transition: color $animation-speed
+
+      &:last-child
+        margin-bottom: 0
 
       // current
       #{$root-elem}.current &
         color: $title-color
 
-    .manual-steps__item-text
+    .manual__step-number
+      $size: 8.3rem
+      display: block
+      position: absolute
+      left: 4.6rem
+      top: 50%
+      width: $size
+      height: $size
+      margin-top: -#{round-float($size / 2, 1)}
+      +font-bold
+      font-size: 3.6rem
+      line-height: $size
+      text-align: center
+      color: white
+      background-color: $highlight-color
+      border-radius: 50%
+
+    .manual__step-text
+      min-width: 100%
+      font-size: 1.8rem
+      line-height: 2.2rem
+      margin-bottom: 2rem
+      color: white
       transition: color $animation-speed
+
+      &:last-child
+        margin-bottom: 0
 
       // current
       #{$root-elem}.current &
         color: $text-color-alt
 
-
-    .manual-steps__item-figure
+    .manual__step-figure
+      display: flex
+      align-items: center
+      justify-content: center
       position: absolute
-      right: 0
+      right: 0.2rem
       top: 0
       bottom: 0
       width: 43.8rem
@@ -1551,7 +1574,7 @@ $n-callback-form-item-space: 2rem 2rem
 /* manual end
 
 /* bond
-$bond-space: 3.2rem 3rem 2.8rem
+$bond-space: 3.1rem 2.9rem 2.3rem
 .bond
   display: block
   position: relative
@@ -1570,8 +1593,8 @@ $bond-space: 3.2rem 3rem 2.8rem
   align-items: center
   justify-content: flex-start
   width: 15rem
-  height: 4.1rem
-  margin-bottom: 1rem
+  height: 3.5rem
+  margin: 0.3rem 0 1.9rem
 
   img
     display: block
@@ -1579,8 +1602,8 @@ $bond-space: 3.2rem 3rem 2.8rem
     max-height: 100%
 
 .bond__title
-  $font-size: 1.6rem
-  $line-height: 2.0rem
+  $font-size: 1.8rem
+  $line-height: 2.4rem
   $line-length: 2
   display: block
   position: relative
@@ -1591,7 +1614,7 @@ $bond-space: 3.2rem 3rem 2.8rem
   color: #0d0d0d
   height: $line-height * $line-length
   overflow: hidden
-  margin-bottom: 2rem
+  margin-bottom: 1.2rem
 
   &::after
     content: ""
@@ -1607,7 +1630,7 @@ $bond-space: 3.2rem 3rem 2.8rem
 .bond__release
   overflow: hidden
   position: relative
-  margin-right: 12rem
+  margin: 0 12rem 0.1rem 0
   font-size: 1.8rem
   line-height: 2.4rem
   color: #0d0d0d
@@ -1656,21 +1679,21 @@ $bond-space: 3.2rem 3rem 2.8rem
 
 /* selection
 .selection
+  //padding-top: 14.2rem
+  //padding-bottom: 16rem
   padding-top: 7rem
-  padding-bottom: 7rem
+  padding-bottom: 7.1rem
 
 .selection__title
+  +font-extra-bold
   font-size: 5.5rem
   line-height: 1
   color: #000
-  margin-bottom: 3rem
-
-  &:last-child
-    margin-bottom: 0
+  margin-bottom: 7.1rem
 
 .selection__bonds
-  padding: 0 2.2rem 4.8rem
-  margin: 0 -2.2rem 6rem
+  padding: 0 2.2rem 4.9rem
+  margin: 0 -2.2rem 5.9rem
 
   &:last-child
     margin-bottom: 0
@@ -1699,7 +1722,7 @@ $bond-space: 3.2rem 3rem 2.8rem
 
 .benefit__icon
   $size: 13rem
-  margin: 0 3rem
+  margin: 0 3.5rem
   flex-basis: $size
   min-width: $size
   width: $size
@@ -1714,7 +1737,7 @@ $bond-space: 3.2rem 3rem 2.8rem
   flex-grow: 1
 
 .benefit__title
-  +font-black
+  +font-extra-bold
   font-size: 3.0rem
   line-height: 3.6rem
   color: #000
@@ -1736,27 +1759,26 @@ $bond-space: 3.2rem 3rem 2.8rem
 
 /* benefits
 .benefits
-  padding-top: 7rem
-  padding-bottom: 7rem
+  padding-top: 7.1rem
+  padding-bottom: 7.1rem
 
 .benefits__holder
   position: relative
 
 .benefits__title
+  +font-extra-bold
   font-size: 5.5rem
   line-height: 1
   color: #000
-  margin-bottom: 3rem
-
-  &:last-child
-    margin-bottom: 0
+  margin-bottom: 6.3rem
 
 .benefits__list
   position: relative
   display: flex
   flex-wrap: wrap
   align-items: flex-start
-  margin-bottom: 6rem
+  margin-bottom: 5rem
+  padding: 0 0 0.3rem
 
   &:last-child
     margin-bottom: 0
@@ -1765,8 +1787,8 @@ $bond-space: 3.2rem 3rem 2.8rem
   flex-grow: 1
   flex-basis: 50%
   max-width: 50%
-  padding: 0 20rem
-  margin: 11rem auto
+  padding: 0 19.9rem
+  margin: 10.6rem auto
 
   &:nth-child(2n)
     padding-right: 0
@@ -1779,7 +1801,7 @@ $bond-space: 3.2rem 3rem 2.8rem
 .benefits__figure
   position: absolute
   left: 50%
-  top: 0
+  top: 1rem
   bottom: 0
   transform: translate(-50%, 0)
 
@@ -1788,25 +1810,28 @@ $bond-space: 3.2rem 3rem 2.8rem
     max-height: 100%
 
 .benefits__figure_has-shadow
-  top: -5.5rem
-  bottom: -8.5rem
+  //top: -5.1rem
+  //bottom: -8.0rem
+  top: -4.1rem
+  bottom: -8.0rem
 
 /* benefits end
 
 /* opinion-quote
 .opinion-quote
-  padding: 3.9rem 6rem
+  padding: 4.8rem 5.9rem
   background-color: white
   border-radius: 10px
   box-shadow: 0 1rem 4.6rem rgba(#7c90d4, 0.25)
 
 .opinion-quote__title
   display: block
-  +font-black
+  +font-extra-bold
   font-size: 3.0rem
   line-height: 3.6rem
-  margin-bottom: 2rem
   min-height: 8rem
+  color: #000
+  margin-bottom: 1.8rem
 
 $or__content-line-height: 2.9rem
 $or__content-line-length: 6
@@ -1830,7 +1855,7 @@ $or__content-line-length: 6
 $op-color: #622ee9
 .opinion-review
   position: relative
-  padding: 3.9rem 6rem 3.9rem 12rem
+  padding: 3.9rem 6rem 4.5rem 12rem
   background-color: $op-color
   border-radius: 10px
 
@@ -1851,7 +1876,7 @@ $op-color: #622ee9
 .opinion-review__author
   display: flex
   align-items: center
-  margin-bottom: 2rem
+  margin-bottom: 2.4rem
   color: white
   +clear
 
@@ -1875,16 +1900,21 @@ $or__author-photo-space: 1.9rem
   font-size: 1.8rem
   line-height: 2.2rem
 
-.opinion-review__author-name
-  +font-bold
-  margin-bottom: 0.5rem
+.opinion-review__author-person
+  margin-bottom: 1rem
 
   &:last-child
     margin-bottom: 0
 
+.opinion-review__author-name
+  +font-bold
+  display: inline-block
+  margin-right: 0.3rem
+
 .opinion-review__soc
   display: inline-block
   line-height: 2rem
+  cursor: default
 
 .opinion-review__soc-item
   display: inline-block
@@ -2013,17 +2043,23 @@ $or__content-line-length: 6
   display: flex
 
 .opinion__quote
+  $width: 50%
   flex-grow: 1
-  flex-basis: 50%
+  flex-basis: $width
+  min-width: $width
   position: relative
   margin-top: 3.9rem
   z-index: 1
+  transform-origin: right bottom
 
 .opinion__review
+  $width: calc(50% + 6rem)
   flex-grow: 1
-  flex-basis: calc(50% + 6rem)
+  flex-basis: $width
+  min-width: $width
   margin-left: -6rem
   margin-bottom: 5.5rem
+  transform-origin: left bottom
 
 /* opinion end
 
@@ -2037,17 +2073,15 @@ $or__content-line-length: 6
   background-size: cover
 
 .opinions__title
+  +font-extra-bold
   font-size: 5.5rem
   line-height: 1
   color: #000
-  margin-bottom: 3rem
-
-  &:last-child
-    margin-bottom: 0
+  margin-bottom: 7rem
 
 .opinions__list
-  padding: 0 1.1rem 4.8rem
-  margin: 0 -1.1rem 6rem
+  padding: 0 3rem 4.9rem
+  margin: 0 -3rem 6rem
 
   &:last-child
     margin-bottom: 0
@@ -2072,8 +2106,9 @@ $or__content-line-length: 6
 
 .app-offer__holder
   position: relative
-  padding-top: 10rem
-  padding-bottom: 10rem
+  padding-top: 10.3rem
+  padding-bottom: 10.3rem
+  min-height: 70.1rem // !Warning
 
 .app-offer__title
   width: 50%
@@ -2081,7 +2116,7 @@ $or__content-line-length: 6
   font-size: 5.5rem
   line-height: 1
   color: white
-  margin-bottom: 3rem
+  margin-bottom: 3.9rem
 
   &:last-child
     margin-bottom: 0
@@ -2091,7 +2126,7 @@ $or__content-line-length: 6
   font-size: 2.4rem
   line-height: 2.9rem
   color: white
-  margin-bottom: 4rem
+  margin-bottom: 5.3rem
 
   &:last-child
     margin-bottom: 0
@@ -2126,7 +2161,7 @@ $app-offer-app-space: 3.6rem
   display: flex
   flex-direction: column
   justify-content: flex-end
-  padding: 3rem
+  padding: 2.7rem 3rem
   text-decoration: none
   color: white
   background-color: $base-color
@@ -2147,11 +2182,11 @@ $app-offer-app-space: 3.6rem
 .last-news-elem__title
   position: relative
   width: 100%
-  border-bottom: 2px solid rgba(white, 0.5)
-  padding-bottom: 2rem
-  margin-bottom: 2rem
+  border-bottom: 3px solid rgba(white, 0.5)
+  padding-bottom: 1.8rem
+  margin-bottom: 1.7rem
   font-size: 2.4rem
-  line-height: 2.8rem
+  line-height: 2.9rem
   color: inherit
   transition: color $animation-speed
 
@@ -2159,7 +2194,7 @@ $app-offer-app-space: 3.6rem
   position: relative
   width: 100%
   font-size: 1.8rem
-  line-height: 2.4rem
+  line-height: 2.2rem
 
 /* last news element end
 
@@ -2168,14 +2203,15 @@ $app-offer-app-space: 3.6rem
   background-color: $bg-color
 
 .last-news__holder
-  padding-top: 13rem
-  padding-bottom: 13rem
+  padding-top: 14.1rem
+  padding-bottom: 16.1rem
 
 .last-news__title
+  +font-extra-bold
   font-size: 5.5rem
   line-height: 1
   color: #000
-  margin-bottom: 5rem
+  margin-bottom: 7.2rem
 
 $last-news-item-space: 0 3rem
 .last-news__list
@@ -2694,24 +2730,34 @@ $news-elem-img-space-v: 3rem
 /* news end
 
 /* companies
-$companies-elem-space-outer: 2.2rem 2.2rem
 .section_companies
   position: relative
 
+$companies-filters-item-space: 3.6rem 3.6rem
 .companies-filters
   background-color: white
   padding-bottom: 8.2rem
 
+.companies-filters__row
+  display: flex
+  flex-wrap: wrap
+  margin: 0 -#{round-float(nth($companies-filters-item-space, 2) / 2, 1)} -#{round-float(nth($companies-filters-item-space, 1) / 2, 1)}
+
+.companies-filters__item
+  flex-grow: 1
+  max-width: 31rem
+  margin: 0 #{round-float(nth($companies-filters-item-space, 2) / 2, 1)} #{round-float(nth($companies-filters-item-space, 1) / 2, 1)}
+
 .companies
   padding: 8.2rem 0 7.4rem
   background-color: $bg-color
-  border-top: 1px solid $base-color
 
 // companies content
 .companies__content
   margin-bottom: 8.2rem
 
 // companies list
+$companies-elem-space-outer: 2.2rem 2.2rem
 .companies__list
   display: flex
   flex-wrap: wrap

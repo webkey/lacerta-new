@@ -27,21 +27,13 @@ body
     background-color: white
     background-image: url(../../img/bg-index-section-01.jpg)
 
+  &.bg-alt
+    background-color: white
+
   // выделение текста
   *::selection
     background-color: $base-color
     color: white
-
-.bg-container-bottom
-  padding-top: 8rem
-  padding-bottom: 4.4rem
-  background-color: $bg-color
-  background-image: url(../../img/bg-index-section-02.jpg)
-  background-position: center bottom
-  background-repeat: no-repeat
-
-  section
-    background-image: none
 
 .layout-spaces
   @if nth($page-layout-space, 2) != 0

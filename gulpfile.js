@@ -79,13 +79,12 @@ gulp.task('htmlCompilation', function () {
           markdown: markdown.parse
         }
       }))
-      .pipe(rename(function (path) {
-        path.basename = path.basename.substr(2);
-      }))
       .pipe(htmlbeautify({
-        // "indent_with_tabs": true,
         "indent_size": 2,
         "max_preserve_newlines": 0
+      }))
+      .pipe(rename(function (path) {
+        path.basename = path.basename.substr(2);
       }))
       .pipe(gulp.dest('./src/'));
 });
@@ -106,11 +105,6 @@ gulp.task('html:buildAllPages', ['htmlCompilation'], function () {
         'list-template': (listContent) => `<ul class="` + pref + `__list"> ${listContent}</ul>`,
         'item-template': (filepath, filename) => `<li class="` + pref + `__item"><a class="` + pref + `__item-link" href="./${filename}">${filename}</a></li>`,
         'outputFile': './all-pages.html'
-      }))
-      .pipe(htmlbeautify({
-        // "indent_with_tabs": true,
-        "indent_size": 2,
-        "max_preserve_newlines": 0
       }))
       .pipe(gulp.dest('./src/'));
 });
@@ -198,6 +192,7 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () {
     , 'src/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js' // маска для форм
     , 'src/libs/ion.rangeSlider/js/ion.rangeSlider.min.js' // ползунок
     , 'src/libs/matchHeight/dist/jquery.matchHeight-min.js' // скрипт для выравнивания элементов по максимальному
+    , 'node_modules/scrollreveal/dist/scrollreveal.min.js' // показывать элементы на скролл
   ])
       .pipe(concat('libs.js'))
       .pipe(gulp.dest('src/js'))

@@ -17,6 +17,7 @@ $font-bold: 'proximanova-bold', Helvetica, Arial, sans-serif !default
 $font-bold-italic: 'proximanova-bold-italic', Helvetica, Arial, sans-serif !default
 $font-italic: 'proximanova-italic', Helvetica, Arial, sans-serif !default
 $font-light: 'proximanova-light', Helvetica, Arial, sans-serif !default
+$font-extra-bold: 'proximanova-extra-bold', Helvetica, Arial, sans-serif !default
 $font-semi-bold: 'proximanova-semi-bold', Helvetica, Arial, sans-serif !default
 $font-thin: 'proximanova-thin', Helvetica, Arial, sans-serif !default
 $font-alt: Georgia, serif !default
@@ -46,6 +47,10 @@ $font-alt: Georgia, serif !default
 
 =font-light()
   font-family: $font-light
+  font-weight: normal
+
+=font-extra-bold()
+  font-family: $font-extra-bold
   font-weight: normal
 
 =font-semi-bold()
@@ -256,7 +261,7 @@ $grid-space--mob: 0.8rem 10rem !default
 
 // Header
 // ==========================================================================
-$header-height: 11.2rem !default
+$header-height: 11.6rem !default
 $header-height--sm: 8rem !default
 
 
@@ -296,41 +301,35 @@ $btn-disabled-color: #ccc !default
 $form-media--mob: '<mob-lg'
 
 // List of inputs
-$inputs-list: 'input[type="text"]', 'input[type="password"]', 'input[type="email"]', 'input[type="search"]', 'textarea'
-$small-field: 'small-field'
+//$inputs-list: 'input[type="text"]', 'input[type="password"]', 'input[type="email"]', 'input[type="search"]', 'textarea'
 
 // Colors of forms
-$form-text-color: #1d1e20 !default
-//$form-placeholder-color: $border-color !default
+$form-text-color: #000 !default
 $form-placeholder-color: #40455d !default
-$form-bg-color: #eef2ff !default
+$form-bg-color: white !default
+$form-bg-color_alt: #eef2ff !default
 $form-border-color: $form-bg-color !default
+$form-border-color_focused: #40455d !default
 // validation
 $form-error-color: #f25984 !default
 $form-success-color: #28e4cc !default
-$form-has-value-color: #2d2d87 !default
 // disabled
-$form-text-color--disabled: #6a6a6a !default
-$form-bg-color--disabled: #535386 !default
-$form-border-color--disabled: #535386 !default
-// focus
-$form-border-color--focus: #4949a7 !default
+$form-text-color--disabled: rgb(190, 190, 190) !default
+$form-bg-color--disabled: rgb(222, 222, 222) !default
+$form-border-color--disabled: rgb(222, 222, 222) !default
 
-// Fonts of forms
+// Fonts of Forms
 $form-font-size: 18px !default
 $form-line-height: 20px !default
 $form-input-height: 55px !default
 $form-letter-spacing: null !default
-//----------------------------------
-$form-font-size--small: 18px !default
-$form-line-height--small: 20px !default
-$form-input-height--small: 44px !default
-$form-letter-spacing--small: null !default
+$form-border-radius: 10px !default
 //----------------------------------
 $form-font-size--mob: 16px !default
 $form-line-height--mob: 20px !default
 $form-input-height--mob: 40px !default
 $form-letter-spacing--mob: null !default
+$form-border-radius--mob: 8px !default
 
 // Font of Labels
 $form-label-font-size: 16px !default
@@ -342,13 +341,43 @@ $form-label-line-height--mob: 16px !default
 
 // Space of Labels
 $form-label-vsb: 0.8rem // vertical space bottom
-$form-label-vsb--small: 0.4rem // vertical space bottom
 $form-label-vsb--mob: 0.6rem // vertical space bottom
 
-// @example Sass - Использование
-// @example css - Вывод CSS
-// Inputs Font
-=inputs-font()
+// Layout of forms
+$form-border-width: 1px !default
+$form-input-space-vt: floor(($form-input-height - $form-line-height - $form-border-width * 2) / 2) !default // верхний паддинг округляем в нижнюю сторону
+$form-input-space-vb: ceil(($form-input-height - $form-line-height - $form-border-width * 2) / 2) !default // нижний паддинг округляем в верхнюю сторону
+$form-input-space-h: 30px !default
+$form-bottom-space: 2rem !default
+//---------------------------------
+$form-border-width--mob: 1px !default
+$form-input-space-vt--mob: floor(($form-input-height--mob - $form-line-height--mob - $form-border-width--mob * 2) / 2) !default // верхний паддинг округляем в нижнюю сторону
+$form-input-space-vb--mob: ceil(($form-input-height--mob - $form-line-height--mob - $form-border-width--mob * 2) / 2) !default // нижний паддинг округляем в верхнюю сторону
+$form-input-space-h--mob: 20px !default
+$form-bottom-space--mob: 3rem !default
+$form-gap--mob: 2rem !default
+//---------------------------------
+
+// Inputs Common Styles
+//---------------------------------
+=inputs-common-styles()
+  width: 100%
+  padding: $form-input-space-vt #{$form-input-space-h + 10} $form-input-space-vb $form-input-space-h
+  background-color: $form-bg-color
+  border-radius: $form-border-radius
+  box-shadow: none
+  @if $form-border-width
+    border: $form-border-width solid $form-border-color
+
+=inputs-common-styles--mob()
+  padding: $form-input-space-vt--mob #{$form-input-space-h--mob + 10} $form-input-space-vb--mob $form-input-space-h--mob
+  border-radius: $form-border-radius--mob
+  @if $form-border-width--mob
+    border-width: $form-border-width--mob
+
+// Inputs Font Styles
+//---------------------------------
+=inputs-font-styles()
   +font-normal
   font-size: $form-font-size
   line-height: $form-line-height
@@ -357,90 +386,58 @@ $form-label-vsb--mob: 0.6rem // vertical space bottom
   @if $form-letter-spacing
     letter-spacing: $form-letter-spacing
 
-=inputs-font--small()
-  font-size: $form-font-size--small
-  line-height: $form-line-height--small
-  @if $form-letter-spacing--small
-    letter-spacing: $form-letter-spacing--small
-
-=inputs-font--mob()
+=inputs-font-style--mob()
   font-size: $form-font-size--mob
   line-height: $form-line-height--mob
   @if $form-letter-spacing--mob
     letter-spacing: $form-letter-spacing--mob
 
-// Selects Font
-=selects-font()
-  +inputs-font
-
-=selects-font--small()
-  +inputs-font--small
-
-=selects-font--mob()
-  +inputs-font--mob
-
-// Layout of forms
-$form-border-width: 1px !default
-$form-input-space-vt: floor(($form-input-height - $form-line-height - $form-border-width * 2) / 2) !default // верхний паддинг округляем в нижнюю сторону
-$form-input-space-vb: ceil(($form-input-height - $form-line-height - $form-border-width * 2) / 2) !default // нижний паддинг округляем в верхнюю сторону
-$form-input-space-h: 30px !default
-$form-bottom-space: 2.5rem !default
-$form-gap: 4rem !default
-//--------------------------------
-$form-border-width--small: 1px !default
-$form-input-space-vt--small: floor(($form-input-height--small - $form-line-height--small - $form-border-width--small * 2) / 2) !default // верхний паддинг округляем в нижнюю сторону
-$form-input-space-vb--small: ceil(($form-input-height--small - $form-line-height--small - $form-border-width--small * 2) / 2) !default // нижний паддинг округляем в верхнюю сторону
-$form-input-space-h--small: 20px !default
-$form-bottom-space--small: 2.5rem !default
-$form-gap--small: 3rem !default
+// Selects Font Styles
 //---------------------------------
-$form-border-width--mob: 1px !default
-$form-input-space-vt--mob: floor(($form-input-height--mob - $form-line-height--mob - $form-border-width--mob * 2) / 2) !default // верхний паддинг округляем в нижнюю сторону
-$form-input-space-vb--mob: ceil(($form-input-height--mob - $form-line-height--mob - $form-border-width--mob * 2) / 2) !default // нижний паддинг округляем в верхнюю сторону
-$form-input-space-h--mob: 18px !default
-$form-bottom-space--mob: 1.5rem !default
-$form-gap--mob: 2rem !default
+=selects-font-styles()
+  +inputs-font-styles
 
-// Vertical spaces
-=forms-space()
+=selects-font-styles--mob()
+  +inputs-font-style--mob
+
+// Inputs Spaces
+//---------------------------------
+=inputs-spaces()
   margin: 0 0 $form-bottom-space
 
-  +media($form-media--mob)
-    margin: 0 0 $form-bottom-space--mob
-
-=forms-space--small()
-  margin: 0 0 $form-bottom-space--small
-
-  +media($form-media--mob)
-    margin: 0 0 $form-bottom-space--mob
+=inputs-spaces--mob()
+  margin: 0 0 $form-bottom-space--mob
 
 // Checkboxes
 // Radio Buttons
+$checkbox-size: 18px !default
+$checkbox-check-size: 6px 10px !default
+$radio-check-size: 10px !default
 $checkbox-color: $highlight-color !default
 
 // Select
-$select-arrow-width: 56px !default
-$select-arrow-width--small: 56px !default
+$select-arrow-width: 55px !default
 $select-arrow-width--mob: 40px !default
-$select-arrow-height: 100% !default
-$select-arrow-height--small: 100% !default
-$select-arrow-height--mob: 100% !default
+$select-arrow-height: 55px !default
+$select-arrow-height--mob: 40px !default
+$select-space-h: 25px !default
+$select-space-h--mob: 20px !default
 $multiple-item-space: 3px !default
 
 // Style Selection
 =selectSelection()
   height: $form-input-height
   width: 100%
-  padding: $form-input-space-vt $select-arrow-width $form-input-space-vb $form-input-space-h
-  background: $form-bg-color
+  padding: $form-input-space-vt $select-arrow-width $form-input-space-vb $select-space-h
+  background: #eef2ff
   @if $form-border-width
-    border: $form-border-width solid $form-border-color
+    border: $form-border-width solid #eef2ff
   border-radius: round($form-input-height / 2)
   box-shadow: none
   text-indent: 0
   outline: none
   // transition
-  $prop: border-color, color, background-color
+  $prop: color
   transition:
     property: $prop
     duration: $animation-speed
@@ -448,65 +445,30 @@ $multiple-item-space: 3px !default
   user-select: none
   -webkit-tap-highlight-color: transparent
 
-=selectSelection--small()
-  height: $form-input-height--small
-  padding: $form-input-space-vt--small $select-arrow-width--small $form-input-space-vb--small $form-input-space-h--small
-  border-radius: round($form-input-height--small / 2)
-  @if $form-border-width--small
-    border-width: $form-border-width--small
-
 =selectSelection--mob()
   height: $form-input-height--mob
-  padding: $form-input-space-vt--mob $select-arrow-width--mob $form-input-space-vb--mob $form-input-space-h--mob
+  padding: $form-input-space-vt--mob $select-arrow-width--mob $form-input-space-vb--mob $select-space-h--mob
   border-radius: round($form-input-height--mob / 2)
   @if $form-border-width--mob
     border-width: $form-border-width--mob
 
-// Select arrow
-=selectArrow()
-  &::before, &::after
-    content: ''
-    position: absolute
-    right: 27px
-    top: 50%
-    width: 6px
-    height: 2px
-    //background-color: $form-text-color
-    background-color: currentColor
-    margin-top: -1px
-    z-index: 1
-
-    +media($form-media--mob)
-      right: 18px
-
-  //.input-holder.error &, .input-holder.success &
-      display: none
-
-  &::before
-    transform: rotate(45deg)
-
-  &::after
-    transform: rotate(-45deg)
-    right: 23px
-
-    +media($form-media--mob)
-      right: 15px
-
 // States
 =form-success()
-  //color: $form-success-color
-  //border-color: $form-success-color
+  border-color: $form-success-color
 
 =form-error()
   color: $form-error-color
   border-color: $form-error-color
 
+  +placeholder
+    color: $form-error-color
+
 =form-has-value()
-  cursor: text
+  border-color: $form-border-color_focused
 
 =form-on-focus()
-  //color: $form-border-focus-color
-  border-color: $form-border-color--focus
+  outline: none
+  border-color: $form-border-color_focused
 
 // No custom list
 // ==========================================================================

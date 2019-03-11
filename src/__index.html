@@ -1,10 +1,7 @@
-@@include('_tpl_layout_head.html', {
-  "title": "Главная",
-  "pageClass": "home-page"
-})
+@@include('_tpl_layout_head.html', {"title": "Главная", "pageClass": "home-page"})
 
 <!--HEADER-->
-@@include('_tpl_layout_header.html', {"currentItem": "Главная", "headerFloat": "" })
+@@include('_tpl_layout_header.html', {"currentItem": "Главная", "headerFloat": "true"})
 <!--HEADER end-->
 
 <!--MAIN-->
@@ -12,7 +9,9 @@
   <!--main-caption-->
   <section class="main-caption layout-spaces">
     <div class="main-caption__holder layout-section">
-      <div class="main-caption__figure">&nbsp;</div>
+      <div class="main-caption__figure show-figure-js">
+        <img src="img/main-caption-figure.png" alt="Куда вкладывать деньги, чтобы их приумножить?" />
+      </div>
       <h1 class="main-caption__title">Куда вкладывать деньги, чтобы их приумножить?</h1>
       <div class="main-caption__entry">Если у вас есть сбережения, то вы наверняка задавались подобным вопросом</div>
       <div class="main-caption__text"><strong>Вариантов, на самом деле, несколько</strong></div>
@@ -21,26 +20,26 @@
   <!--main-caption end-->
 
   <!--limitations-->
-  <section class="limitations layout-section layout-spaces">
-    <div class="limitations__holder">
+  <section class="limitations layout-spaces">
+    <div class="limitations__holder layout-section">
       <h2 class="hide-text">Плохие варианты</h2>
       <div class="limitations__list">
         <article class="limitations__item limitations__item_deposit">
-          <div class="limitations__item-figure limitations__item-figure_deposit">
+          <div class="limitations__item-figure limitations__item-figure_deposit show-figure-js">
             <img src="img/limitation-figure-01.png" alt="Сделать вклад в банке" />
           </div>
           <h3 class="limitations__item-title">Сделать вклад в банке</h3>
           <div class="limitations__item-entry">И годы ждать маааааленький процент прибыли</div>
         </article>
         <article class="limitations__item limitations__item_lend">
-          <div class="limitations__item-figure limitations__item-figure_lend">
+          <div class="limitations__item-figure limitations__item-figure_lend show-figure-js">
             <img src="img/limitation-figure-02.png" alt="Дать взаймы знакомому под %" />
           </div>
           <h3 class="limitations__item-title">Дать взаймы знакомому под %</h3>
           <div class="limitations__item-entry">В ГУВД вам будут не рады - таких заявлений с невозвратом денег у них тысячи</div>
         </article>
         <article class="limitations__item limitations__item_property">
-          <div class="limitations__item-figure limitations__item-figure_property">
+          <div class="limitations__item-figure limitations__item-figure_property show-figure-js">
             <img src="img/limitation-figure-03.png" alt="Купить недвижимость" />
           </div>
           <h3 class="limitations__item-title">Купить недвижимость</h3>
@@ -54,10 +53,10 @@
   <!--advantages-->
   <section class="advantages layout-spaces">
     <div class="advantages__holder layout-section">
-      <h2 class="advantages__title">И еще вариант&nbsp;− проинвестировать в крупную компанию</h2>
+      <h2 class="advantages__title">И еще вариант&nbsp;−<br> проинвестировать в крупную компанию</h2>
       <div class="advantages__entry">По сути - отдолжить свои деньги под интересный процент <strong>(например 15%)</strong> на опредлеенный срок компании, а не человеку. При этом вы получаете официальный документ - компания не исчезнет, и вы получите деньги в любом случае.</div>
       <div class="advantages__text"><strong>Звучит неплохо? У таких инвестиций есть название&nbsp;- это облигации.</strong></div>
-      <div class="advantages__figure">
+      <div class="advantages__figure show-figure-js">
         <img src="img/advantage-figure.png" alt="И еще вариант" />
       </div>
       <div class="advantages__footer">

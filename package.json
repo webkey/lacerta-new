@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "bower": "^1.8.8",
-    "object-fit-images": "^3.2.3"
+    "object-fit-images": "^3.2.3",
+    "scrollreveal": "^4.0.5"
   }
 }
