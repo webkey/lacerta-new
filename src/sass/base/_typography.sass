@@ -5,7 +5,7 @@
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
   padding: 0
   color: $title-color
-  margin: 0 0 $bottom-space
+  margin: 0 0 1.6rem
 
   +media('<mob-lg')
     margin-bottom: round-float($bottom-space*0.85, 1)
@@ -24,7 +24,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
 h1, .h1
   +font-extra-bold
   +font-h1
-  margin-bottom: 4rem
+  margin-bottom: 6.2rem
 
 h2, .h2
   +font-extra-bold
@@ -48,8 +48,8 @@ h6, .h6
   text-transform: uppercase
 
 .page-control
-  margin-bottom: 5rem
-  padding-top: 4rem
+  margin-bottom: 4.2rem
+  padding-top: 6rem
 
 .entry-text
   font-size: 2.4rem
@@ -67,7 +67,7 @@ h6, .h6
     +font-bold-italic
 
 .heading
-  margin-bottom: 13.5rem
+  margin-bottom: $heading-bottom
 
   .entry-text
     width: 100rem
@@ -228,7 +228,7 @@ table
 
 /* article elements
 .#{$article-content}
-  padding-bottom: 16rem
+  padding-bottom: 12.4rem
 
   @each $tags in h2, h3, h4, h5, '.h2', '.h3', '.h4', '.h5'
     p + #{$tags},
@@ -237,16 +237,18 @@ table
     hr + #{$tags},
     table + #{$tags},
     .table-auto + #{$tags}
-      margin-top: $bottom-space * 2
+      margin-top: 6.2rem
 
   // figure
   figure
     display: block
     padding: 0
-    margin: 5rem 0 4rem
+    margin: 5.3rem 0 5.0rem
 
     img
-      margin-bottom: 1.5rem
+      display: block
+      max-width: 100%
+      margin-bottom: 1.7rem
 
   figcaption
     display: block
@@ -260,8 +262,8 @@ table
   & > mark
     display: block
     position: relative
-    margin: 5rem 0 4rem
-    padding: 3rem 4rem
+    margin: 2.9rem 0 2.8rem
+    padding: 2.5rem 4rem 2.3rem
     +font-bold
     font-size: 3rem
     line-height: 3.6rem
@@ -287,26 +289,27 @@ table
 
   // blockquote
   blockquote
-    $img-size: 110px
-    $img-space: 24px
+    $img-size: 11rem
+    $img-space: 2.4rem
     display: block
+    overflow: hidden
     position: relative
-    margin: 5rem 0 4rem
-    padding: 0
+    margin: 5rem 0
+    padding: 1.7rem 0
     +clear
 
     img
       width: $img-size
       height: $img-size
-      border-radius: 55px
+      border-radius: $img-size
       float: left
-      margin-right: $img-space
+      margin: 0.6rem #{$img-space} -0.6rem 0
 
     q
       display: block
       position: relative
       margin: 0 0 2rem #{$img-size + $img-space}
-      padding: 0 165px 0 0
+      padding: 0 17rem 0 0
       font-size: 1.8rem
       line-height: 2.5rem
       color: $quote-color
@@ -315,9 +318,9 @@ table
         content: "”"
         display: block
         position: absolute
-        right: 0
-        top: -30px
-        font-size: 314px
+        right: 4.2rem
+        top: -4.1rem
+        font-size: 32rem
         line-height: 1
         color: $highlight-color
         pointer-events: none
