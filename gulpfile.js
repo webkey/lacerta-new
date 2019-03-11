@@ -94,7 +94,7 @@ gulp.task('htmlCompilation', function () {
  */
 gulp.task('html:buildAllPages', ['htmlCompilation'], function () {
   var pref = "all-pages";
-  return gulp.src(['!src/forms.html', '!src/__*.html', '!src/_tpl_*.html', '!src/_temp_*.html', './src/*.html'])
+  return gulp.src(['!src/forms.html', '!src/all-pages.html', '!src/__*.html', '!src/_tpl_*.html', '!src/_temp_*.html', './src/*.html'])
       .pipe(index({
         // written out before index contents
         'prepend-to-output': () => `<head> <title>All pages</title><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0"><link rel="shortcut icon" href="favicon.ico"></head><body>`,

@@ -226,6 +226,7 @@ html:not(.no-js)
 
 /* === HEADER ===
 .header
+  overflow-x: hidden
   position: fixed
   left: 0
   top: 0
@@ -329,10 +330,16 @@ html:not(.no-js)
   cursor: default
   +clear
 
+  +media('<desk-md')
+    font-size: 1.6rem
+
   li
     position: relative
     float: left
     margin-left: 5.7rem
+
+    +media('<desk-md')
+      margin-left: 3.5rem
 
   a
     color: #000
@@ -572,8 +579,7 @@ a.shutter-nav-switcher
   justify-content: center
   width: 100%
   height: 100%
-  overflow-x: hidden
-  overflow-y: auto
+  overflow: hidden
   opacity: 0
   visibility: hidden
   pointer-events: none
@@ -652,6 +658,9 @@ a.shutter-nav-switcher
     duration: 0s
     delay: $toggle-nav-dur
     timing-function: ease-out
+
+  +media('<desk-md')
+    padding: 2rem 4rem
 
   .shutter-nav_is-open &
     opacity: 1
@@ -899,8 +908,15 @@ $n-callback-form-item-space: 2rem 2rem
   line-height: 3.2rem
   list-style: none
 
+  +media('<desk-ml')
+    font-size: 2.0rem
+    line-height: 2.6rem
+
   li
     margin: 0 4.1rem 2rem 0
+
+    +media('<desk-ml')
+      margin: 0 3rem 1.5rem 0
 
     &.adr, &.cond
       display: none
@@ -919,6 +935,9 @@ $n-callback-form-item-space: 2rem 2rem
     & > strong
       +font-semi-bold
       font-size: 3.0rem
+
+      +media('<desk-ml')
+        font-size: 2.6rem
 
     &:hover
       color: $highlight-color--hover
@@ -1309,10 +1328,16 @@ $n-callback-form-item-space: 2rem 2rem
   clear: both
   padding: 12.9rem 1rem 8.4rem 37.3rem
 
+  +media('<desk-md')
+    padding: 7rem 1rem 8rem 30rem
+
 .limitations__item-figure_deposit
   //background-image: url(../../img/limitation-figure-01.png)
   //height: 259px
-  width: 290px
+  width: 29rem
+
+  +media('<desk-md')
+    width: 25rem
 
 // hover
 //.limitations__item_deposit:hover
@@ -1325,11 +1350,17 @@ $n-callback-form-item-space: 2rem 2rem
   clear: left
   padding: 14.6rem 1rem 8rem 37.3rem
 
+  +media('<desk-md')
+    padding: 7rem 1rem 8rem 30rem
+
 .limitations__item-figure_lend
   //background-image: url(../../img/limitation-figure-02.png)
   //height: 328px
-  width: 301px
+  width: 30.1rem
   left: 1.9rem
+
+  +media('<desk-md')
+    width: 25rem
 
 // hover
 //.limitations__item_lend:hover
@@ -1343,11 +1374,18 @@ $n-callback-form-item-space: 2rem 2rem
   margin-top: -15.1rem
   padding: 12.8rem 0 8rem 36.4rem
 
+  +media('<desk-md')
+    padding: 7rem 1rem 8rem 30rem
+
 .limitations__item-figure_property
   //background-image: url(../../img/limitation-figure-03.png)
   //height: 316px
-  width: 229px
+  width: 22.9rem
   left: 6.8rem
+
+  +media('<desk-md')
+    width: 22rem
+    left: 4rem
 
 // hover
 //.limitations__item_property:hover
@@ -1363,6 +1401,9 @@ $n-callback-form-item-space: 2rem 2rem
 .advantages__holder
   position: relative
   padding: 10.7rem 1rem 16.2rem 70.8rem
+
+  +media('<desk-md')
+    padding: 7rem 1rem 12rem 55rem
 
 //.advantages__sign
   display: block
@@ -1405,7 +1446,10 @@ $n-callback-form-item-space: 2rem 2rem
   //background-repeat: no-repeat
   //background-size: 100%
   //height: 562px
-  width: 565px
+  width: 56.5rem
+
+  +media('<desk-md')
+    width: 49rem
 
   img
     display: block
@@ -1968,6 +2012,7 @@ $or__author-photo-space: 1.9rem
 .opinion-review__soc
   display: inline-block
   line-height: 2rem
+  margin: -0.2rem 0
   cursor: default
 
 .opinion-review__soc-item
@@ -1975,7 +2020,7 @@ $or__author-photo-space: 1.9rem
   vertical-align: top
   width: 2rem
   height: 2rem
-  margin: 0 0.2rem 0 0
+  margin: 0.3rem 0.2rem 0.3rem 0
   font-size: 2rem
   border-radius: 50%
   background-size: 100%
@@ -2250,11 +2295,19 @@ $app-offer-app-space: 3.6rem
   color: inherit
   transition: color $animation-speed
 
+  +media('<desk-md')
+    font-size: 2.0rem
+    line-height: 2.6rem
+
 .last-news-elem__text
   position: relative
   width: 100%
   font-size: 1.8rem
   line-height: 2.2rem
+
+  +media('<desk-md')
+    font-size: 1.6rem
+    line-height: 2.0rem
 
 /* last news element end
 
@@ -2565,7 +2618,7 @@ $bond-calc-space--sm: 4rem 4rem 5.1rem
   color: $text-color-alt
 
   +media('<desk-ml')
-    padding: 8.4rem #{nth($bond-calc-space--sm, 2)} 2rem
+    padding: 6rem #{nth($bond-calc-space--sm, 2)} 4rem
 
   p
     margin-bottom: 2.2rem
@@ -2575,6 +2628,9 @@ $bond-calc-space--sm: 4rem 4rem 5.1rem
 
 .company-info__figure
   margin-bottom: 5rem
+
+  +media('<desk-ml')
+    margin-bottom: 4rem
 
   &:last-child
     margin-bottom: 0
@@ -2911,6 +2967,7 @@ $companies-elem-space-outer: 2.2rem 2.2rem
   padding-bottom: 16.1rem
 
 $company-box-aside-width: 44.7rem
+$company-box-aside-width--sm: 35rem
 .company-box
   position: relative
   display: flex
@@ -2928,17 +2985,31 @@ $company-box-aside-width: 44.7rem
     border-right: 1px solid #cfd2df
     pointer-events: none
 
+    +media('<desk-md')
+      left: $company-box-aside-width--sm
+
 .company-box__aside
-  flex-basis: $company-box-aside-width
   flex-shrink: 0
+  flex-basis: $company-box-aside-width
   padding-right: 6.1rem
+
+  +media('<desk-ml')
+    padding-right: 4rem
+
+  +media('<desk-md')
+    flex-basis: $company-box-aside-width--sm
 
 .company-box__main
   flex-grow: 1
   $width: calc(100% - #{$company-box-aside-width})
+  flex-shrink: 0
   flex-basis: $width
-  max-width: $width
+  //max-width: $width
   min-height: 64.4rem
+
+  +media('<desk-md')
+    $width: calc(100% - #{$company-box-aside-width--sm})
+    flex-basis: $width
 
 /* company end
 
