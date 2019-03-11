@@ -369,6 +369,7 @@ function slidersInit() {
 
         autoplay: {
           delay: 5000,
+          disableOnInteraction: true
         },
 
         // Parallax
@@ -414,6 +415,7 @@ function slidersInit() {
 
         autoplay: {
           delay: 5000,
+          disableOnInteraction: true
         },
 
         parallax: true,

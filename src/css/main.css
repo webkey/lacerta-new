@@ -3666,7 +3666,7 @@ a.shutter-nav-switcher.shutter-nav_is-open::before, a.shutter-nav-switcher.shutt
 
 /* lacerta app end */
 /* === MAIN === */
-.bg-container-bottom {
+.sections-group {
   background-color: white;
   background-image: url(../img/bg-index-section-02.jpg);
   background-position: center bottom;
@@ -3674,7 +3674,7 @@ a.shutter-nav-switcher.shutter-nav_is-open::before, a.shutter-nav-switcher.shutt
   padding: 7.2rem 0 8.9rem;
 }
 
-.bg-container-bottom section {
+.sections-group section {
   background-image: none;
 }
 
@@ -4670,12 +4670,18 @@ a.shutter-nav-switcher.shutter-nav_is-open::before, a.shutter-nav-switcher.shutt
 /* opinion end */
 /* opinions */
 .opinions {
-  padding-top: 7rem;
-  padding-bottom: 7rem;
+  padding-top: 14.2rem;
+  padding-bottom: 15.9rem;
   background-image: url(../img/bg-opinions.jpg);
+  background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center bottom;
   background-size: cover;
+}
+
+.sections-group .opinions {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
 }
 
 .opinions__title {
@@ -4886,7 +4892,7 @@ a.shutter-nav-switcher.shutter-nav_is-open::before, a.shutter-nav-switcher.shutt
   -ms-flex-pack: center;
       justify-content: center;
   min-height: 21.1rem;
-  padding: 2rem 4.6rem 2rem 20.8rem;
+  padding: 1.8rem 4.6rem 2rem 20.8rem;
   background-color: #5b29cd;
   border-radius: 1rem;
   box-shadow: inset 0 1rem 4.6rem rgba(124, 144, 212, 0.25);
@@ -4912,12 +4918,12 @@ a.shutter-nav-switcher.shutter-nav_is-open::before, a.shutter-nav-switcher.shutt
 }
 
 .profit__title {
-  font-family: "proximanova-black", Helvetica, Arial, sans-serif;
+  font-family: "proximanova-bold", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-size: 3.0rem;
   line-height: 1;
   color: white;
-  margin-bottom: 2rem;
+  margin-bottom: 2.2rem;
 }
 
 .profit__title:last-child {
@@ -4938,7 +4944,7 @@ a.shutter-nav-switcher.shutter-nav_is-open::before, a.shutter-nav-switcher.shutt
 /* profit end */
 /* profits */
 .profits {
-  padding-bottom: 7rem;
+  padding-bottom: 7.1rem;
 }
 
 .profits__holder {
@@ -5219,8 +5225,8 @@ a.shutter-nav-switcher.shutter-nav_is-open::before, a.shutter-nav-switcher.shutt
 /* company info end */
 /* yield */
 .yield {
-  padding-top: 7rem;
-  padding-bottom: 7rem;
+  padding-top: 7.2rem;
+  padding-bottom: 12.4rem;
 }
 
 .yield__holder {
@@ -5228,7 +5234,7 @@ a.shutter-nav-switcher.shutter-nav_is-open::before, a.shutter-nav-switcher.shutt
 }
 
 .yield__title {
-  font-family: "proximanova-bold", Helvetica, Arial, sans-serif;
+  font-family: "proximanova-extra-bold", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-size: 5.5rem;
   line-height: 1;
