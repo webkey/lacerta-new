@@ -2619,7 +2619,7 @@ $yield-thumbs-elem-height: 22.3rem
 
 // news variables
 $news-elem-space-outer: 3rem 6.6rem
-$news-elem-space-inner: 1.8rem 3rem
+$news-elem-space-inner: 2.7rem 3rem
 $news-elem-img-space-h: 3.6rem
 $news-elem-img-space-v: 3rem
 
@@ -2634,6 +2634,8 @@ $news-elem-img-space-v: 3rem
   background-position: center
   background-color: $border-color
   background-size: cover
+  font-size: 0
+  line-height: 0
 
   &::before
     content: ""
@@ -2649,8 +2651,8 @@ $news-elem-img-space-v: 3rem
   font-size: 2.4rem
   line-height: 2.9rem
   color: $title-color
-  margin-bottom: 1.5rem
-  padding-bottom: 1.5rem
+  margin-bottom: 1.7rem
+  padding-bottom: 2rem
 
   &::before
     content: ""
@@ -2662,9 +2664,9 @@ $news-elem-img-space-v: 3rem
     max-width: 80%
     border-top: 3px solid $border-color
 
-.news-elem__title
+.news-elem__text
   font-size: 1.8rem
-  line-height: 2.1rem
+  line-height: 2.2rem
   color: $text-color-alt
 
 // type vertical
@@ -2672,13 +2674,16 @@ $news-elem-img-space-v: 3rem
   .news-elem
     padding: 0
     box-shadow: none
+    min-height: 69.6rem // !Warning
 
   .news-elem__figure
-    margin-bottom: $news-elem-img-space-v
     width: 100%
 
     &:last-child
       margin-bottom: 0
+
+  .news-elem__content
+    padding: #{nth($news-elem-space-inner, 1)} nth($news-elem-space-inner, 2) nth($news-elem-space-inner, 1) $news-elem-img-space-h
 
 // type left
 .type-l
@@ -2706,7 +2711,7 @@ $news-elem-img-space-v: 3rem
 
 /* news
 .news
-  margin-bottom: 6rem
+  padding-bottom: 16.1rem
 
 // news list
 .news__list
