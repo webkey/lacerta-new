@@ -361,7 +361,7 @@ function toggleShutters() {
   var $shutterNavSwitcher = $('.shutter-nav-switcher-js'), shutterNavSwitcherJs;
   if ($shutterNavSwitcher.length) {
     shutterNavSwitcherJs = $shutterNavSwitcher.switchClass({
-      switchClassTo: $('.shutter-nav-js')
+      switchClassTo: $('.shutter-nav-js').add('.shutter-overlay-js')
       , remover: $('.shutter-nav-close-js')
       , modifiers: {
         activeClass: 'shutter-nav_is-open'
@@ -417,8 +417,8 @@ function slidersInit() {
 
         // Breakpoints
         breakpoints: {
-          768: {
-            // some props
+          1199: {
+            slidesPerView: 2
           }
         }
       });
@@ -568,7 +568,6 @@ function rangeSlidersInit() {
     $curSlider.ionRangeSlider({
       skin: 'custom',
       hide_min_max: true,
-      step: 100,
       force_edges: false,
       onStart: function (data) {
         setValue(data, $curSlider)
@@ -584,13 +583,23 @@ function rangeSlidersInit() {
     slidersArr[i] = $curSlider.data('ionRangeSlider');
   });
 
-  // todo это только пример работы калькулятора. Данные расчеты неверные
   function setValue(data, $slider) {
+    var $container = $slider.closest('.bond-calc-js'),
+        $sumElem = $container.find('.bond-calc-sum-js'),
+        currentVal = data.from,
+        rate = $slider.data('rate'),
+        length, total, totalRound, profit;
+    
+    $sumElem.html(currentVal).attr('data-bond-calc-sum', currentVal);
 
-    var val = 12 * data.from * 0.12,
-        $curSliderTotal = $slider.closest('.bond-calc').find('.bond-calc-total-js');
+    length = currentVal / $slider.data('step');
+    total = rate / 100 * currentVal + currentVal;
+    totalRound = Math.round(total * 100) / 100;
+    profit = totalRound - currentVal;
 
-    $curSliderTotal.html(val);
+    $container.find('.bond-calc-length-js').html(length).data('data-bond-calc-length', length);
+    $container.find('.bond-calc-total-js').html(total).data('data-bond-calc-total', total);
+    $container.find('.bond-calc-profit-js').html(profit).data('data-bond-calc-total', profit);
   }
 }
 

@@ -60,7 +60,7 @@
   text-align: left
   text-decoration: none
   color: white
-  border-radius: 3.1rem
+  border-radius: 6.2rem
   user-select: none
   -webkit-tap-highlight-color: transparent
   // transition
@@ -71,6 +71,16 @@
     duration: $animation-speed
     timing-function: ease-in-out
 
+  +media('<tab-lg')
+    font-size: 1.5rem
+    line-height: 1.9rem
+    padding: 1.5rem 3rem 1.6rem 6.2rem
+    height: auto
+    border-radius: 5rem
+
+    & > br
+      display: none
+
   &:hover
     background-color: $highlight-color--hover
 
@@ -79,10 +89,18 @@
   background-position: 2.8rem center
   background-size: 29px auto
 
+  +media('<tab-lg')
+    background-position: 3.3rem center
+    background-size: 19px auto
+
 .btn-app_apple
   background-image: url(../../img/app-ios.png)
   background-position: 28px center
   background-size: 26px auto
+
+  +media('<tab-lg')
+    background-position: 3rem center
+    background-size: 19px auto
 
 /* btn-app end
 
@@ -123,7 +141,7 @@ html:not(.no-js)
   justify-content: flex-start
   cursor: default
 
-  +media('<mob-lg')
+  //+media('<mob-lg')
     justify-content: center
 
   &:last-child
@@ -132,10 +150,10 @@ html:not(.no-js)
 .chats__group
   margin-left: 4rem
 
-  +media('<desk-lg')
+  //+media('<desk-lg')
     margin-left: 1.5rem
 
-  +media('<tab-lg')
+  //+media('<tab-lg')
     margin-left: 1rem
 
   &:first-child
@@ -154,7 +172,7 @@ html:not(.no-js)
   vertical-align: top
   margin: 0 -15px -15px 0
 
-  +media('<tab-lg')
+  //+media('<tab-lg')
     margin: 0 -10px -10px 0
 
 .chats__item
@@ -168,7 +186,7 @@ html:not(.no-js)
     +size(1em)
     color: inherit
 
-    +media('<tab-lg')
+    //+media('<tab-lg')
       font-size: 40px
 
     &::before, &::after
@@ -235,6 +253,9 @@ html:not(.no-js)
   height: $header-height
   z-index: $z-high
 
+  +media('<tab-lg')
+    height: $header-height--sm
+
   &::before
     content: ""
     display: block
@@ -284,6 +305,9 @@ html:not(.no-js)
   @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)
     background-image: url(../../img/logo-2x.png)
 
+  +media('<tab-lg')
+    margin-bottom: 0.4rem
+
   //+media('<desk-lg')
     background-image: url(../../img/logo-sm-2x.png)
     width: 165px
@@ -315,6 +339,9 @@ html:not(.no-js)
 .nav-wrap
   margin: 0.1rem 10rem 0 0
 
+  +media('<tab-lg')
+    display: none
+
 .nav
   position: relative
 
@@ -332,6 +359,9 @@ html:not(.no-js)
 
   +media('<desk-md')
     font-size: 1.6rem
+
+  +media('<desk-sm')
+    font-size: 1.4rem
 
   li
     position: relative
@@ -514,18 +544,25 @@ a.shutter-nav-switcher
   font-size: 0
   line-height: 0
   opacity: 0
+  pointer-events: none
+  visibility: hidden
   $rotate: -20deg
   transform: rotate($rotate)
   transform: rotate($rotate) translateZ(0)
   // transition
-  $prop: transform, opacity
+  $prop: transform, opacity, visibility
   will-change: $prop
+  user-select: none
+  -webkit-tap-highlight-color: transparent
   transition:
     property: $prop
     // Кнопку закрытия скрывать с задержкой (сразу после закрытия меню), без анимацией
     duration: 0s
     delay: $toggle-nav-dur
     timing-function: ease-in-out
+
+  +media('<tab-lg')
+    transition-delay: 0s
 
   &::before, &::after
     $nav-close-cross-size: 0.5rem 4.1rem
@@ -547,6 +584,9 @@ a.shutter-nav-switcher
       duration: $animation-speed
       timing-function: ease-in-out
 
+    +media('<tab-lg')
+      background-color: #000
+
   &::before
     transform: rotate(45deg)
 
@@ -557,8 +597,10 @@ a.shutter-nav-switcher
     &::before, &::after
       background-color: $highlight-color--hover
 
-  .shutter-nav_is-open &
+  &.shutter-nav_is-open
     opacity: 1
+    pointer-events: auto
+    visibility: visible
     $rotate: 0deg
     transform: rotate($rotate)
     transform: rotate($rotate) translateZ(0)
@@ -567,7 +609,47 @@ a.shutter-nav-switcher
       duration: $toggle-nav-item-dur
       delay: $toggle-nav-delay + $toggle-nav-curtains-dur - 0.05s
 
+    +media('<tab-lg')
+      transition:
+        duration: $animation-speed
+        delay: $animation-speed
+
+.shutter-nav .shutter-nav-close
+  +media('<tab-lg')
+    display: none
+
+.shutter-nav-close_device
+  display: none
+  z-index: 99999
+
+  +media('<tab-lg')
+    display: block
+
 /* shutter navigation close end
+
+/* shutter navigation overlay
+.shutter-overlay
+  position: fixed
+  left: 0
+  top: 0
+  height: 100%
+  width: 100%
+  background-color: rgba(black, 0.35)
+  z-index: 9998
+  opacity: 0
+  pointer-events: none
+  // transition
+  $prop: opacity
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
+  &.shutter-nav_is-open
+    opacity: 1
+
+/* shutter navigation overlay end
 
 /* shutter navigation
 .shutter-nav
@@ -589,6 +671,18 @@ a.shutter-nav-switcher
     property: opacity, visibility
     duration: $toggle-nav-dur
 
+  +media('<tab-lg')
+    display: block
+    overflow-x: hidden
+    overflow-y: auto
+    background-color: white
+    $translate: 100%, 0
+    transform: translate($translate)
+    transform: translate3d($translate, 0)
+    transition:
+      property: opacity, visibility, transform
+      duration: $animation-speed
+
   &::before, &::after
     content: ""
     display: block
@@ -608,6 +702,10 @@ a.shutter-nav-switcher
       delay: $toggle-nav-dur
       timing-function: cubic-bezier(0.4, 0.6, 0.2, 1)
 
+    +media('<tab-lg')
+      display: none
+      content: none
+
   &::before
     background-color: white
     $translate: 0, 100%
@@ -625,10 +723,17 @@ a.shutter-nav-switcher
     opacity: 1
     visibility: visible
     pointer-events: auto
-    // Общий блок меню показывать без задержки и анимации
-    transition:
-      duration: 0s
-      delay: 0s
+
+    +media('>=tab-lg')
+      // Общий блок меню показывать без задержки и анимации
+      transition:
+        duration: 0s
+        delay: 0s
+
+    +media('<tab-lg')
+      $translate: 0, 0
+      transform: translate($translate)
+      transform: translate3d($translate, 0)
 
     &::before, &::after
       $translate: 0, 0
@@ -643,6 +748,10 @@ a.shutter-nav-switcher
   display: flex
   align-items: flex-start
   width: 100%
+
+  +media('<tab-lg')
+    display: block
+    padding: 0
 
 .shutter-nav__content,
 .shutter-nav__footer
@@ -662,30 +771,47 @@ a.shutter-nav-switcher
   +media('<desk-md')
     padding: 2rem 4rem
 
-  .shutter-nav_is-open &
+  +media('<tab-lg')
+    width: auto
+    max-width: none
+    padding: 5rem #{nth($page-layout-space, 2)}
     opacity: 1
-    $translate: 0, 0
-    transform: translate($translate)
-    transform: translate3d($translate, 0)
-    transition:
-      // Внутренние элементы показывать с задержкой и анимацией
-      duration: $toggle-nav-item-dur
-      delay: $toggle-nav-delay + $toggle-nav-curtains-dur - 0.05s
+
+  .shutter-nav_is-open &
+    +media('>=tab-lg')
+      opacity: 1
+      $translate: 0, 0
+      transform: translate($translate)
+      transform: translate3d($translate, 0)
+      transition:
+        // Внутренние элементы показывать с задержкой и анимацией
+        duration: $toggle-nav-item-dur
+        delay: $toggle-nav-delay + $toggle-nav-curtains-dur - 0.05s
 
 // Левая часть
 .shutter-nav__content
-  padding-left: 0
-  $translate: 0, 4rem
-  transform: translate($translate)
-  transform: translate3d($translate, 0)
+  +media('>=tab-lg')
+    $translate: 0, 4rem
+    transform: translate($translate)
+    transform: translate3d($translate, 0)
+    padding-left: 0
+
+  +media('<tab-lg')
+    padding-top: 8rem
+    padding-bottom: 8rem
 
 // Правая часть
 .shutter-nav__footer
-  padding-right: 0
   color: white
-  $translate: 0, -4rem
-  transform: translate($translate)
-  transform: translate3d($translate, 0)
+
+  +media('>=tab-lg')
+    $translate: 0, -4rem
+    transform: translate($translate)
+    transform: translate3d($translate, 0)
+    padding-right: 0
+
+  +media('<tab-lg')
+    background-color: $base-color
 
 // title
 .shutter-nav__title
@@ -714,12 +840,18 @@ a.shutter-nav-switcher
   +media('<desk-ml')
     margin-bottom: 8rem
 
+  +media('<tab-lg')
+    margin-bottom: 0
+
   &:last-child
     margin-bottom: 0
 
 // app
 .shutter-nav__app
   margin-bottom: 2.5rem
+
+  +media('<tab-lg')
+    display: none
 
 .shutter-nav__app-item
   margin-bottom: 3.0rem
@@ -734,6 +866,9 @@ a.shutter-nav-switcher
   max-width: 100%
   font-size: 1.8rem
   line-height: 2.2rem
+
+  +media('<tab-lg')
+    display: none
 
   a
     color: #000
@@ -861,6 +996,9 @@ $n-callback-form-item-space: 2rem 2rem
   clear: both
   z-index: 4
 
+  +media('<tab-lg')
+    padding-top: $header-height--sm
+
   .header_float ~ &
     //padding-top: 6.5rem
     padding-top: 0
@@ -884,6 +1022,10 @@ $n-callback-form-item-space: 2rem 2rem
     height: 19rem
     z-index: -1
 
+    +media('<tab-lg')
+      height: 20.2rem
+      background: $base-color-alt
+
   *::selection
     background-color: black
 
@@ -893,6 +1035,11 @@ $n-callback-form-item-space: 2rem 2rem
   padding-top: 7.7rem
   padding-bottom: 12.9rem
   +clear
+
+  +media('<tab-lg')
+    min-height: 0
+    padding-top: 7.6rem
+    padding-bottom: 2.6rem
 
 /* footer contacts
 .footer__contacts
@@ -912,14 +1059,63 @@ $n-callback-form-item-space: 2rem 2rem
     font-size: 2.0rem
     line-height: 2.6rem
 
+  +media('<tab-lg')
+    display: block
+    float: none
+    width: 40rem
+    max-width: 100%
+    margin: 0 auto 3.3rem
+    padding: 0
+    font-size: 1.8rem
+    line-height: 2.2rem
+    text-align: center
+
   li
     margin: 0 4.1rem 2rem 0
 
     +media('<desk-ml')
-      margin: 0 3rem 1.5rem 0
+      margin: 0 2.5rem 1rem 0
 
-    &.adr, &.cond
-      display: none
+    +media('<tab-lg')
+      margin: 2.1rem 0 0
+
+      &:first-child
+        margin-top: 0
+
+    &.phone
+      +media('<tab-lg')
+        margin-top: 1.3rem
+
+        &:first-child
+          margin-top: 0
+
+    &.adr
+      +media('>=tab-lg')
+        display: none
+
+    &.cond
+      +media('>=tab-lg')
+        position: absolute
+        left: 0
+        top: 29.9rem
+        font-size: 1.8rem
+        line-height: 2.2rem
+        width: $footer-left-col-width
+        padding: 0 nth($footer-grid-space, 2) 0 0
+        margin: 0
+
+        a
+          padding-top: 0.5em
+          text-decoration: none
+          color: inherit
+          box-shadow: inset 0 -1px 0 rgba(white, 0.5)
+          transition:
+            property: color, box-shadow
+            duration: $animation-speed
+
+          &:hover
+            color: $highlight-color--hover
+            box-shadow: inset 0 -1px 0 rgba($highlight-color--hover, 0.5)
 
   a
     color: white
@@ -939,6 +1135,9 @@ $n-callback-form-item-space: 2rem 2rem
       +media('<desk-ml')
         font-size: 2.6rem
 
+      +media('<tab-lg')
+        font-size: 2.2rem
+
     &:hover
       color: $highlight-color--hover
       box-shadow: inset 0 -1px 0 rgba($highlight-color--hover, 0.5)
@@ -957,6 +1156,15 @@ $n-callback-form-item-space: 2rem 2rem
   width: $footer-left-col-width
   padding: 0 nth($footer-grid-space, 2) 0 0
 
+  +media('<tab-lg')
+    position: relative
+    justify-content: center
+    left: auto
+    top: auto
+    width: auto
+    padding: 0
+    margin: 0 auto 4.1rem
+
 /* chats end
 
 /* appeal form
@@ -968,15 +1176,18 @@ $n-callback-form-item-space: 2rem 2rem
   margin-bottom: 5rem
   padding: 0 0 0 nth($footer-grid-space, 2)
 
+  +media('<tab-lg')
+    float: none
+    width: auto
+    max-width: none
+    margin-bottom: 7.1rem
+    padding: 0
+
 .callback-form
   position: relative
 
   &:last-child
     margin-bottom: 0
-
-  .input-def
-    border-radius: 10px
-    background-color: white
 
 .callback-form__title
   +font-semi-bold
@@ -986,12 +1197,26 @@ $n-callback-form-item-space: 2rem 2rem
   color: white
   margin-bottom: 3.1rem
 
+  +media('<tab-lg')
+    display: block
+    margin: 0 0 2.3rem
+    +font-bold
+    font-size: 2.2rem
+    line-height: 2.7rem
+    text-align: center
+
 .callback-form__fields
   $space-item: 3rem 2rem
+  $space-item--sm: 3rem 3rem
   display: flex
   flex-wrap: wrap
   align-items: flex-start
   margin: 0 -#{round-float(nth($space-item, 2) / 2, 1)} 2rem
+
+  +media('<tab-lg')
+    padding: 5.1rem #{4 - round-float(nth($space-item--sm, 2) / 2, 1)} #{5 - $form-bottom-space--tab}
+    margin: 0
+    background-color: $base-color-alt
 
   .input-wrap
     $space: #{round-float(nth($space-item, 2) / 2, 1)}
@@ -1002,15 +1227,40 @@ $n-callback-form-item-space: 2rem 2rem
     margin-left: $space
     margin-right: $space
 
-// --> form footer <--
-.callback-form__footer
-  text-align: right
+    +media('<desk-sm')
+      $width: calc(50.0% - #{nth($space-item, 2)})
+      max-width: $width
 
-  [class*="btn-"]
-    box-shadow: 0 10px 10px rgba(81, 0, 33, 0.25)
+    +media('<tab-lg')
+      $space: #{round-float(nth($space-item--sm, 2) / 2, 1)}
+      $width: calc(50.0% - #{nth($space-item--sm, 2)})
+      flex-grow: 1
+      flex-basis: 100%
+      max-width: $width
+      margin-left: $space
+      margin-right: $space
 
-    &:hover
-      box-shadow: 0 5px 5px rgba($btn-bg-hover-color, 0.25)
+  // --> form footer <--
+  .input-wrap_btn
+    flex-grow: 1
+    text-align: right
+    padding-top: 2rem
+    max-width: none
+
+    +media('<desk-sm')
+      $width: calc(50.0% - #{nth($space-item, 2)})
+      max-width: $width
+      padding-top: 0
+
+    +media('<tab-lg')
+      $width: calc(50.0% - #{nth($space-item--sm, 2)})
+      max-width: $width
+
+    [class*="btn-"]
+      box-shadow: 0 10px 10px rgba(81, 0, 33, 0.25)
+
+      &:hover
+        box-shadow: 0 5px 5px rgba($btn-bg-hover-color, 0.25)
 
 // --> send message <--
 .callback-form__msg
@@ -1052,32 +1302,6 @@ $n-callback-form-item-space: 2rem 2rem
 
 /* appeal form end
 
-/* footer conditions
-.footer__conditions
-  position: absolute
-  top: 29.9rem
-  left: 0
-  font-size: 1.8rem
-  line-height: 2.2rem
-  width: $footer-left-col-width
-  padding: 0 nth($footer-grid-space, 2) 0 0
-
-  a
-    padding-top: 0.5em
-    text-decoration: none
-    color: inherit
-    box-shadow: inset 0 -1px 0 rgba(white, 0.5)
-    transition:
-      property: color, box-shadow
-      duration: $animation-speed
-
-    &:hover
-      color: $highlight-color--hover
-      box-shadow: inset 0 -1px 0 rgba($highlight-color--hover, 0.5)
-
-
-/* footer conditions end
-
 /* footer app
 .footer__app
   position: absolute
@@ -1085,13 +1309,47 @@ $n-callback-form-item-space: 2rem 2rem
   top: 8.2rem
   width: $footer-left-col-width
   padding: 0 nth($footer-grid-space, 2) 0 0
+  
+  +media('<tab-lg')
+    position: relative
+    left: auto
+    top: auto
+    width: auto
+    text-align: center
+    margin-bottom: 12.5rem
+    padding: 0
 
 .footer__app-label
-  display: none
+  display: block
+  max-width: 30rem
+  margin: 0 auto 2.3rem
+  +font-bold
+  font-size: 2.2rem
+  line-height: 2.7rem
+  text-align: center
+
+  +media('>=tab-lg')
+    display: none
+
+.footer__app-list
+  +media('<tab-lg')
+    display: inline-block
+    vertical-align: top
 
 .footer__app-item
   display: block
   margin-bottom: 4rem
+
+  +media('<tab-lg')
+    text-align: center
+    margin-bottom: 2rem
+
+  &:last-child
+    margin-bottom: 0
+
+  .btn-app
+    +media('<tab-lg')
+      display: block
 
 /* footer app end
 
@@ -1104,6 +1362,15 @@ $n-callback-form-item-space: 2rem 2rem
   font-size: 14px
   line-height: 15px
 
+  +media('<tab-lg')
+    position: relative
+    right: auto
+    bottom: auto
+    text-align: center
+    margin-bottom: 2rem
+    font-size: 14px
+    line-height: 17px
+
   a
     display: inline-block
     vertical-align: top
@@ -1111,6 +1378,9 @@ $n-callback-form-item-space: 2rem 2rem
     text-decoration: none
     // transition
     transition: color $animation-speed ease-in-out
+
+    +media('<tab-lg')
+      display: inline
 
     &:hover
       color: $highlight-color--hover
@@ -1120,6 +1390,9 @@ $n-callback-form-item-space: 2rem 2rem
   vertical-align: top
   margin-right: 0.5rem
 
+  +media('<tab-lg')
+    display: none
+
   svg
     display: inline-block
     vertical-align: top
@@ -1128,14 +1401,51 @@ $n-callback-form-item-space: 2rem 2rem
     path
       fill: currentColor
 
-.developer__name
+.developer__text
   display: inline-block
   vertical-align: top
   height: 15px
   margin-top: -1px
 
+  +media('<tab-lg')
+    display: block
+    height: auto
+
+.developer__copyright
+  +media('>=tab-lg')
+    display: none
+
+.developer__date
+  display: none
+
+  +media('<tab-lg')
+    display: block
+    margin-bottom: 2.6rem
+
 .developer-mob
   display: none
+
+  +media('<tab-lg')
+    display: block
+
+.developer-mob__logo
+  margin-bottom: 1.5rem
+
+  svg
+    display: inline-block
+    vertical-align: top
+    +size(9.2rem, 2.1rem)
+
+    path
+      fill: currentColor
+
+.developer-mob__text
+  +font-bold
+  font-size: 1.2rem
+  line-height: 1.6rem
+
+  & > span
+    box-shadow: inset 0 -1px 0 #fff
 
 /* developer end
 
@@ -1164,6 +1474,9 @@ $n-callback-form-item-space: 2rem 2rem
     duration: 0.35s
     timing-function: cubic-bezier(0.4, 0, 0.2, 1)
 
+  +media('<desk-lg')
+    margin-right: -#{round-float($size / 2, 1)}
+
   &::after
     content: ""
     display: block
@@ -1189,31 +1502,41 @@ $n-callback-form-item-space: 2rem 2rem
 
 /* === MAIN ===
 .sections-group
-  background-color: white
+  background-color: #f1f5fe
   background-image: url(../../img/bg-index-section-02.jpg)
   background-position: center bottom
   background-repeat: no-repeat
   padding: 7.2rem 0 8.9rem
+
+  +media('<desk-sm')
+    padding: 0
 
   section
     background-image: none
 
 /* main-caption
 .main-caption
-  font-size: 2.4rem
-  line-height: 2.9rem
+  position: relative
 
 .main-caption__holder
   position: relative
   padding: 10.6rem 0
+
+  +media('<desk-md')
+    padding: 9rem 0
 
 .main-caption__figure
   position: absolute
   right: -3.2rem
   top: 0.6rem
   //background: url(../../img/main-caption-figure.png) no-repeat
-  width: 758px
+  //width: 758px
+  width: 75.8rem
   z-index: -1
+
+  +media('<desk-md')
+    width: 60rem
+    right: -8rem
 
   img
     display: block
@@ -1224,6 +1547,11 @@ $n-callback-form-item-space: 2rem 2rem
   width: 70rem
   max-width: 100%
 
+  +media('<desk-sm')
+    width: 50%
+    text-transform: uppercase
+    margin-bottom: 2rem
+
   &:last-child
     margin-bottom: 0
 
@@ -1232,6 +1560,13 @@ $n-callback-form-item-space: 2rem 2rem
   margin-bottom: 1.8rem
   width: 70rem
   max-width: 100%
+  font-size: 2.4rem
+  line-height: 2.9rem
+
+  +media('<desk-sm')
+    width: 50%
+    font-size: 2.2rem
+    line-height: 2.6rem
 
   b, strong
     +font-bold
@@ -1243,6 +1578,13 @@ $n-callback-form-item-space: 2rem 2rem
   color: #1a1c26
   width: 70rem
   max-width: 100%
+  font-size: 2.4rem
+  line-height: 2.9rem
+
+  +media('<desk-sm')
+    width: 50%
+    font-size: 2.2rem
+    line-height: 2.6rem
 
 /* main-caption end
 
@@ -1252,6 +1594,9 @@ $n-callback-form-item-space: 2rem 2rem
 
 .limitations__holder
   padding: 4.3rem 0
+
+  +media('<desk-sm')
+    padding: 0
 
 .limitations__list
   margin: 0 -2rem
@@ -1305,6 +1650,14 @@ $n-callback-form-item-space: 2rem 2rem
   line-height: 1
   margin-bottom: 2.1rem
 
+  +media('<desk-md')
+    font-size: 2.6rem
+
+  +media('<desk-sm')
+    +font-bold
+    font-size: 2.2rem
+    line-height: 2.8rem
+
   &:last-child
     margin-bottom: 0
 
@@ -1331,6 +1684,9 @@ $n-callback-form-item-space: 2rem 2rem
   +media('<desk-md')
     padding: 7rem 1rem 8rem 30rem
 
+  +media('<desk-sm')
+    padding: 5rem 1rem 5rem 23rem
+
 .limitations__item-figure_deposit
   //background-image: url(../../img/limitation-figure-01.png)
   //height: 259px
@@ -1338,6 +1694,10 @@ $n-callback-form-item-space: 2rem 2rem
 
   +media('<desk-md')
     width: 25rem
+
+  +media('<desk-sm')
+    width: 19rem
+    top: 3rem
 
 // hover
 //.limitations__item_deposit:hover
@@ -1353,6 +1713,9 @@ $n-callback-form-item-space: 2rem 2rem
   +media('<desk-md')
     padding: 7rem 1rem 8rem 30rem
 
+  +media('<desk-sm')
+    padding: 5rem 1rem 5rem 23rem
+
 .limitations__item-figure_lend
   //background-image: url(../../img/limitation-figure-02.png)
   //height: 328px
@@ -1361,6 +1724,10 @@ $n-callback-form-item-space: 2rem 2rem
 
   +media('<desk-md')
     width: 25rem
+
+  +media('<desk-sm')
+    width: 19rem
+    top: 3rem
 
 // hover
 //.limitations__item_lend:hover
@@ -1377,6 +1744,9 @@ $n-callback-form-item-space: 2rem 2rem
   +media('<desk-md')
     padding: 7rem 1rem 8rem 30rem
 
+  +media('<desk-sm')
+    padding: 5rem 1rem 5rem 23rem
+
 .limitations__item-figure_property
   //background-image: url(../../img/limitation-figure-03.png)
   //height: 316px
@@ -1386,6 +1756,10 @@ $n-callback-form-item-space: 2rem 2rem
   +media('<desk-md')
     width: 22rem
     left: 4rem
+
+  +media('<desk-sm')
+    width: 19rem
+    left: 2rem
 
 // hover
 //.limitations__item_property:hover
@@ -1404,6 +1778,9 @@ $n-callback-form-item-space: 2rem 2rem
 
   +media('<desk-md')
     padding: 7rem 1rem 12rem 55rem
+
+  +media('<desk-sm')
+    padding: 5rem 1rem 5rem 45rem
 
 //.advantages__sign
   display: block
@@ -1451,6 +1828,9 @@ $n-callback-form-item-space: 2rem 2rem
   +media('<desk-md')
     width: 49rem
 
+  +media('<desk-sm')
+    width: 39rem
+
   img
     display: block
     max-width: 100%
@@ -1461,6 +1841,12 @@ $n-callback-form-item-space: 2rem 2rem
   line-height: 3.2rem
   margin-bottom: 4.3rem
 
+  +media('<desk-sm')
+    +font-bold
+    font-size: 2.2rem
+    line-height: 2.8rem
+    margin-bottom: 2.0rem
+
   &:last-child
     margin-bottom: 0
 
@@ -1470,6 +1856,10 @@ $n-callback-form-item-space: 2rem 2rem
   color: $text-color-alt
   margin-bottom: 1.7rem
 
+  +media('<desk-sm')
+    font-size: 2.0rem
+    line-height: 2.2rem
+
   &:last-child
     margin-bottom: 0
 
@@ -1478,6 +1868,10 @@ $n-callback-form-item-space: 2rem 2rem
   line-height: 2.9rem
   color: #000
   margin-bottom: 1.7rem
+
+  +media('<desk-sm')
+    font-size: 2.0rem
+    line-height: 2.2rem
 
   &:last-child
     margin-bottom: 0
@@ -1496,6 +1890,9 @@ $n-callback-form-item-space: 2rem 2rem
     property: $prop
     duration: $animation-speed
     timing-function: ease-in-out
+
+  +media('<desk-sm')
+    padding-top: 2rem
 
 // hover
 //.advantages:hover
@@ -1520,6 +1917,10 @@ $n-callback-form-item-space: 2rem 2rem
   background: url(../../img/bg-manual.jpg) no-repeat center top fixed
   background-size: cover
 
+  +media('<desk-sm')
+    padding-top: 7rem
+    padding-bottom: 7rem
+
 .manual__holder
   position: relative
   padding: 1rem 0 3.4rem
@@ -1530,10 +1931,18 @@ $n-callback-form-item-space: 2rem 2rem
   clear: left
   width: 50%
   +font-extra-bold
-  font-size: 5.5rem
-  line-height: 1
+  font-size: $font-size-h1
+  line-height: $line-height-h1
   color: white
   margin-bottom: 5rem
+
+  +media('<desk-ml')
+    width: 60%
+
+  +media('<desk-sm')
+    font-size: $font-size-h1--md
+    line-height: $line-height-h1--md
+    margin-bottom: 4rem
 
   &:last-child
     margin-bottom: 0
@@ -1544,6 +1953,9 @@ $n-callback-form-item-space: 2rem 2rem
   clear: left
   width: 50%
   margin-bottom: 6rem
+
+  +media('<desk-ml')
+    width: 60%
 
   &:last-child
     margin-bottom: 0
@@ -1578,6 +1990,9 @@ $n-callback-form-item-space: 2rem 2rem
         duration: $animation-speed
         timing-function: ease-in-out
 
+      +media('<desk-md')
+        padding: 1.7rem 3rem 2rem 12rem
+
       &:last-child
         margin-bottom: 0
 
@@ -1599,6 +2014,11 @@ $n-callback-form-item-space: 2rem 2rem
       margin-bottom: 2.1rem
       color: white
       transition: color $animation-speed
+
+      +media('<desk-sm')
+        font-size: 2.2rem
+        line-height: 2.6rem
+        margin-bottom: 1rem
 
       &:last-child
         margin-bottom: 0
@@ -1623,6 +2043,9 @@ $n-callback-form-item-space: 2rem 2rem
       color: white
       background-color: $highlight-color
       border-radius: 50%
+
+      +media('<desk-md')
+        left: 2rem
 
     .manual__step-text
       min-width: 100%
@@ -1649,6 +2072,7 @@ $n-callback-form-item-space: 2rem 2rem
       bottom: 0
       width: 43.8rem
       max-width: 50%
+      padding-left: 4rem
       opacity: 0
       pointer-events: none
       // transition
@@ -1657,6 +2081,9 @@ $n-callback-form-item-space: 2rem 2rem
       transition:
         property: $prop
         duration: $animation-speed
+
+      +media('<desk-ml')
+        max-width: 40%
 
       // current
       #{$root-elem}.current &
@@ -1782,14 +2209,22 @@ $bond-space: 3.1rem 2.9rem 2.3rem
 
 .selection__title
   +font-extra-bold
-  font-size: 5.5rem
-  line-height: 1
+  font-size: $font-size-h1
+  line-height: $line-height-h1
   color: #000
   margin-bottom: 7.1rem
+
+  +media('<desk-sm')
+    font-size: $font-size-h1--md
+    line-height: $line-height-h1--md
+    margin-bottom: 4rem
 
 .selection__bonds
   padding: 0 2.2rem 4.9rem
   margin: 0 -2.2rem 5.9rem
+
+  +media('<desk-sm')
+    margin-bottom: 2rem
 
   &:last-child
     margin-bottom: 0
@@ -1820,9 +2255,17 @@ $bond-space: 3.1rem 2.9rem 2.3rem
   $size: 13rem
   margin: 0 3.5rem
   flex-basis: $size
-  min-width: $size
+  //min-width: $size
+  flex-shrink: 0
   width: $size
   height: $size
+
+  +media('<desk-sm')
+    $size: 10rem
+    margin: 0 2rem
+    flex-basis: $size
+    width: $size
+    height: $size
 
   img
     display: block
@@ -1838,6 +2281,12 @@ $bond-space: 3.1rem 2.9rem 2.3rem
   line-height: 3.6rem
   color: #000
   margin-bottom: 2rem
+
+  +media('<desk-sm')
+    +font-bold
+    font-size: 2.2rem
+    line-height: 2.6rem
+    margin-bottom: 1rem
 
   &:last-child
     margin-bottom: 0
@@ -1863,16 +2312,22 @@ $bond-space: 3.1rem 2.9rem 2.3rem
 
 .benefits__title
   +font-extra-bold
-  font-size: 5.5rem
-  line-height: 1
+  font-size: $font-size-h1
+  line-height: $line-height-h1
   color: #000
   margin-bottom: 6.3rem
+
+  +media('<desk-sm')
+    font-size: $font-size-h1--md
+    line-height: $line-height-h1--md
+    margin-bottom: 4rem
 
 .benefits__list
   position: relative
   display: flex
   flex-wrap: wrap
-  align-items: flex-start
+  //align-items: flex-start
+  align-items: center
   margin-bottom: 5rem
   padding: 0 0 0.3rem
 
@@ -1886,6 +2341,13 @@ $bond-space: 3.1rem 2.9rem 2.3rem
   padding: 0 19.9rem
   margin: 10.6rem auto
 
+  +media('<desk-md')
+    padding: 0 15rem
+
+  +media('<desk-sm')
+    padding: 0 10rem
+    margin: 4rem auto
+
   &:nth-child(2n)
     padding-right: 0
 
@@ -1895,11 +2357,20 @@ $bond-space: 3.1rem 2.9rem 2.3rem
     text-align: right
 
 .benefits__figure
+  display: flex
+  align-items: center
+  justify-content: center
   position: absolute
   left: 50%
   top: 1rem
   bottom: 0
   transform: translate(-50%, 0)
+
+  +media('<desk-sm')
+    width: 26rem
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
 
   img
     max-width: 100%
@@ -1910,6 +2381,10 @@ $bond-space: 3.1rem 2.9rem 2.3rem
   //bottom: -8.0rem
   top: -4.1rem
   bottom: -8.0rem
+
+  +media('<desk-sm')
+    top: 50%
+    bottom: auto
 
 /* benefits end
 
@@ -1922,22 +2397,43 @@ $bond-space: 3.1rem 2.9rem 2.3rem
 
 .opinion-quote__title
   display: block
+  margin-bottom: 2.6rem
   +font-extra-bold
   font-size: 3.0rem
   line-height: 3.6rem
-  min-height: 8rem
+  min-height: 7.2rem
   color: #000
-  margin-bottom: 1.8rem
 
-$or__content-line-height: 2.9rem
-$or__content-line-length: 6
+  +media('<desk-md')
+    font-size: 2.6rem
+    line-height: 3.2rem
+    min-height: 6.4rem
+
+  +media('<desk-sm')
+    font-size: 2.2rem
+    line-height: 2.6rem
+    min-height: 5.2rem
+    margin-bottom: 1rem
+
+$oq__content-line-height: 2.9rem
+$oq__content-line-length: 6
 .opinion-quote__content
   position: relative
   overflow: hidden
   color: $text-color-alt
   font-size: 2.4rem
-  line-height: $or__content-line-height
-  min-height: $or__content-line-height * $or__content-line-length
+  line-height: $oq__content-line-height
+  min-height: $oq__content-line-height * $oq__content-line-length
+
+  +media('<desk-md')
+    font-size: 2.0rem
+
+  +media('<desk-sm')
+    $oq__content-line-height: 2.2rem
+    $oq__content-line-length: 6
+    font-size: 1.8rem
+    line-height: $oq__content-line-height
+    min-height: $oq__content-line-height * $oq__content-line-length
 
   p
     margin-bottom: 2.3rem
@@ -2118,6 +2614,16 @@ $or__content-line-length: 6
   line-height: $or__content-line-height
   min-height: $or__content-line-height * $or__content-line-length
 
+  +media('<desk-md')
+    font-size: 2.0rem
+
+  +media('<desk-sm')
+    $or__content-line-height: 2.2rem
+    $or__content-line-length: 6
+    font-size: 1.8rem
+    line-height: $or__content-line-height
+    min-height: $or__content-line-height * $or__content-line-length
+
   //&::after
     content: ""
     display: block
@@ -2172,16 +2678,25 @@ $or__content-line-length: 6
   background-position: center bottom
   background-size: cover
 
+  +media('<desk-sm')
+    padding-top: 7rem
+    padding-bottom: 7rem
+
   .sections-group &
     padding-top: 7rem
     padding-bottom: 7rem
 
 .opinions__title
   +font-extra-bold
-  font-size: 5.5rem
-  line-height: 1
+  font-size: $font-size-h1
+  line-height: $line-height-h1
   color: #000
   margin-bottom: 7rem
+
+  +media('<desk-sm')
+    font-size: $font-size-h1--md
+    line-height: $line-height-h1--md
+    margin-bottom: 4rem
 
 .opinions__list
   padding: 0 3rem 4.9rem
@@ -2208,19 +2723,39 @@ $or__content-line-length: 6
   background: $base-color url(../../img/bg-app-offer.jpg) no-repeat center top fixed
   background-size: cover
 
+  +media('<tab-lg')
+    overflow: hidden
+
 .app-offer__holder
-  position: relative
+  //position: relative
   padding-top: 10.3rem
   padding-bottom: 10.3rem
   min-height: 70.1rem // !Warning
 
+  +media('<desk-sm')
+    min-height: 50rem // !Warning
+    padding-top: 6.9rem
+    padding-bottom: 6rem
+
+  +media('<tab-lg')
+    min-height: 0
+
 .app-offer__title
   width: 50%
-  +font-bold
-  font-size: 5.5rem
-  line-height: 1
-  color: white
   margin-bottom: 3.9rem
+  +font-bold
+  font-size: $font-size-h1
+  line-height: $line-height-h1
+  color: white
+
+  +media('<desk-sm')
+    font-size: $font-size-h1--md
+    line-height: $line-height-h1--md
+    margin-bottom: 1.5rem
+
+  +media('<tab-lg')
+    width: auto
+    text-align: center
 
   &:last-child
     margin-bottom: 0
@@ -2232,18 +2767,33 @@ $or__content-line-length: 6
   color: white
   margin-bottom: 5.3rem
 
+  +media('<desk-sm')
+    font-size: 2.2rem
+    line-height: 2.6rem
+
+  +media('<tab-lg')
+    width: auto
+    text-align: center
+    font-size: 1.8rem
+    line-height: 2.4rem
+    margin-bottom: 3.3rem
+
   &:last-child
     margin-bottom: 0
 
-$app-offer-app-space: 3.6rem
+$app-offer-app-space: 2.0rem 3.6rem
 .app-offer__app
   width: 50%
   display: flex
   flex-wrap: wrap
-  margin: 0 -#{round-float($app-offer-app-space / 2, 1)}
+  margin: 0 -#{round-float(nth($app-offer-app-space, 2) / 2, 1)}
+
+  +media('<tab-lg')
+    width: auto
+    justify-content: center
 
 .app-offer__app-item
-  margin: 0 #{round-float($app-offer-app-space / 2, 1)}
+  margin: 0 #{round-float(nth($app-offer-app-space, 2) / 2, 1)} #{nth($app-offer-app-space, 1)}
 
 .app-offer__figure
   display: flex
@@ -2255,8 +2805,30 @@ $app-offer-app-space: 3.6rem
   right: 0
   bottom: 0
 
+  +media('<tab-lg')
+    position: relative
+    max-width: none
+    top: auto
+    right: auto
+    bottom: auto
+    height: 352px
+    margin-bottom: 4rem
+
+    &::before
+      content: ""
+      display: block
+      position: absolute
+      height: 100%
+      width: 100rem
+      left: 50%
+      margin-left: -50rem
+      background: url(../../img/app-offer-figure-mob.png) no-repeat center
+
   img
     max-height: 100%
+
+    +media('<tab-lg')
+      display: none
 
 /* app offer end
 
@@ -2273,6 +2845,9 @@ $app-offer-app-space: 3.6rem
   background-position: center
   background-repeat: no-repeat
   background-size: cover
+
+  +media('<tab-lg')
+    padding: 2.9rem 2rem
 
   &::before
     content: ""
@@ -2297,7 +2872,11 @@ $app-offer-app-space: 3.6rem
 
   +media('<desk-md')
     font-size: 2.0rem
-    line-height: 2.6rem
+    line-height: 2.2rem
+
+  +media('<tab-lg')
+    padding-bottom: 1.6rem
+    margin-bottom: 1.3rem
 
 .last-news-elem__text
   position: relative
@@ -2305,7 +2884,7 @@ $app-offer-app-space: 3.6rem
   font-size: 1.8rem
   line-height: 2.2rem
 
-  +media('<desk-md')
+  //+media('<desk-md')
     font-size: 1.6rem
     line-height: 2.0rem
 
@@ -2319,18 +2898,37 @@ $app-offer-app-space: 3.6rem
   padding-top: 14.1rem
   padding-bottom: 16.1rem
 
+  +media('<desk-sm')
+    padding-top: 7rem
+    padding-bottom: 7rem
+
+  +media('<tab-lg')
+    padding-bottom: 7.9rem
+
 .last-news__title
   +font-extra-bold
-  font-size: 5.5rem
-  line-height: 1
+  font-size: $font-size-h1
+  line-height: $line-height-h1
   color: #000
   margin-bottom: 7.2rem
 
+  +media('<desk-sm')
+    font-size: $font-size-h1--md
+    line-height: $line-height-h1--md
+    margin-bottom: 3.2rem
+
 $last-news-item-space: 0 3rem
+$last-news-item-space--sm: 0 2rem
 .last-news__list
   display: flex
   flex-wrap: wrap
   margin: 0 -#{round-float(nth($last-news-item-space, 2) / 2, 1)} 6rem
+
+  +media('<desk-sm')
+    margin-bottom: 2rem
+
+  +media('<tab-lg')
+    margin: 0 -#{round-float(nth($last-news-item-space--sm, 2) / 2, 1)} 3rem
 
   &:last-child
     margin-bottom: 0
@@ -2340,7 +2938,20 @@ $last-news-item-space: 0 3rem
   margin: 0 #{round-float(nth($last-news-item-space, 2) / 2, 1)}
   flex-basis: $width
   min-height: 44.5rem
-  
+
+  +media('<desk-md')
+    $width: calc(50.0% - #{nth($last-news-item-space, 2)})
+    flex-basis: $width
+
+    &:nth-child(n + 3)
+      display: none
+
+  +media('<tab-lg')
+    $width: calc(50.0% - #{nth($last-news-item-space--sm, 2)})
+    flex-basis: $width
+    margin: 0 #{round-float(nth($last-news-item-space--sm, 2) / 2, 1)}
+    min-height: 32.8rem
+
 // hover
 .last-news-elem:hover
   .last-news-elem__title
@@ -2349,6 +2960,9 @@ $last-news-item-space: 0 3rem
 .last-news__footer
   position: relative
   text-align: right
+
+  +media('<tab-lg')
+    text-align: center
 
 /* last-news end
 
@@ -2362,7 +2976,11 @@ $last-news-item-space: 0 3rem
   padding: 1.8rem 4.6rem 2rem 20.8rem
   background-color: #5b29cd
   border-radius: 1rem
-  box-shadow: inset 0 1rem 4.6rem  rgba($box-shadow-color, 0.25)
+  box-shadow: inset 0 1rem 4.6rem rgba($box-shadow-color, 0.25)
+
+  +media('<desk-sm')
+    min-height: 18rem
+    padding: 2rem 2rem 2rem 18.1rem
 
 .profit__icon
   $size: 13.1rem
@@ -2374,11 +2992,16 @@ $last-news-item-space: 0 3rem
   margin-top: -#{round-float($size / 2, 1)}
   background-image: url(../../img/profit-sign.png)
   background-repeat: no-repeat
-  background-position:  center
+  background-position: center
   background-size: contain
 
   @media #{$retina}
     background-image: url(../../img/advantage-sign-2x.png)
+
+  +media('<desk-sm')
+    $size: 10.2rem
+    width: $size
+    height: $size
 
 .profit__title
   +font-bold
@@ -2386,6 +3009,11 @@ $last-news-item-space: 0 3rem
   line-height: 1
   color: white
   margin-bottom: 2.2rem
+
+  +media('<desk-sm')
+    font-size: 2.2rem
+    line-height: 2.6rem
+    margin-bottom: 1rem
 
   &:last-child
     margin-bottom: 0
@@ -2405,6 +3033,9 @@ $last-news-item-space: 0 3rem
 .profits
   padding-bottom: 7.1rem
 
+  +media('<desk-sm')
+    padding-bottom: 7rem
+
 .profits__holder
   position: relative
 
@@ -2416,12 +3047,22 @@ $last-news-item-space: 0 3rem
   justify-content: flex-start
   margin: 0 -1.5rem -3rem
 
+  +media('<desk-sm')
+    display: block
+    margin: 0 0 -2rem
+
 .profits__list-item
-  $width: calc(50% - 3rem)
   flex-grow: 1
+  $width: calc(50% - 3rem)
   flex-basis: $width
+  max-width: $width
   margin: 0 1.5rem 3rem
   background-repeat: no-repeat
+
+  +media('<desk-sm')
+    $width: 100%
+    margin: 0 0 2rem
+    max-width: none
 
   &:nth-child(1)
     background-image: url(../../img/bg-profit-01-desk.png)
@@ -2497,7 +3138,7 @@ $last-news-item-space: 0 3rem
   border-radius: 46px
   +linear-gradient(to right, rgba(#4917af, 1) 0%, rgba(#6a35fa, 1) 100%)
 
-  &::after
+  &::before
     content: ""
     display: block
     position: absolute
@@ -2516,15 +3157,15 @@ $last-news-item-space: 0 3rem
 
 /* bond calc
 $bond-calc-space: 6rem 6rem 7.1rem
-$bond-calc-space--sm: 4rem 4rem 5.1rem
+$bond-calc-space--sm: 4rem 4rem 4rem
 .bond-calc
   position: relative
   display: flex
   flex-direction: column
   justify-content: space-between
-  overflow: hidden
+  //overflow: hidden
   padding: $bond-calc-space
-  background-color: white
+  //background-color: white
   border-radius: 0.8rem
 
   +media('<desk-ml')
@@ -2537,6 +3178,9 @@ $bond-calc-space--sm: 4rem 4rem 5.1rem
 
 .bond-range
   margin-bottom: 4px
+
+html:not(.no-js) .bond-range-slider
+  opacity: 0
 
 .bond-calc__deposit-rate,
 .bond-calc__face-val,
@@ -2580,12 +3224,20 @@ $bond-calc-space--sm: 4rem 4rem 5.1rem
     font-size: 2.2rem
     line-height: 3.0rem
 
+  +media('<desk-sm')
+    font-size: 2.0rem
+    line-height: 2.6rem
+    margin-right: 0
+
   & > strong
     +font-bold
     font-size: 3.0rem
 
     +media('<desk-ml')
       font-size: 2.8rem
+
+    +media('<desk-sm')
+      font-size: 2.4rem
 
   & > b
     +font-semi-bold
@@ -2594,8 +3246,18 @@ $bond-calc-space--sm: 4rem 4rem 5.1rem
 .bond-calc__invest
   margin-bottom: 1.1rem
 
+  +media('<desk-sm')
+    margin-bottom: 2rem
+
 .bond-calc__total
   margin-bottom: 4.9rem
+
+  +media('<desk-sm')
+    margin-bottom: 2rem
+
+.bond-calc__revenue
+  +media('<desk-sm')
+    margin-bottom: 2rem
 
 .bond-calc__link
   text-align: right
@@ -2607,6 +3269,11 @@ $bond-calc-space--sm: 4rem 4rem 5.1rem
   +media('<desk-ml')
     bottom: nth($bond-calc-space--sm, 1)
     right: nth($bond-calc-space--sm, 2)
+
+  +media('<desk-sm')
+    position: relative
+    bottom: auto
+    right: auto
 
 /* bond calc end
 
@@ -2653,15 +3320,25 @@ $bond-calc-space--sm: 4rem 4rem 5.1rem
   padding-top: 7.2rem
   padding-bottom: 12.4rem
 
+  +media('<desk-sm')
+    padding-top: 7rem
+    padding-bottom: 7rem
+
 .yield__holder
   position: relative
 
 .yield__title
   +font-extra-bold
-  font-size: 5.5rem
-  line-height: 1
+  font-size: $font-size-h1
+  line-height: $line-height-h1
   color: #000
   margin-bottom: 3rem
+
+  +media('<desk-sm')
+    +font-bold
+    font-size: $font-size-h1--md
+    line-height: $line-height-h1--md
+    margin-bottom: 4rem
 
   &:last-child
     margin-bottom: 0
@@ -2677,15 +3354,20 @@ $yield-box-spaces: 3.9rem 0
     pointer-events: none
     overflow: hidden
 
+$yield-box-aside-width: 45.2rem
+$yield-box-aside-width--sm: 35rem
+$yield-box-aside-space: 6.1rem
+$yield-box-aside-space--sm: 2.0rem
 .yield-box__aside
-  $width: 45.2rem
-  flex-basis: $width
-  flex-shrink: 0
+  flex-basis: $yield-box-aside-width
+  max-width: $yield-box-aside-width
   height: 100%
-  margin-right: 6.1rem
+  margin-right: $yield-box-aside-space
 
-  +media('<desk-ml')
-    margin-right: 4.1rem
+  +media('<desk-sm')
+    flex-basis: $yield-box-aside-width--sm
+    max-width: $yield-box-aside-width--sm
+    margin-right: $yield-box-aside-space--sm
 
 $yield-thumbs-elem-height: 22.3rem
 .yield-thumbs
@@ -2742,16 +3424,25 @@ $yield-thumbs-elem-height: 22.3rem
         display: none
 
 .yield-box__main
+  position: relative
   flex-grow: 1
-  $width: calc(100% - 45.2rem - 6.1rem)
+  $width: calc(100% - #{$yield-box-aside-width} - #{$yield-box-aside-space})
   flex-basis: $width
   max-width: $width
   height: 100%
   padding: nth($yield-box-spaces, 1) 0
+  z-index: 5
+
+  +media('<desk-sm')
+    $width: calc(100% - #{$yield-box-aside-width--sm} - #{$yield-box-aside-space--sm})
+    flex-basis: $width
+    max-width: $width
 
 .yield-cards
   height: 100%
   position: relative
+  margin: 0 -2rem
+  padding: 0 2rem
   //$padding-bottom: 2.2rem
   //$padding-top: 1rem
   //padding: #{$padding-top} 1.1rem #{$padding-bottom}
@@ -2762,14 +3453,16 @@ $yield-thumbs-elem-height: 22.3rem
 
 .yield-cards__item
   height: 100%
+  background-color: white
 
 /* yield end
 
 // news variables
 $news-elem-space-outer: 3rem 6.6rem
-$news-elem-space-inner: 2.7rem 3rem
-$news-elem-img-space-h: 3.6rem
-$news-elem-img-space-v: 3rem
+$news-elem-space-outer--sm: 3rem 3rem
+$news-elem-space-inner: 2.7rem 3.6rem
+//$news-elem-img-space-h: 3.6rem
+//$news-elem-img-space-v: 3rem
 
 /* news preview element
 .news-elem
@@ -2797,6 +3490,7 @@ $news-elem-img-space-v: 3rem
 
     .news-elem__content
       overflow: hidden
+      padding: nth($news-elem-space-inner, 1) nth($news-elem-space-inner, 2)
 
     .news-elem__title
       position: relative
@@ -2809,6 +3503,14 @@ $news-elem-img-space-v: 3rem
       padding-bottom: 2rem
       transition: color $animation-speed
 
+      +media('<desk-md')
+        font-size: 2.2rem
+        line-height: 2.6rem
+
+      +media('<desk-sm')
+        font-size: 2.0rem
+        line-height: 2.4rem
+
       &::before, &::after
         content: ""
         display: block
@@ -2818,6 +3520,10 @@ $news-elem-img-space-v: 3rem
         width: 24rem
         max-width: 80%
         border-top: 3px solid $border-color
+
+        +media('<desk-md')
+          max-width: none
+          width: 100%
 
       &::after
         border-color: $highlight-color--hover
@@ -2846,8 +3552,15 @@ $news-elem-img-space-v: 3rem
       line-height: 2.2rem
       color: $text-color-alt
 
+      //+media('<desk-md')
+        font-size: 1.6rem
+        line-height: 2.0rem
+
 // type vertical
 .type-v
+  +media('<desk-md')
+    display: none
+
   .news-elem
     padding: 0
     box-shadow: none
@@ -2859,8 +3572,8 @@ $news-elem-img-space-v: 3rem
     &:last-child
       margin-bottom: 0
 
-  .news-elem__content
-    padding: #{nth($news-elem-space-inner, 1)} nth($news-elem-space-inner, 2) nth($news-elem-space-inner, 1) $news-elem-img-space-h
+  //.news-elem__content
+    padding: $news-elem-img-space-v nth($news-elem-space-inner, 2) nth($news-elem-space-inner, 1)
 
 // type left
 .type-l
@@ -2870,7 +3583,7 @@ $news-elem-img-space-v: 3rem
   .news-elem__figure
     float: left
 
-  .news-elem__content
+  //.news-elem__content
     padding: #{nth($news-elem-space-inner, 1)} nth($news-elem-space-inner, 2) nth($news-elem-space-inner, 1) $news-elem-img-space-h
 
 // type right
@@ -2881,7 +3594,7 @@ $news-elem-img-space-v: 3rem
   .news-elem__figure
     float: right
 
-  .news-elem__content
+  //.news-elem__content
     padding: nth($news-elem-space-inner, 1) $news-elem-img-space-h nth($news-elem-space-inner, 1) nth($news-elem-space-inner, 2)
 
 /* news preview element end
@@ -2890,13 +3603,25 @@ $news-elem-img-space-v: 3rem
 .news
   padding-bottom: 16.1rem
 
+  +media('<desk-sm')
+    padding-bottom: 7rem
+
 // news list
 .news__list
   margin: 0 -#{round-float(nth($news-elem-space-outer, 2) / 2, 1)} 3rem
   +clear
 
+  +media('<desk-md')
+    margin: 0 -#{round-float(nth($news-elem-space-outer--sm, 2) / 2, 1)} 3rem
+
+  +media('<desk-sm')
+    margin-bottom: 0
+
 .news__list-item
   padding: 0 #{round-float(nth($news-elem-space-outer, 2) / 2, 1)} nth($news-elem-space-outer, 1)
+
+  +media('<desk-md')
+    padding: 0 #{round-float(nth($news-elem-space-outer--sm, 2) / 2, 1)} nth($news-elem-space-outer--sm, 1)
 
   // align left
   &.align-l
@@ -2914,6 +3639,10 @@ $news-elem-img-space-v: 3rem
   &.type-l, &.type-r
     width: 67.4%
 
+    +media('<desk-md')
+      float: none
+      width: auto
+
 // news footer
 .news__footer
   text-align: right
@@ -2929,6 +3658,9 @@ $companies-filters-item-space: 3.6rem 3.6rem
   background-color: white
   padding-bottom: 8.2rem
 
+  +media('<desk-sm')
+    padding-bottom: 7rem
+
 .companies-filters__row
   display: flex
   flex-wrap: wrap
@@ -2936,6 +3668,7 @@ $companies-filters-item-space: 3.6rem 3.6rem
 
 .companies-filters__item
   flex-grow: 1
+  flex-basis: calc(33.3% - #{nth($companies-filters-item-space, 2)})
   max-width: 31rem
   margin: 0 #{round-float(nth($companies-filters-item-space, 2) / 2, 1)} #{round-float(nth($companies-filters-item-space, 1) / 2, 1)}
 
@@ -2943,6 +3676,10 @@ $companies-filters-item-space: 3.6rem 3.6rem
   padding-top: 8.2rem
   padding-bottom: 15.6rem
   background-color: $bg-color
+
+  +media('<desk-sm')
+    padding-top: 7rem
+    padding-bottom: 7rem
 
 // companies list
 $companies-elem-space-outer: 2.2rem 2.2rem
@@ -2953,8 +3690,18 @@ $companies-elem-space-outer: 2.2rem 2.2rem
   +clear
 
 .companies__list-item
-  flex-basis: 33.33%
+  $width: 33.33%
+  flex-basis: $width
+  max-width: $width
   padding: 0 #{round-float(nth($companies-elem-space-outer, 2) / 2, 1)} nth($companies-elem-space-outer, 1)
+
+  +media('<desk-sm')
+    $width: 50.0%
+    flex-basis: $width
+    max-width: $width
+
+    &:nth-child(n + 7)
+      display: none
 
 // companies footer
 .companies__footer
@@ -2966,6 +3713,9 @@ $companies-elem-space-outer: 2.2rem 2.2rem
 .company
   padding-bottom: 16.1rem
 
+  +media('<desk-sm')
+    padding-bottom: 7rem
+
 $company-box-aside-width: 44.7rem
 $company-box-aside-width--sm: 35rem
 .company-box
@@ -2975,7 +3725,7 @@ $company-box-aside-width--sm: 35rem
   box-shadow: 0 1rem 4.6rem rgba($box-shadow-color, 0.25)
   border-radius: 8px
 
-  &::after
+  &::before
     content: ""
     display: block
     position: absolute
@@ -2989,8 +3739,9 @@ $company-box-aside-width--sm: 35rem
       left: $company-box-aside-width--sm
 
 .company-box__aside
-  flex-shrink: 0
+  position: relative
   flex-basis: $company-box-aside-width
+  max-width: $company-box-aside-width
   padding-right: 6.1rem
 
   +media('<desk-ml')
@@ -2998,18 +3749,23 @@ $company-box-aside-width--sm: 35rem
 
   +media('<desk-md')
     flex-basis: $company-box-aside-width--sm
+    max-width: $company-box-aside-width--sm
 
 .company-box__main
+  position: relative
   flex-grow: 1
   $width: calc(100% - #{$company-box-aside-width})
-  flex-shrink: 0
   flex-basis: $width
-  //max-width: $width
+  max-width: $width
   min-height: 64.4rem
 
   +media('<desk-md')
     $width: calc(100% - #{$company-box-aside-width--sm})
     flex-basis: $width
+    max-width: $width
+
+  .bond-calc
+    height: 100%
 
 /* company end
 
@@ -3022,10 +3778,18 @@ $company-box-aside-width--sm: 35rem
   .heading + &
     margin-top: 15.8rem
 
+    +media('<desk-sm')
+      margin-top: 7rem
+
 .app-visual__holder
   padding-top: 7.9rem
   padding-bottom: 7.8rem
   min-height: 70rem
+
+  +media('<desk-sm')
+    padding-top: 7rem
+    padding-bottom: 7rem
+    min-height: 50rem
 
 .app-visual__slider
   position: absolute
@@ -3034,6 +3798,10 @@ $company-box-aside-width--sm: 35rem
   left: 0
   top: 0
   background: url(../../img/app-visual-desktop.png) no-repeat center
+  background-size: auto 54.3rem
+
+  +media('<desk-sm')
+    background-size: auto 36rem
 
 /* app-visual end
 
@@ -3042,6 +3810,10 @@ $company-box-aside-width--sm: 35rem
   padding-top: 13.8rem
   padding-bottom: 15.2rem
 
+  +media('<desk-sm')
+    padding-top: 7rem
+    padding-bottom: 7rem
+
 $download-layout: 67rem
 .download-layout
   max-width: $download-layout
@@ -3049,11 +3821,16 @@ $download-layout: 67rem
 
 .download__title
   +font-bold
-  font-size: 5.5rem
-  line-height: 1
+  font-size: $font-size-h1
+  line-height: $line-height-h1
   color: #000
   text-align: center
   margin-bottom: 4.2rem
+
+  +media('<desk-sm')
+    font-size: $font-size-h1--md
+    line-height: $line-height-h1--md
+    margin-bottom: 1.5rem
 
   &:last-child
     margin-bottom: 0
@@ -3063,6 +3840,9 @@ $download-layout: 67rem
   line-height: 2.2rem
   margin-bottom: 5.3rem
   text-align: center
+
+  +media('<desk-sm')
+    margin-bottom: 2rem
 
   &:last-child
     margin-bottom: 0
@@ -3087,6 +3867,9 @@ $download-app-spaces: 3.6rem
   margin: 0 -#{round-float($download-app-spaces / 2, 1)} 3.3rem
   text-align: center
 
+  +media('<desk-sm')
+    margin-bottom: 0
+
   &:last-child
     margin-bottom: 0
 
@@ -3097,5 +3880,10 @@ $download-app-spaces: 3.6rem
   font-size: 1.9rem
   line-height: 2.4rem
   color: rgba(#1e202b, 0.8)
+
+  +media('<desk-sm')
+    font-size: 1.6rem
+    line-height: 2.4rem
+    text-align: center
 
 /* download end

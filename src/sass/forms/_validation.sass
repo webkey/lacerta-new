@@ -22,7 +22,17 @@
   // hide before validation
   display: none
 
+  // Для планшетов
+  +media($form-media--tab)
+    +padding-horizontal(2.0rem)
+    margin-top: -#{$form-bottom-space--tab}
+    @if $form-border-width--tab
+      +margin-horizontal($form-border-width--tab)
+    font-size: 12px
+
+  // Для мобильных
   +media($form-media--mob)
+    +padding-horizontal(1.8rem)
     margin-top: -#{$form-bottom-space--mob}
     @if $form-border-width--mob
       +margin-horizontal($form-border-width--mob)
@@ -39,8 +49,13 @@
     margin-top: auto
     margin-bottom: 2px
 
+    // Для планшетов
+    +media($form-media--tab)
+      margin-bottom: 6px
+
+    // Для мобильных
     +media($form-media--mob)
-      margin-bottom: 5px
+      margin-bottom: 6px
 
 .error-note
   color: $form-error-color
@@ -84,9 +99,15 @@
       property: $prop
       duration: $animation-speed
 
+    // Для планшетов
+    +media($form-media--tab)
+      right: 19px
+      top: round($form-input-height--tab / 2)
+
+    // Для мобильных
     +media($form-media--mob)
-      right: 15px
-      top: round($form-input-height--mob / 2)
+      right: 19px
+      top: round($form-input-height--mob / 2 - 1)
 
   &::before
     $rotate: 45deg
@@ -108,6 +129,14 @@
     &::before, &::after
       top: 32px
       background-color: $form-success-color
+
+      // Для планшетов
+      +media($form-media--tab)
+        top: 30px
+
+      // Для мобильных
+      +media($form-media--mob)
+        top: 28px
 
     &::before
       $rotate: 45deg

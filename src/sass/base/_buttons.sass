@@ -41,6 +41,9 @@
     duration: 0.6s
     timing-function: cubic-bezier(0.4, 0, 0.2, 1)
 
+  +media('<tab-lg')
+    padding: 1.4rem 4rem
+
   @at-root
     &,
     input[type="submit"]#{&},
@@ -52,6 +55,9 @@
     +font(1.8rem, 2.2rem)
     letter-spacing: 0.05em
     text-transform: uppercase
+
+    +media('<tab-lg')
+      font-size: 1.6rem
 
   // hover
   &:not(:disabled):not(.disabled):not([data-disabled]):hover
@@ -95,6 +101,9 @@
     duration: 0.6s
     timing-function: cubic-bezier(0.4, 0, 0.2, 1)
 
+  +media('<tab-lg')
+    padding: 1.4rem 4rem
+
   @at-root
     &,
     input[type="submit"]#{&},
@@ -106,6 +115,9 @@
     +font(1.8rem, 2.2rem)
     letter-spacing: 0.05em
     text-transform: uppercase
+
+    +media('<tab-lg')
+      font-size: 1.6rem
 
   // hover
   &:hover

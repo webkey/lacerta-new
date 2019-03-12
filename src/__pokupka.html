@@ -57,7 +57,7 @@
                 @@include("_tpl_bond.html", {
                 "title": "СЗАО &quot;ПРОСТОРМАРКЕТ&quot;",
                 "release": "6",
-                "term": "944 дня",
+                "term": "3 года",
                 "value": "100 BYN",
                 "rate": "12%",
                 "imgSrc": "img/img-bond-03.png"
@@ -77,9 +77,9 @@
                 @@include("_tpl_bond.html", {
                 "title": "СООО &quot;Белвингрупп&quot;",
                 "release": "6",
-                "term": "1 год",
-                "value": "200 USD",
-                "rate": "3,5%",
+                "term": "5 лет",
+                "value": "100 EUR",
+                "rate": "4,5%",
                 "imgSrc": "img/img-bond-02.png"
                 })
               </div>
@@ -109,7 +109,7 @@
                 "release": "6",
                 "term": "1 год",
                 "value": "200 USD",
-                "rate": "3,5%",
+                "rate": "4,5%",
                 "imgSrc": "img/img-bond-02.png"
                 })
               </div>
@@ -119,75 +119,81 @@
         <div class="yield-box__main">
           <div class="yield-cards swiper-container yield-cards-slider-js">
             <div class="swiper-wrapper">
-              <div class="bond-calc yield-cards__item swiper-slide">
+              <div class="bond-calc yield-cards__item swiper-slide bond-calc-js">
                 @@include("_tpl_bond-calc.html", {
                 "title": "СЗАО &quot;ПРОСТОРМАРКЕТ&quot;",
                 "imgSrc": "img/img-bond-03.png",
-                "rangeSlider": { "id": "bondProstormarket", "from": "500", "min": "100", "max": "2000" },
-                "term": "<strong>944</strong> дня",
+                "rangeSlider": { "id": "bondProstormarket", "from": "500", "min": "100", "max": "10000" },
+                "term": "<strong>3</strong> года",
                 "value": "100",
                 "unit": "BYN",
                 "rate": "12%",
+                "valRate": "12",
                 "link": {"href": "company.html", "value": "Это интересно"}
                 })
               </div>
-              <div class="bond-calc yield-cards__item swiper-slide">
+              <div class="bond-calc yield-cards__item swiper-slide bond-calc-js">
                 @@include("_tpl_bond-calc.html", {
                 "title": "ООО &quot;Активлизинг&quot;",
                 "imgSrc": "img/img-bond-01.png",
-                "rangeSlider": { "id": "bondAktivlizing", "from": "400", "min": "100", "max": "1500" },
+                "rangeSlider": { "id": "bondAktivlizing", "from": "400", "min": "50", "max": "10000" },
                 "term": "<strong>1</strong> год",
                 "value": "50",
                 "unit": "USD",
                 "rate": "6,5%",
+                "valRate": "6.5",
                 "link": {"href": "company.html", "value": "Это интересно"}
                 })
               </div>
-              <div class="bond-calc yield-cards__item swiper-slide">
+              <div class="bond-calc yield-cards__item swiper-slide bond-calc-js">
                 @@include("_tpl_bond-calc.html", {
                 "title": "СООО &quot;Белвингрупп&quot;",
                 "imgSrc": "img/img-bond-02.png",
-                "rangeSlider": { "id": "bondBelvingrupp", "from": "200", "min": "100", "max": "5000" },
+                "rangeSlider": { "id": "bondBelvingrupp", "from": "200", "min": "100", "max": "10000" },
                 "term": "<strong>5</strong> лет",
                 "value": "100",
                 "unit": "EUR",
-                "rate": "4.5%",
+                "rate": "4,5%",
+                "valRate": "4.5",
                 "link": {"href": "company.html", "value": "Это интересно"}
                 })
               </div>
-              <div class="bond-calc yield-cards__item swiper-slide">
+              <div class="bond-calc yield-cards__item swiper-slide bond-calc-js">
                 @@include("_tpl_bond-calc.html", {
                 "title": "ООО &quot;Активлизинг&quot;",
                 "imgSrc": "img/img-bond-01.png",
-                "rangeSlider": { "id": "bondAktivlizing", "from": "400", "min": "100", "max": "1500" },
+                "rangeSlider": { "id": "bondAktivlizing", "from": "400", "min": "50", "max": "10000" },
                 "term": "<strong>1</strong> год",
                 "value": "50",
                 "unit": "USD",
                 "rate": "6,5%",
+                "valRate": "6.5",
                 "link": {"href": "company.html", "value": "Это интересно"}
                 })
               </div>
-              <div class="bond-calc yield-cards__item swiper-slide">
+              <div class="bond-calc yield-cards__item swiper-slide bond-calc-js">
                 @@include("_tpl_bond-calc.html", {
                 "title": "СЗАО &quot;ПРОСТОРМАРКЕТ&quot;",
                 "imgSrc": "img/img-bond-03.png",
-                "rangeSlider": { "id": "bondProstormarket", "from": "500", "min": "100", "max": "2000" },
+                "rangeSlider": { "id": "bondProstormarket", "from": "500", "min": "100", "max": "10000" },
                 "term": "<strong>944</strong> дня",
                 "value": "100",
                 "unit": "BYN",
                 "rate": "12%",
+                "valRate": "12",
                 "link": {"href": "company.html", "value": "Это интересно"}
                 })
               </div>
-              <div class="bond-calc yield-cards__item swiper-slide">
+              <div class="bond-calc yield-cards__item swiper-slide bond-calc-js">
                 @@include("_tpl_bond-calc.html", {
                 "title": "СООО &quot;Белвингрупп&quot;",
                 "imgSrc": "img/img-bond-02.png",
-                "rangeSlider": { "id": "bondBelvingrupp", "from": "200", "min": "100", "max": "5000" },
-                "term": "<strong>5</strong> лет",
-                "value": "100",
-                "unit": "EUR",
+                "rangeSlider": { "id": "bondBelvingrupp", "from": "200", "min": "100", "max": "10000" },
+                "term": "<strong>1</strong> год",
+                "value": "200",
+                "unit": "USD",
                 "rate": "4.5%",
+                "valRate": "4.5",
                 "link": {"href": "company.html", "value": "Это интересно"}
                 })
               </div>

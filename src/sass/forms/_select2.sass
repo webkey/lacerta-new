@@ -85,8 +85,8 @@
       position: absolute
       right: 0
       top: 0
-      width: $select-arrow-width
       height: $select-arrow-height
+      width: $select-arrow-width
       background: none
       z-index: 2
       pointer-events: none
@@ -97,6 +97,7 @@
       transition: $prop $animation-speed ease-in-out
 
       +media($form-media--mob)
+        height: $select-arrow-width--mob
         width: $select-arrow-width--mob
 
       &::before

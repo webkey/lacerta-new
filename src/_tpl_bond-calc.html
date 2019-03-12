@@ -13,14 +13,14 @@
   </div>
 </div>
 <div class="bond-range">
-  <input type="text" class="bond-range-slider" name="@@rangeSlider.id" value="" data-from="@@rangeSlider.from" data-min="@@rangeSlider.min" data-max="@@rangeSlider.max" data-postfix=" @@unit" />
+  <input type="text" class="bond-range-slider" name="@@rangeSlider.id" value="" data-from="@@rangeSlider.from" data-min="@@rangeSlider.min" data-max="@@rangeSlider.max" data-step="@@value" data-postfix=" @@unit" data-rate="@@valRate" />
 </div>
 <div class="bond-calc__footer">
-  <div class="bond-calc__invest">Хочу вложить: <strong>10 000</strong> <b>@@unit</b></div>
-  <div class="bond-calc__count">Количество облигаций: <strong>12</strong></div>
-  <div class="bond-calc__total">Через @@term вы получите: <strong class="bond-calc-total-js">10 000</strong> <b>@@unit</b></div>
-  <span class="bond-calc__revenue">Чистый доход: <strong class="bond-calc-total-js">10 000</strong> <b>@@unit</b></span>
-</div>
-<div class="bond-calc__link">
-  @@include("_tpl_btn.html", {"href": "@@link.href", "value": "@@link.value"})
+  <div class="bond-calc__invest">Хочу вложить: <strong class="bond-calc-sum-js" data-bond-calc-sum="@@rangeSlider.from">@@rangeSlider.from</strong> <b>@@unit</b></div>
+  <div class="bond-calc__count">Количество облигаций: <strong class="bond-calc-length-js" data-bond-calc-length="1">1</strong></div>
+  <div class="bond-calc__total">Через @@term вы получите: <strong class="bond-calc-total-js" data-bond-calc-total="@@rangeSlider.min">@@rangeSlider.min</strong> <b>@@unit</b></div>
+  <div class="bond-calc__revenue">Чистый доход: <strong class="bond-calc-profit-js" data-bond-calc-profit="@@valRate">@@valRate</strong> <b>@@unit</b></div>
+  <div class="bond-calc__link">
+    @@include("_tpl_btn.html", {"href": "@@link.href", "value": "@@link.value"})
+  </div>
 </div>

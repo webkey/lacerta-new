@@ -7,6 +7,11 @@
   line-height: 1
   +inputs-spaces
 
+  // Для планшетов
+  +media($form-media--tab)
+    +inputs-spaces--tab
+
+  // Для мобильных
   +media($form-media--mob)
     +inputs-spaces--mob
 
@@ -26,6 +31,12 @@ label
     duration: $animation-speed
     timing-function: ease-in-out
 
+  // Для планшетов
+  +media($form-media--tab)
+    height: $form-input-height--tab
+    +inputs-common-styles--tab
+    +inputs-font-style--tab
+
   // Для мобильных
   +media($form-media--mob)
     height: $form-input-height--mob
@@ -39,6 +50,12 @@ textarea.input-def
   min-height: $height
   height: $height
   resize: vertical
+
+  // Для планшетов
+  +media($form-media--tab)
+    $height: round($form-line-height--tab * $lines) + $form-input-space-vt--tab + $form-input-space-vb--tab + round($form-border-width--tab * 2)
+    min-height: $height
+    height: $height
 
   // Для мобильных
   +media($form-media--mob)
