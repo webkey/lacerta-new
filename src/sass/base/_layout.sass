@@ -16,12 +16,17 @@ html
 body
   position: relative
   +font-normal
-  +font($font-size, $line-height)
+  font-size: $font-size
+  line-height: $line-height
   color: $text-color
   min-width: $layout-min-width
   background-color: $bg-color
   background-position: center top
   background-repeat: no-repeat
+
+  +media('<tab-sm')
+    font-size: $font-size--mob
+    line-height: $line-height--mob
 
   &.home-page
     background-color: white
@@ -38,6 +43,14 @@ body
 .layout-spaces
   @if nth($page-layout-space, 2) != 0
     +padding-horizontal(nth($page-layout-space, 2))
+
+  +media('<tab-sm')
+    @if nth($page-layout-space--sm, 2) != 0
+      +padding-horizontal(nth($page-layout-space--sm, 2))
+
+  +media('<mob-lg')
+    @if nth($page-layout-space--mob, 2) != 0
+      +padding-horizontal(nth($page-layout-space--mob, 2))
 
 .layout-max
   max-width: $layout-max-width

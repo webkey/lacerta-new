@@ -80,6 +80,9 @@ $font-alt: Georgia, serif !default
 $font-size: 1.8rem !default
 $line-height: 2.4rem !default
 // ----------------------------------------------------
+$font-size--mob: 1.5rem !default
+$line-height--mob: 1.8rem !default
+// ----------------------------------------------------
 $font-size--small: 1.4rem !default
 $line-height--small: 2.4rem !default
 // ----------------------------------------------------
@@ -92,60 +95,69 @@ $letter-spacing: normal !default
 $font-size-h1: 5.5rem !default
 $line-height-h1: 5.5rem !default
 // ----------------------------------------------------
-$font-size-h1--md: 3.5rem !default
-$line-height-h1--md: 3.5rem !default
+$font-size-h1--sm: 3.5rem !default
+$line-height-h1--sm: 3.5rem !default
 // ----------------------------------------------------
-$font-size-h1--sm: 3.0rem !default
-$line-height-h1--sm: round-float(4.2rem/$font-size-h1--sm, 1) !default
+$font-size-h1--mob: 2.8rem !default
+$line-height-h1--mob: 2.8rem !default
 // ----------------------------------------------------
 =font-h1()
   font-size: $font-size-h1
   line-height: $line-height-h1
 
   +media('<desk-sm')
-    font-size: $font-size-h1--md
-    line-height: $line-height-h1--md
-
-  +media('<mob-lg')
     font-size: $font-size-h1--sm
     line-height: $line-height-h1--sm
+
+  +media('<tab-sm')
+    font-size: $font-size-h1--mob
+    line-height: $line-height-h1--mob
 
 // Heading h2
 $font-size-h2: 3.6rem !default
 $line-height-h2: 4.8rem !default
+$line-height-h2-kef: $line-height-h2 / $font-size-h2
 // ----------------------------------------------------
-$font-size-h2--md: 2.8rem !default
-$line-height-h2--md: 3.6rem !default
+$font-size-h2--sm: 2.8rem !default
+$line-height-h2--sm: round-float($font-size-h2--sm * $line-height-h2-kef, 1) !default // Использовать рассчетное значение, если нет в дизайне
 // ----------------------------------------------------
-$font-size-h2--sm: 2.6rem !default
-$line-height-h2--sm: 3.4rem !default
+$font-size-h2--mob: 2.4rem !default
+$line-height-h2--mob: round-float($font-size-h2--mob * $line-height-h2-kef, 1) !default // Использовать рассчетное значение, если нет в дизайне
 // ----------------------------------------------------
 =font-h2()
   font-size: $font-size-h2
   line-height: $line-height-h2
 
-  +media('<tab-lg')
-    font-size: $font-size-h2--md
-    line-height: $line-height-h2--md
-
-  +media('<mob-lg')
+  +media('<desk-sm')
     font-size: $font-size-h2--sm
     line-height: $line-height-h2--sm
+
+  +media('<tab-sm')
+    font-size: $font-size-h2--mob
+    line-height: $line-height-h2--mob
 
 // Heading h3
 $font-size-h3: 2.4rem !default
 $line-height-h3: 3.6rem !default
+$line-height-h3-kef: $line-height-h3 / $font-size-h3
 // ----------------------------------------------------
-$font-size-h3--md: 2.2rem !default
-$line-height-h3--md: 3.0rem !default
+$font-size-h3--sm: 2.2rem !default
+$line-height-h3--sm: round-float($font-size-h3--sm * $line-height-h3-kef, 1) !default // Использовать рассчетное значение, если нет в дизайне
+// ----------------------------------------------------
+$font-size-h3--mob: 1.7rem !default
+$line-height-h3--mob: round-float($font-size-h3--mob * $line-height-h3-kef, 1) !default // Использовать рассчетное значение, если нет в дизайне
 // ----------------------------------------------------
 =font-h3()
   font-size: $font-size-h3
   line-height: $line-height-h3
 
   +media('<desk-sm')
-    font-size: $font-size-h3--md
-    line-height: $line-height-h3--md
+    font-size: $font-size-h3--sm
+    line-height: $line-height-h3--sm
+
+  +media('<tab-sm')
+    font-size: $font-size-h3--mob
+    line-height: $line-height-h3--mob
 
 // Heading h4
 $font-size-h4: 1.8rem !default
@@ -161,10 +173,7 @@ $line-height-h6: round-float($line-height*1.25, 1) !default
 
 // Spaces
 $bottom-space: $line-height !default
-$bottom-space--large: $line-height * 3 !default
-$bottom-space--medium: $line-height * 2.0 !default
-$bottom-space--middle: $line-height * 1.5 !default
-$bottom-space--small: $line-height * 0.75 !default
+$bottom-space--mob: $line-height--mob !default
 
 $heading-bottom: 6.5rem !default
 $heading-bottom--sm: 4rem !default
@@ -232,6 +241,8 @@ $z-max: 9999 !default
 
 // отступы для всего сайта
 $page-layout-space: 2rem 5rem !default
+$page-layout-space--sm: 1.5rem 3rem !default // '<tab-sm'
+$page-layout-space--mob: 1rem 2rem !default // '<mob-lg'
 // минимальная ширина сайта
 $layout-min-width: 32rem !default
 // максимальная ширина сайта
@@ -266,6 +277,7 @@ $grid-space--mob: 0.8rem 10rem !default
 // ==========================================================================
 $header-height: 11.6rem !default
 $header-height--sm: 8.5rem !default
+$header-height--mob: 6.0rem !default
 
 
 // Sidebar
@@ -302,7 +314,7 @@ $btn-disabled-color: #ccc !default
 
 // Media Query for Forms
 $form-media--tab: '<tab-lg'
-$form-media--mob: '<mob-lg'
+$form-media--mob: '<tab-sm'
 
 // List of inputs
 //$inputs-list: 'input[type="text"]', 'input[type="password"]', 'input[type="email"]', 'input[type="search"]', 'textarea'
@@ -505,6 +517,116 @@ $multiple-item-space: 3px !default
 =form-on-focus()
   outline: none
   border-color: $form-border-color_focused
+
+// Forms opener
+=form-opener-style($cf-title-height: 6rem)
+  +media('<tab-sm')
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    height: 6rem
+    padding: 0.5rem #{$cf-title-height + 1} 0.5rem #{nth($page-layout-space--mob, 2)}
+    margin: 0
+    font-size: 1.7rem
+    line-height: 2.0rem
+    text-align: left
+    background-color: #2d2d87
+
+  @at-root
+    .callback-form__opener
+      display: none
+      overflow: hidden
+      align-items: center
+      justify-content: center
+      position: absolute
+      right: 0
+      top: 0
+      height: 100%
+      width: $cf-title-height
+      color: white
+      background-color: $highlight-color
+      user-select: none
+      -webkit-tap-highlight-color: transparent
+
+      +media('<tab-sm')
+        display: flex
+
+      $this-icon-lines-size: 4px 28px
+      &::before, &::after
+        content: ""
+        display: block
+        position: absolute
+        top: 0
+        height: nth($this-icon-lines-size, 1)
+        width: nth($this-icon-lines-size, 2)
+        z-index: 5
+        opacity: 0
+        pointer-events: none
+        background-color: white
+        // transition
+        $prop: transform, opacity
+        will-change: $prop
+        transition:
+          property: $prop
+          duration: 0.3s
+          timing-function: ease-in-out
+
+      &::before
+        left: 0
+        transform-origin: left top
+        $rotate: 45deg
+        $translate: -20px, -#{round(nth($this-icon-lines-size, 1) / 2)}
+        transform: rotate($rotate) translate($translate)
+        transform: rotate($rotate) translate3d($translate, 0)
+
+      &::after
+        right: 0
+        transform-origin: right top
+        $rotate: -45deg
+        $translate: 20px, -#{round(nth($this-icon-lines-size, 1) / 2)}
+        transform: rotate($rotate) translate($translate)
+        transform: rotate($rotate) translate3d($translate, 0)
+        transition-delay: 0.12s
+
+      .form-is-open &
+        &::before
+          opacity: 1
+          $rotate: 45deg
+          $translate: 28px, -#{round(nth($this-icon-lines-size, 1) / 2)}
+          transform: rotate($rotate) translate($translate)
+          transform: rotate($rotate) translate3d($translate, 0)
+
+        &::after
+          opacity: 1
+          $rotate: -45deg
+          $translate: -28px, -#{round(nth($this-icon-lines-size, 1) / 2)}
+          transform: rotate($rotate) translate($translate)
+          transform: rotate($rotate) translate3d($translate, 0)
+
+      svg
+        display: block
+        $size: 3.2rem
+        height: $size
+        width: $size
+
+        // transition
+        $prop: transform, opacity
+        will-change: $prop
+        transition:
+          property: $prop
+          duration: 0.3s
+          delay: 0.08s
+          timing-function: ease-in-out
+
+        .form-is-open &
+          opacity: 0
+          $scale: 0.9
+          transform: scale($scale)
+          transform: scale($scale) translateZ(0)
+          transition-delay: 0s
+
+        path
+          fill: currentColor
 
 // No custom list
 // ==========================================================================

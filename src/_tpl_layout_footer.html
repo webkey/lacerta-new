@@ -23,39 +23,46 @@
       @@include("_tpl_chats.html", {"classes": "footer__chats"})
       <!--chats end-->
       <!--callback form-->
-      <div class="callback-form footer__callback-form">
+      <div class="footer__callback-form">
         <form action="#" method="post" class="validation-form-js">
-          <strong class="callback-form__title">Заказать обратный звонок:</strong>
-          <div class="callback-form__fields">
-            <label class="input-wrap">
-              <input class="input-def" name="name" placeholder="Введите имя" required type="text">
-              @@include("_tpl_forms_valid.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
-            </label>
-            <label class="input-wrap">
-              <input class="input-def" name="phone" placeholder="Телефон" required type="text">
-              @@include("_tpl_forms_valid.html", {"error": "Пожалуйста, укажите телефон", "success": "Проверено!"})
-            </label>
-            <label class="input-wrap">
-              <input class="input-def" name="email" placeholder="email" required type="email">
-              @@include("_tpl_forms_valid.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
-            </label>
-            <div class="input-wrap input-wrap_btn">
-              @@include("_tpl_btn.html", {"type": "button!", "value": "Отправить"})
+          <div class="callback-form__title form-opener-js">
+            <strong>Заказать обратный звонок:</strong>
+            <div class="callback-form__opener">
+              @@include("includes/svg/icon-phone.svg")
             </div>
           </div>
-          <div class="callback-form__msg">
-            <strong class="callback-form__msg-title">Спасибо!</strong>
-            <span class="callback-form__msg-subtitle">{{Текст}}</span>
+          <div class="callback-form__fields-wrap form-drop-js">
+            <div class="callback-form__fields">
+              <label class="input-wrap">
+                <input class="input-def" name="name" placeholder="Введите имя" required type="text">
+                @@include("_tpl_forms_valid.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
+              </label>
+              <label class="input-wrap">
+                <input class="input-def" name="phone" placeholder="Телефон" required type="text">
+                @@include("_tpl_forms_valid.html", {"error": "Пожалуйста, укажите телефон", "success": "Проверено!"})
+              </label>
+              <label class="input-wrap">
+                <input class="input-def" name="email" placeholder="email" required type="email">
+                @@include("_tpl_forms_valid.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
+              </label>
+              <div class="input-wrap input-wrap_btn">
+                @@include("_tpl_btn.html", {"type": "button!", "value": "Отправить"})
+              </div>
+            </div>
+          </div>
+          <div class="success__msg">
+            <strong class="success__msg-title">Спасибо!</strong>
+            <span class="success__msg-subtitle">Мы Вам перезвоним</span>
           </div>
         </form>
       </div>
       <!--callback form end-->
       <!--app-->
-      <div class="footer__app">
+      <div class="footer__app detect-os-js">
         <div class="footer__app-label">Качайте наше приложение<br> бесплатно на:</div>
         <div class="footer__app-list">
           <div class="footer__app-item"><a href="https://itunes.apple.com/us/app/lacerta-%D0%BF%D0%BE%D0%BA%D1%83%D0%BF%D0%BA%D0%B0-%D0%BE%D0%B1%D0%BB%D0%B8%D0%B3%D0%B0%D1%86%D0%B8%D0%B9/id1438857466" class="btn-app btn-app_apple" target="_blank">Скачать на<br> App Store</a></div>
-          <div class="footer__app-item"><a href="https://play.google.com/store/apps/details?id=by.lacerta" class="btn-app btn-app_google" target="_blank">Скачать в<br> Google Play</a></div>
+          <div class="footer__app-item"><a href="https://play.google.com/store/apps/details?id=by.lacerta" class="btn-app btn-app_google-play" target="_blank">Скачать в<br> Google Play</a></div>
         </div>
       </div>
       <!--app end-->

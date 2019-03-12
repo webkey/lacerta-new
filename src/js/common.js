@@ -66,10 +66,17 @@ function getMobileOperatingSystem() {
   return "unknown";
 }
 
-function addIOSClass() {
-  var $appVisual = $('.app-visual');
-  if ($appVisual.length) {
-    $appVisual.toggleClass('detected-ios', getMobileOperatingSystem() === "iOS")
+function addOSClasses() {
+  var $detectOS = $('.detect-os-js');
+  if ($detectOS.length) {
+    // $detectOS.toggleClass('detected-ios', getMobileOperatingSystem() === "iOS");
+    if (getMobileOperatingSystem() === "iOS") {
+      $detectOS.find('[href*="play.google.com"]').parent().hide();
+    }
+    // $detectOS.toggleClass('detected-android', getMobileOperatingSystem() === "Android");
+    if (getMobileOperatingSystem() === "Android") {
+      $detectOS.find('[href*="itunes.apple.com"]').parent().hide();
+    }
   }
 }
 
@@ -356,7 +363,7 @@ function customSelect(select) {
 /**
  * !Toggle shutters panel, like a search panel, a catalog shutter etc.
  */
-function toggleShutters() {
+function switchClasses() {
   // Toggle shutter navigation
   var $shutterNavSwitcher = $('.shutter-nav-switcher-js'), shutterNavSwitcherJs;
   if ($shutterNavSwitcher.length) {
@@ -376,6 +383,25 @@ function toggleShutters() {
   shutterNavSwitcherJs.on('switchClass.beforeAdded', function () {
     // otherShutter.switchClass('remove');
   });
+
+  // Toggle callback form
+  var $callbackFromOpener = $('.form-opener-js');
+
+  if ($callbackFromOpener.length) {
+    $.each($callbackFromOpener, function () {
+      var $thisOpener = $(this),
+          $thisDrop = $thisOpener.closest('form').find('.form-drop-js');
+
+      $thisOpener.switchClass({
+        switchClassTo: $thisDrop
+        , modifiers: {
+          activeClass: 'form-is-open'
+        }
+        , cssScrollFixed: false
+        , removeOutsideClick: false
+      });
+    });
+  }
 }
 
 /**
@@ -397,28 +423,23 @@ function slidersInit() {
         loop: true,
         spaceBetween: 22,
         slidesPerView: 3,
-
         watchSlidesVisibility: true,
-
         autoplay: {
           delay: 5000,
           disableOnInteraction: true
         },
-
-        // Parallax
-        // parallax: true,
-
-        // Pagination
         pagination: {
           el: $thisPag,
           type: 'bullets',
           clickable: true
         },
-
-        // Breakpoints
         breakpoints: {
           1199: {
             slidesPerView: 2
+          },
+          991: {
+            slidesPerView: 'auto',
+            centeredSlides: true
           }
         }
       });
@@ -441,23 +462,23 @@ function slidersInit() {
 
       promoSliderJs = new Swiper($thisSlider, {
         init: false,
-
-        // Optional parameters
         loop: true,
         speed: 500,
-
         autoplay: {
           delay: 5000,
           disableOnInteraction: true
         },
-
         parallax: true,
-
-        // Pagination
         pagination: {
           el: $thisPag,
           type: 'bullets',
           clickable: true
+        },
+        breakpoints: {
+          991: {
+            parallax: false,
+            spaceBetween: 30
+          }
         }
       });
 
@@ -466,6 +487,31 @@ function slidersInit() {
       });
 
       promoSliderJs.init();
+    });
+  }
+
+  /** Manual steps slider */
+  var $manualStepsSlider = $('.manual-steps-slider-js');
+  if ($manualStepsSlider.length) {
+    $manualStepsSlider.each(function () {
+      var $thisSlider = $(this),
+          $thisPag = $('.swiper-pagination', $thisSlider);
+
+      new Swiper($thisSlider, {
+        // followFinger: false,
+        simulateTouch: false,
+        pagination: {
+          el: $thisPag,
+          type: 'bullets',
+          clickable: true
+        },
+        breakpoints: {
+          991: {
+            followFinger: true,
+            simulateTouch: true
+          }
+        }
+      });
     });
   }
 
@@ -481,16 +527,24 @@ function slidersInit() {
 
       cardsSlider = new Swiper ($cards, {
         init: false,
-        effect: 'fade',
-        fadeEffect: {
-          crossFade: true
+        effect: 'coverflow',
+        coverflowEffect: {
+          rotate: -5,
+          stretch: 0,
+          depth: 150,
+          modifier: 1,
+          slideShadows : false,
         },
+        centeredSlides: true,
+        slideToClickedSlide: true,
         loop: true,
         // disabled swiping
-        followFinger: false,
-        simulateTouch: false,
+        // followFinger: false,
+        // simulateTouch: false,
         spaceBetween: 20,
         preloadImages: false,
+        parallax: true,
+        // noSwipingClass: '.bond-range',
         pagination: {
           el: $cardsPagination,
           type: 'bullets',
@@ -519,6 +573,11 @@ function slidersInit() {
               }
             }
           },
+        },
+        breakpoints: {
+          991: {
+            slidesPerView: 'auto'
+          }
         }
       });
 
@@ -568,7 +627,7 @@ function rangeSlidersInit() {
     $curSlider.ionRangeSlider({
       skin: 'custom',
       hide_min_max: true,
-      force_edges: false,
+      // force_edges: true,
       onStart: function (data) {
         setValue(data, $curSlider)
       },
@@ -623,11 +682,11 @@ function equalHeight() {
 
 $(document).ready(function () {
   showOnScroll();
-  addIOSClass();
+  addOSClasses();
   placeholderInit();
   detectScroll();
   customSelect($('select.cselect'));
-  toggleShutters();
+  switchClasses();
   slidersInit();
   objectFitImages(); // object-fit-images initial
   manualStepsSelect();

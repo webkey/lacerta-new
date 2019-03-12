@@ -7,8 +7,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
   color: $title-color
   margin: 0 0 1.6rem
 
-  +media('<mob-lg')
-    margin-bottom: round-float($bottom-space*0.85, 1)
+  +media('<tab-sm')
+    margin-bottom: $bottom-space--mob
 
   &:last-child
     margin-bottom: 0
@@ -28,6 +28,9 @@ h1, .h1
 
   +media('<desk-sm')
     margin-bottom: 1.3rem
+
+  +media('<tab-sm')
+    margin-bottom: 1.8rem
 
 h2, .h2
   +font-extra-bold
@@ -60,6 +63,10 @@ h6, .h6
     font-size: 2.2rem
     line-height: 2.6rem
 
+  +media('<desk-sm')
+    font-size: $font-size--mob
+    line-height: $line-height--mob
+
   &:last-child
     margin-bottom: 0
 
@@ -77,11 +84,20 @@ h6, .h6
     padding-top: 3rem
     margin-bottom: 3rem
 
+  +media('<tab-sm')
+    display: none
+    padding-top: 1rem
+    margin-bottom: 1rem
+
 .heading
   margin-bottom: $heading-bottom
 
   +media('<desk-sm')
     margin-bottom: $heading-bottom--sm
+
+  +media('<tab-sm')
+    margin-top: 3.6rem
+    margin-bottom: 2rem
 
   .entry-text
     width: 100rem
@@ -91,6 +107,9 @@ p
   padding: 0
   margin: 0 0 $bottom-space
 
+  +media('<tab-sm')
+    margin-bottom: $bottom-space--mob
+
 hr
   line-height: 1px
   height: 0
@@ -98,6 +117,9 @@ hr
   background: none
   border-bottom: 1px solid $border-color
   margin-bottom: $bottom-space
+
+  +media('<tab-sm')
+    margin-bottom: $bottom-space--mob
 
 a
   color: $link-color
@@ -172,6 +194,9 @@ table
   width: auto
   margin-bottom: $bottom-space
 
+  +media('<tab-sm')
+    margin-bottom: $bottom-space--mob
+
   td, th
     +font($font-size, $line-height)
     color: inherit
@@ -184,6 +209,9 @@ table
   max-width: 100%
   -webkit-overflow-scrolling: touch
   margin-bottom: $bottom-space
+
+  +media('<tab-sm')
+    margin-bottom: $bottom-space--mob
 
   table
     margin-bottom: 0
@@ -235,14 +263,21 @@ table
 /* reference link
 .ref
   display: inline-block
-  padding: 5px 0 5px 45px
+  padding: 0.5rem 0 0.5rem 4.5rem
   background: no-repeat 0 50% url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAhCAYAAABX5MJvAAAEJ0lEQVRYhb2YS2wbVRSGvxmP41cbO4kTKODQqiSkK9hAqQRIJGp5lEdSdYEQSChBsKAQqUVdVHTBAnVRdVGgiyYCxAYWCJLyaFFAqRBITdoukJBKiUlCkpZarR+xrTj22ONhMeNgO/NyRftvRp7577mfxvfOOecKPVcu0oAeBp7Rr/cDbUAQSAMJ4E/gPHBavzqS4ADCBwwCw0BXA8B/AceBj4FVK6NoE+gF4DLwUYMAAPcBH+rj+28GwgOcBMaBzgYnr1cnMKbH8xgZJIN7zfrkTxgNaHe5eTnQQa83SKfkRRIErisyU4Usn6/c4Hd5xQzmdbS32Q9kqh/Ur4km4AzQaxTleX8b74U6+Tmf5lQuwaVijpKqEpE87PS18GKgnVO5BEfSSxRV1QxmEngakM0gTurE67Q3EOZg8z0MJ+c4V8gYWbjT1cSJtq0slgrsT85higEjwBuVH9Vrot8MICJ5eDcYYV9y1hQAIKbIvBaP8mBTgD3+sDmCNs/aYq1A+NC2k6EGN9zBD6spzheyVoEBSJVLHE1f5c3mTQjW1uP6vGsQg1jsgj5viLFcwhagop/yKYKiRLfbZ2XrBIaqIYbNnB5BpN3lJlq0/N7USFZV5op5IpLhjqzW2xWI7Vh8iFR9eQl2L7dOggDmG2RNXcB2Edhl5ZJVlZgi0+X2OgbwCCJbJS9LSsGJfZcIPGLnmsyn2RuwXO01etLXwnWlyIyzv3CHCGyzc41mY/R5QzzuDdpGbHe5OdB8Nyey/zgBAOgR0dKxpWKKzOHlBY61bqHPGzL13St5+DTczVQhw7e5pFOIsISWK2z1XS5JUVU50rKZ3+QVvllNsFAqkCmXuMvlYacvxIC/jS9WbnAsfdXqa1mvjRJaMnEEslDK82N+mV5vkMe82hAFlYVSgelCllfjM2TLCkojCJCV0CoiSwivIHIoGGG3v5WxXJz9yXkuF3OkyqUa30OejXzZ0c3pXJL300vk1bITiLjQc+Xi92glmynAZ+FuCmqZg6m/iSmymRWATa4mjrZuQQCG4lEnIGdEYMrKcSgYQUFlKBG1BQC4psgMxmdQgcMhR/XQORGYMHu6ze3nOX8rB5LzVvXBOsmqyjvJeZ7ytfBAU8DOPiEC00DU6OkrGzr4OpfgmoM3UK+YIvPVSpyXAu1WtigwXUlghmn8UU8zE6uphgEqmswvs8NjueY/gP+y6CfAYr1DEgQuFXM3DfFHcRVJME18i2jtQE15149WFd8uDaAV1DXl3TgwepsARisA9RAA+4BfbjHAr8Bb1TfqIWTgWeDsLQI4C+wGagoNow4sg9YXjPzPACN63HXlulkbWEDrCwYw2DUNahHYo8czLLXsGuJxoAetIJ1tcPJZfVwPNrvOydFAterPJ8JoGTgDxNHOJy6gtZLT4Cyn/wvFxVqTKGf60AAAAABJRU5ErkJggg==')
+
+  +media('<tab-sm')
+    padding: 0.5rem 0 0.5rem 3.8rem
+    background-size: auto $line-height--mob + 1
 
 /* reference link end
 
 /* article elements
 .#{$article-content}
   padding-bottom: 12.4rem
+
+  +media('<tab-lg')
+    padding-bottom: 4.4rem
 
   @each $tags in h2, h3, h4, h5, '.h2', '.h3', '.h4', '.h5'
     p + #{$tags},
@@ -253,6 +288,12 @@ table
     .table-auto + #{$tags}
       margin-top: 6.2rem
 
+      +media('<tab-lg')
+        margin-top: 4.5rem
+
+      +media('<tab-sm')
+        margin-top: 3rem
+
   // figure
   figure
     display: block
@@ -262,18 +303,39 @@ table
     +media('<tab-lg')
       margin: 4.3rem 0 2rem
 
+    +media('<tab-sm')
+      margin: 4rem 0 3rem
+
     img
       display: block
       max-width: 100%
       margin-bottom: 1.7rem
 
+      +media('<tab-lg')
+        margin-bottom: 1.5rem
+
+      +media('<tab-sm')
+        margin-bottom: 1.4rem
+
   figcaption
     display: block
     padding: 0
-    margin: 0 0 $bottom-space
+    margin: 0
     color: $text-color-light
     font-size: 1.8rem
     line-height: 2.2rem
+
+    +media('<tab-lg')
+      font-size: 1.7rem
+      line-height: 2.1rem
+
+    +media('<tab-sm')
+      font-size: 1.4rem
+      line-height: 1.7rem
+
+    & > br
+      +media('<tab-sm')
+        display: none
 
   // mark
   & > mark
@@ -291,6 +353,12 @@ table
     +media('<desk-sm')
       font-size: 2.2rem
       line-height: 2.6rem
+
+    +media('<tab-sm')
+      margin: 3.6rem 0
+      padding: 2.3rem 0 2.5rem
+      font-size: 2.0rem
+      line-height: 2.4rem
 
     &::before, &::after
       content: ''
@@ -318,13 +386,23 @@ table
     $img-size: 11rem
     $img-size--sm: 9.6rem
     $img-space: 2.4rem
-    $img-space--sm: 2rem
+    $img-space--sm: 3.6rem
     display: block
-    overflow: hidden
+    //overflow: hidden
     position: relative
     margin: 5rem 0
     padding: 1.7rem 0
     +clear
+
+    +media('<tab-lg')
+      margin: 3.1rem 0
+
+    +media('<tab-sm')
+      display: flex
+      flex-direction: column
+      margin: 3.6rem 0 3.4rem
+      padding: 3rem 2rem 2.5rem
+      background-color: white
 
     img
       width: $img-size
@@ -336,6 +414,14 @@ table
       +media('<tab-lg')
         width: $img-size--sm
         height: $img-size--sm
+        margin: 0.8rem #{$img-space--sm} -0.8rem 0
+
+      +media('<tab-sm')
+        order: 2
+        float: none
+        width: 5.7rem
+        height: 5.7rem
+        margin: 0 auto 1.4rem
 
     q
       display: block
@@ -347,8 +433,19 @@ table
       color: $quote-color
 
       +media('<tab-lg')
-        margin: 0 0 2rem #{$img-size--sm + $img-space--sm}
+        font-size: 2.0rem
+        line-height: 2.5rem
+        margin: 0 0 1.4rem #{$img-size--sm + $img-space--sm}
         padding-right: 10rem
+
+      +media('<tab-sm')
+        order: 1
+        width: 100%
+        text-align: center
+        font-size: 2.0rem
+        line-height: 2.4rem
+        margin: 0 0 2.4rem
+        padding: 4.6rem 0 0
 
       &::after
         content: "”"
@@ -363,13 +460,35 @@ table
 
         +media('<tab-lg')
           right: -1.7rem
+          top: -3.5rem
+
+        +media('<tab-sm')
+          right: auto
+          top: -1.9rem
+          width: 100%
+          text-align: center
+          font-size: 15.1rem
 
     cite
+      display: block
       +font-normal
       font-style: normal
       font-size: 1.8rem
       line-height: 2.5rem
       color: $text-color-light
+      margin-left: #{$img-size + $img-space}
+
+      +media('<tab-lg')
+        font-size: 1.9rem
+        margin-left: #{$img-size--sm + $img-space--sm}
+
+      +media('<tab-sm')
+        order: 3
+        width: 100%
+        font-size: 1.4rem
+        line-height: 1.8rem
+        margin: 0
+        text-align: center
 
   // list
   $list-space: 3rem !default
@@ -378,10 +497,16 @@ table
     padding: 0
     list-style: none
 
+    +media('<tab-sm')
+      margin-bottom: $bottom-space--mob
+
     li
       padding-left: $list-space
       margin: 0 0 1.5rem
       position: relative
+
+      +media('<tab-sm')
+        margin-bottom: 2rem
 
   ul
     & > li
@@ -420,12 +545,23 @@ table
 
   ul, ol
     ul, ol
-      margin: round-float($bottom-space*0.5, 1) 0
+      margin: round-float($bottom-space * 0.5, 1) 0
+
+      +media('<tab-sm')
+        margin: round-float($bottom-space--mob * 0.5, 1) 0
 
   // Выравнивание текстовых элементов на странице статьи
   // и их максимальная ширина
   @if nth($page-layout-space, 2) != 0
     +padding-horizontal(nth($page-layout-space, 2))
+
+  +media('<tab-sm')
+    @if nth($page-layout-space--sm, 2) != 0
+      +padding-horizontal(nth($page-layout-space--sm, 2))
+
+  +media('<mob-lg')
+    @if nth($page-layout-space--mob, 2) != 0
+      +padding-horizontal(nth($page-layout-space--mob, 2))
 
   & > h1, & > .h1, .entry-text
     max-width: $section-layout-width

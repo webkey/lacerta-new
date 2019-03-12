@@ -6,6 +6,7 @@
 /* slider pagination
 .swiper-pagination
   pointer-events: none
+  line-height: 1
 
 .swiper-pagination-bullet
   $size: 1.2rem 3.6rem
@@ -38,8 +39,12 @@
     max-width: nth($size, 2)
     opacity: 0.2
 
-.swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet
-  margin: 1rem 0.5rem 0
+.swiper-container-horizontal
+  & > .swiper-pagination-bullets
+    bottom: 0
+
+    .swiper-pagination-bullet
+      margin: 1rem 0.5rem 0
 
 
 /* swiper slider end
