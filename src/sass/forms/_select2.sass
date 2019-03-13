@@ -26,6 +26,11 @@
     background-color: $highlight-color
     z-index: -1
 
+    //----------------------------------
+    +media($form-media--tab)
+      height: $form-input-height--tab + 5
+
+    //----------------------------------
     +media($form-media--mob)
       height: $form-input-height--mob + 5
 
@@ -36,6 +41,13 @@
         left-radius: round($form-input-height / 2)
         right-radius: round($form-input-height / 2)
 
+      //----------------------------------
+      +media($form-media--tab)
+        border-top:
+          left-radius: round($form-input-height--tab / 2)
+          right-radius: round($form-input-height--tab / 2)
+
+      //----------------------------------
       +media($form-media--mob)
         border-top:
           left-radius: round($form-input-height--mob / 2)
@@ -48,6 +60,13 @@
         left-radius: round($form-input-height / 2)
         right-radius: round($form-input-height / 2)
 
+      //----------------------------------
+      +media($form-media--tab)
+        border-bottom:
+          left-radius: round($form-input-height--tab / 2)
+          right-radius: round($form-input-height--tab / 2)
+
+      //----------------------------------
       +media($form-media--mob)
         border-bottom:
           left-radius: round($form-input-height--mob / 2)
@@ -61,6 +80,11 @@
   .select2-selection
     +selectSelection
 
+    //----------------------------------
+    +media($form-media--tab)
+      +selectSelection--tab
+
+    //----------------------------------
     +media($form-media--mob)
       +selectSelection--mob
 
@@ -72,6 +96,11 @@
 .select2-container--default .select2-selection .select2-selection__rendered
   +selects-font-styles
 
+  //----------------------------------
+  +media($form-media--tab)
+    +selects-font-styles--tab
+
+  //----------------------------------
   +media($form-media--mob)
     +selects-font-styles--mob
 
@@ -96,6 +125,12 @@
       will-change: $prop
       transition: $prop $animation-speed ease-in-out
 
+      //----------------------------------
+      +media($form-media--tab)
+        height: $select-arrow-width--tab
+        width: $select-arrow-width--tab
+
+      //----------------------------------
       +media($form-media--mob)
         height: $select-arrow-width--mob
         width: $select-arrow-width--mob
@@ -125,6 +160,11 @@
     height: auto
     padding: #{$form-input-space-vt - $multiple-item-space} $form-input-space-h #{$form-input-space-vb - $multiple-item-space}
 
+    //----------------------------------
+    +media($form-media--tab)
+      padding: #{$form-input-space-vt--tab - $multiple-item-space} $form-input-space-h--tab #{$form-input-space-vb--tab - $multiple-item-space}
+
+    //----------------------------------
     +media($form-media--mob)
       padding: #{$form-input-space-vt--mob - $multiple-item-space} $form-input-space-h--mob #{$form-input-space-vb--mob - $multiple-item-space}
 
@@ -168,6 +208,13 @@
           left-radius: round($form-input-height/2)
           right-radius: round($form-input-height/2)
 
+        //----------------------------------
+        +media($form-media--tab)
+          border-bottom:
+            left-radius: round($form-input-height--tab/2)
+            right-radius: round($form-input-height--tab/2)
+
+        //----------------------------------
         +media($form-media--mob)
           border-bottom:
             left-radius: round($form-input-height--mob/2)
@@ -179,6 +226,13 @@
           left-radius: round($form-input-height/2)
           right-radius: round($form-input-height/2)
 
+        //----------------------------------
+        +media($form-media--tab)
+          border-top:
+            left-radius: round($form-input-height--tab/2)
+            right-radius: round($form-input-height--tab/2)
+
+        //----------------------------------
         +media($form-media--mob)
           border-top:
             left-radius: round($form-input-height--mob/2)
@@ -210,6 +264,11 @@
   .select2-results > .select2-results__options
     max-height: $form-input-height * 6
 
+    //----------------------------------
+    +media($form-media--tab)
+      max-height: $form-input-height--tab * 6
+
+    //----------------------------------
     +media($form-media--mob)
       max-height: $form-input-height--mob * 6
 
@@ -255,6 +314,12 @@
   +media('<desk-lg')
     z-index: $z-high - 1
 
+  //----------------------------------
+  +media($form-media--tab)
+    @if $form-border-width--tab
+      border: $form-border-width--tab
+
+  //----------------------------------
   +media($form-media--mob)
     @if $form-border-width--mob
       border: $form-border-width--mob
@@ -263,6 +328,13 @@
     opacity: 1
 
   &.select2-dropdown--below
+    //----------------------------------
+    +media($form-media--tab)
+      border-bottom:
+        left-radius: round($form-input-height--tab / 2)
+        right-radius: round($form-input-height--tab / 2)
+
+    //----------------------------------
     +media($form-media--mob)
       border-bottom:
         left-radius: round($form-input-height--mob / 2)
@@ -278,6 +350,14 @@
   padding: 4px 22px
   overflow: hidden
 
+  //----------------------------------
+  +media($form-media--tab)
+    padding: 4px 20px
+
+  //----------------------------------
+  +media($form-media--mob)
+    padding: 4px 15px
+
 .select2-dropdown--below
   &
     .select2-results
@@ -285,6 +365,13 @@
         left-radius: round($form-input-height / 2)
         right-radius: round($form-input-height / 2)
 
+      //----------------------------------
+      +media($form-media--tab)
+        border-bottom:
+          left-radius: round($form-input-height--tab / 2)
+          right-radius: round($form-input-height--tab / 2)
+
+      //----------------------------------
       +media($form-media--mob)
         border-bottom:
           left-radius: round($form-input-height--mob / 2)
@@ -297,6 +384,13 @@
         left-radius: round($form-input-height / 2)
         right-radius: round($form-input-height / 2)
 
+      //----------------------------------
+      +media($form-media--tab)
+        border-top:
+          left-radius: round($form-input-height--tab / 2)
+          right-radius: round($form-input-height--tab / 2)
+
+      //----------------------------------
       +media($form-media--mob)
         border-top:
           left-radius: round($form-input-height--mob / 2)
@@ -321,7 +415,14 @@
     property: $prop
     duration: $animation-speed
 
+  //----------------------------------
+  +media($form-media--tab)
+    padding: 4px 20px
+    border-radius: $form-border-radius--mob
+
+  //----------------------------------
   +media($form-media--mob)
+    padding: 4px 15px
     border-radius: $form-border-radius--mob
 
 // State

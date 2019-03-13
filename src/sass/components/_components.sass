@@ -486,6 +486,8 @@ a.shutter-nav-switcher
   text-decoration: none
   width: $btn-nav-size
   height: $btn-nav-size
+  user-select: none
+  -webkit-tap-highlight-color: transparent
   // transition
   $prop: color
   will-change: $prop
@@ -1200,7 +1202,7 @@ $n-callback-form-space-item--mob: 3rem 2rem
       max-width: none
 
   .input-def
-    border-radius: 10px
+    border-radius: 1rem
     background-color: white
     border-right-color: white
 
@@ -1942,6 +1944,9 @@ $n-callback-form-space-item--mob: 3rem 2rem
   +media('<tab-lg')
     margin-bottom: 9rem
 
+  +media('<tab-sm')
+    margin-bottom: 4.9rem
+
 .main-caption__holder
   position: relative
   padding: 10.6rem 0
@@ -1951,6 +1956,9 @@ $n-callback-form-space-item--mob: 3rem 2rem
 
   +media('<tab-lg')
     padding: 5.2rem 0
+
+  +media('<tab-sm')
+    padding: 3.5rem 0 0
 
 .main-caption__figure
   position: absolute
@@ -1968,6 +1976,22 @@ $n-callback-form-space-item--mob: 3rem 2rem
   +media('<tab-lg')
     width: 54rem
     right: -12.8rem
+
+  +media('<tab-sm')
+    width: 30rem
+    right: -7.2rem
+    top: 8.4rem
+
+    &::after
+      content: ""
+      display: block
+      position: absolute
+      width: 80rem
+      height: 25rem
+      background-color: white
+      transform: rotate(30deg) translate(-30rem, 7.3rem)
+      pointer-events: none
+      user-select: none
 
   img
     display: block
@@ -1988,6 +2012,15 @@ $n-callback-form-space-item--mob: 3rem 2rem
     max-width: 100%
     margin-bottom: 2.4rem
 
+  +media('<tab-sm')
+    margin-bottom: 2.8rem
+    $line-height: 3.0rem
+    $line-length: 6
+    font-size: 2.8rem
+    line-height: $line-height
+    text-transform: none
+    min-height: $line-height * $line-length
+
   &:last-child
     margin-bottom: 0
 
@@ -2004,6 +2037,12 @@ $n-callback-form-space-item--mob: 3rem 2rem
     font-size: 2.2rem
     line-height: 2.6rem
     margin-bottom: 2.6rem
+
+  +media('<tab-sm')
+    font-size: $font-size--mob
+    line-height: $line-height--mob
+    width: auto
+    margin-bottom: 2.5rem
 
   b, strong
     +font-bold
@@ -2023,6 +2062,11 @@ $n-callback-form-space-item--mob: 3rem 2rem
     font-size: 2.2rem
     line-height: 2.6rem
 
+  +media('<tab-sm')
+    font-size: $font-size--mob
+    line-height: $line-height--mob
+    width: auto
+
 /* main-caption end
 
 /* limitations
@@ -2031,6 +2075,9 @@ $n-callback-form-space-item--mob: 3rem 2rem
 
   +media('<tab-lg')
     margin-bottom: 5rem
+
+  +media('<tab-sm')
+    margin-bottom: 5.4rem
 
 .limitations__holder
   padding: 4.3rem 0
@@ -2105,6 +2152,11 @@ $n-callback-form-space-item--mob: 3rem 2rem
     line-height: 2.8rem
     margin-bottom: 1.5rem
 
+  +media('<tab-sm')
+    font-size: 2.0rem
+    line-height: 2.0rem
+    margin-bottom: 1rem
+
   &:last-child
     margin-bottom: 0
 
@@ -2117,6 +2169,10 @@ $n-callback-form-space-item--mob: 3rem 2rem
   +media('<desk-sm')
     font-size: 1.8rem
     line-height: 2.2rem
+
+  +media('<tab-sm')
+    font-size: $font-size--mob
+    line-height: $line-height--mob
 
   &:last-child
     margin-bottom: 0
@@ -2140,7 +2196,11 @@ $n-callback-form-space-item--mob: 3rem 2rem
 
   +media('<tab-lg')
     float: none
-    padding: 8rem 1rem 8rem 34.6rem
+    padding: 8rem 0 8rem 34.6rem
+
+  +media('<tab-sm')
+    float: none
+    padding: 5rem 0 5rem 15rem
 
 .limitations__item-figure_deposit
   //background-image: url(../../img/limitation-figure-01.png)
@@ -2157,6 +2217,12 @@ $n-callback-form-space-item--mob: 3rem 2rem
   +media('<tab-lg')
     width: auto
     top: 0
+
+  +media('<tab-sm')
+    width: 14rem
+    left: 0
+    top: 50%
+    transform: translate(0, -50%)
 
 // hover
 //.limitations__item_deposit:hover
@@ -2179,6 +2245,10 @@ $n-callback-form-space-item--mob: 3rem 2rem
     float: none
     padding: 13rem 34.6rem 7rem 0
 
+  +media('<tab-sm')
+    float: none
+    padding: 5rem 15rem 5rem 0
+
 .limitations__item-figure_lend
   //background-image: url(../../img/limitation-figure-02.png)
   //height: 328px
@@ -2197,6 +2267,11 @@ $n-callback-form-space-item--mob: 3rem 2rem
     left: auto
     right: 0
     top: 0
+
+  +media('<tab-sm')
+    width: 14rem
+    top: 50%
+    transform: translate(0, -50%)
 
 // hover
 //.limitations__item_lend:hover
@@ -2221,6 +2296,11 @@ $n-callback-form-space-item--mob: 3rem 2rem
     margin-top: 0
     padding: 12rem 0 12rem 34.6rem
 
+  +media('<tab-sm')
+    float: none
+    top: 50%
+    padding: 5rem 0 5rem 15rem
+
 .limitations__item-figure_property
   //background-image: url(../../img/limitation-figure-03.png)
   //height: 316px
@@ -2238,6 +2318,12 @@ $n-callback-form-space-item--mob: 3rem 2rem
   +media('<tab-lg')
     width: auto
     top: 0
+
+  +media('<tab-sm')
+    width: 14rem
+    left: 0
+    top: 50%
+    transform: translate(0, -50%)
 
 // hover
 //.limitations__item_property:hover
@@ -2262,6 +2348,9 @@ $n-callback-form-space-item--mob: 3rem 2rem
 
   +media('<tab-lg')
     padding: 5rem 0 8rem
+
+  +media('<tab-sm')
+    padding: 5rem 0 5.5rem
 
 //.advantages__sign
   display: block
@@ -2320,6 +2409,11 @@ $n-callback-form-space-item--mob: 3rem 2rem
     max-width: calc(100% - 8rem)
     margin: 0 auto 2.1rem
 
+  +media('<tab-sm')
+    width: 40rem
+    max-width: calc(100% - 1rem)
+    margin-bottom: 2.1rem
+
   img
     display: block
     max-width: 100%
@@ -2337,6 +2431,11 @@ $n-callback-form-space-item--mob: 3rem 2rem
     line-height: 2.8rem
     margin-bottom: 1.5rem
 
+  +media('<tab-sm')
+    font-size: 2.0rem
+    line-height: 2.4rem
+    margin-bottom: 0.8rem
+
   &:last-child
     margin-bottom: 0
 
@@ -2350,6 +2449,11 @@ $n-callback-form-space-item--mob: 3rem 2rem
     font-size: 2.0rem
     line-height: 2.2rem
     margin-bottom: 1.8rem
+
+  +media('<tab-sm')
+    font-size: $font-size--mob
+    line-height: $line-height--mob
+    margin-bottom: 0.7rem
 
   &:last-child
     margin-bottom: 0
@@ -2366,6 +2470,14 @@ $n-callback-form-space-item--mob: 3rem 2rem
 
   +media('<tab-lg')
     margin-bottom: 4rem
+
+  +media('<tab-sm')
+    font-size: $font-size--mob
+    line-height: $line-height--mob
+    margin-bottom: 2rem
+
+  +media('<mob-lg')
+    margin-bottom: 3.8rem
 
   &:last-child
     margin-bottom: 0
@@ -2393,6 +2505,10 @@ $n-callback-form-space-item--mob: 3rem 2rem
     padding: 0
     margin: 0
 
+  [class*="btn-"]
+    +media('<mob-lg')
+      display: block
+
 // hover
 //.advantages:hover
   .advantages__sign
@@ -2417,8 +2533,8 @@ $n-callback-form-space-item--mob: 3rem 2rem
   background-size: cover
 
   +media('<desk-sm')
-    padding-top: 7rem
-    padding-bottom: 8rem
+    padding-top: 4.6rem
+    padding-bottom: 5.5rem
 
 .manual__holder
   position: relative
@@ -2452,6 +2568,12 @@ $n-callback-form-space-item--mob: 3rem 2rem
     text-align: center
     margin-bottom: 2.3rem
 
+  +media('<tab-sm')
+    +font-bold
+    font-size: $font-size-h1--mob
+    line-height: $line-height-h1--mob
+    margin-bottom: 2.5rem
+
   &:last-child
     margin-bottom: 0
 
@@ -2460,7 +2582,6 @@ $n-callback-form-space-item--mob: 3rem 2rem
   float: left
   clear: left
   width: 50%
-  padding-bottom: 4.2rem
 
   // Обнулить стили заданные скриптом слайдера
   +media('>=tab-lg')
@@ -2495,9 +2616,11 @@ $n-callback-form-space-item--mob: 3rem 2rem
     float: none
     width: auto
     margin: 0 -#{nth($page-layout-space, 2)}
+    padding-bottom: 4.2rem
 
   +media('<tab-sm')
     margin: 0 -#{nth($page-layout-space--sm, 2)}
+    padding-bottom: 2.6rem
 
   +media('<mob-lg')
     margin: 0 -#{nth($page-layout-space--mob, 2)}
@@ -2558,6 +2681,9 @@ $n-callback-form-space-item--mob: 3rem 2rem
         border-radius: 0
         margin-bottom: 3.4rem
 
+      +media('<tab-sm')
+        margin-bottom: 2.6rem
+
       &:last-child
         margin-bottom: 0
 
@@ -2591,6 +2717,11 @@ $n-callback-form-space-item--mob: 3rem 2rem
 
       +media('<tab-lg')
         text-align: center
+
+      +media('<tab-sm')
+        font-size: 2.0rem
+        line-height: 2.6rem
+        margin-bottom: 0.7rem
 
       &:last-child
         margin-bottom: 0
@@ -2636,6 +2767,9 @@ $n-callback-form-space-item--mob: 3rem 2rem
         line-height: $size - 0.1
         padding: 0.1rem 0 0 0.1rem
 
+      +media('<tab-sm')
+        margin-top: 0.1em
+
     .manual__step-text
       min-width: 100%
       font-size: 1.8rem
@@ -2648,6 +2782,11 @@ $n-callback-form-space-item--mob: 3rem 2rem
         font-size: 2.0rem
         line-height: 2.4rem
         text-align: center
+
+      +media('<tab-sm')
+        font-size: $font-size--mob
+        line-height: $line-height--mob
+        margin-bottom: 2rem
 
       &:last-child
         margin-bottom: 0
@@ -2694,6 +2833,9 @@ $n-callback-form-space-item--mob: 3rem 2rem
         opacity: 1
         pointer-events: auto
 
+      +media('<tab-sm')
+        height: 30.6rem
+
       // current
       #{$root-elem}.current &
         opacity: 1
@@ -2716,6 +2858,7 @@ $n-callback-form-space-item--mob: 3rem 2rem
 /* bond
 $bond-space: 3.1rem 2.9rem 2.3rem
 $bond-space--sm: 2.4rem 2rem 1.9rem
+$bond-space--mob: 1.8rem 2rem 1.2rem
 .bond
   display: block
   position: relative
@@ -2732,6 +2875,9 @@ $bond-space--sm: 2.4rem 2rem 1.9rem
   +media('<tab-lg')
     padding: $bond-space--sm
 
+  +media('<tab-sm')
+    padding: $bond-space--mob
+
 .bond__figure
   display: flex
   align-items: center
@@ -2745,19 +2891,21 @@ $bond-space--sm: 2.4rem 2rem 1.9rem
     width: 12rem
     margin: 0.3rem 0 1.3rem
 
+  +media('<tab-sm')
+    margin-bottom: 0.2rem
+
   img
     display: block
     max-width: 100%
     max-height: 100%
 
 .bond__title
-  $font-size: 1.8rem
   $line-height: 2.4rem
   $line-length: 2
   display: block
   position: relative
   +font-normal
-  font-size: $font-size
+  font-size: 1.8rem
   line-height: $line-height
   font-weight: normal
   color: #0d0d0d
@@ -2767,6 +2915,14 @@ $bond-space--sm: 2.4rem 2rem 1.9rem
 
   +media('<tab-lg')
     margin-bottom: 0.1rem
+
+  +media('<tab-sm')
+    $line-height: 1.8rem
+    $line-length: 2
+    font-size: 1.5rem
+    line-height: $line-height
+    height: $line-height * $line-length
+    margin-bottom: 0
 
   &::after
     content: ""
@@ -2789,8 +2945,15 @@ $bond-space--sm: 2.4rem 2rem 1.9rem
   text-overflow: ellipsis
 
   +media('<tab-lg')
+    margin-right: 9rem
     font-size: 1.8rem
     line-height: 2.2rem
+
+  +media('<tab-sm')
+    margin-right: 8rem
+    margin-bottom: 0
+    font-size: 1.5rem
+    line-height: 1.8rem
 
 .bond__term
   overflow: hidden
@@ -2802,8 +2965,14 @@ $bond-space--sm: 2.4rem 2rem 1.9rem
   text-overflow: ellipsis
 
   +media('<tab-lg')
+    margin-right: 9rem
     font-size: 1.8rem
     line-height: 2.2rem
+
+  +media('<tab-sm')
+    margin-right: 8rem
+    font-size: 1.5rem
+    line-height: 1.8rem
 
 .bond__value
   position: absolute
@@ -2819,6 +2988,12 @@ $bond-space--sm: 2.4rem 2rem 1.9rem
     line-height: 2.2rem
     bottom: nth($bond-space--sm, 3)
     right: nth($bond-space--sm, 2)
+
+  +media('<tab-sm')
+    font-size: 1.5rem
+    line-height: 1.8rem
+    bottom: nth($bond-space--mob, 3)
+    right: nth($bond-space--mob, 2)
 
 .bond__rate
   position: absolute
@@ -2848,6 +3023,17 @@ $bond-space--sm: 2.4rem 2rem 1.9rem
     border-radius: nth($size, 1)
     padding: 0 1rem
 
+  +media('<tab-sm')
+    top: nth($bond-space--mob, 1)
+    right: nth($bond-space--mob, 2)
+    $size: 2.6rem 5.2rem
+    height: nth($size, 1)
+    min-width: nth($size, 2)
+    font-size: 1.5rem
+    line-height: nth($size, 1)
+    border-radius: nth($size, 1)
+    padding: 0 0.8rem
+
   // hover
   .bond:not(.swiper-slide-thumb-active):hover & // todo переделать
     background-color: $highlight-color--hover
@@ -2864,6 +3050,10 @@ $bond-space--sm: 2.4rem 2rem 1.9rem
   +media('<desk-sm')
     padding-bottom: 6.9rem
 
+  +media('<tab-sm')
+    padding-top: 4.7rem
+    padding-bottom: 4.7rem
+
 .selection__title
   +font-extra-bold
   font-size: $font-size-h1
@@ -2875,6 +3065,12 @@ $bond-space--sm: 2.4rem 2rem 1.9rem
     font-size: $font-size-h1--sm
     line-height: $line-height-h1--sm
     margin-bottom: 4.3rem
+
+  +media('<tab-sm')
+    +font-bold
+    font-size: $font-size-h1--mob
+    line-height: $line-height-h1--mob
+    margin-bottom: 3.4rem
 
 .selection__bonds
   position: relative
@@ -2891,13 +3087,13 @@ $bond-space--sm: 2.4rem 2rem 1.9rem
 
   +media('<tab-sm')
     $space: nth($page-layout-space--sm, 2)
-    padding: 0 #{$space} 4.2rem
-    margin: 0 -#{$space} 4rem
+    padding: 0 #{$space} 2.4rem
+    margin: 0 -#{$space} 2.4rem
 
   +media('<mob-lg')
     $space: nth($page-layout-space--mob, 2)
-    padding: 0 #{$space} 4.2rem
-    margin: 0 -#{$space} 4rem
+    padding: 0 #{$space} 2.4rem
+    margin: 0 -#{$space} 2.4rem
 
   .js &:not(.is-loaded)
     opacity: 0
@@ -2944,7 +3140,11 @@ $bond-space--sm: 2.4rem 2rem 1.9rem
       width: 37rem
       opacity: 0.5
 
-      &.swiper-slide-active
+    +media('<tab-sm')
+      width: 28rem
+
+    &.swiper-slide-active
+      +media('<tab-lg')
         opacity: 1
 
 .selection__bonds-pagination
@@ -2956,6 +3156,10 @@ $bond-space--sm: 2.4rem 2rem 1.9rem
 
   +media('<tab-lg')
     text-align: center
+
+  [class*="btn-"]
+    +media('<tab-sm')
+      display: block
 
 /* selection end
 
@@ -2986,6 +3190,12 @@ $bond-space--sm: 2.4rem 2rem 1.9rem
   +media('<tab-lg')
     margin: 0 auto 2.2rem
 
+  +media('<mob-md')
+    $size: 8rem
+    width: $size
+    height: $size
+    margin-bottom: 2.2rem
+
   img
     display: block
     max-height: 100%
@@ -3011,6 +3221,11 @@ $bond-space--sm: 2.4rem 2rem 1.9rem
   +media('<tab-lg')
     text-align: center
 
+  +media('<tab-sm')
+    font-size: 2.0rem
+    line-height: 2.4rem
+    margin-bottom: 0.8rem
+
   &:last-child
     margin-bottom: 0
 
@@ -3022,6 +3237,10 @@ $bond-space--sm: 2.4rem 2rem 1.9rem
 
   +media('<tab-lg')
     text-align: center
+
+  +media('<tab-sm')
+    font-size: $font-size--mob
+    line-height: $line-height--mob
 
   &:last-child
     margin-bottom: 0
@@ -3054,6 +3273,12 @@ $bond-space--sm: 2.4rem 2rem 1.9rem
     line-height: $line-height-h1--sm
     margin-bottom: 4.2rem
 
+  +media('<tab-sm')
+    +font-bold
+    font-size: $font-size-h1--mob
+    line-height: $line-height-h1--mob
+    margin-bottom: 3.4rem
+
 .benefits__list
   position: relative
   display: flex
@@ -3065,6 +3290,10 @@ $bond-space--sm: 2.4rem 2rem 1.9rem
 
   +media('<tab-lg')
     align-items: flex-start
+
+  +media('<mob-md')
+    display: block
+    padding-bottom: 0
 
   &:last-child
     margin-bottom: 0
@@ -3086,6 +3315,11 @@ $bond-space--sm: 2.4rem 2rem 1.9rem
   +media('<tab-lg')
     padding: 0 2rem
     margin: 0 0 5.1rem
+
+  +media('<mob-md')
+    max-width: none
+    padding: 0
+    margin-bottom: 3.6rem
 
   &:nth-child(2n)
     +media('>=tab-lg')
@@ -3143,6 +3377,13 @@ $bond-space--sm: 2.4rem 2rem 1.9rem
     border-radius: 1rem 0
     padding: 3.3rem #{nth($page-layout-space, 2)}
 
+  +media('<tab-sm')
+    border-radius: 0.5rem 0
+    padding: 2.2rem #{nth($page-layout-space--sm, 2)} 2.6rem
+
+  +media('<mob-lg')
+    padding: 2.2rem #{nth($page-layout-space--mob, 2)} 2.6rem
+
 .opinion-quote__title
   display: block
   margin-bottom: 2.6rem
@@ -3167,6 +3408,12 @@ $bond-space--sm: 2.4rem 2rem 1.9rem
     min-height: 0
     margin-bottom: 2.7rem
 
+  +media('<tab-sm')
+    +font-bold
+    font-size: 1.7rem
+    line-height: 2.4rem
+    margin-bottom: 0.8rem
+
 $oq__content-line-height: 2.9rem
 $oq__content-line-length: 6
 .opinion-quote__content
@@ -3190,6 +3437,10 @@ $oq__content-line-length: 6
   +media('<tab-lg')
     min-height: 0
 
+  +media('<tab-sm')
+    font-size: $font-size--mob
+    line-height: $line-height--mob
+
   p
     margin-bottom: 2.3rem
 
@@ -3208,6 +3459,12 @@ $op-color: #622ee9
 
   +media('<tab-lg')
     padding: 4rem #{nth($page-layout-space, 2)} 4.8rem
+
+  +media('<tab-sm')
+    padding: 2.4rem #{nth($page-layout-space--sm, 2)} 3rem
+
+  +media('<mob-lg')
+    padding: 2.4rem #{nth($page-layout-space--mob, 2)} 3.8rem
 
 .opinion-review__corner
   display: block
@@ -3228,6 +3485,11 @@ $op-color: #622ee9
     width: 63px
     height: 25px
 
+  +media('<tab-sm')
+    left: 31px
+    width: 45px
+    height: 18px
+
 .opinion-review__author
   display: flex
   align-items: center
@@ -3238,8 +3500,13 @@ $op-color: #622ee9
   +media('<tab-lg')
     margin-bottom: 3.2rem
 
+  +media('<tab-sm')
+    margin-bottom: 0
+
 $or__author-photo-size: 8rem
 $or__author-photo-space: 1.9rem
+$or__author-photo-size--mob: 5.5rem
+$or__author-photo-space--mob: 1.9rem
 .opinion-review__author-photo
   overflow: hidden
   flex-basis: $or__author-photo-size
@@ -3248,6 +3515,13 @@ $or__author-photo-space: 1.9rem
   height: $or__author-photo-size
   margin-right: $or__author-photo-space
   border-radius: 50%
+
+  +media('<tab-sm')
+    flex-basis: $or__author-photo-size--mob
+    width: $or__author-photo-size--mob
+    max-width: $or__author-photo-size--mob
+    height: $or__author-photo-size--mob
+    margin-right: $or__author-photo-space--mob
 
   img
     display: block
@@ -3259,6 +3533,11 @@ $or__author-photo-space: 1.9rem
   max-width: calc(100% - #{$or__author-photo-size + $or__author-photo-space})
   font-size: 1.8rem
   line-height: 2.2rem
+
+  +media('<tab-sm')
+    font-size: 1.5rem
+    line-height: 1.8rem
+    max-width: calc(100% - #{$or__author-photo-size--mob + $or__author-photo-space--mob})
 
 .opinion-review__author-person
   margin-bottom: 1rem
@@ -3273,6 +3552,9 @@ $or__author-photo-space: 1.9rem
   +font-bold
   display: inline-block
   margin-right: 0.3rem
+
+  +media('<tab-sm')
+    margin-bottom: 0.2rem
 
 .opinion-review__soc
   display: inline-block
@@ -3359,6 +3641,9 @@ $or__author-photo-space: 1.9rem
   overflow: hidden
   white-space: nowrap
 
+  +media('<tab-lg')
+    white-space: normal
+
   &:last-child
     margin-bottom: 0
 
@@ -3372,6 +3657,9 @@ $or__author-photo-space: 1.9rem
     min-width: 5rem
     height: 2.2rem
     +linear-gradient(to right, rgba($op-color, 0) 0%, $op-color 100%)
+
+    +media('<tab-lg')
+      display: none
 
 $or__content-line-height: 2.9rem
 $or__content-line-length: 6
@@ -3395,6 +3683,13 @@ $or__content-line-length: 6
 
   +media('<tab-lg')
     min-height: 0
+
+  +media('<tab-sm')
+    flex-grow: 1
+    flex-basis: 100%
+    font-size: $font-size--mob
+    line-height: $line-height--mob
+    margin-bottom: 3.7rem
 
   //&::after
     content: ""
@@ -3424,6 +3719,9 @@ $or__content-line-length: 6
     background-color: $op-color
     border-radius: 1.2rem
 
+  +media('<tab-sm')
+    border-radius: 0.6rem
+
 .opinion__quote
   $width: 50%
   flex-grow: 1
@@ -3437,6 +3735,12 @@ $or__content-line-length: 6
   +media('<tab-lg')
     margin: 0 #{nth($page-layout-space, 2)} 0 0
 
+  +media('<tab-sm')
+    margin: 0 #{nth($page-layout-space--sm, 2)} 0 0
+
+  +media('<mob-lg')
+    margin: 0 #{nth($page-layout-space--mob, 2)} 0 0
+
 .opinion__review
   $width: calc(50% + 6rem)
   flex-grow: 1
@@ -3449,6 +3753,10 @@ $or__content-line-length: 6
   +media('<tab-lg')
     min-width: 0
     margin: 0
+
+  +media('<tab-sm')
+    display: flex
+    flex-direction: column-reverse
 
 /* opinion end
 
@@ -3474,6 +3782,10 @@ $or__content-line-length: 6
       padding-top: 0.6rem
       padding-bottom: 8.1rem
 
+    +media('<tab-sm')
+      padding-top: 3.2rem
+      padding-bottom: 5.5rem
+
 .opinions__title
   +font-extra-bold
   font-size: $font-size-h1
@@ -3486,12 +3798,20 @@ $or__content-line-length: 6
     line-height: $line-height-h1--sm
     margin-bottom: 3.4rem
 
+  +media('<desk-sm')
+    +font-bold
+    font-size: $font-size-h1--mob
+    line-height: $line-height-h1--mob
+
 .opinions__list
   padding: 0 3rem 4.9rem
   margin: 0 -3rem 6rem
 
   +media('<tab-lg')
     padding-bottom: 4.2rem
+
+  +media('<tab-sm')
+    padding-bottom: 2.6rem
 
   &:last-child
     margin-bottom: 0
@@ -3535,6 +3855,10 @@ $or__content-line-length: 6
   +media('<tab-lg')
     min-height: 0
 
+  +media('<tab-sm')
+    padding-top: 4.6rem
+    padding-bottom: 3.4rem
+
 .app-offer__title
   width: 50%
   margin-bottom: 3.9rem
@@ -3551,6 +3875,10 @@ $or__content-line-length: 6
   +media('<tab-lg')
     width: auto
     text-align: center
+
+  +media('<tab-sm')
+    font-size: $font-size-h1--mob
+    line-height: $line-height-h1--mob
 
   &:last-child
     margin-bottom: 0
@@ -3572,6 +3900,10 @@ $or__content-line-length: 6
     font-size: 1.8rem
     line-height: 2.4rem
     margin-bottom: 3.3rem
+
+  +media('<tab-sm')
+    font-size: $font-size--mob
+    line-height: $line-height--mob
 
   &:last-child
     margin-bottom: 0
@@ -3609,7 +3941,7 @@ $app-offer-app-space: 2.0rem 3.6rem
     top: auto
     right: auto
     bottom: auto
-    height: 352px
+    height: 35.2rem
     margin-bottom: 4rem
 
     &::before
@@ -3621,6 +3953,11 @@ $app-offer-app-space: 2.0rem 3.6rem
       left: 50%
       margin-left: -50rem
       background: url(../../img/app-offer-figure-mob.png) no-repeat center
+      background-size: auto 100%
+
+  +media('<tab-sm')
+    height: 32.6rem
+    margin-bottom: 3rem
 
   img
     max-height: 100%
@@ -3735,7 +4072,7 @@ $app-offer-app-space: 2.0rem 3.6rem
 /* last news element end
 
 /* last-news
-.last-news
+.section_last-news
   background-color: $bg-color
 
 .last-news__holder
@@ -3750,7 +4087,7 @@ $app-offer-app-space: 2.0rem 3.6rem
     padding-bottom: 7.9rem
 
   +media('<tab-sm')
-    padding-top: 5.5rem
+    padding-top: 4.5rem
     padding-bottom: 5.5rem
 
 .last-news__title
@@ -3770,21 +4107,20 @@ $app-offer-app-space: 2.0rem 3.6rem
     line-height: $line-height-h1--mob
     margin-bottom: 3.2rem
 
-$last-news-item-space: 0 3rem
-$last-news-item-space--sm: 0 2rem
-$last-news-item-space--mob: 2rem 2rem
+$last-news-item-space: 3rem 3rem
+$last-news-item-space--sm: 2rem 2rem
 .last-news__list
   display: flex
   flex-wrap: wrap
-  margin: 0 -#{round-float(nth($last-news-item-space, 2) / 2, 1)} 6rem
+  margin: 0 -#{round-float(nth($last-news-item-space, 2) / 2, 1)} 3rem
 
   +media('<desk-sm')
     margin-bottom: 2rem
 
   +media('<tab-lg')
-    margin: 0 -#{round-float(nth($last-news-item-space--sm, 2) / 2, 1)} 3rem
+    margin: 0 -#{round-float(nth($last-news-item-space--sm, 2) / 2, 1)} 1rem
 
-  +media('<tab-sm')
+  +media('<mob-lg')
     display: block
     margin: 0 0 3rem
 
@@ -3793,28 +4129,38 @@ $last-news-item-space--mob: 2rem 2rem
 
 .last-news__list-item
   $width: calc(33.33% - #{nth($last-news-item-space, 2)})
-  margin: 0 #{round-float(nth($last-news-item-space, 2) / 2, 1)}
+  margin: 0 #{round-float(nth($last-news-item-space, 2) / 2, 1)} #{nth($last-news-item-space, 1)}
   flex-basis: $width
+  max-width: $width
   min-height: 44.5rem
   text-decoration: none
 
   +media('<desk-md')
     $width: calc(50.0% - #{nth($last-news-item-space, 2)})
     flex-basis: $width
+    max-width: $width
 
   +media('<tab-lg')
     $width: calc(50.0% - #{nth($last-news-item-space--sm, 2)})
     flex-basis: $width
-    margin: 0 #{round-float(nth($last-news-item-space--sm, 2) / 2, 1)}
+    max-width: $width
+    margin: 0 #{round-float(nth($last-news-item-space--sm, 2) / 2, 1)} #{nth($last-news-item-space--sm, 2)}
     min-height: 32.8rem
 
-  +media('<tab-sm')
-    margin: 0 0 #{nth($last-news-item-space--mob, 1)}
+  +media('<mob-lg')
+    margin-left: 0
+    margin-right: 0
+    max-width: none
     min-height: 28.0rem
 
-  &:nth-child(n + 3)
-    +media('<desk-md', '>=tab-sm')
-      display: none
+  .section_last-news &
+    &:nth-child(n + 4)
+      +media('>=desk-md')
+        display: none
+
+    &:nth-child(n + 3)
+      +media('<desk-md', '>=mob-lg')
+        display: none
 
 .last-news__footer
   position: relative
@@ -4083,8 +4429,14 @@ $bond-calc-space--sm: 3rem 3rem 3rem
   align-items: flex-start
   justify-content: flex-start
 
+  +media('<tab-lg')
+    margin-bottom: 3rem
+
 .bond-range
-  margin-bottom: 4px
+  margin-bottom: 0.4rem
+
+  +media('<tab-lg')
+    margin-bottom: 3rem
 
 html:not(.no-js) .bond-range-slider
   opacity: 0
@@ -4306,7 +4658,7 @@ $yield-box-aside-space--sm: 2.0rem
   height: 100%
   margin-right: $yield-box-aside-space
 
-  +media('<desk-sm')
+  +media('<desk-md')
     flex-basis: $yield-box-aside-width--sm
     max-width: $yield-box-aside-width--sm
     margin-right: $yield-box-aside-space--sm
@@ -4383,7 +4735,7 @@ $yield-thumbs-elem-height: 22.3rem
   padding: nth($yield-box-spaces, 1) 0
   z-index: 5
 
-  +media('<desk-sm')
+  +media('<desk-md')
     $width: calc(100% - #{$yield-box-aside-width--sm} - #{$yield-box-aside-space--sm})
     flex-basis: $width
     max-width: $width
@@ -4583,6 +4935,9 @@ $news-elem-space-inner: 2.7rem 3.6rem
   +media('<desk-sm')
     padding-bottom: 7rem
 
+  +media('<tab-sm')
+    padding-bottom: 5.5rem
+
 // news list
 .news__list
   margin: 0 -#{round-float(nth($news-elem-space-outer, 2) / 2, 1)} 3rem
@@ -4624,13 +4979,21 @@ $news-elem-space-inner: 2.7rem 3.6rem
 .news__footer
   text-align: right
 
+  +media('<tab-lg')
+    text-align: center
+
+  +media('<mob-lg')
+    [class*="btn-"]
+      display: block
+
 /* news end
 
 /* companies
 .section_companies
   position: relative
 
-$companies-filters-item-space: 3.6rem 3.6rem
+$companies-filters-item-space: 3.6rem
+$companies-filters-item-space--tab: 2rem
 .companies-filters
   background-color: white
   padding-bottom: 8.2rem
@@ -4638,16 +5001,47 @@ $companies-filters-item-space: 3.6rem 3.6rem
   +media('<desk-sm')
     padding-bottom: 7rem
 
+  +media('<tab-sm')
+    padding-bottom: 4rem
+
 .companies-filters__row
   display: flex
   flex-wrap: wrap
-  margin: 0 -#{round-float(nth($companies-filters-item-space, 2) / 2, 1)} -#{round-float(nth($companies-filters-item-space, 1) / 2, 1)}
+  margin: 0 -#{round-float($companies-filters-item-space / 2, 1)} -#{$form-bottom-space}
+
+  +media('<tab-lg')
+    margin: 0 -#{round-float($companies-filters-item-space--tab / 2, 1)} -#{$form-bottom-space--tab}
+
+  +media('<mob-md')
+    display: block
+    margin-left: 0
+    margin-right: 0
 
 .companies-filters__item
   flex-grow: 1
-  flex-basis: calc(33.3% - #{nth($companies-filters-item-space, 2)})
+  $width: calc(33.3% - #{$companies-filters-item-space})
+  flex-basis: $width
+  width: $width
   max-width: 31rem
-  margin: 0 #{round-float(nth($companies-filters-item-space, 2) / 2, 1)} #{round-float(nth($companies-filters-item-space, 1) / 2, 1)}
+  margin: 0 #{round-float($companies-filters-item-space / 2, 1)} #{$form-bottom-space}
+
+  +media('<tab-lg')
+    $width: calc(33.3% - #{$companies-filters-item-space--tab})
+    flex-basis: $width
+    width: $width
+    margin: 0 #{round-float($companies-filters-item-space--tab / 2, 1)} #{$form-bottom-space--tab}
+
+  +media('<mob-lg')
+    $width: calc(50.0% - #{$companies-filters-item-space--tab})
+    flex-basis: $width
+    width: $width
+    max-width: $width
+
+  +media('<mob-md')
+    width: 100%
+    margin-left: 0
+    margin-right: 0
+    max-width: none
 
 .companies
   padding-top: 8.2rem
@@ -4655,8 +5049,12 @@ $companies-filters-item-space: 3.6rem 3.6rem
   background-color: $bg-color
 
   +media('<desk-sm')
-    padding-top: 7rem
+    padding-top: 5rem
     padding-bottom: 7rem
+
+  +media('<tab-sm')
+    padding-top: 4rem
+    padding-bottom: 5.6rem
 
 // companies list
 $companies-elem-space-outer: 2.2rem 2.2rem
@@ -4664,7 +5062,9 @@ $companies-elem-space-outer: 2.2rem 2.2rem
   display: flex
   flex-wrap: wrap
   margin: 0 -#{round-float(nth($companies-elem-space-outer, 2) / 2, 1)} -#{nth($companies-elem-space-outer, 1)}
-  +clear
+
+  +media('<mob-lg')
+    display: block
 
 .companies__list-item
   $width: 33.33%
@@ -4676,6 +5076,13 @@ $companies-elem-space-outer: 2.2rem 2.2rem
     $width: 50.0%
     flex-basis: $width
     max-width: $width
+
+    &:nth-child(n + 7)
+      display: none
+
+  +media('<mob-lg')
+    width: 100%
+    max-width: none
 
     &:nth-child(n + 7)
       display: none
@@ -4693,6 +5100,9 @@ $companies-elem-space-outer: 2.2rem 2.2rem
   +media('<desk-sm')
     padding-bottom: 7rem
 
+  +media('<tab-lg')
+    padding-bottom: 16rem
+
 $company-box-aside-width: 44.7rem
 $company-box-aside-width--sm: 35rem
 .company-box
@@ -4700,7 +5110,10 @@ $company-box-aside-width--sm: 35rem
   display: flex
   background-color: white
   box-shadow: 0 1rem 4.6rem rgba($box-shadow-color, 0.25)
-  border-radius: 8px
+  border-radius: 0.8rem
+
+  +media('<tab-lg')
+    display: block
 
   &::before
     content: ""
@@ -4715,6 +5128,9 @@ $company-box-aside-width--sm: 35rem
     +media('<desk-md')
       left: $company-box-aside-width--sm
 
+    +media('<tab-lg')
+      display: none
+
 .company-box__aside
   position: relative
   flex-basis: $company-box-aside-width
@@ -4728,6 +5144,14 @@ $company-box-aside-width--sm: 35rem
     flex-basis: $company-box-aside-width--sm
     max-width: $company-box-aside-width--sm
 
+  +media('<tab-lg')
+    max-width: none
+    padding: 3rem
+    //background-color: $bg-color-light
+    border-bottom: 1px solid $border-color
+    $bdrs: 0.8rem
+    border-radius: $bdrs $bdrs 0 0
+
 .company-box__main
   position: relative
   flex-grow: 1
@@ -4740,6 +5164,11 @@ $company-box-aside-width--sm: 35rem
     $width: calc(100% - #{$company-box-aside-width--sm})
     flex-basis: $width
     max-width: $width
+
+  +media('<tab-lg')
+    max-width: none
+    padding: 0
+    min-height: 0
 
   .bond-calc
     height: 100%

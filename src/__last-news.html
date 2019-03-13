@@ -1,0 +1,73 @@
+@@include('_tpl_layout_head.html', {"title": "Новости приложения", "pageClass": "" })
+
+<!--HEADER-->
+@@include('_tpl_layout_header.html', {"currentItem": "Новости", "headerFloat": "" })
+<!--HEADER end-->
+
+<!--MAIN-->
+<div class="main">
+  @@include("_tpl_caption-of-page.html", {
+  "heading": "Новости приложения",
+  "entry": "Все новости о нашем приложении Lacerta Online"
+  })
+
+  <!--news-->
+  <section class="news layout-spaces">
+    <div class="news__holder layout-section">
+      <h2 class="news__title hide-text">Новости</h2>
+      <div class="last-news__list">
+        <a href="text-page.html" class="last-news-elem last-news__list-item" style="background-image: url(img/img-news-01.jpg);">
+          <h3 class="last-news-elem__title">Первая строчка заголовка<br> Вторая строчка заголовка</h3>
+          <div class="last-news-elem__text">Вложение под 7% годовых в валюте, легально и без налогов</div>
+        </a>
+        <a href="text-page.html" class="last-news-elem last-news__list-item" style="background-image: url(img/img-news-02.jpg);">
+          <h3 class="last-news-elem__title">Первая строчка заголовка<br> Вторая строчка заголовка</h3>
+          <div class="last-news-elem__text">Вложение под 7% годовых в валюте, легально и без налогов</div>
+        </a>
+        <a href="text-page.html" class="last-news-elem last-news__list-item" style="background-image: url(img/img-news-03.jpg);">
+          <h3 class="last-news-elem__title">Первая строчка заголовка<br> Вторая строчка заголовка</h3>
+          <div class="last-news-elem__text">Вложение под 7% годовых в валюте, легально и без налогов</div>
+        </a>
+        <a href="text-page.html" class="last-news-elem last-news__list-item" style="background-image: url(img/img-news-04.jpg);">
+          <h3 class="last-news-elem__title">Первая строчка заголовка<br> Вторая строчка заголовка</h3>
+          <div class="last-news-elem__text">Вложение под 7% годовых в валюте, легально и без налогов</div>
+        </a>
+        <a href="text-page.html" class="last-news-elem last-news__list-item" style="background-image: url(img/img-news-05.jpg);">
+          <h3 class="last-news-elem__title">Первая строчка заголовка<br> Вторая строчка заголовка</h3>
+          <div class="last-news-elem__text">Вложение под 7% годовых в валюте, легально и без налогов</div>
+        </a>
+        <a href="text-page.html" class="last-news-elem last-news__list-item" style="background-image: url(img/img-news-06.jpg);">
+          <h3 class="last-news-elem__title">Первая строчка заголовка<br> Вторая строчка заголовка</h3>
+          <div class="last-news-elem__text">Вложение под 7% годовых в валюте, легально и без налогов</div>
+        </a>
+        <a href="text-page.html" class="last-news-elem last-news__list-item" style="background-image: url(img/img-last-news-01.jpg);">
+          <h3 class="last-news-elem__title">Первая строчка заголовка<br> Вторая строчка заголовка</h3>
+          <div class="last-news-elem__text">Вложение под 7% годовых в валюте, легально и без налогов</div>
+        </a>
+        <a href="text-page.html" class="last-news-elem last-news__list-item" style="background-image: url(img/img-last-news-02.jpg);">
+          <h3 class="last-news-elem__title">Первая строчка заголовка<br> Вторая строчка заголовка</h3>
+          <div class="last-news-elem__text">Вложение под 7% годовых в валюте, легально и без налогов</div>
+        </a>
+        <a href="text-page.html" class="last-news-elem last-news__list-item" style="background-image: url(img/img-last-news-03.jpg);">
+          <h3 class="last-news-elem__title">Первая строчка заголовка<br> Вторая строчка заголовка</h3>
+          <div class="last-news-elem__text">Вложение под 7% годовых в валюте, легально и без налогов</div>
+        </a>
+      </div>
+      <div class="news__footer">
+        @@include("_tpl_btn.html", {"value": "Загрузить еще новости"})
+      </div>
+    </div>
+  </section>
+  <!--news end-->
+  
+  <!--app offer-->
+  @@include("_tpl_section_app-offer.html")
+  <!--app offer end-->
+</div>
+<!--MAIN end-->
+
+<!--FOOTER-->
+@@include('_tpl_layout_footer.html', {"app": "true"})
+<!--FOOTER end-->
+
+@@include('_tpl_layout_foot.html')

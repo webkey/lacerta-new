@@ -439,9 +439,11 @@ $form-gap--mob: 2rem !default
 =selects-font-styles()
   +inputs-font-styles
 
-//=selects-font-styles--tab()
+//---------------------------------
+=selects-font-styles--tab()
   +inputs-font-style--tab
 
+//---------------------------------
 =selects-font-styles--mob()
   +inputs-font-style--mob
 
@@ -465,12 +467,17 @@ $checkbox-color: $highlight-color !default
 
 // Select
 $select-arrow-width: 55px !default
-$select-arrow-width--mob: 45px !default
 $select-arrow-height: 55px !default
-$select-arrow-height--mob: 45px !default
 $select-space-h: 25px !default
-$select-space-h--mob: 20px !default
 $multiple-item-space: 3px !default
+//---------------------------------
+$select-arrow-width--tab: 50px !default
+$select-arrow-height--tab: 50px !default
+$select-space-h--tab: 20px !default
+//---------------------------------
+$select-arrow-width--mob: 45px !default
+$select-arrow-height--mob: 45px !default
+$select-space-h--mob: 18px !default
 
 // Style Selection
 =selectSelection()
@@ -492,6 +499,13 @@ $multiple-item-space: 3px !default
     timing-function: ease-in-out
   user-select: none
   -webkit-tap-highlight-color: transparent
+
+=selectSelection--tab()
+  height: $form-input-height--tab
+  padding: $form-input-space-vt--tab $select-arrow-width--tab $form-input-space-vb--tab $select-space-h--tab
+  border-radius: round($form-input-height--tab / 2)
+  @if $form-border-width--tab
+    border-width: $form-border-width--tab
 
 =selectSelection--mob()
   height: $form-input-height--mob
