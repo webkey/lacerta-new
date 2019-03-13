@@ -656,9 +656,9 @@ function rangeSlidersInit() {
     totalRound = Math.round(total * 100) / 100;
     profit = totalRound - currentVal;
 
-    $container.find('.bond-calc-length-js').html(length).data('data-bond-calc-length', length);
-    $container.find('.bond-calc-total-js').html(total).data('data-bond-calc-total', total);
-    $container.find('.bond-calc-profit-js').html(profit).data('data-bond-calc-total', profit);
+    $container.find('.bond-calc-length-js').html(length).attr('data-bond-calc-length', length);
+    $container.find('.bond-calc-total-js').html(total).attr('data-bond-calc-total', total);
+    $container.find('.bond-calc-profit-js').html(profit).attr('data-bond-calc-profit', profit);
   }
 }
 

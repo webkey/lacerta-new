@@ -8311,6 +8311,20 @@ a.shutter-nav-switcher.shutter-nav_is-open::before, a.shutter-nav-switcher.shutt
   }
 }
 
+@media (max-width: 991px) {
+  .opinions {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .opinions {
+    padding-top: 4.6rem;
+    padding-bottom: 5.5rem;
+  }
+}
+
 .sections-group .opinions {
   padding-top: 7rem;
   padding-bottom: 7rem;
@@ -8396,6 +8410,7 @@ a.shutter-nav-switcher.shutter-nav_is-open::before, a.shutter-nav-switcher.shutt
 /* opinions end */
 /* app offer */
 .app-offer {
+  overflow: hidden;
   position: relative;
   color: white;
   background: #622ee9 url(../img/bg-app-offer.jpg) no-repeat center top fixed;
@@ -8550,17 +8565,8 @@ a.shutter-nav-switcher.shutter-nav_is-open::before, a.shutter-nav-switcher.shutt
     right: auto;
     bottom: auto;
     height: 35.2rem;
-    margin-bottom: 4rem;
-  }
-  .app-offer__figure::before {
-    content: "";
-    display: block;
-    position: absolute;
-    height: 100%;
-    width: 100rem;
-    left: 50%;
-    margin-left: -50rem;
-    background: url(../img/app-offer-figure-mob.png) no-repeat center;
+    margin: 0 -99rem 4rem;
+    background: url(../img/app-offer-figure-tab.png) no-repeat center;
     background-size: auto 100%;
   }
 }
@@ -8568,6 +8574,7 @@ a.shutter-nav-switcher.shutter-nav_is-open::before, a.shutter-nav-switcher.shutt
 @media (max-width: 767px) {
   .app-offer__figure {
     height: 32.6rem;
+    background-image: url(../img/app-offer-figure-mob.png);
     margin-bottom: 3rem;
   }
 }
@@ -8889,6 +8896,20 @@ a.shutter-nav-switcher.shutter-nav_is-open::before, a.shutter-nav-switcher.shutt
   }
 }
 
+@media (max-width: 767px) {
+  .profit {
+    min-height: 0;
+    padding: 1.4rem 3rem 1.5rem;
+    border-radius: 0.6rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .profit {
+    padding: 1.4rem 2rem 1.5rem;
+  }
+}
+
 .profit__icon {
   width: 13.1rem;
   height: 13.1rem;
@@ -8917,6 +8938,12 @@ a.shutter-nav-switcher.shutter-nav_is-open::before, a.shutter-nav-switcher.shutt
   }
 }
 
+@media (max-width: 767px) {
+  .profit__icon {
+    display: none;
+  }
+}
+
 .profit__title {
   font-family: "proximanova-bold", Helvetica, Arial, sans-serif;
   font-weight: normal;
@@ -8934,6 +8961,14 @@ a.shutter-nav-switcher.shutter-nav_is-open::before, a.shutter-nav-switcher.shutt
   }
 }
 
+@media (max-width: 767px) {
+  .profit__title {
+    font-size: 2.0rem;
+    line-height: 2.0rem;
+    margin-bottom: 1rem;
+  }
+}
+
 .profit__title:last-child {
   margin-bottom: 0;
 }
@@ -8943,6 +8978,14 @@ a.shutter-nav-switcher.shutter-nav_is-open::before, a.shutter-nav-switcher.shutt
   line-height: 2.5rem;
   color: white;
   margin-bottom: 2rem;
+}
+
+@media (max-width: 767px) {
+  .profit__text {
+    font-size: 1.5rem;
+    line-height: 1.8rem;
+    margin-bottom: 1rem;
+  }
 }
 
 .profit__text:last-child {
@@ -8957,7 +9000,13 @@ a.shutter-nav-switcher.shutter-nav_is-open::before, a.shutter-nav-switcher.shutt
 
 @media (max-width: 1199px) {
   .profits {
-    padding-bottom: 8.2rem;
+    padding-bottom: 5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .profits {
+    padding-bottom: 2.3rem;
   }
 }
 
@@ -9054,6 +9103,12 @@ a.shutter-nav-switcher.shutter-nav_is-open::before, a.shutter-nav-switcher.shutt
   }
 }
 
+@media (max-width: 767px) {
+  .irs--custom {
+    height: 56px;
+  }
+}
+
 .irs--custom.irs-with-grid {
   height: 131px;
 }
@@ -9072,6 +9127,12 @@ a.shutter-nav-switcher.shutter-nav_is-open::before, a.shutter-nav-switcher.shutt
   }
 }
 
+@media (max-width: 767px) {
+  .irs--custom .irs-line {
+    top: 48px;
+  }
+}
+
 .irs--custom .irs-bar {
   top: 89px;
   height: 15px;
@@ -9082,6 +9143,12 @@ a.shutter-nav-switcher.shutter-nav_is-open::before, a.shutter-nav-switcher.shutt
   .irs--custom .irs-bar {
     top: 52px;
     height: 8px;
+  }
+}
+
+@media (max-width: 767px) {
+  .irs--custom .irs-bar {
+    top: 48px;
   }
 }
 
@@ -9109,6 +9176,12 @@ a.shutter-nav-switcher.shutter-nav_is-open::before, a.shutter-nav-switcher.shutt
     top: 45px;
     height: 22px;
     width: 10px;
+  }
+}
+
+@media (max-width: 767px) {
+  .irs--custom .irs-handle {
+    top: 41px;
   }
 }
 
@@ -9150,6 +9223,21 @@ a.shutter-nav-switcher.shutter-nav_is-open::before, a.shutter-nav-switcher.shutt
     padding: 2px 12px;
     line-height: 22px;
     border-radius: 26px;
+  }
+}
+
+@media (max-width: 767px) {
+  .irs--custom .irs-from,
+  .irs--custom .irs-to,
+  .irs--custom .irs-single {
+    min-width: 67px;
+    padding: 4px 8px;
+    font-family: "proximanova-regular", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 15px;
+    text-transform: uppercase;
+    border-radius: 23px;
   }
 }
 
@@ -9206,6 +9294,12 @@ a.shutter-nav-switcher.shutter-nav_is-open::before, a.shutter-nav-switcher.shutt
   }
 }
 
+@media (max-width: 767px) {
+  .bond-calc {
+    padding: 2rem 2rem 2rem;
+  }
+}
+
 .bond-calc__caption {
   display: -ms-flexbox;
   display: flex;
@@ -9221,6 +9315,12 @@ a.shutter-nav-switcher.shutter-nav_is-open::before, a.shutter-nav-switcher.shutt
   }
 }
 
+@media (max-width: 767px) {
+  .bond-calc__caption {
+    margin-bottom: 1.5rem;
+  }
+}
+
 .bond-range {
   margin-bottom: 0.4rem;
 }
@@ -9228,6 +9328,12 @@ a.shutter-nav-switcher.shutter-nav_is-open::before, a.shutter-nav-switcher.shutt
 @media (max-width: 991px) {
   .bond-range {
     margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .bond-range {
+    margin-bottom: 1.5rem;
   }
 }
 
@@ -9257,6 +9363,15 @@ html:not(.no-js) .bond-range-slider {
   }
 }
 
+@media (max-width: 767px) {
+  .bond-calc__deposit-rate,
+  .bond-calc__face-val,
+  .bond-calc__deposit-term {
+    margin-right: 1.5rem;
+    line-height: 1;
+  }
+}
+
 .bond-calc__deposit-rate > span,
 .bond-calc__face-val > span,
 .bond-calc__deposit-term > span {
@@ -9271,6 +9386,15 @@ html:not(.no-js) .bond-range-slider {
   .bond-calc__deposit-term > span {
     font-size: 1.6rem;
     line-height: 2.0rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .bond-calc__deposit-rate > span,
+  .bond-calc__face-val > span,
+  .bond-calc__deposit-term > span {
+    font-size: 1.5rem;
+    line-height: 1.8rem;
   }
 }
 
@@ -9300,17 +9424,25 @@ html:not(.no-js) .bond-range-slider {
   }
 }
 
+@media (max-width: 767px) {
+  .bond-calc__deposit-rate > strong,
+  .bond-calc__face-val > strong,
+  .bond-calc__deposit-term > strong {
+    font-size: 1.5rem;
+    line-height: 1.8rem;
+  }
+}
+
 .bond-calc__invest,
 .bond-calc__count,
 .bond-calc__total,
 .bond-calc__revenue {
   overflow: hidden;
   position: relative;
-  margin-right: 24rem;
   font-size: 2.4rem;
   line-height: 3.4rem;
   color: #000;
-  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 @media (max-width: 1439px) {
@@ -9342,6 +9474,41 @@ html:not(.no-js) .bond-range-slider {
     font-size: 1.8rem;
     line-height: 2.2rem;
   }
+}
+
+@media (max-width: 767px) {
+  .bond-calc__invest,
+  .bond-calc__count,
+  .bond-calc__total,
+  .bond-calc__revenue {
+    font-size: 1.5rem;
+    line-height: 1.8rem;
+  }
+}
+
+@media (max-width: 479px) {
+  .bond-calc__invest,
+  .bond-calc__count,
+  .bond-calc__total,
+  .bond-calc__revenue {
+    font-size: 1.3rem;
+    line-height: 1.8rem;
+  }
+}
+
+.bond-calc__invest::after,
+.bond-calc__count::after,
+.bond-calc__total::after,
+.bond-calc__revenue::after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 3rem;
+  background: white;
+  background: linear-gradient(to left, white 0%, rgba(255, 255, 255, 0) 100%);
 }
 
 .bond-calc__invest > strong,
@@ -9380,6 +9547,15 @@ html:not(.no-js) .bond-range-slider {
   }
 }
 
+@media (max-width: 767px) {
+  .bond-calc__invest > strong,
+  .bond-calc__count > strong,
+  .bond-calc__total > strong,
+  .bond-calc__revenue > strong {
+    font-size: 1.5rem;
+  }
+}
+
 .bond-calc__invest > b,
 .bond-calc__count > b,
 .bond-calc__total > b,
@@ -9398,6 +9574,12 @@ html:not(.no-js) .bond-range-slider {
   }
 }
 
+@media (max-width: 767px) {
+  .bond-calc__invest {
+    margin-bottom: 0.8rem;
+  }
+}
+
 .bond-calc__total {
   margin-bottom: 4.9rem;
 }
@@ -9408,9 +9590,20 @@ html:not(.no-js) .bond-range-slider {
   }
 }
 
+@media (max-width: 767px) {
+  .bond-calc__total {
+    margin-bottom: 0.8rem;
+  }
+}
+
+.bond-calc__revenue {
+  margin-right: 24rem;
+}
+
 @media (max-width: 1199px) {
   .bond-calc__revenue {
     margin-bottom: 2rem;
+    margin-right: 0;
   }
 }
 
@@ -9454,6 +9647,16 @@ html:not(.no-js) .bond-range-slider {
   }
 }
 
+@media (max-width: 767px) {
+  .bond-calc__link {
+    margin-top: 2rem;
+  }
+}
+
+.bond-calc__link [class*="btn-"] {
+  display: block;
+}
+
 /* bond calc end */
 /* company info */
 .company-info {
@@ -9466,6 +9669,12 @@ html:not(.no-js) .bond-range-slider {
 @media (max-width: 1439px) {
   .company-info {
     padding: 6rem 3rem 4rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .company-info {
+    padding: 3rem 2rem 2rem;
   }
 }
 
@@ -9521,7 +9730,15 @@ html:not(.no-js) .bond-range-slider {
 
 @media (max-width: 991px) {
   .yield {
-    padding-bottom: 8rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .yield {
+    padding-top: 2.4rem;
+    padding-bottom: 5.5rem;
   }
 }
 
@@ -9545,6 +9762,15 @@ html:not(.no-js) .bond-range-slider {
     font-size: 3.5rem;
     line-height: 3.5rem;
     text-align: center;
+    margin-bottom: 3.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .yield__title {
+    font-size: 2.8rem;
+    line-height: 2.8rem;
+    text-align: left;
     margin-bottom: 3.5rem;
   }
 }
@@ -9573,6 +9799,12 @@ html:not(.no-js) .bond-range-slider {
   }
 }
 
+@media (max-width: 767px) {
+  .yield-box {
+    height: 37.1rem;
+  }
+}
+
 .yield-box__aside {
   -ms-flex-preferred-size: 45.2rem;
       flex-basis: 45.2rem;
@@ -9598,6 +9830,8 @@ html:not(.no-js) .bond-range-slider {
     overflow: hidden;
     height: 1px;
     width: 1px;
+    padding: 0;
+    margin: 0;
   }
 }
 
@@ -9732,7 +9966,20 @@ html:not(.no-js) .bond-range-slider {
 @media (max-width: 991px) {
   .yield-cards__item {
     width: 44rem;
-    padding-bottom: 121px;
+    padding-bottom: 12.1rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .yield-cards__item {
+    width: 32rem;
+    padding-bottom: 10.1rem;
+  }
+}
+
+@media (max-width: 479px) {
+  .yield-cards__item {
+    width: 28rem;
   }
 }
 
@@ -10240,6 +10487,7 @@ html:not(.no-js) .bond-range-slider {
 /* company end */
 /* app-visual */
 .app-visual {
+  overflow: hidden;
   position: relative;
   background: #622ee9 url(../img/bg-app-offer.jpg) no-repeat center top fixed;
   background-size: cover;
@@ -10251,38 +10499,93 @@ html:not(.no-js) .bond-range-slider {
 
 @media (max-width: 1199px) {
   .heading + .app-visual {
-    margin-top: 7rem;
+    margin-top: 7.4rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .heading + .app-visual {
+    margin-top: 5rem;
   }
 }
 
 .app-visual__holder {
   padding-top: 7.9rem;
   padding-bottom: 7.8rem;
-  min-height: 70rem;
 }
 
 @media (max-width: 1199px) {
   .app-visual__holder {
-    padding-top: 7rem;
-    padding-bottom: 7rem;
-    min-height: 50rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
   }
 }
 
-.app-visual__slider {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
+@media (max-width: 767px) {
+  .app-visual__holder {
+    padding-top: 4.6rem;
+    padding-bottom: 3.4rem;
+  }
+}
+
+.app-visual__title {
+  font-family: "proximanova-extra-bold", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-size: 5.5rem;
+  line-height: 5.5rem;
+  color: white;
+  margin-bottom: 4rem;
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .app-visual__title {
+    display: block;
+    font-family: "proximanova-bold", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    text-align: center;
+    font-size: 2.8rem;
+    line-height: 2.8rem;
+    margin-bottom: 2.4rem;
+  }
+}
+
+.app-visual__figure {
+  height: 54.3rem;
   background: url(../img/app-visual-desktop.png) no-repeat center;
   background-size: auto 54.3rem;
+  margin: 0 -999rem;
 }
 
 @media (max-width: 1199px) {
-  .app-visual__slider {
-    background-size: auto 36rem;
+  .app-visual__figure {
+    height: 26.5rem;
+    background-size: auto 26.5rem;
   }
+}
+
+@media (max-width: 767px) {
+  .app-visual__figure {
+    height: 32.6rem;
+    background-image: url(../img/app-offer-figure-mob.png);
+    background-size: auto 32.6rem;
+    margin-bottom: 3rem;
+  }
+}
+
+.app-visual__app {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .app-visual__app {
+    display: block;
+    text-align: center;
+  }
+}
+
+.app-visual__app-item {
+  margin: 0 0 2rem;
 }
 
 /* app-visual end */
@@ -10295,7 +10598,14 @@ html:not(.no-js) .bond-range-slider {
 @media (max-width: 1199px) {
   .section_download {
     padding-top: 7rem;
-    padding-bottom: 7rem;
+    padding-bottom: 7.4rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .section_download {
+    padding-top: 4.7rem;
+    padding-bottom: 4.7rem;
   }
 }
 
@@ -10322,6 +10632,15 @@ html:not(.no-js) .bond-range-slider {
   }
 }
 
+@media (max-width: 767px) {
+  .download__title {
+    font-size: 2.8rem;
+    line-height: 2.8rem;
+    text-align: left;
+    margin-bottom: 2.8rem;
+  }
+}
+
 .download__title:last-child {
   margin-bottom: 0;
 }
@@ -10335,7 +10654,16 @@ html:not(.no-js) .bond-range-slider {
 
 @media (max-width: 1199px) {
   .download__text {
-    margin-bottom: 2rem;
+    margin-bottom: 3.3rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .download__text {
+    font-size: 1.5rem;
+    line-height: 1.8rem;
+    text-align: left;
+    margin-bottom: 1.8rem;
   }
 }
 
@@ -10345,6 +10673,12 @@ html:not(.no-js) .bond-range-slider {
 
 .download__text p {
   margin-bottom: 2.1rem;
+}
+
+@media (max-width: 767px) {
+  .download__text p {
+    margin-bottom: 1.8rem;
+  }
 }
 
 .download__text p:last-child {
@@ -10376,6 +10710,12 @@ html:not(.no-js) .bond-range-slider {
   }
 }
 
+@media (max-width: 767px) {
+  .download__app {
+    display: none;
+  }
+}
+
 .download__app:last-child {
   margin-bottom: 0;
 }
@@ -10395,6 +10735,14 @@ html:not(.no-js) .bond-range-slider {
     font-size: 1.6rem;
     line-height: 2.4rem;
     text-align: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .download__note {
+    font-size: 1.5rem;
+    line-height: 1.8rem;
+    text-align: left;
   }
 }
 
