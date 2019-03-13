@@ -3113,7 +3113,7 @@ $bond-space--mob: 1.8rem 2rem 1.2rem
     pointer-events: none
     z-index: 5
 
-    +media('<tab-lg')
+    +media('>=mob-md', '<tab-lg')
       display: block
 
   &::before
@@ -4674,10 +4674,15 @@ html:not(.no-js) .bond-range-slider
     padding: 6rem #{nth($bond-calc-space--sm, 2)} 4rem
 
   +media('<tab-sm')
-    padding: 3rem #{nth($bond-calc-space--mob, 2)} 2rem
+    padding: 2rem #{nth($bond-calc-space--mob, 2)}
+    font-size: $font-size--mob
+    line-height: $line-height--mob
 
   p
     margin-bottom: 2.2rem
+
+    +media('<tab-sm')
+      margin-bottom: $line-height--mob
 
     &:last-child
       margin-bottom: 0
@@ -4687,6 +4692,9 @@ html:not(.no-js) .bond-range-slider
 
   +media('<desk-ml')
     margin-bottom: 4rem
+
+  +media('<tab-sm')
+    margin-bottom: 2rem
 
   &:last-child
     margin-bottom: 0
@@ -4698,6 +4706,11 @@ html:not(.no-js) .bond-range-slider
   color: $title-color
   text-transform: uppercase
   margin-bottom: 1.9rem
+
+  +media('<tab-sm')
+    font-size: 2.0rem
+    line-height: 2.6rem
+    margin-bottom: 1.4rem
 
   &:last-child
     margin-bottom: 0
@@ -4941,14 +4954,26 @@ $news-elem-space-inner: 2.7rem 3.6rem
       font-size: 0
       line-height: 0
 
+      +media('<tab-sm')
+        width: 100%
+
       &::before
         content: ""
         display: block
         +ratio(1, 1)
 
+        +media('<tab-sm')
+          padding-top: 60%
+
     .news-elem__content
       overflow: hidden
       padding: nth($news-elem-space-inner, 1) nth($news-elem-space-inner, 2)
+
+      +media('<tab-lg')
+        padding: 2.5rem nth($page-layout-space--sm, 2)
+
+      +media('<mob-lg')
+        padding: 1.8rem nth($page-layout-space--mob, 2)
 
     .news-elem__title
       position: relative
@@ -4969,6 +4994,14 @@ $news-elem-space-inner: 2.7rem 3.6rem
         font-size: 2.0rem
         line-height: 2.4rem
 
+      +media('<tab-lg')
+        font-size: 1.8rem
+        line-height: 2.2rem
+
+      +media('<tab-sm')
+        margin-bottom: 1.5rem
+        padding-bottom: 1.8rem
+
       &::before, &::after
         content: ""
         display: block
@@ -4982,6 +5015,9 @@ $news-elem-space-inner: 2.7rem 3.6rem
         +media('<desk-md')
           max-width: none
           width: 100%
+
+        +media('<tab-sm')
+          border-top-width: 2px
 
       &::after
         border-color: $highlight-color--hover
@@ -5010,9 +5046,13 @@ $news-elem-space-inner: 2.7rem 3.6rem
       line-height: 2.2rem
       color: $text-color-alt
 
-      //+media('<desk-md')
+      +media('<desk-md')
         font-size: 1.6rem
         line-height: 2.0rem
+
+      +media('<tab-sm')
+        font-size: 1.5rem
+        line-height: 1.8rem
 
 // type vertical
 .type-v
@@ -5041,6 +5081,9 @@ $news-elem-space-inner: 2.7rem 3.6rem
   .news-elem__figure
     float: left
 
+    +media('<tab-sm')
+      float: none
+
   //.news-elem__content
     padding: #{nth($news-elem-space-inner, 1)} nth($news-elem-space-inner, 2) nth($news-elem-space-inner, 1) $news-elem-img-space-h
 
@@ -5051,6 +5094,9 @@ $news-elem-space-inner: 2.7rem 3.6rem
 
   .news-elem__figure
     float: right
+
+    +media('<tab-sm')
+      float: none
 
   //.news-elem__content
     padding: nth($news-elem-space-inner, 1) $news-elem-img-space-h nth($news-elem-space-inner, 1) nth($news-elem-space-inner, 2)
@@ -5083,6 +5129,9 @@ $news-elem-space-inner: 2.7rem 3.6rem
 
   +media('<desk-md')
     padding: 0 #{round-float(nth($news-elem-space-outer--sm, 2) / 2, 1)} nth($news-elem-space-outer--sm, 1)
+
+  +media('<tab-sm')
+    padding-bottom: 2rem
 
   // align left
   &.align-l
@@ -5232,6 +5281,9 @@ $companies-elem-space-outer: 2.2rem 2.2rem
   +media('<tab-lg')
     padding-bottom: 16rem
 
+  +media('<tab-sm')
+    padding-bottom: 11rem
+
 $company-box-aside-width: 44.7rem
 $company-box-aside-width--sm: 35rem
 .company-box
@@ -5275,10 +5327,15 @@ $company-box-aside-width--sm: 35rem
 
   +media('<tab-lg')
     max-width: none
-    padding: 3rem
+    padding: 3rem #{nth($bond-calc-space--sm, 2)} 3rem
     //background-color: $bg-color-light
     border-bottom: 1px solid $border-color
     $bdrs: 0.8rem
+    border-radius: $bdrs $bdrs 0 0
+
+  +media('<tab-sm')
+    padding: 2rem #{nth($bond-calc-space--mob, 2)} 2rem
+    $bdrs: 0.6rem
     border-radius: $bdrs $bdrs 0 0
 
 .company-box__main
