@@ -68,7 +68,7 @@
   will-change: $prop
   transition:
     property: $prop
-    duration: $animation-speed
+    duration: 0.5s
     timing-function: ease-in-out
 
   +media('<tab-lg')
@@ -254,6 +254,7 @@ html:not(.no-js)
   width: 100%
   min-width: $layout-min-width
   height: $header-height
+  //transition: height 0.2s
   z-index: $z-high
 
   +media('<tab-lg')
@@ -261,6 +262,9 @@ html:not(.no-js)
 
   +media('<tab-sm')
     height: $header-height--mob
+
+  .page-scrolled &
+    height: $header-height--sticky
 
   &::before
     content: ""
@@ -270,7 +274,7 @@ html:not(.no-js)
     top: 0
     width: 100%
     height: 100%
-    background-color: white
+    background-color: rgba(#161297, 0.8)
     opacity: 0
     // transition
     $prop: opacity
@@ -307,6 +311,11 @@ html:not(.no-js)
   width: 18.7rem
   margin-bottom: 1.9rem
   color: #cccddb
+  
+  .page-scrolled &
+    width: 12.5rem
+    margin-bottom: 1rem
+    background-image: url(../../img/logo-white.png)
 
   @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)
     background-image: url(../../img/logo-2x.png)
@@ -386,6 +395,9 @@ html:not(.no-js)
     text-decoration: none
     transition: color $animation-speed
 
+    .page-scrolled &
+      color: white
+
     &:hover
       color: $highlight-color--hover
 
@@ -393,6 +405,9 @@ html:not(.no-js)
   li.current
     color: $text-color-light
     pointer-events: none
+
+    .page-scrolled &
+      color: rgba(white, 0.5)
 
     a, & > span
       text-decoration: none
@@ -414,12 +429,15 @@ html:not(.no-js)
   +media('<tab-lg')
     text-align: center
 
+  +media('<mob-lg')
+    margin: 0 -0.8rem
+
   li
-    +font-bold
+    +font-extra-bold
     font-size: 5.5rem
     line-height: 6.6rem
     letter-spacing: 0.01em
-    margin-bottom: 4.1rem
+    margin-bottom: 5.1rem
     overflow: hidden
 
     +media('<desk-lg')
@@ -430,6 +448,11 @@ html:not(.no-js)
     +media('<desk-ml')
       font-size: 2.8rem
       line-height: 3.4rem
+
+    +media('<mob-lg')
+      font-size: 2.4rem
+      line-height: 3rem
+      margin-bottom: 4.1rem
 
     &:last-child
       margin-bottom: 0
@@ -495,6 +518,9 @@ a.shutter-nav-switcher
     property: $prop
     duration: $switcher-nav-dur
     timing-function: ease-in-out
+
+  .page-scrolled &
+    color: white
 
   +media('<tab-lg')
     margin-right: -1.4rem
@@ -831,6 +857,7 @@ a.shutter-nav-switcher
   display: flex
   align-items: flex-start
   width: 100%
+  max-width: 166rem
 
   +media('<tab-lg')
     display: block
@@ -857,14 +884,16 @@ a.shutter-nav-switcher
   +media('<tab-lg')
     width: auto
     max-width: none
-    padding: 5rem #{nth($page-layout-space, 2)}
+    padding: 8.8rem #{nth($page-layout-space, 2)}
     opacity: 1
 
   +media('<tab-sm')
-    padding: 5rem #{nth($page-layout-space--sm, 2)}
+    padding-left: #{nth($page-layout-space--sm, 2)}
+    padding-right: #{nth($page-layout-space--sm, 2)}
 
   +media('<mob-lg')
-    padding: 5rem #{nth($page-layout-space--mob, 2)}
+    padding-left: #{nth($page-layout-space--mob, 2)}
+    padding-right: #{nth($page-layout-space--mob, 2)}
 
   .shutter-nav_is-open &
     +media('>=tab-lg')
@@ -886,12 +915,8 @@ a.shutter-nav-switcher
     padding-left: 0
 
   +media('<tab-lg')
-    padding-top: $header-height--sm
-    padding-bottom: $header-height--sm
-
-  +media('<tab-sm')
-    padding-top: $header-height--mob
-    padding-bottom: $header-height--mob
+    padding-top: 8.8rem
+    padding-bottom: 5.8rem
 
 // Правая часть
 .shutter-nav__footer
@@ -905,14 +930,15 @@ a.shutter-nav-switcher
 
   +media('<tab-lg')
     background-color: $base-color
+    padding-top: 5.7rem
+    padding-bottom: 6rem
 
 /* title
 .shutter-nav__title
   +font-extra-bold
   font-size: 5.5rem
   line-height: 6.6rem
-  letter-spacing: 0.01em
-  margin-bottom: 5.5rem
+  margin-bottom: 7.6rem
 
   +media('<desk-lg')
     margin-bottom: 4rem
@@ -924,7 +950,10 @@ a.shutter-nav-switcher
     line-height: 3.4rem
 
   +media('<tab-lg')
-    display: none
+    text-align: center
+    font-size: 2.4rem
+    line-height: 2.4rem
+    margin-bottom: 2.9rem
 
   &:last-child
     margin-bottom: 0
@@ -933,13 +962,13 @@ a.shutter-nav-switcher
 
 /* alternative navigation
 .shutter-nav__alt-nav
-  margin: 0 0 19.6rem
+  margin: 0 0 14.4rem
 
   +media('<desk-ml')
     margin-bottom: 10rem
 
   +media('<tab-lg')
-    margin-bottom: 0
+    margin-bottom: 5.3rem
 
   &:last-child
     margin-bottom: 0
@@ -948,16 +977,47 @@ a.shutter-nav-switcher
 
 /* app
 .shutter-nav__app
-  margin-bottom: 2.5rem
+  display: flex
+  flex-wrap: wrap
+  margin-bottom: 4.3rem
 
   +media('<tab-lg')
-    display: none
+    justify-content: center
+    margin-bottom: 5.3rem
+
+  +media('<tab-sm')
+    display: block
 
 .shutter-nav__app-item
-  margin-bottom: 3.0rem
+  margin: 0 4rem 3.0rem 0
+
+  +media('<tab-sm')
+    margin: 0 0 6rem
+    text-align: center
 
   &:last-child
-    margin-bottom: 0
+    margin: 0
+
+  .btn-app
+    font-size: 1.8rem
+    line-height: 2.2rem
+    height: 6.2rem
+    padding: 1rem 5rem 1rem 8rem
+    border-radius: 6.2rem
+
+    & > br
+      display: block
+
+    &:hover
+      background-color: $highlight-color--hover
+
+  .btn-app_google-play
+    background-position: 2.8rem center
+    background-size: 29px auto
+
+  .btn-app_apple
+    background-position: 28px center
+    background-size: 26px auto
 
 /* app end
 
@@ -970,7 +1030,14 @@ a.shutter-nav-switcher
   line-height: 2.2rem
 
   +media('<tab-lg')
-    display: none
+    text-align: center
+    margin-left: auto
+    margin-right: auto
+
+  +media('<mob-lg')
+    width: auto
+    margin: 0 -0.8rem
+    max-width: none
 
   a
     color: #000
@@ -992,32 +1059,20 @@ a.shutter-nav-switcher
   display: flex
   flex-wrap: wrap
   align-items: flex-start
-  margin: 0 0 13.5rem
+  margin: 0 0 6.2rem
   padding: 0
   font-size: 2.4rem
   line-height: 3.2rem
   list-style: none
 
-  +media('<desk-lg')
-    margin-bottom: 6rem
-
-  +media('<desk-ml')
-    margin-bottom: 3rem
-    font-size: 2.0rem
-    line-height: 2.6rem
-
   +media('<tab-lg')
     display: block
     width: 40rem
     max-width: 100%
-    margin: 0 auto 3.3rem
-    font-size: 1.8rem
-    line-height: 2.2rem
+    margin: 0 auto 5.7rem
+    //font-size: 1.8rem
+    //line-height: 2.2rem
     text-align: center
-
-  +media('<tab-sm')
-    font-size: 1.5rem
-    line-height: 1.8rem
 
   &:last-child
     margin-bottom: 0
@@ -1026,21 +1081,11 @@ a.shutter-nav-switcher
     margin: 0 3rem 1.1rem 0
 
     +media('<tab-lg')
-      margin: 2.1rem 0 0
-
-    +media('<tab-sm')
-      margin-top: 1.9rem
+      margin: 2.0rem 0 0
 
     &.phone
       +media('<tab-lg')
-        margin-top: 1.3rem
-
-      +media('<tab-sm')
-        margin-top: 1.4rem
-
-    &.adr, &.cond
-      +media('>=tab-lg')
-        display: none
+        margin-top: 2.6rem
 
     &:first-child
       margin-top: 0
@@ -1068,15 +1113,6 @@ a.shutter-nav-switcher
       +font-semi-bold
       font-size: 3.0rem
 
-      +media('<desk-ml')
-        font-size: 2.6rem
-
-      +media('<tab-lg')
-        font-size: 2.2rem
-
-      +media('<tab-sm')
-        font-size: 1.7rem
-
     &:hover
       color: $highlight-color--hover
       box-shadow: inset 0 -1px 0 rgba($highlight-color--hover, 0.5)
@@ -1088,16 +1124,13 @@ a.shutter-nav-switcher
 
 /* callback-form
 .n-callback-form
-  margin-bottom: 7.1rem
+  margin-bottom: 7.7rem
 
   +media('<desk-lg')
     margin-bottom: 4rem
 
   +media('<tab-lg')
-    margin-bottom: 3rem
-
-  +media('<tab-sm')
-    margin-bottom: 4.7rem
+    margin-bottom: 5.7rem
 
   &:last-child
     margin-bottom: 0
@@ -1113,6 +1146,9 @@ a.shutter-nav-switcher
   font-size: 2.4rem
   line-height: 3.0rem
   margin-bottom: 3.1rem
+
+  & > strong
+    font-family: inherit
 
   +media('<desk-ml')
     margin-bottom: 1.5rem
@@ -1231,44 +1267,6 @@ $n-callback-form-space-item--mob: 3rem 2rem
       margin-bottom: 1.5rem
 
 /* chats end
-
-/* app (footer of shutter nav)
-.f-shutter-nav__app
-  display: none
-  text-align: center
-
-  +media('<tab-lg')
-    display: block
-
-.f-shutter-nav__app-label
-  max-width: 30rem
-  margin: 0 auto 2.3rem
-  +font-bold
-  font-size: 2.2rem
-  line-height: 2.7rem
-  text-align: center
-
-  +media('<tab-sm')
-    font-size: $font-size-h1--mob
-    line-height: $line-height-h1--mob
-    margin-bottom: 2.4rem
-
-.f-shutter-nav__app-list
-    display: inline-block
-    vertical-align: top
-
-.f-shutter-nav__app-item
-  display: block
-  text-align: center
-  margin-bottom: 2rem
-
-  &:last-child
-    margin-bottom: 0
-
-  .btn-app
-      display: block
-
-/* app (footer of shutter nav) end
 /* shutter navigation end
 
 /* === CONTENT ===
@@ -1311,11 +1309,11 @@ $n-callback-form-space-item--mob: 3rem 2rem
     z-index: -1
 
     +media('<tab-lg')
-      height: 20.2rem
+      height: 17.3rem
       background: $base-color-alt
 
     +media('<tab-sm')
-      height: 20.9rem
+      height: 18.5rem
 
   *::selection
     background-color: black
@@ -1330,11 +1328,11 @@ $n-callback-form-space-item--mob: 3rem 2rem
   +media('<tab-lg')
     min-height: 0
     padding-top: 7.6rem
-    padding-bottom: 4.6rem
+    padding-bottom: 4.8rem
 
   +media('<tab-sm')
     padding-top: 5.1rem
-    padding-bottom: 5.3rem
+    padding-bottom: 5.5rem
 
 // footer contacts
 .footer__contacts
@@ -1343,8 +1341,8 @@ $n-callback-form-space-item--mob: 3rem 2rem
   width: $footer-right-col-width
   max-width: calc(100% - #{$footer-left-col-width} - #{nth($footer-grid-space, 2)})
   display: flex
-  flex-wrap: wrap
-  margin: 0 0 1.6rem
+  //flex-wrap: wrap
+  margin: 0 0 1.1rem
   padding: 0 0 0 nth($footer-grid-space, 2)
   font-size: 2.4rem
   line-height: 3.2rem
@@ -1353,6 +1351,9 @@ $n-callback-form-space-item--mob: 3rem 2rem
   +media('<desk-ml')
     font-size: 2.0rem
     line-height: 2.6rem
+
+  +media('<desk-md')
+    flex-wrap: wrap
 
   +media('<tab-lg')
     display: block
@@ -1370,7 +1371,7 @@ $n-callback-form-space-item--mob: 3rem 2rem
     line-height: 1.8rem
 
   li
-    margin: 0 4.1rem 2rem 0
+    margin: 0 4.1rem 0.5rem 0
 
     +media('<desk-ml')
       margin: 0 2.5rem 1rem 0
@@ -1382,14 +1383,35 @@ $n-callback-form-space-item--mob: 3rem 2rem
       margin-top: 1.9rem
 
     &.phone
+      white-space: nowrap
+
       +media('<tab-lg')
         margin-top: 1.3rem
 
       +media('<tab-sm')
         margin-top: 1.4rem
 
-    &.adr
+    &.adr_mob
       +media('>=tab-lg')
+        display: none
+
+    &.adr, &.email
+      font-size: 1.8rem
+      line-height: 2.2rem
+      padding-top: 1rem
+
+      +media('<desk-ml')
+        padding-top: 0.2em
+
+      +media('<tab-lg')
+        font-size: inherit
+        line-height: inherit
+        padding-top: 0
+
+    &.adr
+      margin-right: 0
+
+      +media('<tab-lg')
         display: none
 
     &.cond
@@ -1504,6 +1526,9 @@ $n-callback-form-space-item--mob: 3rem 2rem
   line-height: 3.2rem
   color: white
   margin-bottom: 3.1rem
+
+  & > strong
+    font-family: inherit
 
   +media('<tab-lg')
     display: block
@@ -1739,8 +1764,8 @@ $n-callback-form-space-item--mob: 3rem 2rem
 /* developer
 .developer
   position: absolute
-  right: 0.1rem
-  bottom: 9.1rem
+  right: 0
+  bottom: 9.0rem
   text-align: right
   font-size: 14px
   line-height: 15px
@@ -1763,7 +1788,7 @@ $n-callback-form-space-item--mob: 3rem 2rem
     transition: color $animation-speed ease-in-out
 
     +media('<tab-lg')
-      display: inline
+      //display: inline
 
     &:hover
       color: $highlight-color--hover
@@ -1779,7 +1804,7 @@ $n-callback-form-space-item--mob: 3rem 2rem
   svg
     display: inline-block
     vertical-align: top
-    +size(7.4rem, 1.6rem)
+    +size(7.3rem, 1.7rem)
 
     path
       fill: currentColor
@@ -1810,12 +1835,6 @@ $n-callback-form-space-item--mob: 3rem 2rem
 
   +media('<tab-lg')
     display: block
-
-.developer-mob__logo
-  margin-bottom: 1.5rem
-
-  +media('<tab-sm')
-    margin-bottom: 1rem
 
   svg
     display: inline-block
@@ -1851,19 +1870,17 @@ $n-callback-form-space-item--mob: 3rem 2rem
   margin-top: -#{round-float($size / 2, 1)}
   color: white
   text-indent: -9999px
-  //background-color: $highlight-color
-  +linear-gradient(to bottom, $highlight-color 0, $highlight-color 50%, $btn-bg-hover-color 50%, $btn-bg-hover-color 100%)
-  background-size: 100% 200%
+  background-color: $highlight-color
   box-shadow: 0 3px 8px rgba(black, 0.11)
   border-radius: 50%
   z-index: $z-middle
   user-select: none
   -webkit-tap-highlight-color: transparent
   // transition
-  $prop: background-position, color, box-shadow
+  $prop: background-color, box-shadow
   transition:
     property: $prop
-    duration: 0.35s
+    duration: 0.5s
     timing-function: cubic-bezier(0.4, 0, 0.2, 1)
 
   +media('<desk-lg')
@@ -1909,22 +1926,14 @@ $n-callback-form-space-item--mob: 3rem 2rem
       background-size: 1.5rem
 
   .no-touchevents &:hover
-    //background-color: $highlight-color--hover
-    background-position: 0 100%
+    background-color: $highlight-color--hover
     box-shadow: 0 3px 8px rgba($btn-bg-hover-color, 0.25)
-
-  &:active
-    margin-top: -#{round-float($size / 2, 1) - 0.1}
-    box-shadow: 0 1px 4px rgba($btn-bg-hover-color, 0.25)
 
 /* lacerta app end
 
 /* === MAIN ===
 .sections-group
-  background-color: #f1f5fe
-  background-image: url(../../img/bg-index-section-02.jpg)
-  background-position: center bottom
-  background-repeat: no-repeat
+  background-color: #f5f8ff
   padding: 7.2rem 0 8.9rem
 
   +media('<desk-sm')
@@ -2138,7 +2147,7 @@ $n-callback-form-space-item--mob: 3rem 2rem
     max-height: 100%
 
 .limitations__item-title
-  +font-bold
+  +font-extra-bold
   font-size: 3.0rem
   line-height: 1
   margin-bottom: 2.1rem
@@ -2304,7 +2313,7 @@ $n-callback-form-space-item--mob: 3rem 2rem
 .limitations__item-figure_property
   //background-image: url(../../img/limitation-figure-03.png)
   //height: 316px
-  width: 22.9rem
+  width: 23.4rem
   left: 6.8rem
 
   +media('<desk-md')
@@ -2338,7 +2347,7 @@ $n-callback-form-space-item--mob: 3rem 2rem
 
 .advantages__holder
   position: relative
-  padding: 10.7rem 1rem 16.2rem 70.8rem
+  padding: 10.7rem 1rem 18rem 70.8rem
 
   +media('<desk-md')
     padding: 7rem 1rem 12rem 55rem
@@ -2528,6 +2537,7 @@ $n-callback-form-space-item--mob: 3rem 2rem
 /* manual
 .manual
   padding-top: 10.2rem
+  //padding-top: 6.8rem
   padding-bottom: 8.8rem
   background: url(../../img/bg-manual.jpg) no-repeat center top fixed
   background-size: cover
@@ -2539,6 +2549,7 @@ $n-callback-form-space-item--mob: 3rem 2rem
 .manual__holder
   position: relative
   padding: 1rem 0 3.4rem
+  //padding: 4.4rem 0 3.4rem
   +clear
 
   +media('<tab-lg')
@@ -2629,6 +2640,7 @@ $n-callback-form-space-item--mob: 3rem 2rem
   $root-elem: &
   display: block
   margin-bottom: 2rem
+  outline: none
 
   +media('<tab-lg')
     margin-bottom: 0
@@ -2658,6 +2670,7 @@ $n-callback-form-space-item--mob: 3rem 2rem
       background-color: rgba(white, 0.15)
       border: 1px solid transparent
       border-radius: 1rem
+      outline: none
       -webkit-tap-highlight-color: transparent
       $prop: background-color, border-color
       transition:
@@ -2806,7 +2819,7 @@ $n-callback-form-space-item--mob: 3rem 2rem
       right: 0.2rem
       top: 0
       bottom: 0
-      width: 43.8rem
+      width: 47.8rem
       max-width: 50%
       padding-left: 4rem
       opacity: 0
@@ -3044,8 +3057,8 @@ $bond-space--mob: 1.8rem 2rem 1.2rem
 .selection
   //padding-top: 14.2rem
   //padding-bottom: 16rem
-  padding-top: 6.8rem
-  padding-bottom: 7.1rem
+  padding-top: 9.8rem
+  padding-bottom: 9.1rem
 
   +media('<desk-sm')
     padding-bottom: 6.9rem
@@ -3249,8 +3262,8 @@ $bond-space--mob: 1.8rem 2rem 1.2rem
 
 /* benefits
 .benefits
-  padding-top: 7.1rem
-  padding-bottom: 7.1rem
+  padding-top: 8.1rem
+  padding-bottom: 8.1rem
 
   +media('<desk-sm')
     padding-top: 0
@@ -3453,7 +3466,7 @@ $oq__content-line-length: 6
 $op-color: #622ee9
 .opinion-review
   position: relative
-  padding: 3.9rem 6rem 3.9rem 12rem
+  padding: 3.9rem 6rem 4.5rem 12rem
   background-color: $op-color
   border-radius: 1rem
 
@@ -3748,7 +3761,7 @@ $or__content-line-length: 6
   min-width: $width
   margin-left: -6rem
   margin-bottom: 5.5rem
-  transform-origin: left bottom
+  transform-origin: left 100%
 
   +media('<tab-lg')
     min-width: 0
@@ -3783,8 +3796,8 @@ $or__content-line-length: 6
     padding-bottom: 5.5rem
 
   .sections-group &
-    padding-top: 7rem
-    padding-bottom: 7rem
+    padding-top: 9.1rem
+    padding-bottom: 9rem
 
     +media('<tab-lg')
       padding-top: 0.6rem
@@ -4074,8 +4087,8 @@ $app-offer-app-space: 2.0rem 3.6rem
   background-color: $bg-color
 
 .last-news__holder
-  padding-top: 14.1rem
-  padding-bottom: 16.1rem
+  padding-top: 17.1rem
+  padding-bottom: 18rem
 
   +media('<desk-sm')
     padding-top: 7rem
@@ -5545,3 +5558,34 @@ $download-app-spaces: 3.6rem
     text-align: left
 
 /* download end
+
+/* loading
+.loading
+  position: fixed
+  left: 0
+  top: 0
+  width: 100%
+  height: 100%
+  z-index: $z-max + 10
+  background: rgba(white, 0.5) url(../../img/preloader.svg) no-repeat center
+  background-size: 20rem
+  opacity: 0
+  pointer-events: none
+  visibility: hidden
+  // transition
+  $prop: opacity, visibility
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: 0.5s
+    timing-function: ease-in-out
+    
+  +media('<mob-lg')
+    background-size: 10rem
+
+  .enable-loading &
+    opacity: 1
+    pointer-events: auto
+    visibility: visible
+
+/* loading end

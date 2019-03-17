@@ -1,8 +1,23 @@
+@@if(context.filtersLoading){<div class="loading"></div>}
 </div>
 
 <script src="js/jquery.min.js?rev=@@hash"></script>
 <script src="js/libs.min.js?rev=@@hash"></script>
 <script src="js/form-validation.js?rev=@@hash"></script>
 <script src="js/common.js?rev=@@hash"></script>
+@@if(context.filtersLoading){
+<!--Показать прелоадер после изменения фильтра-->
+<!--Удалить в релизе-->
+<script>
+  var filtersLoadingTimeout;
+  $('.companies-filters').find('select').on('change', function () {
+    clearTimeout(filtersLoadingTimeout);
+    $('body').addClass('enable-loading');
+    timeout = setTimeout(function () {
+      $('body').removeClass('enable-loading');
+    }, 2000);
+  })
+</script>
+}
 </body>
 </html>

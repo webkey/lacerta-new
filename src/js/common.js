@@ -97,7 +97,7 @@ function detectScroll() {
   var $page = $('html'),
       // $fixedElement = $('.main-nav'),
       // var minScrollTop = $fixedElement.offset().top,
-      minScrollTop = 50,
+      minScrollTop = $('.header').outerHeight(),
       currentScrollTop = $(window).scrollTop();
 
   $page.toggleClass('page-scrolled', (currentScrollTop > minScrollTop));
@@ -105,6 +105,7 @@ function detectScroll() {
   $(window).on('load resizeByWidth scroll', function () {
 
     // minScrollTop = $fixedElement.offset().top;
+    minScrollTop = $('.header').outerHeight();
     currentScrollTop = $(window).scrollTop();
     $page.toggleClass('page-scrolled', (currentScrollTop > minScrollTop));
   })
@@ -425,7 +426,7 @@ function slidersInit() {
         slidesPerView: 3,
         watchSlidesVisibility: true,
         autoplay: {
-          delay: 5000,
+          delay: 3000,
           disableOnInteraction: true
         },
         pagination: {
@@ -498,7 +499,6 @@ function slidersInit() {
           $thisPag = $('.swiper-pagination', $thisSlider);
 
       new Swiper($thisSlider, {
-        // followFinger: false,
         simulateTouch: false,
         pagination: {
           el: $thisPag,
@@ -523,7 +523,22 @@ function slidersInit() {
           $cards = $curSlider.find('.yield-cards-slider-js'),
           $thumbs = $curSlider.find('.yield-thumbs-slider-js'),
           $cardsPagination = $curSlider.find('.swiper-pagination'),
-          cardsSlider;
+          cardsSlider, thumbsSlider;
+
+      thumbsSlider = new Swiper ($thumbs, {
+        loop: true,
+        centeredSlides: true,
+        direction: 'vertical',
+        slidesPerView: 'auto',
+        spaceBetween: 22,
+        slideToClickedSlide: true,
+        loopedSlides: 5,
+        watchSlidesVisibility: true,
+        watchSlidesProgress: true,
+        // controller: {
+        //   control: cardsSlider
+        // }
+      });
 
       cardsSlider = new Swiper ($cards, {
         init: false,
@@ -538,6 +553,7 @@ function slidersInit() {
         centeredSlides: true,
         slideToClickedSlide: true,
         loop: true,
+        loopedSlides: 5,
         // disabled swiping
         // followFinger: false,
         // simulateTouch: false,
@@ -551,29 +567,39 @@ function slidersInit() {
           clickable: true
         },
         thumbs: {
-          swiper: {
-            el: $thumbs,
-            loop: true,
-            centeredSlides: true,
-            direction: 'vertical',
-            slidesPerView: 'auto',
-            spaceBetween: 22,
-            on: {
-              click: function (e, el) {
-
-                var activeIndex = this.activeIndex,
-                    clickedIndex = this.clickedIndex;
-
-                if (clickedIndex > activeIndex) {
-                  this.slideNext();
-                }
-                if (clickedIndex < activeIndex) {
-                  this.slidePrev();
-                }
-              }
-            }
-          },
+          swiper: thumbsSlider
         },
+        // thumbs: {
+        //   swiper: {
+        //     el: $thumbs,
+        //     loop: true,
+        //     centeredSlides: true,
+        //     direction: 'vertical',
+        //     slidesPerView: 'auto',
+        //     spaceBetween: 22,
+        //     slideToClickedSlide: true,
+        //     on: {
+        //       tap: function (e, el) {
+        //         console.log(1);
+        //
+        //         var activeIndex = this.activeIndex,
+        //             clickedIndex = this.clickedIndex;
+        //
+        //         console.log("activeIndex: ", activeIndex);
+        //         console.log("clickedIndex: ", clickedIndex);
+        //
+        //         if (clickedIndex > activeIndex) {
+        //           console.log('next');
+        //           this.slideNext();
+        //         }
+        //         if (clickedIndex < activeIndex) {
+        //           console.log('prev');
+        //           this.slidePrev();
+        //         }
+        //       }
+        //     }
+        //   },
+        // },
         breakpoints: {
           991: {
             slidesPerView: 'auto'
@@ -586,6 +612,27 @@ function slidersInit() {
       });
 
       cardsSlider.init();
+
+      cardsSlider.params.controller.control = thumbsSlider;
+      thumbsSlider.params.controller.control = cardsSlider;
+
+      cardsSlider.update();
+      thumbsSlider.update();
+
+      // $('.yield-thumbs-slider-js').on('click', '.yield-thumbs__item', function () {
+      //   var activeIndex = cardsSlider.activeIndex,
+      //       clickedIndex = $(this).index();
+      //
+      //   console.log("activeIndex: ", activeIndex);
+      //   console.log("clickedIndex: ", clickedIndex);
+      //
+      //   if (clickedIndex > activeIndex) {
+      //     thumbsSlider.slideNext();
+      //   }
+      //   if (clickedIndex < activeIndex) {
+      //     thumbsSlider.slidePrev();
+      //   }
+      // })
     });
   }
 }
