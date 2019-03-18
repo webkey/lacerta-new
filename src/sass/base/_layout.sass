@@ -21,8 +21,6 @@ body
   color: $text-color
   min-width: $layout-min-width
   background-color: $bg-color
-  background-position: center top
-  background-repeat: no-repeat
 
   +media('<tab-sm')
     font-size: $font-size--mob
@@ -31,6 +29,8 @@ body
   &.home-page
     background-color: white
     background-image: url(../../img/bg-index-section-01.jpg)
+    background-position: center top
+    background-repeat: no-repeat
 
   &.bg-alt
     background-color: white
@@ -88,3 +88,6 @@ body
 
   +media('<desk-lg')
     overflow: hidden
+
+  .bg-grad &
+    +linear-gradient(to bottom, #eaefff 0%, #fbfcff 100vh, #fbfcff 100%)

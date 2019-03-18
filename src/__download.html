@@ -1,4 +1,4 @@
-@@include('_tpl_layout_head.html', {"title": "Скачать приложение", "pageClass": "" })
+@@include('_tpl_layout_head.html', {"title": "Скачать приложение", "pageClass": "bg-grad" })
 
 <!--HEADER-->
 @@include('_tpl_layout_header.html', {"currentItem": "", "headerFloat": "" })
@@ -7,15 +7,41 @@
 <!--MAIN-->
 <div class="main">
   @@include("_tpl_caption-of-page.html", {
-  "heading": "Скачать приложение",
+  "heading": "Установите приложение и наблюдайте за тем, как работают ваши деньги",
   "entry": "LACERTA ONLINE - это приложение, в котором люди финансируют понравившиеся им компании, просто покупая их облигации на условиях, которые не могут быть изменены."
   })
 
+  <!--download-->
+  <div class="section_download layout-spaces">
+    <div class="download__holder layout-section">
+      <div class="download__content">
+        <h3>Первый цифровой небанк Беларуси Lacerta&nbsp;Online</h3>
+        <p>Установите приложение Lacerta, выберите кому дать в долг, соотнесите риск и доход, и купите облигации.</p>
+        <p>Использовать* приложение Lacerta Online проще, чем отправлять смс.</p>
+        <p>Безопасность платежей, доступ к купленным облигациям, постоянный контроль. <strong>Некредиты</strong> для среднего бизнеса и <strong>невклады</strong> для физических лиц.</p>
+        <hr>
+        <p><span class="note">* Возможность совершения операций и ввод номера телефона возможен только после посещения офиса ООО &quot;Ласерта&quot;</span></p>
+      </div>
+      <div class="download__app">
+        <div class="download__app-item"><a href="https://itunes.apple.com/us/app/lacerta-%D0%BF%D0%BE%D0%BA%D1%83%D0%BF%D0%BA%D0%B0-%D0%BE%D0%B1%D0%BB%D0%B8%D0%B3%D0%B0%D1%86%D0%B8%D0%B9/id1438857466" class="btn-app btn-app_apple" target="_blank">Скачать на<br> App Store</a></div>
+        <div class="download__app-item"><a href="https://play.google.com/store/apps/details?id=by.lacerta" class="btn-app btn-app_google-play" target="_blank">Скачать в<br> Google Play</a></div>
+      </div>
+    </div>
+  </div>
+  <!--download end-->
+
   <!--app visual-->
-  <section class="app-visual layout-spaces detect-os-js">
-    <div class="app-visual__holder layout-section">
+  <section class="app-visual detect-os-js">
+    <div class="app-visual__holder">
       <h2 class="app-visual__title">Попробуйте наше приложение</h2>
-      <div class="app-visual__figure">&nbsp;</div>
+      <div class="app-visual__slider app-visual__slider-js swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide app-visual__slider-item"><img class="app-visual__slider-img" src="img/img-app-01.png" alt="app screen 1" data-swiper-parallax data-swiper-parallax-opacity="0.6" /></div>
+          <div class="swiper-slide app-visual__slider-item"><img class="app-visual__slider-img" src="img/img-app-02.png" alt="app screen 2" data-swiper-parallax data-swiper-parallax-opacity="0.6" /></div>
+          <div class="swiper-slide app-visual__slider-item"><img class="app-visual__slider-img" src="img/img-app-03.png" alt="app screen 3" data-swiper-parallax data-swiper-parallax-opacity="0.6" /></div>
+          <div class="swiper-slide app-visual__slider-item"><img class="app-visual__slider-img" src="img/img-app-04.png" alt="app screen 4" data-swiper-parallax data-swiper-parallax-opacity="0.6" /></div>
+        </div>
+      </div>
       <div class="app-visual__app">
         <div class="app-visual__app-item"><a href="https://itunes.apple.com/us/app/lacerta-%D0%BF%D0%BE%D0%BA%D1%83%D0%BF%D0%BA%D0%B0-%D0%BE%D0%B1%D0%BB%D0%B8%D0%B3%D0%B0%D1%86%D0%B8%D0%B9/id1438857466" class="btn-app btn-app_apple" target="_blank">Скачать на App Store</a></div>
         <div class="app-visual__app-item"><a href="https://play.google.com/store/apps/details?id=by.lacerta" class="btn-app btn-app_google-play" target="_blank">Скачать в Google Play</a></div>
@@ -23,26 +49,6 @@
     </div>
   </section>
   <!--app visual end-->
-
-  <!--download-->
-  <div class="section_download layout-spaces">
-    <div class="download__holder layout-section">
-      <h2 class="download__title">Первый цифровой небанк Беларуси<br> Lacerta Online</h2>
-      <div class="download-layout">
-        <div class="download__text">
-          <p class="download__text-entry">Установите приложение <strong>Lacerta</strong>, выберите кому дать в долг, соотнесите риск и доход, и купите облигации.</p>
-          <p class="download__text-highlight">Использовать* приложение Lacerta Online проще, чем отправлять смс.</p>
-          <p>Безопасность платежей, доступ к купленным облигациям, постоянный контроль. Некредиты для среднего бизнеса и невклады для физических лиц.</p>
-        </div>
-        <div class="download__app">
-          <div class="download__app-item"><a href="https://itunes.apple.com/us/app/lacerta-%D0%BF%D0%BE%D0%BA%D1%83%D0%BF%D0%BA%D0%B0-%D0%BE%D0%B1%D0%BB%D0%B8%D0%B3%D0%B0%D1%86%D0%B8%D0%B9/id1438857466" class="btn-app btn-app_apple" target="_blank">Скачать на<br> App Store</a></div>
-          <div class="download__app-item"><a href="https://play.google.com/store/apps/details?id=by.lacerta" class="btn-app btn-app_google-play" target="_blank">Скачать в<br> Google Play</a></div>
-        </div>
-        <div class="download__note">* Возможность совершения операций и ввод номера телефона возможен только после посещения офиса ООО "Ласерта"</div>
-      </div>
-    </div>
-  </div>
-  <!--download end-->
 </div>
 <!--MAIN end-->
 

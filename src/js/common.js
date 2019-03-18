@@ -535,9 +535,7 @@ function slidersInit() {
         loopedSlides: 5,
         watchSlidesVisibility: true,
         watchSlidesProgress: true,
-        // controller: {
-        //   control: cardsSlider
-        // }
+        allowTouchMove: false
       });
 
       cardsSlider = new Swiper ($cards, {
@@ -554,55 +552,19 @@ function slidersInit() {
         slideToClickedSlide: true,
         loop: true,
         loopedSlides: 5,
-        // disabled swiping
-        // followFinger: false,
-        // simulateTouch: false,
         spaceBetween: 20,
+        allowTouchMove: false,
         preloadImages: false,
         parallax: true,
-        // noSwipingClass: '.bond-range',
         pagination: {
           el: $cardsPagination,
           type: 'bullets',
           clickable: true
         },
-        thumbs: {
-          swiper: thumbsSlider
-        },
-        // thumbs: {
-        //   swiper: {
-        //     el: $thumbs,
-        //     loop: true,
-        //     centeredSlides: true,
-        //     direction: 'vertical',
-        //     slidesPerView: 'auto',
-        //     spaceBetween: 22,
-        //     slideToClickedSlide: true,
-        //     on: {
-        //       tap: function (e, el) {
-        //         console.log(1);
-        //
-        //         var activeIndex = this.activeIndex,
-        //             clickedIndex = this.clickedIndex;
-        //
-        //         console.log("activeIndex: ", activeIndex);
-        //         console.log("clickedIndex: ", clickedIndex);
-        //
-        //         if (clickedIndex > activeIndex) {
-        //           console.log('next');
-        //           this.slideNext();
-        //         }
-        //         if (clickedIndex < activeIndex) {
-        //           console.log('prev');
-        //           this.slidePrev();
-        //         }
-        //       }
-        //     }
-        //   },
-        // },
         breakpoints: {
           991: {
-            slidesPerView: 'auto'
+            slidesPerView: 'auto',
+            allowTouchMove: true
           }
         }
       });
@@ -613,26 +575,58 @@ function slidersInit() {
 
       cardsSlider.init();
 
-      cardsSlider.params.controller.control = thumbsSlider;
-      thumbsSlider.params.controller.control = cardsSlider;
+      thumbsSlider.on('slideChange', function () {
+        var activeIndex = thumbsSlider.activeIndex;
+        cardsSlider.slideTo(activeIndex);
+      });
 
-      cardsSlider.update();
-      thumbsSlider.update();
+      cardsSlider.on('slideChange', function () {
+        var activeIndex = cardsSlider.activeIndex;
+        thumbsSlider.slideTo(activeIndex);
+      });
+    });
+  }
 
-      // $('.yield-thumbs-slider-js').on('click', '.yield-thumbs__item', function () {
-      //   var activeIndex = cardsSlider.activeIndex,
-      //       clickedIndex = $(this).index();
-      //
-      //   console.log("activeIndex: ", activeIndex);
-      //   console.log("clickedIndex: ", clickedIndex);
-      //
-      //   if (clickedIndex > activeIndex) {
-      //     thumbsSlider.slideNext();
-      //   }
-      //   if (clickedIndex < activeIndex) {
-      //     thumbsSlider.slidePrev();
-      //   }
-      // })
+  /**App visual slider*/
+  var $appVisualSlider = $('.app-visual__slider-js');
+  if($appVisualSlider.length){
+    $appVisualSlider.each(function () {
+      var $curSlider = $(this),
+          curSliderJs;
+
+      curSliderJs = new Swiper ($curSlider, {
+        init: false,
+        effect: 'coverflow',
+        coverflowEffect: {
+          rotate: 0,
+          stretch: 0,
+          depth: 0,
+          modifier: 0,
+          slideShadows : false,
+        },
+        slidesPerView: 'auto',
+        centeredSlides: true,
+        slideToClickedSlide: true,
+        loop: true,
+        loopedSlides: 20,
+        spaceBetween: 20,
+        parallax: true,
+        breakpoints: {
+          767: {
+            coverflowEffect: {
+              stretch: -35,
+              depth: 150,
+              modifier: 1
+            },
+          }
+        }
+      });
+
+      curSliderJs.on('init', function() {
+        $curSlider.addClass('is-loaded');
+      });
+
+      curSliderJs.init();
     });
   }
 }
