@@ -1780,15 +1780,10 @@ $n-callback-form-space-item--mob: 3rem 2rem
     line-height: 17px
 
   a
-    display: inline-block
-    vertical-align: top
     color: white
     text-decoration: none
     // transition
     transition: color $animation-speed ease-in-out
-
-    +media('<tab-lg')
-      //display: inline
 
     &:hover
       color: $highlight-color--hover
@@ -1834,7 +1829,7 @@ $n-callback-form-space-item--mob: 3rem 2rem
   display: none
 
   +media('<tab-lg')
-    display: block
+    display: inline-block
 
   svg
     display: inline-block
@@ -1874,6 +1869,7 @@ $n-callback-form-space-item--mob: 3rem 2rem
   box-shadow: 0 3px 8px rgba(black, 0.11)
   border-radius: 50%
   z-index: $z-middle
+  outline: none
   user-select: none
   -webkit-tap-highlight-color: transparent
   // transition

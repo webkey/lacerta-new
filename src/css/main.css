@@ -1768,6 +1768,7 @@ table td, table th {
   background-color: #ff2e82;
   border: none;
   box-shadow: 0 10px 10px rgba(255, 46, 130, 0.25);
+  outline: none;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -1845,6 +1846,7 @@ input[type="reset"].btn-def {
   background: #40455d;
   border: none;
   box-shadow: 0 10px 10px 0 rgba(64, 69, 93, 0.25);
+  outline: none;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -5624,8 +5626,6 @@ a.shutter-nav-switcher.shutter-nav_is-open::before, a.shutter-nav-switcher.shutt
 }
 
 .developer a {
-  display: inline-block;
-  vertical-align: top;
   color: white;
   text-decoration: none;
   transition: color 0.2s ease-in-out;
@@ -5695,7 +5695,7 @@ a.shutter-nav-switcher.shutter-nav_is-open::before, a.shutter-nav-switcher.shutt
 
 @media (max-width: 991px) {
   .developer-mob {
-    display: block;
+    display: inline-block;
   }
 }
 
@@ -5744,6 +5744,7 @@ a.shutter-nav-switcher.shutter-nav_is-open::before, a.shutter-nav-switcher.shutt
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.11);
   border-radius: 50%;
   z-index: 30;
+  outline: none;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
