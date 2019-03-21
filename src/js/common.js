@@ -114,7 +114,8 @@ function detectScroll() {
 /**
  * !Initial custom select for cross-browser styling
  * */
-function customSelect(select) {
+function customSelect() {
+  var select = $('select.cselect');
   $.each(select, function () {
     var $thisSelect = $(this);
     // var placeholder = $thisSelect.attr('data-placeholder') || '';
@@ -123,7 +124,8 @@ function customSelect(select) {
       width: '100%',
       containerCssClass: 'cselect-head',
       dropdownCssClass: 'cselect-drop',
-      minimumResultsForSearch: Infinity
+      minimumResultsForSearch: Infinity,
+      allowClear: true
       // , placeholder: placeholder
     });
   })
@@ -726,7 +728,7 @@ $(document).ready(function () {
   addOSClasses();
   placeholderInit();
   detectScroll();
-  customSelect($('select.cselect'));
+  customSelect();
   switchClasses();
   slidersInit();
   objectFitImages(); // object-fit-images initial

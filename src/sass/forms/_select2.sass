@@ -147,6 +147,32 @@
       b
         display: none
 
+    .select2-selection__clear
+      $size: 24px
+      position: absolute
+      right: $select-arrow-width - 10
+      width: $size
+      height: $size
+      top: 50%
+      margin-top: -#{round($size / 2) - 2}
+      transition: color $animation-speed
+      font-weight: normal
+      font-size: $size
+      line-height: $size
+      text-align: center
+      color: #696969
+
+      //----------------------------------
+      +media($form-media--tab)
+        right: $select-arrow-width--tab - 10
+
+      //----------------------------------
+      +media($form-media--mob)
+        right: $select-arrow-width--mob - 10
+
+      &:hover
+        color: $base-color
+
   &.select2-container--open
     .select2-selection__arrow
       transform: translateZ(0) rotate(0.5turn)

@@ -474,7 +474,7 @@ $select-space-h--mob: 18px !default
 =selectSelection()
   height: $form-input-height
   width: 100%
-  padding: $form-input-space-vt $select-arrow-width $form-input-space-vb $select-space-h
+  padding: $form-input-space-vt $select-arrow-width + 15 $form-input-space-vb $select-space-h
   background: #eef2ff
   @if $form-border-width
     border: $form-border-width solid #eef2ff
@@ -493,14 +493,14 @@ $select-space-h--mob: 18px !default
 
 =selectSelection--tab()
   height: $form-input-height--tab
-  padding: $form-input-space-vt--tab $select-arrow-width--tab $form-input-space-vb--tab $select-space-h--tab
+  padding: $form-input-space-vt--tab $select-arrow-width--tab + 15 $form-input-space-vb--tab $select-space-h--tab
   border-radius: round($form-input-height--tab / 2)
   @if $form-border-width--tab
     border-width: $form-border-width--tab
 
 =selectSelection--mob()
   height: $form-input-height--mob
-  padding: $form-input-space-vt--mob $select-arrow-width--mob $form-input-space-vb--mob $select-space-h--mob
+  padding: $form-input-space-vt--mob $select-arrow-width--mob + 15 $form-input-space-vb--mob $select-space-h--mob
   border-radius: round($form-input-height--mob / 2)
   @if $form-border-width--mob
     border-width: $form-border-width--mob

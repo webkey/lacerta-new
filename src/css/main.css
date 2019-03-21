@@ -2350,7 +2350,7 @@ textarea.input-def[disabled] {
 .select2-container--default .select2-selection {
   height: 55px;
   width: 100%;
-  padding: 16px 55px 17px 25px;
+  padding: 16px 70px 17px 25px;
   background: #eef2ff;
   border: 1px solid #eef2ff;
   border-radius: 28px;
@@ -2370,7 +2370,7 @@ textarea.input-def[disabled] {
 @media (max-width: 991px) {
   .select2-container--default .select2-selection {
     height: 50px;
-    padding: 14px 50px 14px 20px;
+    padding: 14px 65px 14px 20px;
     border-radius: 25px;
     border-width: 1px;
   }
@@ -2379,7 +2379,7 @@ textarea.input-def[disabled] {
 @media (max-width: 767px) {
   .select2-container--default .select2-selection {
     height: 45px;
-    padding: 11px 45px 12px 18px;
+    padding: 11px 60px 12px 18px;
     border-radius: 23px;
     border-width: 1px;
   }
@@ -2461,6 +2461,37 @@ textarea.input-def[disabled] {
 
 .select2-container--default .select2-selection--single .select2-selection__arrow b {
   display: none;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__clear {
+  position: absolute;
+  right: 45px;
+  width: 24px;
+  height: 24px;
+  top: 50%;
+  margin-top: -10px;
+  transition: color 0.2s;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 24px;
+  text-align: center;
+  color: #696969;
+}
+
+@media (max-width: 991px) {
+  .select2-container--default .select2-selection--single .select2-selection__clear {
+    right: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .select2-container--default .select2-selection--single .select2-selection__clear {
+    right: 35px;
+  }
+}
+
+.select2-container--default .select2-selection--single .select2-selection__clear:hover {
+  color: #622ee9;
 }
 
 .select2-container--default.select2-container--open .select2-selection__arrow {
@@ -9615,6 +9646,7 @@ html:not(.no-js) .bond-range-slider {
 
 @media (max-width: 1199px) {
   .bond-calc__link {
+    text-align: right;
     position: relative;
     bottom: auto;
     right: auto;
@@ -9638,14 +9670,16 @@ html:not(.no-js) .bond-range-slider {
   }
 }
 
-.bond-calc__link [class*="btn-"] {
-  display: block;
+@media (max-width: 639px) {
+  .bond-calc__link [class*="btn-"] {
+    display: block;
+  }
 }
 
 /* bond calc end */
 /* company info */
 .company-info {
-  padding: 8.4rem 6rem 4rem;
+  padding: 8.4rem 6rem 6rem;
   font-size: 1.8rem;
   line-height: 2.2rem;
   color: #40455d;
@@ -9653,7 +9687,7 @@ html:not(.no-js) .bond-range-slider {
 
 @media (max-width: 1439px) {
   .company-info {
-    padding: 6rem 3rem 4rem;
+    padding: 6rem 3rem 5rem;
   }
 }
 
@@ -10483,6 +10517,8 @@ html:not(.no-js) .bond-range-slider {
   position: relative;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-align: start;
+      align-items: flex-start;
   background-color: white;
   box-shadow: 0 1rem 4.6rem rgba(124, 144, 212, 0.25);
   border-radius: 0.8rem;
@@ -10562,7 +10598,7 @@ html:not(.no-js) .bond-range-slider {
   -ms-flex-preferred-size: calc(100% - 44.7rem);
       flex-basis: calc(100% - 44.7rem);
   max-width: calc(100% - 44.7rem);
-  min-height: 64.4rem;
+  height: 64.4rem;
 }
 
 @media (max-width: 1365px) {
@@ -10577,7 +10613,7 @@ html:not(.no-js) .bond-range-slider {
   .company-box__main {
     max-width: none;
     padding: 0;
-    min-height: 0;
+    height: auto;
   }
 }
 
