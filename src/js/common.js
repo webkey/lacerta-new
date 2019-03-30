@@ -690,14 +690,23 @@ function rangeSlidersInit() {
         $sumElem = $container.find('.bond-calc-sum-js'),
         currentVal = data.from,
         rate = $slider.data('rate'),
-        length, total, totalRound, profit;
+        length,
+        total,
+        // totalRound,
+        profit;
+        // profitRound;
     
     $sumElem.html(currentVal).attr('data-bond-calc-sum', currentVal);
 
     length = currentVal / $slider.data('step');
     total = rate / 100 * currentVal + currentVal;
-    totalRound = Math.round(total * 100) / 100;
-    profit = totalRound - currentVal;
+    // totalRound = Math.round(total * 100) / 100;
+    // profit = totalRound - currentVal;
+    profit = total - currentVal;
+    // profitRound = Math.round(profit * 100) / 100;
+
+    total = parseFloat(total).toFixed(2);
+    profit = parseFloat(profit).toFixed(2);
 
     $container.find('.bond-calc-length-js').html(length).attr('data-bond-calc-length', length);
     $container.find('.bond-calc-total-js').html(total).attr('data-bond-calc-total', total);
