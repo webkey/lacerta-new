@@ -29,27 +29,35 @@
       <div class="footer__callback-form">
         <form action="#" method="post" class="validation-form-js">
           <div class="callback-form__title form-opener-js">
-            <strong>Заказать обратный звонок:</strong>
+            <strong>Напишите нам</strong>
             <div class="callback-form__opener">
               @@include("includes/svg/icon-phone.svg")
             </div>
           </div>
           <div class="callback-form__fields-wrap form-drop-js">
             <div class="callback-form__fields">
-              <label class="input-wrap">
-                <input class="input-def" name="name" placeholder="Введите имя" required type="text">
-                @@include("_tpl_forms_valid.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
-              </label>
-              <label class="input-wrap">
-                <input class="input-def" name="phone" placeholder="Телефон" required type="text">
-                @@include("_tpl_forms_valid.html", {"error": "Пожалуйста, укажите телефон", "success": "Проверено!"})
-              </label>
-              <label class="input-wrap">
-                <input class="input-def" name="email" placeholder="email" required type="email">
-                @@include("_tpl_forms_valid.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
-              </label>
-              <div class="input-wrap input-wrap_btn">
-                @@include("_tpl_btn.html", {"type": "button!", "value": "Отправить"})
+              <div class="callback-form__fields-group">
+                <label class="input-wrap">
+                  <input class="input-def" name="name" placeholder="Введите имя" required type="text">
+                  @@include("_tpl_forms_valid.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
+                </label>
+                <label class="input-wrap">
+                  <input class="input-def" name="phone" placeholder="Телефон" required type="text">
+                  @@include("_tpl_forms_valid.html", {"error": "Пожалуйста, укажите телефон", "success": "Проверено!"})
+                </label>
+                <label class="input-wrap">
+                  <input class="input-def" name="email" placeholder="email" required type="email">
+                  @@include("_tpl_forms_valid.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
+                </label>
+              </div>
+              <div class="callback-form__fields-group">
+                <label class="input-wrap">
+                  <textarea class="input-def" placeholder="Сообщение" required type="message"></textarea>
+                  @@include("_tpl_forms_valid.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
+                </label>
+                <div class="input-wrap input-wrap_btn">
+                  @@include("_tpl_btn.html", {"type": "button!", "value": "Отправить"})
+                </div>
               </div>
             </div>
           </div>
