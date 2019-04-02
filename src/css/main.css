@@ -4571,6 +4571,7 @@ a.shutter-nav-switcher.shutter-nav_is-open::before, a.shutter-nav-switcher.shutt
 }
 
 .n-callback-form__title {
+  font-family: "proximanova-regular", Helvetica, Arial, sans-serif;
   display: block;
   position: relative;
   margin-bottom: 2.0rem;
@@ -4592,10 +4593,6 @@ a.shutter-nav-switcher.shutter-nav_is-open::before, a.shutter-nav-switcher.shutt
   .n-callback-form__title {
     display: block;
     margin: 0 0 2.3rem;
-    font-family: "proximanova-bold", Helvetica, Arial, sans-serif;
-    font-weight: normal;
-    font-size: 2.2rem;
-    line-height: 2.7rem;
     text-align: center;
   }
 }
