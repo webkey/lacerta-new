@@ -19,6 +19,9 @@ $(window).resize(function () {
 var TOUCH = Modernizr.touchevents;
 var DESKTOP = !TOUCH;
 
+const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+observer.observe();
+
 /**
  * !Show elements on scroll
  */

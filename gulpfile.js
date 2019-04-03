@@ -180,8 +180,11 @@ gulp.task('createCustomModernizr', function (done) {
  */
 gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () {
   return gulp.src([
+    // 'src/libs/classlist-polyfill/src/index.js' // Полифил для корректной работы кастомного скроллбара в старых браузерах
     // 'src/libs/device.js/lib/device.min.js' // определение устройств
-    'src/libs/jquery-smartresize/jquery.debouncedresize.js' // "умный" ресайз
+    'node_modules/intersection-observer/intersection-observer.js' // Полифил для корректной работы lozad в старых браузерах
+    , 'src/libs/lozad/dist/lozad.min.js' // Подкрузка изображений, айфреймов и т.д.
+    , 'src/libs/jquery-smartresize/jquery.debouncedresize.js' // "умный" ресайз
     , 'src/libs/jquery-placeholder/jquery.placeholder.min.js' // поддержка плейсхолдера в старых браузерах
     // , 'src/libs/jquery-form/dist/jquery.form.min.js' // jquery form для работы с ajax
     , 'src/libs/select2/dist/js/select2.full.min.js' // кастомный селект
